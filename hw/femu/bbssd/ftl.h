@@ -2,6 +2,8 @@
 #define __FEMU_FTL_H
 
 #include "../nvme.h"
+#include "../../../uthash.h"
+
 
 #define INVALID_PPA     (~(0ULL))
 #define INVALID_LPN     (~(0ULL))
@@ -236,5 +238,24 @@ void ssd_init(FemuCtrl *n);
 #else
 #define ftl_assert(expression)
 #endif
+
+// LPN to PPN 매핑을 위한 구조체
+struct l2p_entry {
+    uint64_t lpn;       // 논리적 페이지 번호
+    uint64_t ppn;       // 물리적 페이지 번호
+    UT_hash_handle hh;  // 해시 테이블 핸들
+};
+
+// PPN to LPN 매핑을 위한 구조체
+struct p2l_entry {
+    uint64_t ppn;       // 물리적 페이지 번호
+    uint64_t lpn;       // 논리적 페이지 번호
+    UT_hash_handle hh;  // 해시 테이블 핸들
+};
+
+void l2p_push(struct ssd *ssd, uint64_t lpn, struct ppa *ppa);
+uint64_t l2p_find(uint64_t lpn);
+void p2l_push(struct ssd *ssd, struct ppa *ppa, uint64_t lpn);
+uint64_t p2l_find(struct ssd *ssd, struct ppa *ppa);
 
 #endif
