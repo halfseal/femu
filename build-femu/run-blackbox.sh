@@ -14,8 +14,8 @@ pgs_per_blk=256 # number of pages per flash block
 blks_per_pl=256 # number of blocks per plane
 pls_per_lun=1 # keep it at one, no multiplanes support
 luns_per_ch=8 # number of chips per channel
-nchs=4 # number of channels
-ssd_size=8192 # in megabytes, if you change the above layout parameters, make sure you manually recalculate the ssd size and modify it here, please consider a default 25% overprovisioning ratio.
+nchs=2 # number of channels
+ssd_size=3072
 
 # Latency in nanoseconds
 pg_rd_lat=40000 # page read latency

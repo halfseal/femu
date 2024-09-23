@@ -1,7 +1,7 @@
 libcommon.fa.p/migration_options.c.o: ../migration/options.c \
- /usr/include/stdc-predef.h /home/sp24/FEMU/include/qemu/osdep.h \
- config-host.h /home/sp24/FEMU/include/exec/poison.h config-poison.h \
- /home/sp24/FEMU/include/qemu/compiler.h \
+ /usr/include/stdc-predef.h /home/sp24/femu/include/qemu/osdep.h \
+ config-host.h /home/sp24/femu/include/exec/poison.h config-poison.h \
+ /home/sp24/femu/include/qemu/compiler.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h \
@@ -108,9 +108,9 @@ libcommon.fa.p/migration_options.c.o: ../migration/options.c \
  /usr/include/linux/types.h /usr/include/x86_64-linux-gnu/asm/types.h \
  /usr/include/asm-generic/types.h /usr/include/asm-generic/int-ll64.h \
  linux-headers/asm/bitsperlong.h \
- /home/sp24/FEMU/linux-headers/asm-generic/bitsperlong.h \
+ /home/sp24/femu/linux-headers/asm-generic/bitsperlong.h \
  /usr/include/linux/posix_types.h \
- /home/sp24/FEMU/linux-headers/linux/stddef.h \
+ /home/sp24/femu/linux-headers/linux/stddef.h \
  /usr/include/x86_64-linux-gnu/asm/posix_types.h \
  /usr/include/x86_64-linux-gnu/asm/posix_types_64.h \
  /usr/include/asm-generic/posix_types.h \
@@ -146,7 +146,7 @@ libcommon.fa.p/migration_options.c.o: ../migration/options.c \
  /usr/include/x86_64-linux-gnu/bits/uio-ext.h \
  /usr/include/x86_64-linux-gnu/sys/wait.h \
  /usr/include/x86_64-linux-gnu/bits/types/idtype_t.h \
- /home/sp24/FEMU/include/glib-compat.h /usr/include/glib-2.0/glib.h \
+ /home/sp24/femu/include/glib-compat.h /usr/include/glib-2.0/glib.h \
  /usr/include/glib-2.0/glib/galloca.h /usr/include/glib-2.0/glib/gtypes.h \
  /usr/lib/x86_64-linux-gnu/glib-2.0/include/glibconfig.h \
  /usr/include/glib-2.0/glib/gmacros.h \
@@ -227,7 +227,7 @@ libcommon.fa.p/migration_options.c.o: ../migration/options.c \
  /usr/include/glib-2.0/glib/glib-autocleanups.h \
  /usr/include/glib-2.0/glib-unix.h /usr/include/glib-2.0/glib/gstdio.h \
  /usr/include/glib-2.0/glib/gprintf.h /usr/include/pwd.h \
- /home/sp24/FEMU/include/sysemu/os-posix.h \
+ /home/sp24/femu/include/sysemu/os-posix.h \
  /usr/include/x86_64-linux-gnu/sys/mman.h \
  /usr/include/x86_64-linux-gnu/bits/mman.h \
  /usr/include/x86_64-linux-gnu/bits/mman-map-flags-generic.h \
@@ -250,73 +250,73 @@ libcommon.fa.p/migration_options.c.o: ../migration/options.c \
  /usr/include/x86_64-linux-gnu/sys/un.h \
  /usr/include/x86_64-linux-gnu/sys/sysmacros.h \
  /usr/include/x86_64-linux-gnu/bits/sysmacros.h \
- /home/sp24/FEMU/include/qemu/typedefs.h \
- /home/sp24/FEMU/include/qemu/error-report.h \
- /home/sp24/FEMU/include/exec/target_page.h \
- /home/sp24/FEMU/include/qapi/clone-visitor.h \
- /home/sp24/FEMU/include/qapi/visitor.h qapi/qapi-builtin-types.h \
- /home/sp24/FEMU/include/qapi/util.h qapi/qapi-types-compat.h \
- /home/sp24/FEMU/include/qapi/error.h qapi/qapi-types-error.h \
+ /home/sp24/femu/include/qemu/typedefs.h \
+ /home/sp24/femu/include/qemu/error-report.h \
+ /home/sp24/femu/include/exec/target_page.h \
+ /home/sp24/femu/include/qapi/clone-visitor.h \
+ /home/sp24/femu/include/qapi/visitor.h qapi/qapi-builtin-types.h \
+ /home/sp24/femu/include/qapi/util.h qapi/qapi-types-compat.h \
+ /home/sp24/femu/include/qapi/error.h qapi/qapi-types-error.h \
  qapi/qapi-commands-migration.h qapi/qapi-commands-common.h \
  qapi/qapi-types-common.h qapi/qapi-commands-sockets.h \
  qapi/qapi-types-sockets.h qapi/qapi-types-migration.h \
  qapi/qapi-visit-migration.h qapi/qapi-builtin-visit.h \
  qapi/qapi-visit-common.h qapi/qapi-visit-sockets.h \
- /home/sp24/FEMU/include/qapi/qmp/qerror.h \
- /home/sp24/FEMU/include/qapi/qmp/qnull.h \
- /home/sp24/FEMU/include/qapi/qmp/qobject.h \
- /home/sp24/FEMU/include/sysemu/runstate.h qapi/qapi-types-run-state.h \
- /home/sp24/FEMU/include/qemu/notify.h \
- /home/sp24/FEMU/include/qemu/queue.h \
- /home/sp24/FEMU/include/migration/colo.h qapi/qapi-types-migration.h \
- /home/sp24/FEMU/include/migration/misc.h qapi/qapi-types-net.h \
- /home/sp24/FEMU/include/migration/client-options.h \
- ../migration/migration.h /home/sp24/FEMU/include/exec/cpu-common.h \
- /home/sp24/FEMU/include/exec/vaddr.h \
- /home/sp24/FEMU/include/exec/hwaddr.h \
- /home/sp24/FEMU/include/hw/core/cpu.h \
- /home/sp24/FEMU/include/hw/qdev-core.h \
- /home/sp24/FEMU/include/qemu/atomic.h \
- /home/sp24/FEMU/include/qemu/compiler.h \
- /home/sp24/FEMU/include/qemu/bitmap.h \
- /home/sp24/FEMU/include/qemu/bitops.h \
- /home/sp24/FEMU/include/qemu/host-utils.h \
- /home/sp24/FEMU/include/qemu/bswap.h \
- /home/sp24/FEMU/include/qemu/int128.h \
- /home/sp24/FEMU/include/qemu/atomic.h /home/sp24/FEMU/include/qemu/rcu.h \
- /home/sp24/FEMU/include/qemu/thread.h \
- /home/sp24/FEMU/include/qemu/processor.h \
- /home/sp24/FEMU/include/qemu/clang-tsa.h \
- /home/sp24/FEMU/include/qemu/thread-posix.h /usr/include/semaphore.h \
+ /home/sp24/femu/include/qapi/qmp/qerror.h \
+ /home/sp24/femu/include/qapi/qmp/qnull.h \
+ /home/sp24/femu/include/qapi/qmp/qobject.h \
+ /home/sp24/femu/include/sysemu/runstate.h qapi/qapi-types-run-state.h \
+ /home/sp24/femu/include/qemu/notify.h \
+ /home/sp24/femu/include/qemu/queue.h \
+ /home/sp24/femu/include/migration/colo.h qapi/qapi-types-migration.h \
+ /home/sp24/femu/include/migration/misc.h qapi/qapi-types-net.h \
+ /home/sp24/femu/include/migration/client-options.h \
+ ../migration/migration.h /home/sp24/femu/include/exec/cpu-common.h \
+ /home/sp24/femu/include/exec/vaddr.h \
+ /home/sp24/femu/include/exec/hwaddr.h \
+ /home/sp24/femu/include/hw/core/cpu.h \
+ /home/sp24/femu/include/hw/qdev-core.h \
+ /home/sp24/femu/include/qemu/atomic.h \
+ /home/sp24/femu/include/qemu/compiler.h \
+ /home/sp24/femu/include/qemu/bitmap.h \
+ /home/sp24/femu/include/qemu/bitops.h \
+ /home/sp24/femu/include/qemu/host-utils.h \
+ /home/sp24/femu/include/qemu/bswap.h \
+ /home/sp24/femu/include/qemu/int128.h \
+ /home/sp24/femu/include/qemu/atomic.h /home/sp24/femu/include/qemu/rcu.h \
+ /home/sp24/femu/include/qemu/thread.h \
+ /home/sp24/femu/include/qemu/processor.h \
+ /home/sp24/femu/include/qemu/clang-tsa.h \
+ /home/sp24/femu/include/qemu/thread-posix.h /usr/include/semaphore.h \
  /usr/include/x86_64-linux-gnu/bits/semaphore.h \
- /home/sp24/FEMU/include/qemu/qsp.h \
- /home/sp24/FEMU/include/qemu/sys_membarrier.h \
- /home/sp24/FEMU/include/qemu/coroutine-tls.h \
- /home/sp24/FEMU/include/qemu/rcu_queue.h \
- /home/sp24/FEMU/include/qom/object.h \
- /home/sp24/FEMU/include/qemu/module.h \
- /home/sp24/FEMU/include/hw/hotplug.h \
- /home/sp24/FEMU/include/hw/resettable.h \
- /home/sp24/FEMU/include/disas/dis-asm.h \
- /home/sp24/FEMU/include/exec/memattrs.h \
- /home/sp24/FEMU/include/exec/tlb-common.h \
- /home/sp24/FEMU/include/tcg/debug-assert.h \
- /home/sp24/FEMU/include/qapi/qmp/json-writer.h \
- /home/sp24/FEMU/include/qemu/coroutine_int.h \
- /home/sp24/FEMU/include/qemu/coroutine.h \
- /home/sp24/FEMU/include/qemu/coroutine-core.h \
- /home/sp24/FEMU/include/qemu/timer.h \
- /home/sp24/FEMU/include/qemu/host-utils.h \
- /home/sp24/FEMU/include/qemu/lockable.h \
- /home/sp24/FEMU/include/io/channel.h /home/sp24/FEMU/include/block/aio.h \
- /home/sp24/FEMU/include/qemu/event_notifier.h \
- /home/sp24/FEMU/include/block/graph-lock.h \
- /home/sp24/FEMU/include/io/channel-buffer.h \
- /home/sp24/FEMU/include/net/announce.h ../migration/postcopy-ram.h \
- ../migration/migration-stats.h /home/sp24/FEMU/include/qemu/stats64.h \
+ /home/sp24/femu/include/qemu/qsp.h \
+ /home/sp24/femu/include/qemu/sys_membarrier.h \
+ /home/sp24/femu/include/qemu/coroutine-tls.h \
+ /home/sp24/femu/include/qemu/rcu_queue.h \
+ /home/sp24/femu/include/qom/object.h \
+ /home/sp24/femu/include/qemu/module.h \
+ /home/sp24/femu/include/hw/hotplug.h \
+ /home/sp24/femu/include/hw/resettable.h \
+ /home/sp24/femu/include/disas/dis-asm.h \
+ /home/sp24/femu/include/exec/memattrs.h \
+ /home/sp24/femu/include/exec/tlb-common.h \
+ /home/sp24/femu/include/tcg/debug-assert.h \
+ /home/sp24/femu/include/qapi/qmp/json-writer.h \
+ /home/sp24/femu/include/qemu/coroutine_int.h \
+ /home/sp24/femu/include/qemu/coroutine.h \
+ /home/sp24/femu/include/qemu/coroutine-core.h \
+ /home/sp24/femu/include/qemu/timer.h \
+ /home/sp24/femu/include/qemu/host-utils.h \
+ /home/sp24/femu/include/qemu/lockable.h \
+ /home/sp24/femu/include/io/channel.h /home/sp24/femu/include/block/aio.h \
+ /home/sp24/femu/include/qemu/event_notifier.h \
+ /home/sp24/femu/include/block/graph-lock.h \
+ /home/sp24/femu/include/io/channel-buffer.h \
+ /home/sp24/femu/include/net/announce.h ../migration/postcopy-ram.h \
+ ../migration/migration-stats.h /home/sp24/femu/include/qemu/stats64.h \
  ../migration/qemu-file.h /usr/include/zlib.h /usr/include/zconf.h \
- /home/sp24/FEMU/include/migration/qemu-file-types.h ../migration/ram.h \
- ../migration/options.h /home/sp24/FEMU/include/hw/qdev-properties.h \
- /home/sp24/FEMU/include/hw/qdev-properties-system.h \
- /home/sp24/FEMU/include/sysemu/kvm.h \
- /home/sp24/FEMU/include/qemu/accel.h
+ /home/sp24/femu/include/migration/qemu-file-types.h ../migration/ram.h \
+ ../migration/options.h /home/sp24/femu/include/hw/qdev-properties.h \
+ /home/sp24/femu/include/hw/qdev-properties-system.h \
+ /home/sp24/femu/include/sysemu/kvm.h \
+ /home/sp24/femu/include/qemu/accel.h

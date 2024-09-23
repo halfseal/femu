@@ -1,6 +1,8 @@
 #include "ftl.h"
 
+
 // #define FEMU_DEBUG_FTL
+
 static uint64_t ppa2pgidx(struct ssd *ssd, struct ppa *ppa);
 
 struct l2p_entry *l2p_table = NULL;
@@ -27,6 +29,7 @@ uint64_t l2p_find(uint64_t lpn) {
         return -1;  // 엔트리 없음
     }
 }
+
 void p2l_push(struct ssd *ssd, struct ppa *ppa, uint64_t lpn) {
     uint64_t ppn = ppa2pgidx(ssd, ppa);
     struct p2l_entry *entry;
@@ -52,6 +55,42 @@ uint64_t p2l_find(struct ssd *ssd, struct ppa *ppa) {
 
 static void *ftl_thread(void *arg);
 
+char *calc_nvme_sha256(NvmeRequest *req) {
+    unsigned char hash[EVP_MAX_MD_SIZE];
+    unsigned int hash_len;
+    EVP_MD_CTX *mdctx = NULL;
+    char *hash_str = malloc(SHA256_DIGEST_LENGTH * 2 + 1);
+
+    if (!hash_str) goto cleanup;
+
+    mdctx = EVP_MD_CTX_new();
+    if (mdctx == NULL) goto cleanup;
+
+    if (EVP_DigestInit_ex(mdctx, EVP_sha256(), NULL) != 1) goto cleanup;
+
+    for (int i = 0; i < req->iov.niov; i++) {
+        void *data = req->iov.iov[i].iov_base;  // I/O 버퍼의 시작 주소
+        size_t len = req->iov.iov[i].iov_len;   // I/O 버퍼의 길이
+
+        if (EVP_DigestUpdate(mdctx, data, len) != 1) goto cleanup;
+    }
+
+    if (EVP_DigestFinal_ex(mdctx, hash, &hash_len) != 1) goto cleanup;
+
+    for (int i = 0; i < SHA256_DIGEST_LENGTH; i++) {
+        sprintf(&hash_str[i * 2], "%02x", hash[i]);
+    }
+    hash_str[SHA256_DIGEST_LENGTH * 2] = '\0';
+
+    EVP_MD_CTX_free(mdctx);
+    return hash_str;
+
+cleanup:
+    if (mdctx) EVP_MD_CTX_free(mdctx);
+    if (hash_str) free(hash_str);
+    return NULL;
+}
+
 static inline bool should_gc(struct ssd *ssd) { return (ssd->lm.free_line_cnt <= ssd->sp.gc_thres_lines); }
 
 static inline bool should_gc_high(struct ssd *ssd) {
@@ -67,10 +106,8 @@ static inline void set_maptbl_ent(struct ssd *ssd, uint64_t lpn, struct ppa *ppa
     ftl_assert(lpn < ssd->sp.tt_pgs);
     ssd->maptbl[lpn] = *ppa;
 
-    // l2p_push(ssd, lpn, ppa);
+    l2p_push(ssd, lpn, ppa);
     // printf("Pushed L2P | LPN:%lu -> PPN:%lu. L2PSize:%d\n", lpn, l2p_find(lpn), ++l2psize);
-    // p2l_push(ssd, ppa, lpn);
-    // printf("Pushed P2L | PPN:%lu -> LPN:%lu. P2LSize:%d\n", ppa2pgidx(ssd, ppa), p2l_find(ssd, ppa), ++p2lsize);
 }
 
 // 이게 ppn인가봄. ppa to index이니깐...
@@ -94,6 +131,9 @@ static inline uint64_t get_rmap_ent(struct ssd *ssd, struct ppa *ppa) {
 /* set rmap[page_no(ppa)] -> lpn */
 static inline void set_rmap_ent(struct ssd *ssd, uint64_t lpn, struct ppa *ppa) {
     uint64_t pgidx = ppa2pgidx(ssd, ppa);
+
+    p2l_push(ssd, ppa, lpn);
+    // printf("Pushed P2L | PPN:%lu -> LPN:%lu. P2LSize:%d\n", ppa2pgidx(ssd, ppa), p2l_find(ssd, ppa), ++p2lsize);
 
     ssd->rmap[pgidx] = lpn;
 }
@@ -795,6 +835,8 @@ static uint64_t ssd_write(struct ssd *ssd, NvmeRequest *req) {
     if (end_lpn >= spp->tt_pgs) {
         ftl_err("start_lpn=%" PRIu64 ",tt_pgs=%d\n", start_lpn, ssd->sp.tt_pgs);
     }
+
+    printf("%s\n", calc_nvme_sha256(req));
 
     while (should_gc_high(ssd)) {
         /* perform GC here until !should_gc(ssd) */

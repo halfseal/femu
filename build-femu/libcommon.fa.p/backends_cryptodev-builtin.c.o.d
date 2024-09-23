@@ -1,8 +1,8 @@
 libcommon.fa.p/backends_cryptodev-builtin.c.o: \
  ../backends/cryptodev-builtin.c /usr/include/stdc-predef.h \
- /home/sp24/FEMU/include/qemu/osdep.h config-host.h \
- /home/sp24/FEMU/include/exec/poison.h config-poison.h \
- /home/sp24/FEMU/include/qemu/compiler.h \
+ /home/sp24/femu/include/qemu/osdep.h config-host.h \
+ /home/sp24/femu/include/exec/poison.h config-poison.h \
+ /home/sp24/femu/include/qemu/compiler.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h \
@@ -109,9 +109,9 @@ libcommon.fa.p/backends_cryptodev-builtin.c.o: \
  /usr/include/linux/types.h /usr/include/x86_64-linux-gnu/asm/types.h \
  /usr/include/asm-generic/types.h /usr/include/asm-generic/int-ll64.h \
  linux-headers/asm/bitsperlong.h \
- /home/sp24/FEMU/linux-headers/asm-generic/bitsperlong.h \
+ /home/sp24/femu/linux-headers/asm-generic/bitsperlong.h \
  /usr/include/linux/posix_types.h \
- /home/sp24/FEMU/linux-headers/linux/stddef.h \
+ /home/sp24/femu/linux-headers/linux/stddef.h \
  /usr/include/x86_64-linux-gnu/asm/posix_types.h \
  /usr/include/x86_64-linux-gnu/asm/posix_types_64.h \
  /usr/include/asm-generic/posix_types.h \
@@ -147,7 +147,7 @@ libcommon.fa.p/backends_cryptodev-builtin.c.o: \
  /usr/include/x86_64-linux-gnu/bits/uio-ext.h \
  /usr/include/x86_64-linux-gnu/sys/wait.h \
  /usr/include/x86_64-linux-gnu/bits/types/idtype_t.h \
- /home/sp24/FEMU/include/glib-compat.h /usr/include/glib-2.0/glib.h \
+ /home/sp24/femu/include/glib-compat.h /usr/include/glib-2.0/glib.h \
  /usr/include/glib-2.0/glib/galloca.h /usr/include/glib-2.0/glib/gtypes.h \
  /usr/lib/x86_64-linux-gnu/glib-2.0/include/glibconfig.h \
  /usr/include/glib-2.0/glib/gmacros.h \
@@ -228,7 +228,7 @@ libcommon.fa.p/backends_cryptodev-builtin.c.o: \
  /usr/include/glib-2.0/glib/glib-autocleanups.h \
  /usr/include/glib-2.0/glib-unix.h /usr/include/glib-2.0/glib/gstdio.h \
  /usr/include/glib-2.0/glib/gprintf.h /usr/include/pwd.h \
- /home/sp24/FEMU/include/sysemu/os-posix.h \
+ /home/sp24/femu/include/sysemu/os-posix.h \
  /usr/include/x86_64-linux-gnu/sys/mman.h \
  /usr/include/x86_64-linux-gnu/bits/mman.h \
  /usr/include/x86_64-linux-gnu/bits/mman-map-flags-generic.h \
@@ -251,29 +251,29 @@ libcommon.fa.p/backends_cryptodev-builtin.c.o: \
  /usr/include/x86_64-linux-gnu/sys/un.h \
  /usr/include/x86_64-linux-gnu/sys/sysmacros.h \
  /usr/include/x86_64-linux-gnu/bits/sysmacros.h \
- /home/sp24/FEMU/include/qemu/typedefs.h \
- /home/sp24/FEMU/include/sysemu/cryptodev.h \
- /home/sp24/FEMU/include/qemu/queue.h \
- /home/sp24/FEMU/include/qemu/throttle.h qapi/qapi-types-block-core.h \
- qapi/qapi-builtin-types.h /home/sp24/FEMU/include/qapi/util.h \
+ /home/sp24/femu/include/qemu/typedefs.h \
+ /home/sp24/femu/include/sysemu/cryptodev.h \
+ /home/sp24/femu/include/qemu/queue.h \
+ /home/sp24/femu/include/qemu/throttle.h qapi/qapi-types-block-core.h \
+ qapi/qapi-builtin-types.h /home/sp24/femu/include/qapi/util.h \
  qapi/qapi-types-common.h qapi/qapi-types-crypto.h qapi/qapi-types-job.h \
- qapi/qapi-types-sockets.h /home/sp24/FEMU/include/qemu/timer.h \
- /home/sp24/FEMU/include/qemu/bitops.h \
- /home/sp24/FEMU/include/qemu/host-utils.h \
- /home/sp24/FEMU/include/qemu/bswap.h \
- /home/sp24/FEMU/include/qemu/int128.h \
- /home/sp24/FEMU/include/qemu/atomic.h \
- /home/sp24/FEMU/include/qemu/compiler.h \
- /home/sp24/FEMU/include/qemu/notify.h \
- /home/sp24/FEMU/include/qemu/host-utils.h \
- /home/sp24/FEMU/include/qom/object.h \
- /home/sp24/FEMU/include/qemu/module.h qapi/qapi-types-cryptodev.h \
- /home/sp24/FEMU/include/qemu/error-report.h \
- /home/sp24/FEMU/include/qapi/error.h qapi/qapi-types-error.h \
- /home/sp24/FEMU/include/standard-headers/linux/virtio_crypto.h \
- /home/sp24/FEMU/include/standard-headers/linux/types.h \
- /home/sp24/FEMU/include/standard-headers/linux/virtio_types.h \
- /home/sp24/FEMU/include/standard-headers/linux/virtio_ids.h \
- /home/sp24/FEMU/include/standard-headers/linux/virtio_config.h \
- /home/sp24/FEMU/include/crypto/cipher.h qapi/qapi-types-crypto.h \
- /home/sp24/FEMU/include/crypto/akcipher.h
+ qapi/qapi-types-sockets.h /home/sp24/femu/include/qemu/timer.h \
+ /home/sp24/femu/include/qemu/bitops.h \
+ /home/sp24/femu/include/qemu/host-utils.h \
+ /home/sp24/femu/include/qemu/bswap.h \
+ /home/sp24/femu/include/qemu/int128.h \
+ /home/sp24/femu/include/qemu/atomic.h \
+ /home/sp24/femu/include/qemu/compiler.h \
+ /home/sp24/femu/include/qemu/notify.h \
+ /home/sp24/femu/include/qemu/host-utils.h \
+ /home/sp24/femu/include/qom/object.h \
+ /home/sp24/femu/include/qemu/module.h qapi/qapi-types-cryptodev.h \
+ /home/sp24/femu/include/qemu/error-report.h \
+ /home/sp24/femu/include/qapi/error.h qapi/qapi-types-error.h \
+ /home/sp24/femu/include/standard-headers/linux/virtio_crypto.h \
+ /home/sp24/femu/include/standard-headers/linux/types.h \
+ /home/sp24/femu/include/standard-headers/linux/virtio_types.h \
+ /home/sp24/femu/include/standard-headers/linux/virtio_ids.h \
+ /home/sp24/femu/include/standard-headers/linux/virtio_config.h \
+ /home/sp24/femu/include/crypto/cipher.h qapi/qapi-types-crypto.h \
+ /home/sp24/femu/include/crypto/akcipher.h

@@ -1,7 +1,7 @@
 libqemu-x86_64-softmmu.fa.p/hw_virtio_virtio-qmp.c.o: \
  ../hw/virtio/virtio-qmp.c /usr/include/stdc-predef.h \
- /home/sp24/FEMU/include/qemu/osdep.h config-host.h \
- x86_64-softmmu-config-target.h /home/sp24/FEMU/include/qemu/compiler.h \
+ /home/sp24/femu/include/qemu/osdep.h config-host.h \
+ x86_64-softmmu-config-target.h /home/sp24/femu/include/qemu/compiler.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h \
@@ -108,9 +108,9 @@ libqemu-x86_64-softmmu.fa.p/hw_virtio_virtio-qmp.c.o: \
  /usr/include/linux/types.h /usr/include/x86_64-linux-gnu/asm/types.h \
  /usr/include/asm-generic/types.h /usr/include/asm-generic/int-ll64.h \
  linux-headers/asm/bitsperlong.h \
- /home/sp24/FEMU/linux-headers/asm-generic/bitsperlong.h \
+ /home/sp24/femu/linux-headers/asm-generic/bitsperlong.h \
  /usr/include/linux/posix_types.h \
- /home/sp24/FEMU/linux-headers/linux/stddef.h \
+ /home/sp24/femu/linux-headers/linux/stddef.h \
  /usr/include/x86_64-linux-gnu/asm/posix_types.h \
  /usr/include/x86_64-linux-gnu/asm/posix_types_64.h \
  /usr/include/asm-generic/posix_types.h \
@@ -146,7 +146,7 @@ libqemu-x86_64-softmmu.fa.p/hw_virtio_virtio-qmp.c.o: \
  /usr/include/x86_64-linux-gnu/bits/uio-ext.h \
  /usr/include/x86_64-linux-gnu/sys/wait.h \
  /usr/include/x86_64-linux-gnu/bits/types/idtype_t.h \
- /home/sp24/FEMU/include/glib-compat.h /usr/include/glib-2.0/glib.h \
+ /home/sp24/femu/include/glib-compat.h /usr/include/glib-2.0/glib.h \
  /usr/include/glib-2.0/glib/galloca.h /usr/include/glib-2.0/glib/gtypes.h \
  /usr/lib/x86_64-linux-gnu/glib-2.0/include/glibconfig.h \
  /usr/include/glib-2.0/glib/gmacros.h \
@@ -227,7 +227,7 @@ libqemu-x86_64-softmmu.fa.p/hw_virtio_virtio-qmp.c.o: \
  /usr/include/glib-2.0/glib/glib-autocleanups.h \
  /usr/include/glib-2.0/glib-unix.h /usr/include/glib-2.0/glib/gstdio.h \
  /usr/include/glib-2.0/glib/gprintf.h /usr/include/pwd.h \
- /home/sp24/FEMU/include/sysemu/os-posix.h \
+ /home/sp24/femu/include/sysemu/os-posix.h \
  /usr/include/x86_64-linux-gnu/sys/mman.h \
  /usr/include/x86_64-linux-gnu/bits/mman.h \
  /usr/include/x86_64-linux-gnu/bits/mman-map-flags-generic.h \
@@ -250,67 +250,67 @@ libqemu-x86_64-softmmu.fa.p/hw_virtio_virtio-qmp.c.o: \
  /usr/include/x86_64-linux-gnu/sys/un.h \
  /usr/include/x86_64-linux-gnu/sys/sysmacros.h \
  /usr/include/x86_64-linux-gnu/bits/sysmacros.h \
- /home/sp24/FEMU/include/qemu/typedefs.h ../hw/virtio/virtio-qmp.h \
+ /home/sp24/femu/include/qemu/typedefs.h ../hw/virtio/virtio-qmp.h \
  qapi/qapi-types-virtio.h qapi/qapi-builtin-types.h \
- /home/sp24/FEMU/include/qapi/util.h \
- /home/sp24/FEMU/include/hw/virtio/virtio.h \
- /home/sp24/FEMU/include/exec/memory.h \
- /home/sp24/FEMU/include/exec/cpu-common.h \
- /home/sp24/FEMU/include/exec/vaddr.h \
- /home/sp24/FEMU/include/exec/hwaddr.h \
- /home/sp24/FEMU/include/hw/core/cpu.h \
- /home/sp24/FEMU/include/hw/qdev-core.h \
- /home/sp24/FEMU/include/qemu/atomic.h \
- /home/sp24/FEMU/include/qemu/compiler.h \
- /home/sp24/FEMU/include/qemu/queue.h \
- /home/sp24/FEMU/include/qemu/bitmap.h \
- /home/sp24/FEMU/include/qemu/bitops.h \
- /home/sp24/FEMU/include/qemu/host-utils.h \
- /home/sp24/FEMU/include/qemu/bswap.h \
- /home/sp24/FEMU/include/qemu/int128.h \
- /home/sp24/FEMU/include/qemu/atomic.h /home/sp24/FEMU/include/qemu/rcu.h \
- /home/sp24/FEMU/include/qemu/thread.h \
- /home/sp24/FEMU/include/qemu/processor.h \
- /home/sp24/FEMU/include/qemu/clang-tsa.h \
- /home/sp24/FEMU/include/qemu/thread-posix.h /usr/include/semaphore.h \
+ /home/sp24/femu/include/qapi/util.h \
+ /home/sp24/femu/include/hw/virtio/virtio.h \
+ /home/sp24/femu/include/exec/memory.h \
+ /home/sp24/femu/include/exec/cpu-common.h \
+ /home/sp24/femu/include/exec/vaddr.h \
+ /home/sp24/femu/include/exec/hwaddr.h \
+ /home/sp24/femu/include/hw/core/cpu.h \
+ /home/sp24/femu/include/hw/qdev-core.h \
+ /home/sp24/femu/include/qemu/atomic.h \
+ /home/sp24/femu/include/qemu/compiler.h \
+ /home/sp24/femu/include/qemu/queue.h \
+ /home/sp24/femu/include/qemu/bitmap.h \
+ /home/sp24/femu/include/qemu/bitops.h \
+ /home/sp24/femu/include/qemu/host-utils.h \
+ /home/sp24/femu/include/qemu/bswap.h \
+ /home/sp24/femu/include/qemu/int128.h \
+ /home/sp24/femu/include/qemu/atomic.h /home/sp24/femu/include/qemu/rcu.h \
+ /home/sp24/femu/include/qemu/thread.h \
+ /home/sp24/femu/include/qemu/processor.h \
+ /home/sp24/femu/include/qemu/clang-tsa.h \
+ /home/sp24/femu/include/qemu/thread-posix.h /usr/include/semaphore.h \
  /usr/include/x86_64-linux-gnu/bits/semaphore.h \
- /home/sp24/FEMU/include/qemu/qsp.h /home/sp24/FEMU/include/qemu/notify.h \
- /home/sp24/FEMU/include/qemu/sys_membarrier.h \
- /home/sp24/FEMU/include/qemu/coroutine-tls.h \
- /home/sp24/FEMU/include/qemu/rcu_queue.h \
- /home/sp24/FEMU/include/qom/object.h \
- /home/sp24/FEMU/include/qemu/module.h \
- /home/sp24/FEMU/include/hw/hotplug.h \
- /home/sp24/FEMU/include/hw/resettable.h \
- /home/sp24/FEMU/include/disas/dis-asm.h \
- /home/sp24/FEMU/include/exec/memattrs.h \
- /home/sp24/FEMU/include/exec/tlb-common.h qapi/qapi-types-run-state.h \
- /home/sp24/FEMU/include/tcg/debug-assert.h \
- /home/sp24/FEMU/include/exec/memop.h \
- /home/sp24/FEMU/include/qemu/host-utils.h \
- /home/sp24/FEMU/include/exec/ramlist.h \
- /home/sp24/FEMU/include/qemu/range.h \
- /home/sp24/FEMU/include/exec/memory_ldst.h.inc \
- /home/sp24/FEMU/include/exec/memory_ldst_phys.h.inc \
- /home/sp24/FEMU/include/exec/memory_ldst_cached.h.inc \
- /home/sp24/FEMU/include/net/net.h qapi/qapi-types-net.h \
- qapi/qapi-types-sockets.h /home/sp24/FEMU/include/net/queue.h \
- /home/sp24/FEMU/include/hw/qdev-properties-system.h \
- /home/sp24/FEMU/include/hw/qdev-properties.h \
- /home/sp24/FEMU/include/migration/vmstate.h \
- /home/sp24/FEMU/include/hw/vmstate-if.h \
- /home/sp24/FEMU/include/qemu/event_notifier.h \
- /home/sp24/FEMU/include/standard-headers/linux/virtio_config.h \
- /home/sp24/FEMU/include/standard-headers/linux/types.h \
- /home/sp24/FEMU/include/standard-headers/linux/virtio_ring.h \
- /home/sp24/FEMU/include/standard-headers/linux/virtio_types.h \
- /home/sp24/FEMU/include/block/aio.h \
- /home/sp24/FEMU/include/qemu/coroutine-core.h \
- /home/sp24/FEMU/include/qemu/timer.h \
- /home/sp24/FEMU/include/block/graph-lock.h \
- /home/sp24/FEMU/include/hw/virtio/vhost.h \
- /home/sp24/FEMU/include/hw/virtio/vhost-backend.h \
- /home/sp24/FEMU/include/qapi/error.h qapi/qapi-types-error.h \
+ /home/sp24/femu/include/qemu/qsp.h /home/sp24/femu/include/qemu/notify.h \
+ /home/sp24/femu/include/qemu/sys_membarrier.h \
+ /home/sp24/femu/include/qemu/coroutine-tls.h \
+ /home/sp24/femu/include/qemu/rcu_queue.h \
+ /home/sp24/femu/include/qom/object.h \
+ /home/sp24/femu/include/qemu/module.h \
+ /home/sp24/femu/include/hw/hotplug.h \
+ /home/sp24/femu/include/hw/resettable.h \
+ /home/sp24/femu/include/disas/dis-asm.h \
+ /home/sp24/femu/include/exec/memattrs.h \
+ /home/sp24/femu/include/exec/tlb-common.h qapi/qapi-types-run-state.h \
+ /home/sp24/femu/include/tcg/debug-assert.h \
+ /home/sp24/femu/include/exec/memop.h \
+ /home/sp24/femu/include/qemu/host-utils.h \
+ /home/sp24/femu/include/exec/ramlist.h \
+ /home/sp24/femu/include/qemu/range.h \
+ /home/sp24/femu/include/exec/memory_ldst.h.inc \
+ /home/sp24/femu/include/exec/memory_ldst_phys.h.inc \
+ /home/sp24/femu/include/exec/memory_ldst_cached.h.inc \
+ /home/sp24/femu/include/net/net.h qapi/qapi-types-net.h \
+ qapi/qapi-types-sockets.h /home/sp24/femu/include/net/queue.h \
+ /home/sp24/femu/include/hw/qdev-properties-system.h \
+ /home/sp24/femu/include/hw/qdev-properties.h \
+ /home/sp24/femu/include/migration/vmstate.h \
+ /home/sp24/femu/include/hw/vmstate-if.h \
+ /home/sp24/femu/include/qemu/event_notifier.h \
+ /home/sp24/femu/include/standard-headers/linux/virtio_config.h \
+ /home/sp24/femu/include/standard-headers/linux/types.h \
+ /home/sp24/femu/include/standard-headers/linux/virtio_ring.h \
+ /home/sp24/femu/include/standard-headers/linux/virtio_types.h \
+ /home/sp24/femu/include/block/aio.h \
+ /home/sp24/femu/include/qemu/coroutine-core.h \
+ /home/sp24/femu/include/qemu/timer.h \
+ /home/sp24/femu/include/block/graph-lock.h \
+ /home/sp24/femu/include/hw/virtio/vhost.h \
+ /home/sp24/femu/include/hw/virtio/vhost-backend.h \
+ /home/sp24/femu/include/qapi/error.h qapi/qapi-types-error.h \
  qapi/qapi-commands-virtio.h qapi/qapi-types-virtio.h \
  qapi/qapi-commands-qom.h qapi/qapi-commands-authz.h \
  qapi/qapi-types-authz.h qapi/qapi-commands-block-core.h \
@@ -318,26 +318,26 @@ libqemu-x86_64-softmmu.fa.p/hw_virtio_virtio-qmp.c.o: \
  qapi/qapi-commands-crypto.h qapi/qapi-types-crypto.h \
  qapi/qapi-commands-job.h qapi/qapi-types-job.h \
  qapi/qapi-commands-sockets.h qapi/qapi-types-block-core.h \
- qapi/qapi-types-qom.h /home/sp24/FEMU/include/qapi/qmp/qobject.h \
- /home/sp24/FEMU/include/qapi/qmp/qjson.h \
- /home/sp24/FEMU/include/hw/virtio/vhost-user.h \
- /home/sp24/FEMU/include/chardev/char-fe.h \
- /home/sp24/FEMU/include/chardev/char.h qapi/qapi-types-char.h \
- /home/sp24/FEMU/include/qemu/main-loop.h \
- /home/sp24/FEMU/include/sysemu/event-loop-base.h \
- /home/sp24/FEMU/include/standard-headers/linux/virtio_ids.h \
- /home/sp24/FEMU/include/standard-headers/linux/vhost_types.h \
- /home/sp24/FEMU/include/standard-headers/linux/virtio_blk.h \
- /home/sp24/FEMU/include/standard-headers/linux/virtio_console.h \
- /home/sp24/FEMU/include/standard-headers/linux/virtio_gpu.h \
- /home/sp24/FEMU/include/standard-headers/linux/virtio_net.h \
- /home/sp24/FEMU/include/standard-headers/linux/if_ether.h \
- /home/sp24/FEMU/include/standard-headers/linux/virtio_scsi.h \
- /home/sp24/FEMU/include/standard-headers/linux/virtio_i2c.h \
- /home/sp24/FEMU/include/standard-headers/linux/const.h \
- /home/sp24/FEMU/include/standard-headers/linux/virtio_balloon.h \
- /home/sp24/FEMU/include/standard-headers/linux/virtio_iommu.h \
- /home/sp24/FEMU/include/standard-headers/linux/virtio_mem.h \
- /home/sp24/FEMU/include/standard-headers/linux/virtio_vsock.h \
- /home/sp24/FEMU/include/standard-headers/linux/virtio_gpio.h \
+ qapi/qapi-types-qom.h /home/sp24/femu/include/qapi/qmp/qobject.h \
+ /home/sp24/femu/include/qapi/qmp/qjson.h \
+ /home/sp24/femu/include/hw/virtio/vhost-user.h \
+ /home/sp24/femu/include/chardev/char-fe.h \
+ /home/sp24/femu/include/chardev/char.h qapi/qapi-types-char.h \
+ /home/sp24/femu/include/qemu/main-loop.h \
+ /home/sp24/femu/include/sysemu/event-loop-base.h \
+ /home/sp24/femu/include/standard-headers/linux/virtio_ids.h \
+ /home/sp24/femu/include/standard-headers/linux/vhost_types.h \
+ /home/sp24/femu/include/standard-headers/linux/virtio_blk.h \
+ /home/sp24/femu/include/standard-headers/linux/virtio_console.h \
+ /home/sp24/femu/include/standard-headers/linux/virtio_gpu.h \
+ /home/sp24/femu/include/standard-headers/linux/virtio_net.h \
+ /home/sp24/femu/include/standard-headers/linux/if_ether.h \
+ /home/sp24/femu/include/standard-headers/linux/virtio_scsi.h \
+ /home/sp24/femu/include/standard-headers/linux/virtio_i2c.h \
+ /home/sp24/femu/include/standard-headers/linux/const.h \
+ /home/sp24/femu/include/standard-headers/linux/virtio_balloon.h \
+ /home/sp24/femu/include/standard-headers/linux/virtio_iommu.h \
+ /home/sp24/femu/include/standard-headers/linux/virtio_mem.h \
+ /home/sp24/femu/include/standard-headers/linux/virtio_vsock.h \
+ /home/sp24/femu/include/standard-headers/linux/virtio_gpio.h \
  x86_64-softmmu-config-devices.h

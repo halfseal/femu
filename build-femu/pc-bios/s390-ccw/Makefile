@@ -1,1 +1,1 @@
-/home/sp24/FEMU/pc-bios/s390-ccw/Makefile
+/home/sp24/femu/pc-bios/s390-ccw/Makefile

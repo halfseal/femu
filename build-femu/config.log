@@ -1,4 +1,4 @@
-# QEMU configure log Wed Aug 21 11:04:30 PM KST 2024
+# QEMU configure log Mon Sep 23 11:26:17 AM KST 2024
 # Configured with: '../configure' '--enable-kvm' '--target-list=x86_64-softmmu' '--enable-slirp'
 
 #
@@ -21,7 +21,7 @@ config-temp/qemu-conf.c:2:3: error: #error LITTLE
 cc -m32 -o config-temp/qemu-conf.o -c config-temp/qemu-conf.c
 cc -m32 -r -nostdlib -o config-temp/qemu-conf2.o config-temp/qemu-conf.o -lgcc
 /usr/bin/ld: skipping incompatible /usr/lib/gcc/x86_64-linux-gnu/13/libgcc.a when searching for -lgcc
-/usr/bin/ld: cannot find -lgcc: No such file or directory
+/usr/bin/ld: cannot find -lgcc: 그런 파일이나 디렉터리가 없습니다
 collect2: error: ld returned 1 exit status
 cc -m64 -o config-temp/qemu-conf.o -c config-temp/qemu-conf.c
 cc -m64 -r -nostdlib -o config-temp/qemu-conf2.o config-temp/qemu-conf.o -lgcc

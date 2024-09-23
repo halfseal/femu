@@ -1,8 +1,8 @@
 contrib/vhost-user-blk/vhost-user-blk.p/vhost-user-blk.c.o: \
  ../contrib/vhost-user-blk/vhost-user-blk.c /usr/include/stdc-predef.h \
- /home/sp24/FEMU/include/qemu/osdep.h config-host.h \
- /home/sp24/FEMU/include/exec/poison.h config-poison.h \
- /home/sp24/FEMU/include/qemu/compiler.h \
+ /home/sp24/femu/include/qemu/osdep.h config-host.h \
+ /home/sp24/femu/include/exec/poison.h config-poison.h \
+ /home/sp24/femu/include/qemu/compiler.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h \
@@ -109,9 +109,9 @@ contrib/vhost-user-blk/vhost-user-blk.p/vhost-user-blk.c.o: \
  /usr/include/linux/types.h /usr/include/x86_64-linux-gnu/asm/types.h \
  /usr/include/asm-generic/types.h /usr/include/asm-generic/int-ll64.h \
  linux-headers/asm/bitsperlong.h \
- /home/sp24/FEMU/linux-headers/asm-generic/bitsperlong.h \
+ /home/sp24/femu/linux-headers/asm-generic/bitsperlong.h \
  /usr/include/linux/posix_types.h \
- /home/sp24/FEMU/linux-headers/linux/stddef.h \
+ /home/sp24/femu/linux-headers/linux/stddef.h \
  /usr/include/x86_64-linux-gnu/asm/posix_types.h \
  /usr/include/x86_64-linux-gnu/asm/posix_types_64.h \
  /usr/include/asm-generic/posix_types.h \
@@ -147,7 +147,7 @@ contrib/vhost-user-blk/vhost-user-blk.p/vhost-user-blk.c.o: \
  /usr/include/x86_64-linux-gnu/bits/uio-ext.h \
  /usr/include/x86_64-linux-gnu/sys/wait.h \
  /usr/include/x86_64-linux-gnu/bits/types/idtype_t.h \
- /home/sp24/FEMU/include/glib-compat.h /usr/include/glib-2.0/glib.h \
+ /home/sp24/femu/include/glib-compat.h /usr/include/glib-2.0/glib.h \
  /usr/include/glib-2.0/glib/galloca.h /usr/include/glib-2.0/glib/gtypes.h \
  /usr/lib/x86_64-linux-gnu/glib-2.0/include/glibconfig.h \
  /usr/include/glib-2.0/glib/gmacros.h \
@@ -228,7 +228,7 @@ contrib/vhost-user-blk/vhost-user-blk.p/vhost-user-blk.c.o: \
  /usr/include/glib-2.0/glib/glib-autocleanups.h \
  /usr/include/glib-2.0/glib-unix.h /usr/include/glib-2.0/glib/gstdio.h \
  /usr/include/glib-2.0/glib/gprintf.h /usr/include/pwd.h \
- /home/sp24/FEMU/include/sysemu/os-posix.h \
+ /home/sp24/femu/include/sysemu/os-posix.h \
  /usr/include/x86_64-linux-gnu/sys/mman.h \
  /usr/include/x86_64-linux-gnu/bits/mman.h \
  /usr/include/x86_64-linux-gnu/bits/mman-map-flags-generic.h \
@@ -251,21 +251,21 @@ contrib/vhost-user-blk/vhost-user-blk.p/vhost-user-blk.c.o: \
  /usr/include/x86_64-linux-gnu/sys/un.h \
  /usr/include/x86_64-linux-gnu/sys/sysmacros.h \
  /usr/include/x86_64-linux-gnu/bits/sysmacros.h \
- /home/sp24/FEMU/include/qemu/typedefs.h \
- /home/sp24/FEMU/include/standard-headers/linux/virtio_blk.h \
- /home/sp24/FEMU/include/standard-headers/linux/types.h \
- /home/sp24/FEMU/include/standard-headers/linux/virtio_ids.h \
- /home/sp24/FEMU/include/standard-headers/linux/virtio_config.h \
- /home/sp24/FEMU/include/standard-headers/linux/virtio_types.h \
+ /home/sp24/femu/include/qemu/typedefs.h \
+ /home/sp24/femu/include/standard-headers/linux/virtio_blk.h \
+ /home/sp24/femu/include/standard-headers/linux/types.h \
+ /home/sp24/femu/include/standard-headers/linux/virtio_ids.h \
+ /home/sp24/femu/include/standard-headers/linux/virtio_config.h \
+ /home/sp24/femu/include/standard-headers/linux/virtio_types.h \
  ../subprojects/libvhost-user/libvhost-user-glib.h \
  ../subprojects/libvhost-user/libvhost-user.h /usr/include/poll.h \
  /usr/include/x86_64-linux-gnu/sys/poll.h \
  /usr/include/x86_64-linux-gnu/bits/poll.h \
  /usr/include/x86_64-linux-gnu/bits/poll2.h \
- /home/sp24/FEMU/linux-headers/linux/vhost.h \
- /home/sp24/FEMU/linux-headers/linux/vhost_types.h \
- /home/sp24/FEMU/include/standard-headers/linux/vhost_types.h \
- /home/sp24/FEMU/include/standard-headers/linux/virtio_ring.h \
+ /home/sp24/femu/linux-headers/linux/vhost.h \
+ /home/sp24/femu/linux-headers/linux/vhost_types.h \
+ /home/sp24/femu/include/standard-headers/linux/vhost_types.h \
+ /home/sp24/femu/include/standard-headers/linux/virtio_ring.h \
  /usr/include/linux/ioctl.h /usr/include/x86_64-linux-gnu/asm/ioctl.h \
  /usr/include/asm-generic/ioctl.h \
  ../subprojects/libvhost-user/standard-headers/linux/virtio_ring.h \

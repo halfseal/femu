@@ -1,1 +1,1 @@
-/home/sp24/FEMU/tests/qemu-iotests/Makefile
+/home/sp24/femu/tests/qemu-iotests/Makefile

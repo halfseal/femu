@@ -1,2 +1,2 @@
-/home/sp24/FEMU/build-femu/meson-private/cmake_SDL2/CMakeFiles/edit_cache.dir
-/home/sp24/FEMU/build-femu/meson-private/cmake_SDL2/CMakeFiles/rebuild_cache.dir
+/home/sp24/femu/build-femu/meson-private/cmake_SDL2/CMakeFiles/edit_cache.dir
+/home/sp24/femu/build-femu/meson-private/cmake_SDL2/CMakeFiles/rebuild_cache.dir

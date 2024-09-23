@@ -1,7 +1,7 @@
 libqemu-x86_64-softmmu.fa.p/hw_i386_acpi-build.c.o: \
  ../hw/i386/acpi-build.c /usr/include/stdc-predef.h \
- /home/sp24/FEMU/include/qemu/osdep.h config-host.h \
- x86_64-softmmu-config-target.h /home/sp24/FEMU/include/qemu/compiler.h \
+ /home/sp24/femu/include/qemu/osdep.h config-host.h \
+ x86_64-softmmu-config-target.h /home/sp24/femu/include/qemu/compiler.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h \
@@ -108,9 +108,9 @@ libqemu-x86_64-softmmu.fa.p/hw_i386_acpi-build.c.o: \
  /usr/include/linux/types.h /usr/include/x86_64-linux-gnu/asm/types.h \
  /usr/include/asm-generic/types.h /usr/include/asm-generic/int-ll64.h \
  linux-headers/asm/bitsperlong.h \
- /home/sp24/FEMU/linux-headers/asm-generic/bitsperlong.h \
+ /home/sp24/femu/linux-headers/asm-generic/bitsperlong.h \
  /usr/include/linux/posix_types.h \
- /home/sp24/FEMU/linux-headers/linux/stddef.h \
+ /home/sp24/femu/linux-headers/linux/stddef.h \
  /usr/include/x86_64-linux-gnu/asm/posix_types.h \
  /usr/include/x86_64-linux-gnu/asm/posix_types_64.h \
  /usr/include/asm-generic/posix_types.h \
@@ -146,7 +146,7 @@ libqemu-x86_64-softmmu.fa.p/hw_i386_acpi-build.c.o: \
  /usr/include/x86_64-linux-gnu/bits/uio-ext.h \
  /usr/include/x86_64-linux-gnu/sys/wait.h \
  /usr/include/x86_64-linux-gnu/bits/types/idtype_t.h \
- /home/sp24/FEMU/include/glib-compat.h /usr/include/glib-2.0/glib.h \
+ /home/sp24/femu/include/glib-compat.h /usr/include/glib-2.0/glib.h \
  /usr/include/glib-2.0/glib/galloca.h /usr/include/glib-2.0/glib/gtypes.h \
  /usr/lib/x86_64-linux-gnu/glib-2.0/include/glibconfig.h \
  /usr/include/glib-2.0/glib/gmacros.h \
@@ -227,7 +227,7 @@ libqemu-x86_64-softmmu.fa.p/hw_i386_acpi-build.c.o: \
  /usr/include/glib-2.0/glib/glib-autocleanups.h \
  /usr/include/glib-2.0/glib-unix.h /usr/include/glib-2.0/glib/gstdio.h \
  /usr/include/glib-2.0/glib/gprintf.h /usr/include/pwd.h \
- /home/sp24/FEMU/include/sysemu/os-posix.h \
+ /home/sp24/femu/include/sysemu/os-posix.h \
  /usr/include/x86_64-linux-gnu/sys/mman.h \
  /usr/include/x86_64-linux-gnu/bits/mman.h \
  /usr/include/x86_64-linux-gnu/bits/mman-map-flags-generic.h \
@@ -250,202 +250,202 @@ libqemu-x86_64-softmmu.fa.p/hw_i386_acpi-build.c.o: \
  /usr/include/x86_64-linux-gnu/sys/un.h \
  /usr/include/x86_64-linux-gnu/sys/sysmacros.h \
  /usr/include/x86_64-linux-gnu/bits/sysmacros.h \
- /home/sp24/FEMU/include/qemu/typedefs.h \
- /home/sp24/FEMU/include/qapi/error.h qapi/qapi-types-error.h \
- qapi/qapi-builtin-types.h /home/sp24/FEMU/include/qapi/util.h \
- /home/sp24/FEMU/include/qapi/qmp/qnum.h \
- /home/sp24/FEMU/include/qapi/qmp/qobject.h ../hw/i386/acpi-build.h \
- /home/sp24/FEMU/include/hw/acpi/acpi-defs.h ../hw/i386/acpi-common.h \
- /home/sp24/FEMU/include/hw/boards.h \
- /home/sp24/FEMU/include/exec/memory.h \
- /home/sp24/FEMU/include/exec/cpu-common.h \
- /home/sp24/FEMU/include/exec/vaddr.h \
- /home/sp24/FEMU/include/exec/hwaddr.h \
- /home/sp24/FEMU/include/hw/core/cpu.h \
- /home/sp24/FEMU/include/hw/qdev-core.h \
- /home/sp24/FEMU/include/qemu/atomic.h \
- /home/sp24/FEMU/include/qemu/compiler.h \
- /home/sp24/FEMU/include/qemu/queue.h \
- /home/sp24/FEMU/include/qemu/bitmap.h \
- /home/sp24/FEMU/include/qemu/bitops.h \
- /home/sp24/FEMU/include/qemu/host-utils.h \
- /home/sp24/FEMU/include/qemu/bswap.h \
- /home/sp24/FEMU/include/qemu/int128.h \
- /home/sp24/FEMU/include/qemu/atomic.h /home/sp24/FEMU/include/qemu/rcu.h \
- /home/sp24/FEMU/include/qemu/thread.h \
- /home/sp24/FEMU/include/qemu/processor.h \
- /home/sp24/FEMU/include/qemu/clang-tsa.h \
- /home/sp24/FEMU/include/qemu/thread-posix.h /usr/include/semaphore.h \
+ /home/sp24/femu/include/qemu/typedefs.h \
+ /home/sp24/femu/include/qapi/error.h qapi/qapi-types-error.h \
+ qapi/qapi-builtin-types.h /home/sp24/femu/include/qapi/util.h \
+ /home/sp24/femu/include/qapi/qmp/qnum.h \
+ /home/sp24/femu/include/qapi/qmp/qobject.h ../hw/i386/acpi-build.h \
+ /home/sp24/femu/include/hw/acpi/acpi-defs.h ../hw/i386/acpi-common.h \
+ /home/sp24/femu/include/hw/boards.h \
+ /home/sp24/femu/include/exec/memory.h \
+ /home/sp24/femu/include/exec/cpu-common.h \
+ /home/sp24/femu/include/exec/vaddr.h \
+ /home/sp24/femu/include/exec/hwaddr.h \
+ /home/sp24/femu/include/hw/core/cpu.h \
+ /home/sp24/femu/include/hw/qdev-core.h \
+ /home/sp24/femu/include/qemu/atomic.h \
+ /home/sp24/femu/include/qemu/compiler.h \
+ /home/sp24/femu/include/qemu/queue.h \
+ /home/sp24/femu/include/qemu/bitmap.h \
+ /home/sp24/femu/include/qemu/bitops.h \
+ /home/sp24/femu/include/qemu/host-utils.h \
+ /home/sp24/femu/include/qemu/bswap.h \
+ /home/sp24/femu/include/qemu/int128.h \
+ /home/sp24/femu/include/qemu/atomic.h /home/sp24/femu/include/qemu/rcu.h \
+ /home/sp24/femu/include/qemu/thread.h \
+ /home/sp24/femu/include/qemu/processor.h \
+ /home/sp24/femu/include/qemu/clang-tsa.h \
+ /home/sp24/femu/include/qemu/thread-posix.h /usr/include/semaphore.h \
  /usr/include/x86_64-linux-gnu/bits/semaphore.h \
- /home/sp24/FEMU/include/qemu/qsp.h /home/sp24/FEMU/include/qemu/notify.h \
- /home/sp24/FEMU/include/qemu/sys_membarrier.h \
- /home/sp24/FEMU/include/qemu/coroutine-tls.h \
- /home/sp24/FEMU/include/qemu/rcu_queue.h \
- /home/sp24/FEMU/include/qom/object.h \
- /home/sp24/FEMU/include/qemu/module.h \
- /home/sp24/FEMU/include/hw/hotplug.h \
- /home/sp24/FEMU/include/hw/resettable.h \
- /home/sp24/FEMU/include/disas/dis-asm.h \
- /home/sp24/FEMU/include/exec/memattrs.h \
- /home/sp24/FEMU/include/exec/tlb-common.h qapi/qapi-types-run-state.h \
- /home/sp24/FEMU/include/tcg/debug-assert.h \
- /home/sp24/FEMU/include/exec/memop.h \
- /home/sp24/FEMU/include/qemu/host-utils.h \
- /home/sp24/FEMU/include/exec/ramlist.h \
- /home/sp24/FEMU/include/qemu/range.h \
- /home/sp24/FEMU/include/exec/memory_ldst.h.inc \
- /home/sp24/FEMU/include/exec/memory_ldst_phys.h.inc \
- /home/sp24/FEMU/include/exec/memory_ldst_cached.h.inc \
- /home/sp24/FEMU/include/sysemu/hostmem.h \
- /home/sp24/FEMU/include/sysemu/numa.h qapi/qapi-types-machine.h \
+ /home/sp24/femu/include/qemu/qsp.h /home/sp24/femu/include/qemu/notify.h \
+ /home/sp24/femu/include/qemu/sys_membarrier.h \
+ /home/sp24/femu/include/qemu/coroutine-tls.h \
+ /home/sp24/femu/include/qemu/rcu_queue.h \
+ /home/sp24/femu/include/qom/object.h \
+ /home/sp24/femu/include/qemu/module.h \
+ /home/sp24/femu/include/hw/hotplug.h \
+ /home/sp24/femu/include/hw/resettable.h \
+ /home/sp24/femu/include/disas/dis-asm.h \
+ /home/sp24/femu/include/exec/memattrs.h \
+ /home/sp24/femu/include/exec/tlb-common.h qapi/qapi-types-run-state.h \
+ /home/sp24/femu/include/tcg/debug-assert.h \
+ /home/sp24/femu/include/exec/memop.h \
+ /home/sp24/femu/include/qemu/host-utils.h \
+ /home/sp24/femu/include/exec/ramlist.h \
+ /home/sp24/femu/include/qemu/range.h \
+ /home/sp24/femu/include/exec/memory_ldst.h.inc \
+ /home/sp24/femu/include/exec/memory_ldst_phys.h.inc \
+ /home/sp24/femu/include/exec/memory_ldst_cached.h.inc \
+ /home/sp24/femu/include/sysemu/hostmem.h \
+ /home/sp24/femu/include/sysemu/numa.h qapi/qapi-types-machine.h \
  qapi/qapi-types-common.h qapi/qapi-types-machine-common.h \
- /home/sp24/FEMU/include/qemu/thread-context.h \
- /home/sp24/FEMU/include/sysemu/blockdev.h \
- /home/sp24/FEMU/include/block/block.h \
- /home/sp24/FEMU/include/block/block-global-state.h \
- /home/sp24/FEMU/include/block/block-common.h \
+ /home/sp24/femu/include/qemu/thread-context.h \
+ /home/sp24/femu/include/sysemu/blockdev.h \
+ /home/sp24/femu/include/block/block.h \
+ /home/sp24/femu/include/block/block-global-state.h \
+ /home/sp24/femu/include/block/block-common.h \
  qapi/qapi-types-block-core.h qapi/qapi-types-crypto.h \
  qapi/qapi-types-job.h qapi/qapi-types-sockets.h \
- /home/sp24/FEMU/include/block/blockjob.h \
- /home/sp24/FEMU/include/qemu/job.h qapi/qapi-types-job.h \
- /home/sp24/FEMU/include/qemu/progress_meter.h \
- /home/sp24/FEMU/include/qemu/coroutine.h \
- /home/sp24/FEMU/include/qemu/coroutine-core.h \
- /home/sp24/FEMU/include/qemu/timer.h \
- /home/sp24/FEMU/include/qemu/lockable.h \
- /home/sp24/FEMU/include/block/aio.h \
- /home/sp24/FEMU/include/qemu/event_notifier.h \
- /home/sp24/FEMU/include/block/graph-lock.h \
- /home/sp24/FEMU/include/qemu/ratelimit.h \
- /home/sp24/FEMU/include/qemu/transactions.h \
+ /home/sp24/femu/include/block/blockjob.h \
+ /home/sp24/femu/include/qemu/job.h qapi/qapi-types-job.h \
+ /home/sp24/femu/include/qemu/progress_meter.h \
+ /home/sp24/femu/include/qemu/coroutine.h \
+ /home/sp24/femu/include/qemu/coroutine-core.h \
+ /home/sp24/femu/include/qemu/timer.h \
+ /home/sp24/femu/include/qemu/lockable.h \
+ /home/sp24/femu/include/block/aio.h \
+ /home/sp24/femu/include/qemu/event_notifier.h \
+ /home/sp24/femu/include/block/graph-lock.h \
+ /home/sp24/femu/include/qemu/ratelimit.h \
+ /home/sp24/femu/include/qemu/transactions.h \
  /usr/include/glib-2.0/gmodule.h \
  /usr/include/glib-2.0/gmodule/gmodule-visibility.h \
- /home/sp24/FEMU/include/block/block-io.h \
- /home/sp24/FEMU/include/block/aio-wait.h \
- /home/sp24/FEMU/include/qemu/main-loop.h \
- /home/sp24/FEMU/include/sysemu/event-loop-base.h \
- /home/sp24/FEMU/include/qemu/iov.h \
- /home/sp24/FEMU/include/hw/acpi/bios-linker-loader.h \
- /home/sp24/FEMU/include/hw/i386/x86.h \
- /home/sp24/FEMU/include/hw/intc/ioapic.h \
- /home/sp24/FEMU/include/hw/isa/isa.h \
- /home/sp24/FEMU/include/exec/ioport.h \
- /home/sp24/FEMU/include/qemu/error-report.h \
- /home/sp24/FEMU/include/hw/pci/pci_bridge.h \
- /home/sp24/FEMU/include/hw/pci/pci_device.h \
- /home/sp24/FEMU/include/hw/pci/pci.h \
- /home/sp24/FEMU/include/sysemu/dma.h \
- /home/sp24/FEMU/include/exec/address-spaces.h \
- /home/sp24/FEMU/include/block/accounting.h \
- /home/sp24/FEMU/include/qemu/timed-average.h qapi/qapi-types-common.h \
- /home/sp24/FEMU/include/hw/pci/pci_ids.h \
- /home/sp24/FEMU/include/hw/pci/pci_regs.h \
- /home/sp24/FEMU/include/standard-headers/linux/pci_regs.h \
- /home/sp24/FEMU/include/hw/pci/pcie.h \
- /home/sp24/FEMU/include/hw/pci/pcie_regs.h \
- /home/sp24/FEMU/include/hw/pci/pcie_aer.h \
- /home/sp24/FEMU/include/hw/pci/pcie_sriov.h \
- /home/sp24/FEMU/include/hw/pci/pci_bus.h \
- /home/sp24/FEMU/include/hw/cxl/cxl.h qapi/qapi-visit-machine.h \
- qapi/qapi-builtin-visit.h /home/sp24/FEMU/include/qapi/visitor.h \
+ /home/sp24/femu/include/block/block-io.h \
+ /home/sp24/femu/include/block/aio-wait.h \
+ /home/sp24/femu/include/qemu/main-loop.h \
+ /home/sp24/femu/include/sysemu/event-loop-base.h \
+ /home/sp24/femu/include/qemu/iov.h \
+ /home/sp24/femu/include/hw/acpi/bios-linker-loader.h \
+ /home/sp24/femu/include/hw/i386/x86.h \
+ /home/sp24/femu/include/hw/intc/ioapic.h \
+ /home/sp24/femu/include/hw/isa/isa.h \
+ /home/sp24/femu/include/exec/ioport.h \
+ /home/sp24/femu/include/qemu/error-report.h \
+ /home/sp24/femu/include/hw/pci/pci_bridge.h \
+ /home/sp24/femu/include/hw/pci/pci_device.h \
+ /home/sp24/femu/include/hw/pci/pci.h \
+ /home/sp24/femu/include/sysemu/dma.h \
+ /home/sp24/femu/include/exec/address-spaces.h \
+ /home/sp24/femu/include/block/accounting.h \
+ /home/sp24/femu/include/qemu/timed-average.h qapi/qapi-types-common.h \
+ /home/sp24/femu/include/hw/pci/pci_ids.h \
+ /home/sp24/femu/include/hw/pci/pci_regs.h \
+ /home/sp24/femu/include/standard-headers/linux/pci_regs.h \
+ /home/sp24/femu/include/hw/pci/pcie.h \
+ /home/sp24/femu/include/hw/pci/pcie_regs.h \
+ /home/sp24/femu/include/hw/pci/pcie_aer.h \
+ /home/sp24/femu/include/hw/pci/pcie_sriov.h \
+ /home/sp24/femu/include/hw/pci/pci_bus.h \
+ /home/sp24/femu/include/hw/cxl/cxl.h qapi/qapi-visit-machine.h \
+ qapi/qapi-builtin-visit.h /home/sp24/femu/include/qapi/visitor.h \
  qapi/qapi-types-compat.h qapi/qapi-types-machine.h \
  qapi/qapi-visit-common.h qapi/qapi-visit-machine-common.h \
- /home/sp24/FEMU/include/hw/pci/pci_host.h \
- /home/sp24/FEMU/include/hw/sysbus.h \
- /home/sp24/FEMU/include/hw/cxl/cxl_pci.h \
- /home/sp24/FEMU/include/hw/cxl/cxl_component.h \
- /home/sp24/FEMU/include/hw/cxl/cxl_cdat.h \
- /home/sp24/FEMU/include/hw/cxl/cxl_pci.h \
- /home/sp24/FEMU/include/hw/pci/pcie_doe.h \
- /home/sp24/FEMU/include/hw/register.h \
- /home/sp24/FEMU/include/hw/registerfields.h \
- /home/sp24/FEMU/include/hw/cxl/cxl_device.h \
- /home/sp24/FEMU/include/hw/cxl/cxl_component.h \
- /home/sp24/FEMU/include/hw/cxl/cxl_events.h \
- /home/sp24/FEMU/include/qemu/uuid.h /home/sp24/FEMU/target/i386/cpu.h \
- /home/sp24/FEMU/include/sysemu/tcg.h \
- /home/sp24/FEMU/target/i386/cpu-qom.h \
- /home/sp24/FEMU/target/i386/kvm/hyperv-proto.h \
- /home/sp24/FEMU/include/hw/hyperv/hyperv-proto.h \
- /home/sp24/FEMU/include/exec/cpu-defs.h ../target/i386/cpu-param.h \
- /home/sp24/FEMU/include/exec/target_long.h \
- /home/sp24/FEMU/include/qemu/cpu-float.h \
- /home/sp24/FEMU/include/fpu/softfloat-types.h \
- /home/sp24/FEMU/include/exec/cpu-all.h \
- /home/sp24/FEMU/include/exec/tswap.h /home/sp24/FEMU/target/i386/svm.h \
- /home/sp24/FEMU/include/hw/i386/apic.h \
- /home/sp24/FEMU/include/hw/timer/hpet.h \
- /home/sp24/FEMU/include/hw/acpi/acpi.h \
- /home/sp24/FEMU/include/hw/acpi/acpi_dev_interface.h \
- qapi/qapi-types-acpi.h /home/sp24/FEMU/include/hw/acpi/cpu.h \
- /home/sp24/FEMU/include/hw/acpi/aml-build.h \
- /home/sp24/FEMU/include/hw/nvram/fw_cfg.h \
- /home/sp24/FEMU/include/standard-headers/linux/qemu_fw_cfg.h \
- /home/sp24/FEMU/include/standard-headers/linux/types.h \
- /home/sp24/FEMU/include/hw/acpi/acpi_aml_interface.h \
- /home/sp24/FEMU/include/hw/input/i8042.h \
- /home/sp24/FEMU/include/hw/input/ps2.h \
- /home/sp24/FEMU/include/hw/acpi/memory_hotplug.h \
- /home/sp24/FEMU/include/sysemu/tpm.h qapi/qapi-types-tpm.h \
- /home/sp24/FEMU/include/hw/acpi/tpm.h \
- /home/sp24/FEMU/include/qemu/units.h \
- /home/sp24/FEMU/include/hw/acpi/vmgenid.h \
- /home/sp24/FEMU/include/hw/acpi/erst.h \
- /home/sp24/FEMU/include/hw/acpi/piix4.h \
- /home/sp24/FEMU/include/hw/acpi/cpu_hotplug.h \
- /home/sp24/FEMU/include/hw/acpi/pc-hotplug.h \
- /home/sp24/FEMU/include/hw/acpi/pcihp.h \
- /home/sp24/FEMU/include/hw/i2c/pm_smbus.h \
- /home/sp24/FEMU/include/hw/i2c/smbus_master.h \
- /home/sp24/FEMU/include/hw/i2c/i2c.h \
- /home/sp24/FEMU/include/hw/isa/apm.h \
- /home/sp24/FEMU/include/sysemu/tpm_backend.h \
- /home/sp24/FEMU/include/qemu/option.h \
- /home/sp24/FEMU/include/hw/rtc/mc146818rtc_regs.h \
- /home/sp24/FEMU/include/migration/vmstate.h \
- /home/sp24/FEMU/include/hw/vmstate-if.h \
- /home/sp24/FEMU/include/hw/mem/memory-device.h \
- /home/sp24/FEMU/include/hw/mem/nvdimm.h \
- /home/sp24/FEMU/include/hw/mem/pc-dimm.h \
- /home/sp24/FEMU/include/sysemu/reset.h qapi/qapi-events-run-state.h \
+ /home/sp24/femu/include/hw/pci/pci_host.h \
+ /home/sp24/femu/include/hw/sysbus.h \
+ /home/sp24/femu/include/hw/cxl/cxl_pci.h \
+ /home/sp24/femu/include/hw/cxl/cxl_component.h \
+ /home/sp24/femu/include/hw/cxl/cxl_cdat.h \
+ /home/sp24/femu/include/hw/cxl/cxl_pci.h \
+ /home/sp24/femu/include/hw/pci/pcie_doe.h \
+ /home/sp24/femu/include/hw/register.h \
+ /home/sp24/femu/include/hw/registerfields.h \
+ /home/sp24/femu/include/hw/cxl/cxl_device.h \
+ /home/sp24/femu/include/hw/cxl/cxl_component.h \
+ /home/sp24/femu/include/hw/cxl/cxl_events.h \
+ /home/sp24/femu/include/qemu/uuid.h /home/sp24/femu/target/i386/cpu.h \
+ /home/sp24/femu/include/sysemu/tcg.h \
+ /home/sp24/femu/target/i386/cpu-qom.h \
+ /home/sp24/femu/target/i386/kvm/hyperv-proto.h \
+ /home/sp24/femu/include/hw/hyperv/hyperv-proto.h \
+ /home/sp24/femu/include/exec/cpu-defs.h ../target/i386/cpu-param.h \
+ /home/sp24/femu/include/exec/target_long.h \
+ /home/sp24/femu/include/qemu/cpu-float.h \
+ /home/sp24/femu/include/fpu/softfloat-types.h \
+ /home/sp24/femu/include/exec/cpu-all.h \
+ /home/sp24/femu/include/exec/tswap.h /home/sp24/femu/target/i386/svm.h \
+ /home/sp24/femu/include/hw/i386/apic.h \
+ /home/sp24/femu/include/hw/timer/hpet.h \
+ /home/sp24/femu/include/hw/acpi/acpi.h \
+ /home/sp24/femu/include/hw/acpi/acpi_dev_interface.h \
+ qapi/qapi-types-acpi.h /home/sp24/femu/include/hw/acpi/cpu.h \
+ /home/sp24/femu/include/hw/acpi/aml-build.h \
+ /home/sp24/femu/include/hw/nvram/fw_cfg.h \
+ /home/sp24/femu/include/standard-headers/linux/qemu_fw_cfg.h \
+ /home/sp24/femu/include/standard-headers/linux/types.h \
+ /home/sp24/femu/include/hw/acpi/acpi_aml_interface.h \
+ /home/sp24/femu/include/hw/input/i8042.h \
+ /home/sp24/femu/include/hw/input/ps2.h \
+ /home/sp24/femu/include/hw/acpi/memory_hotplug.h \
+ /home/sp24/femu/include/sysemu/tpm.h qapi/qapi-types-tpm.h \
+ /home/sp24/femu/include/hw/acpi/tpm.h \
+ /home/sp24/femu/include/qemu/units.h \
+ /home/sp24/femu/include/hw/acpi/vmgenid.h \
+ /home/sp24/femu/include/hw/acpi/erst.h \
+ /home/sp24/femu/include/hw/acpi/piix4.h \
+ /home/sp24/femu/include/hw/acpi/cpu_hotplug.h \
+ /home/sp24/femu/include/hw/acpi/pc-hotplug.h \
+ /home/sp24/femu/include/hw/acpi/pcihp.h \
+ /home/sp24/femu/include/hw/i2c/pm_smbus.h \
+ /home/sp24/femu/include/hw/i2c/smbus_master.h \
+ /home/sp24/femu/include/hw/i2c/i2c.h \
+ /home/sp24/femu/include/hw/isa/apm.h \
+ /home/sp24/femu/include/sysemu/tpm_backend.h \
+ /home/sp24/femu/include/qemu/option.h \
+ /home/sp24/femu/include/hw/rtc/mc146818rtc_regs.h \
+ /home/sp24/femu/include/migration/vmstate.h \
+ /home/sp24/femu/include/hw/vmstate-if.h \
+ /home/sp24/femu/include/hw/mem/memory-device.h \
+ /home/sp24/femu/include/hw/mem/nvdimm.h \
+ /home/sp24/femu/include/hw/mem/pc-dimm.h \
+ /home/sp24/femu/include/sysemu/reset.h qapi/qapi-events-run-state.h \
  qapi/qapi-types-run-state.h \
- /home/sp24/FEMU/include/hw/hyperv/vmbus-bridge.h \
- /home/sp24/FEMU/include/hw/hyperv/vmbus.h \
- /home/sp24/FEMU/include/sysemu/sysemu.h \
- /home/sp24/FEMU/include/hw/hyperv/vmbus-proto.h \
- /home/sp24/FEMU/include/hw/southbridge/ich9.h \
- /home/sp24/FEMU/include/hw/acpi/ich9.h \
- /home/sp24/FEMU/include/hw/acpi/ich9_tco.h \
- /home/sp24/FEMU/include/hw/rtc/mc146818rtc.h \
- /home/sp24/FEMU/hw/i386/fw_cfg.h /home/sp24/FEMU/include/hw/i386/pc.h \
- /home/sp24/FEMU/include/hw/block/fdc.h qapi/qapi-types-block.h \
- qapi/qapi-types-block-core.h /home/sp24/FEMU/include/hw/block/flash.h \
- /home/sp24/FEMU/include/hw/i386/sgx-epc.h \
- /home/sp24/FEMU/include/hw/i386/hostmem-epc.h \
- /home/sp24/FEMU/include/hw/pci-host/i440fx.h \
- /home/sp24/FEMU/include/hw/pci-host/pam.h \
- /home/sp24/FEMU/include/hw/pci-host/q35.h \
- /home/sp24/FEMU/include/hw/pci/pcie_host.h \
- /home/sp24/FEMU/include/hw/i386/x86-iommu.h \
- /home/sp24/FEMU/include/hw/pci/msi.h \
- /home/sp24/FEMU/include/hw/acpi/utils.h \
- /home/sp24/FEMU/include/hw/acpi/pci.h \
- /home/sp24/FEMU/include/hw/acpi/cxl.h \
- /home/sp24/FEMU/include/hw/acpi/acpi_generic_initiator.h \
- /home/sp24/FEMU/include/qom/object_interfaces.h qapi/qapi-types-qom.h \
- qapi/qapi-types-authz.h /home/sp24/FEMU/include/qom/qom-qobject.h \
- /home/sp24/FEMU/hw/i386/amd_iommu.h \
- /home/sp24/FEMU/include/hw/i386/intel_iommu.h \
- /home/sp24/FEMU/include/qemu/iova-tree.h \
- /home/sp24/FEMU/include/hw/virtio/virtio-iommu.h \
- /home/sp24/FEMU/include/standard-headers/linux/virtio_iommu.h \
- /home/sp24/FEMU/include/hw/virtio/virtio.h \
- /home/sp24/FEMU/include/net/net.h qapi/qapi-types-net.h \
- /home/sp24/FEMU/include/net/queue.h \
- /home/sp24/FEMU/include/hw/qdev-properties-system.h \
- /home/sp24/FEMU/include/hw/qdev-properties.h \
- /home/sp24/FEMU/include/standard-headers/linux/virtio_config.h \
- /home/sp24/FEMU/include/standard-headers/linux/virtio_ring.h \
- /home/sp24/FEMU/include/standard-headers/linux/virtio_types.h \
- qapi/qapi-types-virtio.h /home/sp24/FEMU/hw/acpi/hmat.h \
- /home/sp24/FEMU/hw/acpi/viot.h x86_64-softmmu-config-devices.h
+ /home/sp24/femu/include/hw/hyperv/vmbus-bridge.h \
+ /home/sp24/femu/include/hw/hyperv/vmbus.h \
+ /home/sp24/femu/include/sysemu/sysemu.h \
+ /home/sp24/femu/include/hw/hyperv/vmbus-proto.h \
+ /home/sp24/femu/include/hw/southbridge/ich9.h \
+ /home/sp24/femu/include/hw/acpi/ich9.h \
+ /home/sp24/femu/include/hw/acpi/ich9_tco.h \
+ /home/sp24/femu/include/hw/rtc/mc146818rtc.h \
+ /home/sp24/femu/hw/i386/fw_cfg.h /home/sp24/femu/include/hw/i386/pc.h \
+ /home/sp24/femu/include/hw/block/fdc.h qapi/qapi-types-block.h \
+ qapi/qapi-types-block-core.h /home/sp24/femu/include/hw/block/flash.h \
+ /home/sp24/femu/include/hw/i386/sgx-epc.h \
+ /home/sp24/femu/include/hw/i386/hostmem-epc.h \
+ /home/sp24/femu/include/hw/pci-host/i440fx.h \
+ /home/sp24/femu/include/hw/pci-host/pam.h \
+ /home/sp24/femu/include/hw/pci-host/q35.h \
+ /home/sp24/femu/include/hw/pci/pcie_host.h \
+ /home/sp24/femu/include/hw/i386/x86-iommu.h \
+ /home/sp24/femu/include/hw/pci/msi.h \
+ /home/sp24/femu/include/hw/acpi/utils.h \
+ /home/sp24/femu/include/hw/acpi/pci.h \
+ /home/sp24/femu/include/hw/acpi/cxl.h \
+ /home/sp24/femu/include/hw/acpi/acpi_generic_initiator.h \
+ /home/sp24/femu/include/qom/object_interfaces.h qapi/qapi-types-qom.h \
+ qapi/qapi-types-authz.h /home/sp24/femu/include/qom/qom-qobject.h \
+ /home/sp24/femu/hw/i386/amd_iommu.h \
+ /home/sp24/femu/include/hw/i386/intel_iommu.h \
+ /home/sp24/femu/include/qemu/iova-tree.h \
+ /home/sp24/femu/include/hw/virtio/virtio-iommu.h \
+ /home/sp24/femu/include/standard-headers/linux/virtio_iommu.h \
+ /home/sp24/femu/include/hw/virtio/virtio.h \
+ /home/sp24/femu/include/net/net.h qapi/qapi-types-net.h \
+ /home/sp24/femu/include/net/queue.h \
+ /home/sp24/femu/include/hw/qdev-properties-system.h \
+ /home/sp24/femu/include/hw/qdev-properties.h \
+ /home/sp24/femu/include/standard-headers/linux/virtio_config.h \
+ /home/sp24/femu/include/standard-headers/linux/virtio_ring.h \
+ /home/sp24/femu/include/standard-headers/linux/virtio_types.h \
+ qapi/qapi-types-virtio.h /home/sp24/femu/hw/acpi/hmat.h \
+ /home/sp24/femu/hw/acpi/viot.h x86_64-softmmu-config-devices.h

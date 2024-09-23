@@ -1,8 +1,8 @@
 libcommon.fa.p/hw_net_rocker_rocker_of_dpa.c.o: \
  ../hw/net/rocker/rocker_of_dpa.c /usr/include/stdc-predef.h \
- /home/sp24/FEMU/include/qemu/osdep.h config-host.h \
- /home/sp24/FEMU/include/exec/poison.h config-poison.h \
- /home/sp24/FEMU/include/qemu/compiler.h \
+ /home/sp24/femu/include/qemu/osdep.h config-host.h \
+ /home/sp24/femu/include/exec/poison.h config-poison.h \
+ /home/sp24/femu/include/qemu/compiler.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h \
@@ -109,9 +109,9 @@ libcommon.fa.p/hw_net_rocker_rocker_of_dpa.c.o: \
  /usr/include/linux/types.h /usr/include/x86_64-linux-gnu/asm/types.h \
  /usr/include/asm-generic/types.h /usr/include/asm-generic/int-ll64.h \
  linux-headers/asm/bitsperlong.h \
- /home/sp24/FEMU/linux-headers/asm-generic/bitsperlong.h \
+ /home/sp24/femu/linux-headers/asm-generic/bitsperlong.h \
  /usr/include/linux/posix_types.h \
- /home/sp24/FEMU/linux-headers/linux/stddef.h \
+ /home/sp24/femu/linux-headers/linux/stddef.h \
  /usr/include/x86_64-linux-gnu/asm/posix_types.h \
  /usr/include/x86_64-linux-gnu/asm/posix_types_64.h \
  /usr/include/asm-generic/posix_types.h \
@@ -147,7 +147,7 @@ libcommon.fa.p/hw_net_rocker_rocker_of_dpa.c.o: \
  /usr/include/x86_64-linux-gnu/bits/uio-ext.h \
  /usr/include/x86_64-linux-gnu/sys/wait.h \
  /usr/include/x86_64-linux-gnu/bits/types/idtype_t.h \
- /home/sp24/FEMU/include/glib-compat.h /usr/include/glib-2.0/glib.h \
+ /home/sp24/femu/include/glib-compat.h /usr/include/glib-2.0/glib.h \
  /usr/include/glib-2.0/glib/galloca.h /usr/include/glib-2.0/glib/gtypes.h \
  /usr/lib/x86_64-linux-gnu/glib-2.0/include/glibconfig.h \
  /usr/include/glib-2.0/glib/gmacros.h \
@@ -228,7 +228,7 @@ libcommon.fa.p/hw_net_rocker_rocker_of_dpa.c.o: \
  /usr/include/glib-2.0/glib/glib-autocleanups.h \
  /usr/include/glib-2.0/glib-unix.h /usr/include/glib-2.0/glib/gstdio.h \
  /usr/include/glib-2.0/glib/gprintf.h /usr/include/pwd.h \
- /home/sp24/FEMU/include/sysemu/os-posix.h \
+ /home/sp24/femu/include/sysemu/os-posix.h \
  /usr/include/x86_64-linux-gnu/sys/mman.h \
  /usr/include/x86_64-linux-gnu/bits/mman.h \
  /usr/include/x86_64-linux-gnu/bits/mman-map-flags-generic.h \
@@ -251,41 +251,41 @@ libcommon.fa.p/hw_net_rocker_rocker_of_dpa.c.o: \
  /usr/include/x86_64-linux-gnu/sys/un.h \
  /usr/include/x86_64-linux-gnu/sys/sysmacros.h \
  /usr/include/x86_64-linux-gnu/bits/sysmacros.h \
- /home/sp24/FEMU/include/qemu/typedefs.h \
- /home/sp24/FEMU/include/net/eth.h /home/sp24/FEMU/include/qemu/bswap.h \
- /home/sp24/FEMU/include/qemu/iov.h /home/sp24/FEMU/include/qapi/error.h \
+ /home/sp24/femu/include/qemu/typedefs.h \
+ /home/sp24/femu/include/net/eth.h /home/sp24/femu/include/qemu/bswap.h \
+ /home/sp24/femu/include/qemu/iov.h /home/sp24/femu/include/qapi/error.h \
  qapi/qapi-types-error.h qapi/qapi-builtin-types.h \
- /home/sp24/FEMU/include/qapi/util.h qapi/qapi-commands-rocker.h \
- qapi/qapi-types-rocker.h /home/sp24/FEMU/include/qemu/timer.h \
- /home/sp24/FEMU/include/qemu/bitops.h \
- /home/sp24/FEMU/include/qemu/host-utils.h \
- /home/sp24/FEMU/include/qemu/int128.h \
- /home/sp24/FEMU/include/qemu/atomic.h \
- /home/sp24/FEMU/include/qemu/compiler.h \
- /home/sp24/FEMU/include/qemu/notify.h \
- /home/sp24/FEMU/include/qemu/queue.h \
- /home/sp24/FEMU/include/qemu/host-utils.h ../hw/net/rocker/rocker.h \
- /home/sp24/FEMU/include/qemu/sockets.h qapi/qapi-types-sockets.h \
- /home/sp24/FEMU/include/qom/object.h \
- /home/sp24/FEMU/include/qemu/module.h ../hw/net/rocker/rocker_hw.h \
- ../hw/net/rocker/rocker_fp.h /home/sp24/FEMU/include/net/net.h \
+ /home/sp24/femu/include/qapi/util.h qapi/qapi-commands-rocker.h \
+ qapi/qapi-types-rocker.h /home/sp24/femu/include/qemu/timer.h \
+ /home/sp24/femu/include/qemu/bitops.h \
+ /home/sp24/femu/include/qemu/host-utils.h \
+ /home/sp24/femu/include/qemu/int128.h \
+ /home/sp24/femu/include/qemu/atomic.h \
+ /home/sp24/femu/include/qemu/compiler.h \
+ /home/sp24/femu/include/qemu/notify.h \
+ /home/sp24/femu/include/qemu/queue.h \
+ /home/sp24/femu/include/qemu/host-utils.h ../hw/net/rocker/rocker.h \
+ /home/sp24/femu/include/qemu/sockets.h qapi/qapi-types-sockets.h \
+ /home/sp24/femu/include/qom/object.h \
+ /home/sp24/femu/include/qemu/module.h ../hw/net/rocker/rocker_hw.h \
+ ../hw/net/rocker/rocker_fp.h /home/sp24/femu/include/net/net.h \
  qapi/qapi-types-net.h qapi/qapi-types-sockets.h \
- /home/sp24/FEMU/include/net/queue.h \
- /home/sp24/FEMU/include/hw/qdev-properties-system.h \
- /home/sp24/FEMU/include/hw/qdev-properties.h \
- /home/sp24/FEMU/include/hw/qdev-core.h \
- /home/sp24/FEMU/include/qemu/atomic.h \
- /home/sp24/FEMU/include/qemu/bitmap.h /home/sp24/FEMU/include/qemu/rcu.h \
- /home/sp24/FEMU/include/qemu/thread.h \
- /home/sp24/FEMU/include/qemu/processor.h \
- /home/sp24/FEMU/include/qemu/clang-tsa.h \
- /home/sp24/FEMU/include/qemu/thread-posix.h /usr/include/semaphore.h \
+ /home/sp24/femu/include/net/queue.h \
+ /home/sp24/femu/include/hw/qdev-properties-system.h \
+ /home/sp24/femu/include/hw/qdev-properties.h \
+ /home/sp24/femu/include/hw/qdev-core.h \
+ /home/sp24/femu/include/qemu/atomic.h \
+ /home/sp24/femu/include/qemu/bitmap.h /home/sp24/femu/include/qemu/rcu.h \
+ /home/sp24/femu/include/qemu/thread.h \
+ /home/sp24/femu/include/qemu/processor.h \
+ /home/sp24/femu/include/qemu/clang-tsa.h \
+ /home/sp24/femu/include/qemu/thread-posix.h /usr/include/semaphore.h \
  /usr/include/x86_64-linux-gnu/bits/semaphore.h \
- /home/sp24/FEMU/include/qemu/qsp.h \
- /home/sp24/FEMU/include/qemu/sys_membarrier.h \
- /home/sp24/FEMU/include/qemu/coroutine-tls.h \
- /home/sp24/FEMU/include/qemu/rcu_queue.h \
- /home/sp24/FEMU/include/hw/hotplug.h \
- /home/sp24/FEMU/include/hw/resettable.h ../hw/net/rocker/rocker_tlv.h \
+ /home/sp24/femu/include/qemu/qsp.h \
+ /home/sp24/femu/include/qemu/sys_membarrier.h \
+ /home/sp24/femu/include/qemu/coroutine-tls.h \
+ /home/sp24/femu/include/qemu/rcu_queue.h \
+ /home/sp24/femu/include/hw/hotplug.h \
+ /home/sp24/femu/include/hw/resettable.h ../hw/net/rocker/rocker_tlv.h \
  ../hw/net/rocker/rocker_world.h ../hw/net/rocker/rocker_desc.h \
  ../hw/net/rocker/rocker_of_dpa.h

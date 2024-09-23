@@ -1,4 +1,4 @@
-# Install script for directory: /home/sp24/FEMU/build-femu/meson-private/__CMake_compiler_info__
+# Install script for directory: /home/sp24/femu/build-femu/meson-private/__CMake_compiler_info__
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/sp24/FEMU/build-femu/meson-private/__CMake_compiler_info__/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/sp24/femu/build-femu/meson-private/__CMake_compiler_info__/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

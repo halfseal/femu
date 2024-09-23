@@ -54,10 +54,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/sp24/FEMU/build-femu/meson-private/cmake_SDL2
+CMAKE_SOURCE_DIR = /home/sp24/femu/build-femu/meson-private/cmake_SDL2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/sp24/FEMU/build-femu/meson-private/cmake_SDL2
+CMAKE_BINARY_DIR = /home/sp24/femu/build-femu/meson-private/cmake_SDL2
 
 #=============================================================================
 # Directory level rules for the build root directory

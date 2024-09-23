@@ -1,7 +1,7 @@
 libqemu-x86_64-softmmu.fa.p/accel_tcg_tcg-accel-ops.c.o: \
  ../accel/tcg/tcg-accel-ops.c /usr/include/stdc-predef.h \
- /home/sp24/FEMU/include/qemu/osdep.h config-host.h \
- x86_64-softmmu-config-target.h /home/sp24/FEMU/include/qemu/compiler.h \
+ /home/sp24/femu/include/qemu/osdep.h config-host.h \
+ x86_64-softmmu-config-target.h /home/sp24/femu/include/qemu/compiler.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h \
@@ -108,9 +108,9 @@ libqemu-x86_64-softmmu.fa.p/accel_tcg_tcg-accel-ops.c.o: \
  /usr/include/linux/types.h /usr/include/x86_64-linux-gnu/asm/types.h \
  /usr/include/asm-generic/types.h /usr/include/asm-generic/int-ll64.h \
  linux-headers/asm/bitsperlong.h \
- /home/sp24/FEMU/linux-headers/asm-generic/bitsperlong.h \
+ /home/sp24/femu/linux-headers/asm-generic/bitsperlong.h \
  /usr/include/linux/posix_types.h \
- /home/sp24/FEMU/linux-headers/linux/stddef.h \
+ /home/sp24/femu/linux-headers/linux/stddef.h \
  /usr/include/x86_64-linux-gnu/asm/posix_types.h \
  /usr/include/x86_64-linux-gnu/asm/posix_types_64.h \
  /usr/include/asm-generic/posix_types.h \
@@ -146,7 +146,7 @@ libqemu-x86_64-softmmu.fa.p/accel_tcg_tcg-accel-ops.c.o: \
  /usr/include/x86_64-linux-gnu/bits/uio-ext.h \
  /usr/include/x86_64-linux-gnu/sys/wait.h \
  /usr/include/x86_64-linux-gnu/bits/types/idtype_t.h \
- /home/sp24/FEMU/include/glib-compat.h /usr/include/glib-2.0/glib.h \
+ /home/sp24/femu/include/glib-compat.h /usr/include/glib-2.0/glib.h \
  /usr/include/glib-2.0/glib/galloca.h /usr/include/glib-2.0/glib/gtypes.h \
  /usr/lib/x86_64-linux-gnu/glib-2.0/include/glibconfig.h \
  /usr/include/glib-2.0/glib/gmacros.h \
@@ -227,7 +227,7 @@ libqemu-x86_64-softmmu.fa.p/accel_tcg_tcg-accel-ops.c.o: \
  /usr/include/glib-2.0/glib/glib-autocleanups.h \
  /usr/include/glib-2.0/glib-unix.h /usr/include/glib-2.0/glib/gstdio.h \
  /usr/include/glib-2.0/glib/gprintf.h /usr/include/pwd.h \
- /home/sp24/FEMU/include/sysemu/os-posix.h \
+ /home/sp24/femu/include/sysemu/os-posix.h \
  /usr/include/x86_64-linux-gnu/sys/mman.h \
  /usr/include/x86_64-linux-gnu/bits/mman.h \
  /usr/include/x86_64-linux-gnu/bits/mman-map-flags-generic.h \
@@ -250,75 +250,75 @@ libqemu-x86_64-softmmu.fa.p/accel_tcg_tcg-accel-ops.c.o: \
  /usr/include/x86_64-linux-gnu/sys/un.h \
  /usr/include/x86_64-linux-gnu/sys/sysmacros.h \
  /usr/include/x86_64-linux-gnu/bits/sysmacros.h \
- /home/sp24/FEMU/include/qemu/typedefs.h \
- /home/sp24/FEMU/include/sysemu/tcg.h \
- /home/sp24/FEMU/include/sysemu/replay.h \
- /home/sp24/FEMU/include/exec/replay-core.h qapi/qapi-types-replay.h \
- qapi/qapi-builtin-types.h /home/sp24/FEMU/include/qapi/util.h \
+ /home/sp24/femu/include/qemu/typedefs.h \
+ /home/sp24/femu/include/sysemu/tcg.h \
+ /home/sp24/femu/include/sysemu/replay.h \
+ /home/sp24/femu/include/exec/replay-core.h qapi/qapi-types-replay.h \
+ qapi/qapi-builtin-types.h /home/sp24/femu/include/qapi/util.h \
  qapi/qapi-types-common.h qapi/qapi-types-misc.h \
  qapi/qapi-types-run-state.h qapi/qapi-types-ui.h \
- qapi/qapi-types-sockets.h /home/sp24/FEMU/include/block/aio.h \
- /home/sp24/FEMU/include/qemu/coroutine-core.h \
- /home/sp24/FEMU/include/qemu/queue.h \
- /home/sp24/FEMU/include/qemu/event_notifier.h \
- /home/sp24/FEMU/include/qemu/thread.h \
- /home/sp24/FEMU/include/qemu/processor.h \
- /home/sp24/FEMU/include/qemu/atomic.h \
- /home/sp24/FEMU/include/qemu/compiler.h \
- /home/sp24/FEMU/include/qemu/clang-tsa.h \
- /home/sp24/FEMU/include/qemu/thread-posix.h /usr/include/semaphore.h \
+ qapi/qapi-types-sockets.h /home/sp24/femu/include/block/aio.h \
+ /home/sp24/femu/include/qemu/coroutine-core.h \
+ /home/sp24/femu/include/qemu/queue.h \
+ /home/sp24/femu/include/qemu/event_notifier.h \
+ /home/sp24/femu/include/qemu/thread.h \
+ /home/sp24/femu/include/qemu/processor.h \
+ /home/sp24/femu/include/qemu/atomic.h \
+ /home/sp24/femu/include/qemu/compiler.h \
+ /home/sp24/femu/include/qemu/clang-tsa.h \
+ /home/sp24/femu/include/qemu/thread-posix.h /usr/include/semaphore.h \
  /usr/include/x86_64-linux-gnu/bits/semaphore.h \
- /home/sp24/FEMU/include/qemu/qsp.h /home/sp24/FEMU/include/qemu/timer.h \
- /home/sp24/FEMU/include/qemu/bitops.h \
- /home/sp24/FEMU/include/qemu/host-utils.h \
- /home/sp24/FEMU/include/qemu/bswap.h \
- /home/sp24/FEMU/include/qemu/int128.h \
- /home/sp24/FEMU/include/qemu/atomic.h \
- /home/sp24/FEMU/include/qemu/notify.h \
- /home/sp24/FEMU/include/qemu/host-utils.h \
- /home/sp24/FEMU/include/block/graph-lock.h \
- /home/sp24/FEMU/include/hw/qdev-core.h \
- /home/sp24/FEMU/include/qemu/bitmap.h /home/sp24/FEMU/include/qemu/rcu.h \
- /home/sp24/FEMU/include/qemu/sys_membarrier.h \
- /home/sp24/FEMU/include/qemu/coroutine-tls.h \
- /home/sp24/FEMU/include/qemu/rcu_queue.h \
- /home/sp24/FEMU/include/qom/object.h \
- /home/sp24/FEMU/include/qemu/module.h \
- /home/sp24/FEMU/include/hw/hotplug.h \
- /home/sp24/FEMU/include/hw/resettable.h \
- /home/sp24/FEMU/include/sysemu/cpu-timers.h \
- /home/sp24/FEMU/include/qemu/main-loop.h \
- /home/sp24/FEMU/include/sysemu/event-loop-base.h \
- /home/sp24/FEMU/include/qemu/guest-random.h \
- /home/sp24/FEMU/include/exec/exec-all.h ../target/i386/cpu.h \
- ../target/i386/cpu-qom.h /home/sp24/FEMU/include/hw/core/cpu.h \
- /home/sp24/FEMU/include/disas/dis-asm.h \
- /home/sp24/FEMU/include/exec/hwaddr.h \
- /home/sp24/FEMU/include/exec/vaddr.h \
- /home/sp24/FEMU/include/exec/memattrs.h \
- /home/sp24/FEMU/include/exec/tlb-common.h \
+ /home/sp24/femu/include/qemu/qsp.h /home/sp24/femu/include/qemu/timer.h \
+ /home/sp24/femu/include/qemu/bitops.h \
+ /home/sp24/femu/include/qemu/host-utils.h \
+ /home/sp24/femu/include/qemu/bswap.h \
+ /home/sp24/femu/include/qemu/int128.h \
+ /home/sp24/femu/include/qemu/atomic.h \
+ /home/sp24/femu/include/qemu/notify.h \
+ /home/sp24/femu/include/qemu/host-utils.h \
+ /home/sp24/femu/include/block/graph-lock.h \
+ /home/sp24/femu/include/hw/qdev-core.h \
+ /home/sp24/femu/include/qemu/bitmap.h /home/sp24/femu/include/qemu/rcu.h \
+ /home/sp24/femu/include/qemu/sys_membarrier.h \
+ /home/sp24/femu/include/qemu/coroutine-tls.h \
+ /home/sp24/femu/include/qemu/rcu_queue.h \
+ /home/sp24/femu/include/qom/object.h \
+ /home/sp24/femu/include/qemu/module.h \
+ /home/sp24/femu/include/hw/hotplug.h \
+ /home/sp24/femu/include/hw/resettable.h \
+ /home/sp24/femu/include/sysemu/cpu-timers.h \
+ /home/sp24/femu/include/qemu/main-loop.h \
+ /home/sp24/femu/include/sysemu/event-loop-base.h \
+ /home/sp24/femu/include/qemu/guest-random.h \
+ /home/sp24/femu/include/exec/exec-all.h ../target/i386/cpu.h \
+ ../target/i386/cpu-qom.h /home/sp24/femu/include/hw/core/cpu.h \
+ /home/sp24/femu/include/disas/dis-asm.h \
+ /home/sp24/femu/include/exec/hwaddr.h \
+ /home/sp24/femu/include/exec/vaddr.h \
+ /home/sp24/femu/include/exec/memattrs.h \
+ /home/sp24/femu/include/exec/tlb-common.h \
  ../target/i386/kvm/hyperv-proto.h \
- /home/sp24/FEMU/include/hw/hyperv/hyperv-proto.h \
- /home/sp24/FEMU/include/exec/cpu-defs.h ../target/i386/cpu-param.h \
- /home/sp24/FEMU/include/exec/target_long.h qapi/qapi-types-common.h \
- /home/sp24/FEMU/include/qemu/cpu-float.h \
- /home/sp24/FEMU/include/fpu/softfloat-types.h \
- /home/sp24/FEMU/include/exec/cpu-all.h \
- /home/sp24/FEMU/include/exec/cpu-common.h \
- /home/sp24/FEMU/include/tcg/debug-assert.h \
- /home/sp24/FEMU/include/exec/memory.h \
- /home/sp24/FEMU/include/exec/memop.h \
- /home/sp24/FEMU/include/exec/ramlist.h \
- /home/sp24/FEMU/include/qemu/range.h \
- /home/sp24/FEMU/include/exec/memory_ldst.h.inc \
- /home/sp24/FEMU/include/exec/memory_ldst_phys.h.inc \
- /home/sp24/FEMU/include/exec/memory_ldst_cached.h.inc \
- /home/sp24/FEMU/include/exec/tswap.h ../target/i386/svm.h \
- /home/sp24/FEMU/include/hw/i386/apic.h \
- /home/sp24/FEMU/include/exec/translation-block.h \
- /home/sp24/FEMU/include/exec/tb-flush.h \
- /home/sp24/FEMU/include/exec/gdbstub.h ../accel/tcg/tcg-accel-ops.h \
- /home/sp24/FEMU/include/sysemu/cpus.h \
- /home/sp24/FEMU/include/sysemu/accel-ops.h \
+ /home/sp24/femu/include/hw/hyperv/hyperv-proto.h \
+ /home/sp24/femu/include/exec/cpu-defs.h ../target/i386/cpu-param.h \
+ /home/sp24/femu/include/exec/target_long.h qapi/qapi-types-common.h \
+ /home/sp24/femu/include/qemu/cpu-float.h \
+ /home/sp24/femu/include/fpu/softfloat-types.h \
+ /home/sp24/femu/include/exec/cpu-all.h \
+ /home/sp24/femu/include/exec/cpu-common.h \
+ /home/sp24/femu/include/tcg/debug-assert.h \
+ /home/sp24/femu/include/exec/memory.h \
+ /home/sp24/femu/include/exec/memop.h \
+ /home/sp24/femu/include/exec/ramlist.h \
+ /home/sp24/femu/include/qemu/range.h \
+ /home/sp24/femu/include/exec/memory_ldst.h.inc \
+ /home/sp24/femu/include/exec/memory_ldst_phys.h.inc \
+ /home/sp24/femu/include/exec/memory_ldst_cached.h.inc \
+ /home/sp24/femu/include/exec/tswap.h ../target/i386/svm.h \
+ /home/sp24/femu/include/hw/i386/apic.h \
+ /home/sp24/femu/include/exec/translation-block.h \
+ /home/sp24/femu/include/exec/tb-flush.h \
+ /home/sp24/femu/include/exec/gdbstub.h ../accel/tcg/tcg-accel-ops.h \
+ /home/sp24/femu/include/sysemu/cpus.h \
+ /home/sp24/femu/include/sysemu/accel-ops.h \
  ../accel/tcg/tcg-accel-ops-mttcg.h ../accel/tcg/tcg-accel-ops-rr.h \
  ../accel/tcg/tcg-accel-ops-icount.h

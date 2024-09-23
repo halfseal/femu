@@ -1,8 +1,8 @@
 tests/unit/test-block-backend.p/test-block-backend.c.o: \
  ../tests/unit/test-block-backend.c /usr/include/stdc-predef.h \
- /home/sp24/FEMU/include/qemu/osdep.h config-host.h \
- /home/sp24/FEMU/include/exec/poison.h config-poison.h \
- /home/sp24/FEMU/include/qemu/compiler.h \
+ /home/sp24/femu/include/qemu/osdep.h config-host.h \
+ /home/sp24/femu/include/exec/poison.h config-poison.h \
+ /home/sp24/femu/include/qemu/compiler.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h \
@@ -109,9 +109,9 @@ tests/unit/test-block-backend.p/test-block-backend.c.o: \
  /usr/include/linux/types.h /usr/include/x86_64-linux-gnu/asm/types.h \
  /usr/include/asm-generic/types.h /usr/include/asm-generic/int-ll64.h \
  linux-headers/asm/bitsperlong.h \
- /home/sp24/FEMU/linux-headers/asm-generic/bitsperlong.h \
+ /home/sp24/femu/linux-headers/asm-generic/bitsperlong.h \
  /usr/include/linux/posix_types.h \
- /home/sp24/FEMU/linux-headers/linux/stddef.h \
+ /home/sp24/femu/linux-headers/linux/stddef.h \
  /usr/include/x86_64-linux-gnu/asm/posix_types.h \
  /usr/include/x86_64-linux-gnu/asm/posix_types_64.h \
  /usr/include/asm-generic/posix_types.h \
@@ -147,7 +147,7 @@ tests/unit/test-block-backend.p/test-block-backend.c.o: \
  /usr/include/x86_64-linux-gnu/bits/uio-ext.h \
  /usr/include/x86_64-linux-gnu/sys/wait.h \
  /usr/include/x86_64-linux-gnu/bits/types/idtype_t.h \
- /home/sp24/FEMU/include/glib-compat.h /usr/include/glib-2.0/glib.h \
+ /home/sp24/femu/include/glib-compat.h /usr/include/glib-2.0/glib.h \
  /usr/include/glib-2.0/glib/galloca.h /usr/include/glib-2.0/glib/gtypes.h \
  /usr/lib/x86_64-linux-gnu/glib-2.0/include/glibconfig.h \
  /usr/include/glib-2.0/glib/gmacros.h \
@@ -228,7 +228,7 @@ tests/unit/test-block-backend.p/test-block-backend.c.o: \
  /usr/include/glib-2.0/glib/glib-autocleanups.h \
  /usr/include/glib-2.0/glib-unix.h /usr/include/glib-2.0/glib/gstdio.h \
  /usr/include/glib-2.0/glib/gprintf.h /usr/include/pwd.h \
- /home/sp24/FEMU/include/sysemu/os-posix.h \
+ /home/sp24/femu/include/sysemu/os-posix.h \
  /usr/include/x86_64-linux-gnu/sys/mman.h \
  /usr/include/x86_64-linux-gnu/bits/mman.h \
  /usr/include/x86_64-linux-gnu/bits/mman-map-flags-generic.h \
@@ -251,63 +251,63 @@ tests/unit/test-block-backend.p/test-block-backend.c.o: \
  /usr/include/x86_64-linux-gnu/sys/un.h \
  /usr/include/x86_64-linux-gnu/sys/sysmacros.h \
  /usr/include/x86_64-linux-gnu/bits/sysmacros.h \
- /home/sp24/FEMU/include/qemu/typedefs.h \
- /home/sp24/FEMU/include/block/block.h \
- /home/sp24/FEMU/include/block/block-global-state.h \
- /home/sp24/FEMU/include/block/block-common.h \
+ /home/sp24/femu/include/qemu/typedefs.h \
+ /home/sp24/femu/include/block/block.h \
+ /home/sp24/femu/include/block/block-global-state.h \
+ /home/sp24/femu/include/block/block-common.h \
  qapi/qapi-types-block-core.h qapi/qapi-builtin-types.h \
- /home/sp24/FEMU/include/qapi/util.h qapi/qapi-types-common.h \
+ /home/sp24/femu/include/qapi/util.h qapi/qapi-types-common.h \
  qapi/qapi-types-crypto.h qapi/qapi-types-job.h qapi/qapi-types-sockets.h \
- /home/sp24/FEMU/include/qemu/queue.h \
- /home/sp24/FEMU/include/block/blockjob.h \
- /home/sp24/FEMU/include/qemu/job.h qapi/qapi-types-job.h \
- /home/sp24/FEMU/include/qemu/progress_meter.h \
- /home/sp24/FEMU/include/qemu/thread.h \
- /home/sp24/FEMU/include/qemu/processor.h \
- /home/sp24/FEMU/include/qemu/atomic.h \
- /home/sp24/FEMU/include/qemu/compiler.h \
- /home/sp24/FEMU/include/qemu/clang-tsa.h \
- /home/sp24/FEMU/include/qemu/thread-posix.h /usr/include/semaphore.h \
+ /home/sp24/femu/include/qemu/queue.h \
+ /home/sp24/femu/include/block/blockjob.h \
+ /home/sp24/femu/include/qemu/job.h qapi/qapi-types-job.h \
+ /home/sp24/femu/include/qemu/progress_meter.h \
+ /home/sp24/femu/include/qemu/thread.h \
+ /home/sp24/femu/include/qemu/processor.h \
+ /home/sp24/femu/include/qemu/atomic.h \
+ /home/sp24/femu/include/qemu/compiler.h \
+ /home/sp24/femu/include/qemu/clang-tsa.h \
+ /home/sp24/femu/include/qemu/thread-posix.h /usr/include/semaphore.h \
  /usr/include/x86_64-linux-gnu/bits/semaphore.h \
- /home/sp24/FEMU/include/qemu/qsp.h \
- /home/sp24/FEMU/include/qemu/coroutine.h \
- /home/sp24/FEMU/include/qemu/coroutine-core.h \
- /home/sp24/FEMU/include/qemu/timer.h \
- /home/sp24/FEMU/include/qemu/bitops.h \
- /home/sp24/FEMU/include/qemu/host-utils.h \
- /home/sp24/FEMU/include/qemu/bswap.h \
- /home/sp24/FEMU/include/qemu/int128.h \
- /home/sp24/FEMU/include/qemu/atomic.h \
- /home/sp24/FEMU/include/qemu/notify.h \
- /home/sp24/FEMU/include/qemu/host-utils.h \
- /home/sp24/FEMU/include/qemu/lockable.h \
- /home/sp24/FEMU/include/block/aio.h \
- /home/sp24/FEMU/include/qemu/event_notifier.h \
- /home/sp24/FEMU/include/block/graph-lock.h \
- /home/sp24/FEMU/include/hw/qdev-core.h \
- /home/sp24/FEMU/include/qemu/bitmap.h /home/sp24/FEMU/include/qemu/rcu.h \
- /home/sp24/FEMU/include/qemu/sys_membarrier.h \
- /home/sp24/FEMU/include/qemu/coroutine-tls.h \
- /home/sp24/FEMU/include/qemu/rcu_queue.h \
- /home/sp24/FEMU/include/qom/object.h \
- /home/sp24/FEMU/include/qemu/module.h \
- /home/sp24/FEMU/include/hw/hotplug.h \
- /home/sp24/FEMU/include/hw/resettable.h \
- /home/sp24/FEMU/include/qemu/ratelimit.h \
- /home/sp24/FEMU/include/qemu/transactions.h \
+ /home/sp24/femu/include/qemu/qsp.h \
+ /home/sp24/femu/include/qemu/coroutine.h \
+ /home/sp24/femu/include/qemu/coroutine-core.h \
+ /home/sp24/femu/include/qemu/timer.h \
+ /home/sp24/femu/include/qemu/bitops.h \
+ /home/sp24/femu/include/qemu/host-utils.h \
+ /home/sp24/femu/include/qemu/bswap.h \
+ /home/sp24/femu/include/qemu/int128.h \
+ /home/sp24/femu/include/qemu/atomic.h \
+ /home/sp24/femu/include/qemu/notify.h \
+ /home/sp24/femu/include/qemu/host-utils.h \
+ /home/sp24/femu/include/qemu/lockable.h \
+ /home/sp24/femu/include/block/aio.h \
+ /home/sp24/femu/include/qemu/event_notifier.h \
+ /home/sp24/femu/include/block/graph-lock.h \
+ /home/sp24/femu/include/hw/qdev-core.h \
+ /home/sp24/femu/include/qemu/bitmap.h /home/sp24/femu/include/qemu/rcu.h \
+ /home/sp24/femu/include/qemu/sys_membarrier.h \
+ /home/sp24/femu/include/qemu/coroutine-tls.h \
+ /home/sp24/femu/include/qemu/rcu_queue.h \
+ /home/sp24/femu/include/qom/object.h \
+ /home/sp24/femu/include/qemu/module.h \
+ /home/sp24/femu/include/hw/hotplug.h \
+ /home/sp24/femu/include/hw/resettable.h \
+ /home/sp24/femu/include/qemu/ratelimit.h \
+ /home/sp24/femu/include/qemu/transactions.h \
  /usr/include/glib-2.0/gmodule.h \
  /usr/include/glib-2.0/gmodule/gmodule-visibility.h \
- /home/sp24/FEMU/include/block/block-io.h \
- /home/sp24/FEMU/include/block/aio-wait.h \
- /home/sp24/FEMU/include/qemu/main-loop.h \
- /home/sp24/FEMU/include/sysemu/event-loop-base.h \
- /home/sp24/FEMU/include/qemu/iov.h \
- /home/sp24/FEMU/include/sysemu/block-backend.h \
- /home/sp24/FEMU/include/sysemu/block-backend-global-state.h \
- /home/sp24/FEMU/include/sysemu/block-backend-common.h \
- /home/sp24/FEMU/include/block/throttle-groups.h \
- /home/sp24/FEMU/include/qemu/throttle.h \
- /home/sp24/FEMU/include/sysemu/block-backend-io.h \
- /home/sp24/FEMU/include/block/accounting.h \
- /home/sp24/FEMU/include/qemu/timed-average.h qapi/qapi-types-common.h \
- /home/sp24/FEMU/include/qapi/error.h qapi/qapi-types-error.h
+ /home/sp24/femu/include/block/block-io.h \
+ /home/sp24/femu/include/block/aio-wait.h \
+ /home/sp24/femu/include/qemu/main-loop.h \
+ /home/sp24/femu/include/sysemu/event-loop-base.h \
+ /home/sp24/femu/include/qemu/iov.h \
+ /home/sp24/femu/include/sysemu/block-backend.h \
+ /home/sp24/femu/include/sysemu/block-backend-global-state.h \
+ /home/sp24/femu/include/sysemu/block-backend-common.h \
+ /home/sp24/femu/include/block/throttle-groups.h \
+ /home/sp24/femu/include/qemu/throttle.h \
+ /home/sp24/femu/include/sysemu/block-backend-io.h \
+ /home/sp24/femu/include/block/accounting.h \
+ /home/sp24/femu/include/qemu/timed-average.h qapi/qapi-types-common.h \
+ /home/sp24/femu/include/qapi/error.h qapi/qapi-types-error.h

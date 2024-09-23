@@ -5,5 +5,5 @@ docs = disabled
 plugins = true
 
 [properties]
-native_file = ['/home/sp24/FEMU/build-femu/config-meson.cross']
+native_file = ['/home/sp24/femu/build-femu/config-meson.cross']
 

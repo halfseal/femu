@@ -1,4 +1,4 @@
-#!/home/sp24/FEMU/build-femu/pyvenv/bin/python3
+#!/home/sp24/femu/build-femu/pyvenv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

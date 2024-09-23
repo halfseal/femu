@@ -1,7 +1,7 @@
 libqom.fa.p/qom_object_interfaces.c.o: ../qom/object_interfaces.c \
- /usr/include/stdc-predef.h /home/sp24/FEMU/include/qemu/osdep.h \
- config-host.h /home/sp24/FEMU/include/exec/poison.h config-poison.h \
- /home/sp24/FEMU/include/qemu/compiler.h \
+ /usr/include/stdc-predef.h /home/sp24/femu/include/qemu/osdep.h \
+ config-host.h /home/sp24/femu/include/exec/poison.h config-poison.h \
+ /home/sp24/femu/include/qemu/compiler.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h \
@@ -108,9 +108,9 @@ libqom.fa.p/qom_object_interfaces.c.o: ../qom/object_interfaces.c \
  /usr/include/linux/types.h /usr/include/x86_64-linux-gnu/asm/types.h \
  /usr/include/asm-generic/types.h /usr/include/asm-generic/int-ll64.h \
  linux-headers/asm/bitsperlong.h \
- /home/sp24/FEMU/linux-headers/asm-generic/bitsperlong.h \
+ /home/sp24/femu/linux-headers/asm-generic/bitsperlong.h \
  /usr/include/linux/posix_types.h \
- /home/sp24/FEMU/linux-headers/linux/stddef.h \
+ /home/sp24/femu/linux-headers/linux/stddef.h \
  /usr/include/x86_64-linux-gnu/asm/posix_types.h \
  /usr/include/x86_64-linux-gnu/asm/posix_types_64.h \
  /usr/include/asm-generic/posix_types.h \
@@ -146,7 +146,7 @@ libqom.fa.p/qom_object_interfaces.c.o: ../qom/object_interfaces.c \
  /usr/include/x86_64-linux-gnu/bits/uio-ext.h \
  /usr/include/x86_64-linux-gnu/sys/wait.h \
  /usr/include/x86_64-linux-gnu/bits/types/idtype_t.h \
- /home/sp24/FEMU/include/glib-compat.h /usr/include/glib-2.0/glib.h \
+ /home/sp24/femu/include/glib-compat.h /usr/include/glib-2.0/glib.h \
  /usr/include/glib-2.0/glib/galloca.h /usr/include/glib-2.0/glib/gtypes.h \
  /usr/lib/x86_64-linux-gnu/glib-2.0/include/glibconfig.h \
  /usr/include/glib-2.0/glib/gmacros.h \
@@ -227,7 +227,7 @@ libqom.fa.p/qom_object_interfaces.c.o: ../qom/object_interfaces.c \
  /usr/include/glib-2.0/glib/glib-autocleanups.h \
  /usr/include/glib-2.0/glib-unix.h /usr/include/glib-2.0/glib/gstdio.h \
  /usr/include/glib-2.0/glib/gprintf.h /usr/include/pwd.h \
- /home/sp24/FEMU/include/sysemu/os-posix.h \
+ /home/sp24/femu/include/sysemu/os-posix.h \
  /usr/include/x86_64-linux-gnu/sys/mman.h \
  /usr/include/x86_64-linux-gnu/bits/mman.h \
  /usr/include/x86_64-linux-gnu/bits/mman-map-flags-generic.h \
@@ -250,30 +250,30 @@ libqom.fa.p/qom_object_interfaces.c.o: ../qom/object_interfaces.c \
  /usr/include/x86_64-linux-gnu/sys/un.h \
  /usr/include/x86_64-linux-gnu/sys/sysmacros.h \
  /usr/include/x86_64-linux-gnu/bits/sysmacros.h \
- /home/sp24/FEMU/include/qemu/typedefs.h \
- /home/sp24/FEMU/include/qemu/cutils.h \
- /home/sp24/FEMU/include/qapi/error.h qapi/qapi-types-error.h \
- qapi/qapi-builtin-types.h /home/sp24/FEMU/include/qapi/util.h \
+ /home/sp24/femu/include/qemu/typedefs.h \
+ /home/sp24/femu/include/qemu/cutils.h \
+ /home/sp24/femu/include/qapi/error.h qapi/qapi-types-error.h \
+ qapi/qapi-builtin-types.h /home/sp24/femu/include/qapi/util.h \
  qapi/qapi-visit-qom.h qapi/qapi-builtin-visit.h \
- /home/sp24/FEMU/include/qapi/visitor.h qapi/qapi-types-compat.h \
+ /home/sp24/femu/include/qapi/visitor.h qapi/qapi-types-compat.h \
  qapi/qapi-types-qom.h qapi/qapi-types-authz.h \
  qapi/qapi-types-block-core.h qapi/qapi-types-common.h \
  qapi/qapi-types-crypto.h qapi/qapi-types-job.h qapi/qapi-types-sockets.h \
  qapi/qapi-visit-authz.h qapi/qapi-visit-block-core.h \
  qapi/qapi-visit-common.h qapi/qapi-visit-crypto.h qapi/qapi-visit-job.h \
- qapi/qapi-visit-sockets.h /home/sp24/FEMU/include/qapi/qmp/qobject.h \
- /home/sp24/FEMU/include/qapi/qmp/qdict.h \
- /home/sp24/FEMU/include/qemu/queue.h \
- /home/sp24/FEMU/include/qapi/qmp/qerror.h \
- /home/sp24/FEMU/include/qapi/qmp/qjson.h \
- /home/sp24/FEMU/include/qapi/qobject-input-visitor.h \
- /home/sp24/FEMU/include/qapi/qobject-output-visitor.h \
- /home/sp24/FEMU/include/qom/object_interfaces.h \
- /home/sp24/FEMU/include/qom/object.h \
- /home/sp24/FEMU/include/qemu/module.h qapi/qapi-types-qom.h \
- /home/sp24/FEMU/include/qemu/help_option.h \
- /home/sp24/FEMU/include/qemu/id.h /home/sp24/FEMU/include/qemu/option.h \
- /home/sp24/FEMU/include/qemu/qemu-print.h \
- /home/sp24/FEMU/include/qapi/opts-visitor.h \
- /home/sp24/FEMU/include/qemu/config-file.h \
- /home/sp24/FEMU/include/qemu/keyval.h
+ qapi/qapi-visit-sockets.h /home/sp24/femu/include/qapi/qmp/qobject.h \
+ /home/sp24/femu/include/qapi/qmp/qdict.h \
+ /home/sp24/femu/include/qemu/queue.h \
+ /home/sp24/femu/include/qapi/qmp/qerror.h \
+ /home/sp24/femu/include/qapi/qmp/qjson.h \
+ /home/sp24/femu/include/qapi/qobject-input-visitor.h \
+ /home/sp24/femu/include/qapi/qobject-output-visitor.h \
+ /home/sp24/femu/include/qom/object_interfaces.h \
+ /home/sp24/femu/include/qom/object.h \
+ /home/sp24/femu/include/qemu/module.h qapi/qapi-types-qom.h \
+ /home/sp24/femu/include/qemu/help_option.h \
+ /home/sp24/femu/include/qemu/id.h /home/sp24/femu/include/qemu/option.h \
+ /home/sp24/femu/include/qemu/qemu-print.h \
+ /home/sp24/femu/include/qapi/opts-visitor.h \
+ /home/sp24/femu/include/qemu/config-file.h \
+ /home/sp24/femu/include/qemu/keyval.h

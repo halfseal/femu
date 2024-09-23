@@ -12,5 +12,5 @@ OBJCOPY=objcopy
 RANLIB=ranlib
 STRIP=strip
 BUILD_STATIC=
-QEMU=/home/sp24/FEMU/build-femu/qemu-system-x86_64
+QEMU=/home/sp24/femu/build-femu/qemu-system-x86_64
 GDB=/usr/bin/gdb

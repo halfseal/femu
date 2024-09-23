@@ -3481,7 +3481,7 @@ tests/unit/test-uuid.p/test-uuid.c.o \
 tests/unit/test-uuid \
 tests/unit/ptimer-test.p/ptimer-test.c.o \
 tests/unit/ptimer-test.p/ptimer-test-stubs.c.o \
-tests/unit/ptimer-test.p/_home_sp24_FEMU_hw_core_ptimer.c.o \
+tests/unit/ptimer-test.p/_home_sp24_femu_hw_core_ptimer.c.o \
 tests/unit/ptimer-test \
 tests/unit/test-qapi-util.p/test-qapi-util.c.o \
 tests/unit/test-qapi-util \
@@ -3490,7 +3490,7 @@ tests/unit/test-interval-tree \
 tests/unit/test-xs-node.p/test-xs-node.c.o \
 tests/unit/test-xs-node \
 tests/unit/test-virtio-dmabuf.p/test-virtio-dmabuf.c.o \
-tests/unit/test-virtio-dmabuf.p/_home_sp24_FEMU_hw_display_virtio-dmabuf.c.o \
+tests/unit/test-virtio-dmabuf.p/_home_sp24_femu_hw_display_virtio-dmabuf.c.o \
 tests/unit/test-virtio-dmabuf \
 tests/unit/test-qmp-event.p/test-qmp-event.c.o \
 tests/unit/test-qmp-event \
@@ -3600,7 +3600,7 @@ tests/unit/test-base64 \
 tests/unit/test-bufferiszero.p/test-bufferiszero.c.o \
 tests/unit/test-bufferiszero \
 tests/unit/test-smp-parse.p/test-smp-parse.c.o \
-tests/unit/test-smp-parse.p/_home_sp24_FEMU_hw_core_machine-smp.c.o \
+tests/unit/test-smp-parse.p/_home_sp24_femu_hw_core_machine-smp.c.o \
 tests/unit/test-smp-parse \
 tests/unit/test-vmstate.p/test-vmstate.c.o \
 tests/unit/test-vmstate \
@@ -3851,9 +3851,9 @@ reconfigure \
 ../meson.build \
 ../meson_options.txt \
 ../VERSION \
-/home/sp24/FEMU/build-femu/config-host.mak \
+/home/sp24/femu/build-femu/config-host.mak \
 ../scripts/xen-detect.c \
-/home/sp24/FEMU/configs/targets/x86_64-softmmu.mak \
+/home/sp24/femu/configs/targets/x86_64-softmmu.mak \
 ../configs/devices/x86_64-softmmu/default.mak \
 ../Kconfig \
 ../scripts/minikconf.py \
@@ -4165,16 +4165,16 @@ reconfigure \
 ../tests/qapi-schema/meson.build \
 ../tests/qtest/meson.build \
 ../tests/migration/meson.build \
-/home/sp24/FEMU/build-femu/tests/tcg/x86_64-softmmu/config-target.mak \
-/home/sp24/FEMU/build-femu/config-meson.cross \
+/home/sp24/femu/build-femu/tests/tcg/x86_64-softmmu/config-target.mak \
+/home/sp24/femu/build-femu/config-meson.cross \
 meson-private/coredata.dat
 build-files = \
     ../meson.build \
     ../meson_options.txt \
     ../VERSION \
-    /home/sp24/FEMU/build-femu/config-host.mak \
+    /home/sp24/femu/build-femu/config-host.mak \
     ../scripts/xen-detect.c \
-    /home/sp24/FEMU/configs/targets/x86_64-softmmu.mak \
+    /home/sp24/femu/configs/targets/x86_64-softmmu.mak \
     ../configs/devices/x86_64-softmmu/default.mak \
     ../Kconfig \
     ../scripts/minikconf.py \
@@ -4486,6 +4486,6 @@ build-files = \
     ../tests/qapi-schema/meson.build \
     ../tests/qtest/meson.build \
     ../tests/migration/meson.build \
-    /home/sp24/FEMU/build-femu/tests/tcg/x86_64-softmmu/config-target.mak \
-    /home/sp24/FEMU/build-femu/config-meson.cross \
+    /home/sp24/femu/build-femu/tests/tcg/x86_64-softmmu/config-target.mak \
+    /home/sp24/femu/build-femu/config-meson.cross \
     meson-private/coredata.dat \

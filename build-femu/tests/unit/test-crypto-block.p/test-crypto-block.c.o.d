@@ -1,8 +1,8 @@
 tests/unit/test-crypto-block.p/test-crypto-block.c.o: \
  ../tests/unit/test-crypto-block.c /usr/include/stdc-predef.h \
- /home/sp24/FEMU/include/qemu/osdep.h config-host.h \
- /home/sp24/FEMU/include/exec/poison.h config-poison.h \
- /home/sp24/FEMU/include/qemu/compiler.h \
+ /home/sp24/femu/include/qemu/osdep.h config-host.h \
+ /home/sp24/femu/include/exec/poison.h config-poison.h \
+ /home/sp24/femu/include/qemu/compiler.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h \
@@ -109,9 +109,9 @@ tests/unit/test-crypto-block.p/test-crypto-block.c.o: \
  /usr/include/linux/types.h /usr/include/x86_64-linux-gnu/asm/types.h \
  /usr/include/asm-generic/types.h /usr/include/asm-generic/int-ll64.h \
  linux-headers/asm/bitsperlong.h \
- /home/sp24/FEMU/linux-headers/asm-generic/bitsperlong.h \
+ /home/sp24/femu/linux-headers/asm-generic/bitsperlong.h \
  /usr/include/linux/posix_types.h \
- /home/sp24/FEMU/linux-headers/linux/stddef.h \
+ /home/sp24/femu/linux-headers/linux/stddef.h \
  /usr/include/x86_64-linux-gnu/asm/posix_types.h \
  /usr/include/x86_64-linux-gnu/asm/posix_types_64.h \
  /usr/include/asm-generic/posix_types.h \
@@ -147,7 +147,7 @@ tests/unit/test-crypto-block.p/test-crypto-block.c.o: \
  /usr/include/x86_64-linux-gnu/bits/uio-ext.h \
  /usr/include/x86_64-linux-gnu/sys/wait.h \
  /usr/include/x86_64-linux-gnu/bits/types/idtype_t.h \
- /home/sp24/FEMU/include/glib-compat.h /usr/include/glib-2.0/glib.h \
+ /home/sp24/femu/include/glib-compat.h /usr/include/glib-2.0/glib.h \
  /usr/include/glib-2.0/glib/galloca.h /usr/include/glib-2.0/glib/gtypes.h \
  /usr/lib/x86_64-linux-gnu/glib-2.0/include/glibconfig.h \
  /usr/include/glib-2.0/glib/gmacros.h \
@@ -228,7 +228,7 @@ tests/unit/test-crypto-block.p/test-crypto-block.c.o: \
  /usr/include/glib-2.0/glib/glib-autocleanups.h \
  /usr/include/glib-2.0/glib-unix.h /usr/include/glib-2.0/glib/gstdio.h \
  /usr/include/glib-2.0/glib/gprintf.h /usr/include/pwd.h \
- /home/sp24/FEMU/include/sysemu/os-posix.h \
+ /home/sp24/femu/include/sysemu/os-posix.h \
  /usr/include/x86_64-linux-gnu/sys/mman.h \
  /usr/include/x86_64-linux-gnu/bits/mman.h \
  /usr/include/x86_64-linux-gnu/bits/mman-map-flags-generic.h \
@@ -251,38 +251,38 @@ tests/unit/test-crypto-block.p/test-crypto-block.c.o: \
  /usr/include/x86_64-linux-gnu/sys/un.h \
  /usr/include/x86_64-linux-gnu/sys/sysmacros.h \
  /usr/include/x86_64-linux-gnu/bits/sysmacros.h \
- /home/sp24/FEMU/include/qemu/typedefs.h \
- /home/sp24/FEMU/include/qapi/error.h qapi/qapi-types-error.h \
- qapi/qapi-builtin-types.h /home/sp24/FEMU/include/qapi/util.h \
- /home/sp24/FEMU/include/crypto/init.h \
- /home/sp24/FEMU/include/crypto/block.h \
- /home/sp24/FEMU/include/crypto/cipher.h qapi/qapi-types-crypto.h \
- /home/sp24/FEMU/include/crypto/ivgen.h \
- /home/sp24/FEMU/include/crypto/hash.h \
- /home/sp24/FEMU/crypto/block-luks-priv.h \
- /home/sp24/FEMU/include/qemu/bswap.h /home/sp24/FEMU/crypto/block-luks.h \
- /home/sp24/FEMU/crypto/blockpriv.h /home/sp24/FEMU/include/qemu/thread.h \
- /home/sp24/FEMU/include/qemu/processor.h \
- /home/sp24/FEMU/include/qemu/atomic.h \
- /home/sp24/FEMU/include/qemu/compiler.h \
- /home/sp24/FEMU/include/qemu/clang-tsa.h \
- /home/sp24/FEMU/include/qemu/thread-posix.h /usr/include/semaphore.h \
+ /home/sp24/femu/include/qemu/typedefs.h \
+ /home/sp24/femu/include/qapi/error.h qapi/qapi-types-error.h \
+ qapi/qapi-builtin-types.h /home/sp24/femu/include/qapi/util.h \
+ /home/sp24/femu/include/crypto/init.h \
+ /home/sp24/femu/include/crypto/block.h \
+ /home/sp24/femu/include/crypto/cipher.h qapi/qapi-types-crypto.h \
+ /home/sp24/femu/include/crypto/ivgen.h \
+ /home/sp24/femu/include/crypto/hash.h \
+ /home/sp24/femu/crypto/block-luks-priv.h \
+ /home/sp24/femu/include/qemu/bswap.h /home/sp24/femu/crypto/block-luks.h \
+ /home/sp24/femu/crypto/blockpriv.h /home/sp24/femu/include/qemu/thread.h \
+ /home/sp24/femu/include/qemu/processor.h \
+ /home/sp24/femu/include/qemu/atomic.h \
+ /home/sp24/femu/include/qemu/compiler.h \
+ /home/sp24/femu/include/qemu/clang-tsa.h \
+ /home/sp24/femu/include/qemu/thread-posix.h /usr/include/semaphore.h \
  /usr/include/x86_64-linux-gnu/bits/semaphore.h \
- /home/sp24/FEMU/include/qemu/qsp.h \
- /home/sp24/FEMU/include/crypto/afsplit.h \
- /home/sp24/FEMU/include/crypto/pbkdf.h \
- /home/sp24/FEMU/include/crypto/secret.h \
- /home/sp24/FEMU/include/qom/object.h \
- /home/sp24/FEMU/include/qemu/module.h \
- /home/sp24/FEMU/include/crypto/secret_common.h \
- /home/sp24/FEMU/include/crypto/random.h \
- /home/sp24/FEMU/include/qemu/uuid.h \
- /home/sp24/FEMU/include/qemu/bitmap.h \
- /home/sp24/FEMU/include/qemu/bitops.h \
- /home/sp24/FEMU/include/qemu/host-utils.h \
- /home/sp24/FEMU/include/qemu/int128.h \
- /home/sp24/FEMU/include/qemu/atomic.h \
- /home/sp24/FEMU/include/qemu/buffer.h \
+ /home/sp24/femu/include/qemu/qsp.h \
+ /home/sp24/femu/include/crypto/afsplit.h \
+ /home/sp24/femu/include/crypto/pbkdf.h \
+ /home/sp24/femu/include/crypto/secret.h \
+ /home/sp24/femu/include/qom/object.h \
+ /home/sp24/femu/include/qemu/module.h \
+ /home/sp24/femu/include/crypto/secret_common.h \
+ /home/sp24/femu/include/crypto/random.h \
+ /home/sp24/femu/include/qemu/uuid.h \
+ /home/sp24/femu/include/qemu/bitmap.h \
+ /home/sp24/femu/include/qemu/bitops.h \
+ /home/sp24/femu/include/qemu/host-utils.h \
+ /home/sp24/femu/include/qemu/int128.h \
+ /home/sp24/femu/include/qemu/atomic.h \
+ /home/sp24/femu/include/qemu/buffer.h \
  /usr/include/x86_64-linux-gnu/sys/resource.h \
  /usr/include/x86_64-linux-gnu/bits/resource.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_rusage.h

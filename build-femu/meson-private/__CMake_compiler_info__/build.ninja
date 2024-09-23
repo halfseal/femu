@@ -34,13 +34,13 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = /home/sp24/FEMU/build-femu/meson-private/__CMake_compiler_info__/
+cmake_ninja_workdir = /home/sp24/femu/build-femu/meson-private/__CMake_compiler_info__/
 
 #############################################
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/sp24/FEMU/build-femu/meson-private/__CMake_compiler_info__ && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /home/sp24/femu/build-femu/meson-private/__CMake_compiler_info__ && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -51,7 +51,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/sp24/FEMU/build-femu/meson-private/__CMake_compiler_info__ && /usr/bin/cmake --regenerate-during-build -S/home/sp24/FEMU/build-femu/meson-private/__CMake_compiler_info__ -B/home/sp24/FEMU/build-femu/meson-private/__CMake_compiler_info__
+  COMMAND = cd /home/sp24/femu/build-femu/meson-private/__CMake_compiler_info__ && /usr/bin/cmake --regenerate-during-build -S/home/sp24/femu/build-femu/meson-private/__CMake_compiler_info__ -B/home/sp24/femu/build-femu/meson-private/__CMake_compiler_info__
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -67,7 +67,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 
 #############################################
-# Folder: /home/sp24/FEMU/build-femu/meson-private/__CMake_compiler_info__
+# Folder: /home/sp24/femu/build-femu/meson-private/__CMake_compiler_info__
 
 build all: phony
 

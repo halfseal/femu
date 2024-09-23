@@ -1,1 +1,1 @@
-/home/sp24/FEMU/tests/tcg/Makefile.target
+/home/sp24/femu/tests/tcg/Makefile.target

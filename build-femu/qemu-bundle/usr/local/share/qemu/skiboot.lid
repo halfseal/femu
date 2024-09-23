@@ -1,1 +1,1 @@
-/home/sp24/FEMU/pc-bios/skiboot.lid
+/home/sp24/femu/pc-bios/skiboot.lid
