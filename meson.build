@@ -866,7 +866,6 @@ have_xen_pci_passthrough = get_option('xen_pci_passthrough') \
 ################
 # Dependencies #
 ################
-
 # When bumping glib minimum version, please check also whether to increase
 # the _WIN32_WINNT setting in osdep.h according to the value from glib
 glib_req_ver = '>=2.56.0'

@@ -4,6 +4,9 @@
 #include "../nvme.h"
 #include "../../../uthash.h"
 
+#include <openssl/evp.h>
+#include <openssl/sha.h>
+
 
 #define INVALID_PPA     (~(0ULL))
 #define INVALID_LPN     (~(0ULL))
@@ -257,5 +260,7 @@ void l2p_push(struct ssd *ssd, uint64_t lpn, struct ppa *ppa);
 uint64_t l2p_find(uint64_t lpn);
 void p2l_push(struct ssd *ssd, struct ppa *ppa, uint64_t lpn);
 uint64_t p2l_find(struct ssd *ssd, struct ppa *ppa);
+
+char *calc_nvme_sha256(NvmeRequest *req);
 
 #endif
