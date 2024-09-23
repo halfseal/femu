@@ -1,4 +1,4 @@
-Build started at 2024-09-23T11:26:19.561936
+Build started at 2024-09-23T12:14:13.053096
 Main binary: /home/sp24/femu/build-femu/pyvenv/bin/python3
 Build Options: -Dkvm=enabled -Dslirp=enabled -Ddocs=disabled -Dplugins=true --native-file=config-meson.cross
 Python system: Linux
@@ -30,7 +30,7 @@ This program has absolutely no warranty.
 -----------
 stderr:
 collect2 version 13.2.0
-/usr/bin/ld -plugin /usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper -plugin-opt=-fresolution=/tmp/ccioj48b.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/13/../../.. --version -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o
+/usr/bin/ld -plugin /usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper -plugin-opt=-fresolution=/tmp/ccedvJyX.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/13/../../.. --version -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o
 -----------
 Sanity testing C compiler: cc -m64 -mcx16
 Is cross compiler: False.
@@ -74,7 +74,7 @@ This program has absolutely no warranty.
 -----------
 stderr:
 collect2 version 13.2.0
-/usr/bin/ld -plugin /usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper -plugin-opt=-fresolution=/tmp/ccAFI1jS.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/13/../../.. --version -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o
+/usr/bin/ld -plugin /usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper -plugin-opt=-fresolution=/tmp/cchSTwT0.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/13/../../.. --version -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o
 -----------
 Sanity testing C compiler: cc -m64 -mcx16
 Is cross compiler: False.
@@ -109,7 +109,7 @@ Program python3 found: YES (/home/sp24/femu/build-femu/pyvenv/bin/python3)
 Program iasl found: NO
 Program bzip2 found: YES (/usr/bin/bzip2)
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpokbpcund
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp_cxay0es
 Code:
  
     int main(int argc, char *argv[])
@@ -121,9 +121,9 @@ Code:
       return 0;
     }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpokbpcund/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpokbpcund/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -Werror -fstack-protector-strong` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp_cxay0es/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp_cxay0es/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -Werror -fstack-protector-strong` -> 0
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp2lb_assl
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpowfk17j3
 Code:
  
     int main(int argc, char *argv[])
@@ -135,9 +135,9 @@ Code:
       return 0;
     }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp2lb_assl/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp2lb_assl/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -Werror -fstack-protector-strong` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpowfk17j3/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpowfk17j3/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -Werror -fstack-protector-strong` -> 0
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpkkcz4rmx
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmphtyfna72
 Code:
  
   #include <ucontext.h>
@@ -146,9 +146,9 @@ Code:
   #endif
   int main(void) { makecontext(0, 0, 0); return 0; }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpkkcz4rmx/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpkkcz4rmx/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmphtyfna72/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmphtyfna72/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp77l9_7yj
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpi6pyvy0y
 Code:
  
   int main(void)
@@ -161,351 +161,351 @@ Code:
       return 0;
   }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp77l9_7yj/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp77l9_7yj/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpi6pyvy0y/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpi6pyvy0y/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpxhu8py_2
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpjeussw03
 Code:
  int main(void) { return 0; }
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpxhu8py_2/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpxhu8py_2/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--fatal-warnings -Wl,-z,relro` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpjeussw03/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpjeussw03/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--fatal-warnings -Wl,-z,relro` -> 0
 Compiler for C supports link arguments -Wl,-z,relro: YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpav9rzz02
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpgbm418i4
 Code:
  int main(void) { return 0; }
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpav9rzz02/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpav9rzz02/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--fatal-warnings -Wl,-z,now` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpgbm418i4/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpgbm418i4/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--fatal-warnings -Wl,-z,now` -> 0
 Compiler for C supports link arguments -Wl,-z,now: YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp8fnatrc_
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpw8m2u9s4
 Code:
  extern struct { void (*cb)(void); } s; void f(void) { s.cb(); }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp8fnatrc_/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp8fnatrc_/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -O2 -fzero-call-used-regs=used-gpr` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpw8m2u9s4/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpw8m2u9s4/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -O2 -fzero-call-used-regs=used-gpr` -> 0
 Checking if "-fzero-call-used-regs=used-gpr" compiles: YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpb2a3dwi9
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpt2xvmqcc
 Code:
  extern int i;
 int i;
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpb2a3dwi9/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpb2a3dwi9/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -ftrivial-auto-var-init=zero` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpt2xvmqcc/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpt2xvmqcc/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -ftrivial-auto-var-init=zero` -> 0
 Compiler for C supports arguments -ftrivial-auto-var-init=zero: YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp4hhh9lf9
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmptqxdt7sw
 Code:
  extern int i;
 int i;
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp4hhh9lf9/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp4hhh9lf9/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -fzero-call-used-regs=used-gpr` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmptqxdt7sw/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmptqxdt7sw/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -fzero-call-used-regs=used-gpr` -> 0
 Compiler for C supports arguments -fzero-call-used-regs=used-gpr: YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpm28bn6q_
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmplrx4mczc
 Code:
  extern int i;
 int i;
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpm28bn6q_/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpm28bn6q_/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wempty-body` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmplrx4mczc/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmplrx4mczc/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wempty-body` -> 0
 Compiler for C supports arguments -Wempty-body: YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpad_kduyh
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpk9de3t8x
 Code:
  extern int i;
 int i;
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpad_kduyh/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpad_kduyh/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wendif-labels` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpk9de3t8x/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpk9de3t8x/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wendif-labels` -> 0
 Compiler for C supports arguments -Wendif-labels: YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpjfkf09ml
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpwlzbhp67
 Code:
  extern int i;
 int i;
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpjfkf09ml/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpjfkf09ml/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wexpansion-to-defined` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpwlzbhp67/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpwlzbhp67/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wexpansion-to-defined` -> 0
 Compiler for C supports arguments -Wexpansion-to-defined: YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp71iex9o7
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp9rior6oo
 Code:
  extern int i;
 int i;
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp71iex9o7/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp71iex9o7/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wformat-security` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp9rior6oo/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp9rior6oo/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wformat-security` -> 0
 Compiler for C supports arguments -Wformat-security: YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpysnokgum
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpe7v8t_on
 Code:
  extern int i;
 int i;
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpysnokgum/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpysnokgum/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wformat-y2k` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpe7v8t_on/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpe7v8t_on/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wformat-y2k` -> 0
 Compiler for C supports arguments -Wformat-y2k: YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpnicj3w75
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpxxcu0ofm
 Code:
  extern int i;
 int i;
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpnicj3w75/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpnicj3w75/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wignored-qualifiers` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpxxcu0ofm/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpxxcu0ofm/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wignored-qualifiers` -> 0
 Compiler for C supports arguments -Wignored-qualifiers: YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp62i4kxpy
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpw09umjw0
 Code:
  extern int i;
 int i;
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp62i4kxpy/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp62i4kxpy/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wimplicit-fallthrough=2` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpw09umjw0/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpw09umjw0/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wimplicit-fallthrough=2` -> 0
 Compiler for C supports arguments -Wimplicit-fallthrough=2: YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpigazcsz7
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpxhg7r8i_
 Code:
  extern int i;
 int i;
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpigazcsz7/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpigazcsz7/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Winit-self` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpxhg7r8i_/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpxhg7r8i_/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Winit-self` -> 0
 Compiler for C supports arguments -Winit-self: YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpsvjlf0ks
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpjobqt3nr
 Code:
  extern int i;
 int i;
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpsvjlf0ks/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpsvjlf0ks/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wmissing-format-attribute` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpjobqt3nr/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpjobqt3nr/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wmissing-format-attribute` -> 0
 Compiler for C supports arguments -Wmissing-format-attribute: YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpoksrharv
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpuan0nw_z
 Code:
  extern int i;
 int i;
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpoksrharv/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpoksrharv/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wmissing-prototypes` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpuan0nw_z/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpuan0nw_z/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wmissing-prototypes` -> 0
 Compiler for C supports arguments -Wmissing-prototypes: YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpyuraue8l
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpatm0almn
 Code:
  extern int i;
 int i;
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpyuraue8l/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpyuraue8l/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wnested-externs` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpatm0almn/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpatm0almn/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wnested-externs` -> 0
 Compiler for C supports arguments -Wnested-externs: YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpzhc583y4
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmppoe8cfgy
 Code:
  extern int i;
 int i;
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpzhc583y4/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpzhc583y4/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wold-style-declaration` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmppoe8cfgy/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmppoe8cfgy/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wold-style-declaration` -> 0
 Compiler for C supports arguments -Wold-style-declaration: YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp5ezn9l5a
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp1rrteog7
 Code:
  extern int i;
 int i;
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp5ezn9l5a/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp5ezn9l5a/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wold-style-definition` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp1rrteog7/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp1rrteog7/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wold-style-definition` -> 0
 Compiler for C supports arguments -Wold-style-definition: YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpiempnu9u
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmplwj5bc33
 Code:
  extern int i;
 int i;
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpiempnu9u/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpiempnu9u/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wredundant-decls` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmplwj5bc33/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmplwj5bc33/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wredundant-decls` -> 0
 Compiler for C supports arguments -Wredundant-decls: YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpe6a0kyn1
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpvqe8g_zt
 Code:
  extern int i;
 int i;
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpe6a0kyn1/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpe6a0kyn1/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wshadow=local` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpvqe8g_zt/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpvqe8g_zt/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wshadow=local` -> 0
 Compiler for C supports arguments -Wshadow=local: YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpj40ij4zh
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpln99wvwl
 Code:
  extern int i;
 int i;
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpj40ij4zh/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpj40ij4zh/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wstrict-prototypes` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpln99wvwl/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpln99wvwl/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wstrict-prototypes` -> 0
 Compiler for C supports arguments -Wstrict-prototypes: YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp9b4llogq
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpr2nwhock
 Code:
  extern int i;
 int i;
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp9b4llogq/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp9b4llogq/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wtype-limits` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpr2nwhock/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpr2nwhock/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wtype-limits` -> 0
 Compiler for C supports arguments -Wtype-limits: YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpgawk7aqy
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpeowzq0uz
 Code:
  extern int i;
 int i;
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpgawk7aqy/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpgawk7aqy/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wundef` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpeowzq0uz/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpeowzq0uz/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wundef` -> 0
 Compiler for C supports arguments -Wundef: YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpqq0lwd5k
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpubujis3q
 Code:
  extern int i;
 int i;
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpqq0lwd5k/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpqq0lwd5k/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wvla` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpubujis3q/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpubujis3q/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wvla` -> 0
 Compiler for C supports arguments -Wvla: YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpnodeowbt
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpiek8ld5a
 Code:
  extern int i;
 int i;
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpnodeowbt/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpnodeowbt/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wwrite-strings` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpiek8ld5a/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpiek8ld5a/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wwrite-strings` -> 0
 Compiler for C supports arguments -Wwrite-strings: YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpen3vqjl4
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpahp3phbk
 Code:
  extern int i;
 int i;
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpen3vqjl4/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpen3vqjl4/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wgnu-variable-sized-type-not-at-end -Wno-gnu-variable-sized-type-not-at-end` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpahp3phbk/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpahp3phbk/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wgnu-variable-sized-type-not-at-end -Wno-gnu-variable-sized-type-not-at-end` -> 1
 stderr:
 cc: error: unrecognized command-line option '-Wgnu-variable-sized-type-not-at-end'
 -----------
 Compiler for C supports arguments -Wno-gnu-variable-sized-type-not-at-end: NO 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpnvk9nz9i
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpxez0fwiw
 Code:
  extern int i;
 int i;
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpnvk9nz9i/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpnvk9nz9i/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Winitializer-overrides -Wno-initializer-overrides` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpxez0fwiw/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpxez0fwiw/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Winitializer-overrides -Wno-initializer-overrides` -> 1
 stderr:
 cc: error: unrecognized command-line option '-Winitializer-overrides'
 -----------
 Compiler for C supports arguments -Wno-initializer-overrides: NO 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpy8ey_7rs
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpzujl3clv
 Code:
  extern int i;
 int i;
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpy8ey_7rs/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpy8ey_7rs/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wmissing-include-dirs -Wno-missing-include-dirs` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpzujl3clv/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpzujl3clv/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wmissing-include-dirs -Wno-missing-include-dirs` -> 0
 Compiler for C supports arguments -Wno-missing-include-dirs: YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp1ossfbxc
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp0crsfbxh
 Code:
  extern int i;
 int i;
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp1ossfbxc/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp1ossfbxc/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wpsabi -Wno-psabi` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp0crsfbxh/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp0crsfbxh/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wpsabi -Wno-psabi` -> 0
 Compiler for C supports arguments -Wno-psabi: YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpq5o8ufc6
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp65ya8gae
 Code:
  extern int i;
 int i;
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpq5o8ufc6/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpq5o8ufc6/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wshift-negative-value -Wno-shift-negative-value` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp65ya8gae/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp65ya8gae/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wshift-negative-value -Wno-shift-negative-value` -> 0
 Compiler for C supports arguments -Wno-shift-negative-value: YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpt9d_u2fy
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpoi9rnbq0
 Code:
  extern int i;
 int i;
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpt9d_u2fy/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpt9d_u2fy/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wstring-plus-int -Wno-string-plus-int` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpoi9rnbq0/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpoi9rnbq0/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wstring-plus-int -Wno-string-plus-int` -> 1
 stderr:
 cc: error: unrecognized command-line option '-Wstring-plus-int'
 -----------
 Compiler for C supports arguments -Wno-string-plus-int: NO 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpp343caws
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp0vq4b5op
 Code:
  extern int i;
 int i;
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpp343caws/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpp343caws/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wtautological-type-limit-compare -Wno-tautological-type-limit-compare` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp0vq4b5op/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp0vq4b5op/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wtautological-type-limit-compare -Wno-tautological-type-limit-compare` -> 1
 stderr:
 cc: error: unrecognized command-line option '-Wtautological-type-limit-compare'; did you mean '-Wtautological-compare'?
 -----------
 Compiler for C supports arguments -Wno-tautological-type-limit-compare: NO 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpr90k8vl0
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmppqhgib_7
 Code:
  extern int i;
 int i;
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpr90k8vl0/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpr90k8vl0/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wtypedef-redefinition -Wno-typedef-redefinition` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmppqhgib_7/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmppqhgib_7/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wtypedef-redefinition -Wno-typedef-redefinition` -> 1
 stderr:
 cc: error: unrecognized command-line option '-Wtypedef-redefinition'
 -----------
 Compiler for C supports arguments -Wno-typedef-redefinition: NO 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpabd8gwi5
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpju38tq9v
 Code:
  extern int i;
 int i;
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpabd8gwi5/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpabd8gwi5/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wthread-safety` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpju38tq9v/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpju38tq9v/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wthread-safety` -> 1
 stderr:
 cc: error: unrecognized command-line option '-Wthread-safety'
 -----------
 Compiler for C supports arguments -Wthread-safety: NO 
 Program cgcc found: NO
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpcksiv84_
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp_sboidzm
 Code:
  int main(void) { return 0; }
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpcksiv84_/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpcksiv84_/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -lm -Wl,--end-group -Wl,--allow-shlib-undefined` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp_sboidzm/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp_sboidzm/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -lm -Wl,--end-group -Wl,--allow-shlib-undefined` -> 0
 Library m found: YES
 Run-time dependency threads found: YES
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpujp4xoxj
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp28f7qeqw
 Code:
  int main(void) { return 0; }
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpujp4xoxj/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpujp4xoxj/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -lutil -Wl,--end-group -Wl,--allow-shlib-undefined` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp28f7qeqw/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp28f7qeqw/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -lutil -Wl,--end-group -Wl,--allow-shlib-undefined` -> 0
 Library util found: YES
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmph_fhbx1s
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmprn2zxvm1
 Code:
  int main(void) { return 0; }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmph_fhbx1s/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmph_fhbx1s/output.exe -D_FILE_OFFSET_BITS=64 -O0 -framework Hypervisor` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmprn2zxvm1/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmprn2zxvm1/output.exe -D_FILE_OFFSET_BITS=64 -O0 -framework Hypervisor` -> 1
 stderr:
 cc: error: unrecognized command-line option '-framework'
 -----------
@@ -525,18 +525,18 @@ Package 'xencontrol', required by 'virtual:world', not found
 -----------
 Run-time dependency xencontrol found: NO (tried pkgconfig)
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp51h87wqd
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpi2f8hc6t
 Code:
  int main(void) { return 0; }
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp51h87wqd/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp51h87wqd/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -lxenstore -Wl,--end-group -Wl,--allow-shlib-undefined` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpi2f8hc6t/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpi2f8hc6t/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -lxenstore -Wl,--end-group -Wl,--allow-shlib-undefined` -> 1
 stderr:
 /usr/bin/ld: cannot find -lxenstore: No such file or directory
 collect2: error: ld returned 1 exit status
 -----------
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpmt2lscah
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp5rpbce31
 Code:
  
         #include<stdio.h>
@@ -545,7 +545,7 @@ Code:
             return 0;
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpmt2lscah/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpmt2lscah/output.exe -D_FILE_OFFSET_BITS=64 -O0` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp5rpbce31/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp5rpbce31/output.exe -D_FILE_OFFSET_BITS=64 -O0` -> 0
 Program stdout:
 
 8
@@ -554,11 +554,11 @@ Program stderr:
 
 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpc9mtoa0s
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpkjx2dp9z
 Code:
  
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpc9mtoa0s/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpc9mtoa0s/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpkjx2dp9z/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpkjx2dp9z/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs` -> 0
 stdout:
 install: /usr/lib/gcc/x86_64-linux-gnu/13/
 programs: =/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/bin/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/bin/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/bin/
@@ -566,79 +566,79 @@ libraries: =/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/.
 -----------
 Library xenstore found: NO
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp7dsysu92
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpjuwxriod
 Code:
  int main(void) { return 0; }
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp7dsysu92/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp7dsysu92/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -lxenctrl -Wl,--end-group -Wl,--allow-shlib-undefined` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpjuwxriod/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpjuwxriod/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -lxenctrl -Wl,--end-group -Wl,--allow-shlib-undefined` -> 1
 stderr:
 /usr/bin/ld: cannot find -lxenctrl: No such file or directory
 collect2: error: ld returned 1 exit status
 -----------
 Library xenctrl found: NO
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmptdynoxyv
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp6_mjyxr3
 Code:
  int main(void) { return 0; }
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmptdynoxyv/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmptdynoxyv/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -lxendevicemodel -Wl,--end-group -Wl,--allow-shlib-undefined` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp6_mjyxr3/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp6_mjyxr3/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -lxendevicemodel -Wl,--end-group -Wl,--allow-shlib-undefined` -> 1
 stderr:
 /usr/bin/ld: cannot find -lxendevicemodel: No such file or directory
 collect2: error: ld returned 1 exit status
 -----------
 Library xendevicemodel found: NO
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpgj5bj32q
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpsbfd2ba2
 Code:
  int main(void) { return 0; }
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpgj5bj32q/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpgj5bj32q/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -lxenforeignmemory -Wl,--end-group -Wl,--allow-shlib-undefined` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpsbfd2ba2/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpsbfd2ba2/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -lxenforeignmemory -Wl,--end-group -Wl,--allow-shlib-undefined` -> 1
 stderr:
 /usr/bin/ld: cannot find -lxenforeignmemory: No such file or directory
 collect2: error: ld returned 1 exit status
 -----------
 Library xenforeignmemory found: NO
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpv9epzcn9
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpjiv6adoj
 Code:
  int main(void) { return 0; }
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpv9epzcn9/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpv9epzcn9/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -lxengnttab -Wl,--end-group -Wl,--allow-shlib-undefined` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpjiv6adoj/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpjiv6adoj/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -lxengnttab -Wl,--end-group -Wl,--allow-shlib-undefined` -> 1
 stderr:
 /usr/bin/ld: cannot find -lxengnttab: No such file or directory
 collect2: error: ld returned 1 exit status
 -----------
 Library xengnttab found: NO
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpj_0y1o4p
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp53hg5i8r
 Code:
  int main(void) { return 0; }
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpj_0y1o4p/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpj_0y1o4p/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -lxenevtchn -Wl,--end-group -Wl,--allow-shlib-undefined` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp53hg5i8r/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp53hg5i8r/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -lxenevtchn -Wl,--end-group -Wl,--allow-shlib-undefined` -> 1
 stderr:
 /usr/bin/ld: cannot find -lxenevtchn: No such file or directory
 collect2: error: ld returned 1 exit status
 -----------
 Library xenevtchn found: NO
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpj8ghwfj2
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpr5meyysf
 Code:
  int main(void) { return 0; }
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpj8ghwfj2/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpj8ghwfj2/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -lxentoolcore -Wl,--end-group -Wl,--allow-shlib-undefined` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpr5meyysf/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpr5meyysf/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -lxentoolcore -Wl,--end-group -Wl,--allow-shlib-undefined` -> 1
 stderr:
 /usr/bin/ld: cannot find -lxentoolcore: No such file or directory
 collect2: error: ld returned 1 exit status
 -----------
 Library xentoolcore found: NO
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp_49sgw3w
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpdu9maw09
 Code:
  /* SPDX-License-Identifier: GPL-2.0-or-later */
 
@@ -785,7 +785,7 @@ Code:
 #endif
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/scripts/xen-detect.c -o /home/sp24/femu/build-femu/meson-private/tmp_49sgw3w/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -DCONFIG_XEN_CTRL_INTERFACE_VERSION=41100` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/scripts/xen-detect.c -o /home/sp24/femu/build-femu/meson-private/tmpdu9maw09/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -DCONFIG_XEN_CTRL_INTERFACE_VERSION=41100` -> 1
 stderr:
 /home/sp24/femu/scripts/xen-detect.c:7:12: fatal error: xendevicemodel.h: No such file or directory
     7 |   #include <xendevicemodel.h>
@@ -793,7 +793,7 @@ stderr:
 compilation terminated.
 -----------
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpdekiqcc6
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpw69c__hy
 Code:
  /* SPDX-License-Identifier: GPL-2.0-or-later */
 
@@ -940,7 +940,7 @@ Code:
 #endif
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/scripts/xen-detect.c -o /home/sp24/femu/build-femu/meson-private/tmpdekiqcc6/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -DCONFIG_XEN_CTRL_INTERFACE_VERSION=41000` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/scripts/xen-detect.c -o /home/sp24/femu/build-femu/meson-private/tmpw69c__hy/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -DCONFIG_XEN_CTRL_INTERFACE_VERSION=41000` -> 1
 stderr:
 /home/sp24/femu/scripts/xen-detect.c:24:12: fatal error: xenforeignmemory.h: No such file or directory
    24 |   #include <xenforeignmemory.h>
@@ -948,7 +948,7 @@ stderr:
 compilation terminated.
 -----------
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpd4p9z4w_
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpzups39m9
 Code:
  /* SPDX-License-Identifier: GPL-2.0-or-later */
 
@@ -1095,7 +1095,7 @@ Code:
 #endif
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/scripts/xen-detect.c -o /home/sp24/femu/build-femu/meson-private/tmpd4p9z4w_/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -DCONFIG_XEN_CTRL_INTERFACE_VERSION=40900` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/scripts/xen-detect.c -o /home/sp24/femu/build-femu/meson-private/tmpzups39m9/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -DCONFIG_XEN_CTRL_INTERFACE_VERSION=40900` -> 1
 stderr:
 /home/sp24/femu/scripts/xen-detect.c:39:12: fatal error: xendevicemodel.h: No such file or directory
    39 |   #include <xendevicemodel.h>
@@ -1103,7 +1103,7 @@ stderr:
 compilation terminated.
 -----------
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpyqzndgxr
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpdbvyc9qv
 Code:
  /* SPDX-License-Identifier: GPL-2.0-or-later */
 
@@ -1250,7 +1250,7 @@ Code:
 #endif
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/scripts/xen-detect.c -o /home/sp24/femu/build-femu/meson-private/tmpyqzndgxr/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -DCONFIG_XEN_CTRL_INTERFACE_VERSION=40800` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/scripts/xen-detect.c -o /home/sp24/femu/build-femu/meson-private/tmpdbvyc9qv/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -DCONFIG_XEN_CTRL_INTERFACE_VERSION=40800` -> 1
 stderr:
 /home/sp24/femu/scripts/xen-detect.c:60:12: fatal error: xenctrl.h: No such file or directory
    60 |   #include <xenctrl.h>
@@ -1258,7 +1258,7 @@ stderr:
 compilation terminated.
 -----------
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpicc71_ko
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpqs12nrke
 Code:
  /* SPDX-License-Identifier: GPL-2.0-or-later */
 
@@ -1405,13 +1405,38 @@ Code:
 #endif
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/scripts/xen-detect.c -o /home/sp24/femu/build-femu/meson-private/tmpicc71_ko/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -DCONFIG_XEN_CTRL_INTERFACE_VERSION=40701` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/scripts/xen-detect.c -o /home/sp24/femu/build-femu/meson-private/tmpqs12nrke/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -DCONFIG_XEN_CTRL_INTERFACE_VERSION=40701` -> 1
 stderr:
 /home/sp24/femu/scripts/xen-detect.c:105:12: fatal error: xenctrl.h: No such file or directory
   105 |   #include <xenctrl.h>
       |            ^~~~~~~~~~~
 compilation terminated.
 -----------
+Pkg-config binary for 1 is cached.
+Determining dependency 'openssl' with pkg-config executable '/usr/bin/pkg-config'
+env[PKG_CONFIG_PATH]: 
+-----------
+Called: `/usr/bin/pkg-config --modversion openssl` -> 0
+stdout:
+3.0.13
+-----------
+env[PKG_CONFIG_PATH]: 
+-----------
+Called: `/usr/bin/pkg-config --cflags openssl` -> 0
+env[PKG_CONFIG_ALLOW_SYSTEM_LIBS]: 1
+env[PKG_CONFIG_PATH]: 
+-----------
+Called: `/usr/bin/pkg-config --libs openssl` -> 0
+stdout:
+-L/usr/lib/x86_64-linux-gnu -lssl -lcrypto
+-----------
+env[PKG_CONFIG_PATH]: 
+-----------
+Called: `/usr/bin/pkg-config --libs openssl` -> 0
+stdout:
+-lssl -lcrypto
+-----------
+Run-time dependency openssl found: YES 3.0.13
 Pkg-config binary for 1 is cached.
 Determining dependency 'glib-2.0' with pkg-config executable '/usr/bin/pkg-config'
 env[PKG_CONFIG_PATH]: 
@@ -1469,7 +1494,7 @@ stdout:
 -----------
 Run-time dependency gmodule-no-export-2.0 found: YES 2.80.0
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp4tmz4xgq
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpdlefdroj
 Code:
  
   #include <glib.h>
@@ -1483,9 +1508,9 @@ Code:
      return 0;
   }
 -----------
-Command line: `cc -m64 -mcx16 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include /home/sp24/femu/build-femu/meson-private/tmp4tmz4xgq/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp4tmz4xgq/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include /home/sp24/femu/build-femu/meson-private/tmpdlefdroj/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpdlefdroj/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp623bc63i
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpo9t27m0o
 Code:
  
   #include <glib.h>
@@ -1499,7 +1524,7 @@ Code:
   G_DEFINE_AUTOPTR_CLEANUP_FUNC(Foo, foo_free)
   int main(void) { return 0; }
 -----------
-Command line: `cc -m64 -mcx16 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include /home/sp24/femu/build-femu/meson-private/tmp623bc63i/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp623bc63i/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -Wunused-function -Werror` -> 0
+Command line: `cc -m64 -mcx16 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include /home/sp24/femu/build-femu/meson-private/tmpo9t27m0o/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpo9t27m0o/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -Wunused-function -Werror` -> 0
 Pkg-config binary for 1 is cached.
 Determining dependency 'gio-2.0' with pkg-config executable '/usr/bin/pkg-config'
 env[PKG_CONFIG_PATH]: 
@@ -1529,7 +1554,7 @@ stdout:
 -----------
 Run-time dependency gio-2.0 found: YES 2.80.0
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpeyd1noul
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpai25n1ji
 Code:
  
     #include <gio/gio.h>
@@ -1539,7 +1564,7 @@ Code:
       return 0;
     }
 -----------
-Command line: `cc -m64 -mcx16 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/libmount -I/usr/include/blkid /home/sp24/femu/build-femu/meson-private/tmpeyd1noul/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpeyd1noul/output.exe -pthread -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -Wl,--start-group /usr/lib/x86_64-linux-gnu/libgio-2.0.so /usr/lib/x86_64-linux-gnu/libgobject-2.0.so /usr/lib/x86_64-linux-gnu/libglib-2.0.so /usr/lib/x86_64-linux-gnu/libgmodule-2.0.so -Wl,--end-group` -> 0
+Command line: `cc -m64 -mcx16 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/libmount -I/usr/include/blkid /home/sp24/femu/build-femu/meson-private/tmpai25n1ji/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpai25n1ji/output.exe -pthread -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -Wl,--start-group /usr/lib/x86_64-linux-gnu/libgio-2.0.so /usr/lib/x86_64-linux-gnu/libgobject-2.0.so /usr/lib/x86_64-linux-gnu/libglib-2.0.so /usr/lib/x86_64-linux-gnu/libgmodule-2.0.so -Wl,--end-group` -> 0
 env[PKG_CONFIG_PATH]: 
 -----------
 Called: `/usr/bin/pkg-config --variable=gdbus_codegen gio-2.0` -> 0
@@ -1631,7 +1656,7 @@ stdout:
 -----------
 Run-time dependency zlib found: YES 1.3
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp89nv0l_f
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp9a4v4o33
 Code:
  
         #ifdef __has_include
@@ -1642,15 +1667,15 @@ Code:
          #include <libaio.h>
         #endif
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp89nv0l_f/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp9a4v4o33/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 0
 Has header "libaio.h" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpz28wmwt3
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp84ojvjgx
 Code:
  int main(void) { return 0; }
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpz28wmwt3/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpz28wmwt3/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -laio -Wl,--end-group -Wl,--allow-shlib-undefined` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp84ojvjgx/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp84ojvjgx/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -laio -Wl,--end-group -Wl,--allow-shlib-undefined` -> 0
 Library aio found: YES
 Pkg-config binary for 1 is cached.
 Determining dependency 'liburing' with pkg-config executable '/usr/bin/pkg-config'
@@ -1665,7 +1690,7 @@ Package 'liburing', required by 'virtual:world', not found
 -----------
 Run-time dependency liburing found: NO (tried pkgconfig)
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmptlewfpt1
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmppi_zgm7o
 Code:
  
   #include <liburing.h>
@@ -1673,9 +1698,9 @@ Code:
 
   int main(void) { return 0; }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmptlewfpt1/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmptlewfpt1/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmppi_zgm7o/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmppi_zgm7o/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 1
 stderr:
-/home/sp24/femu/build-femu/meson-private/tmptlewfpt1/testfile.c:2:12: fatal error: liburing.h: No such file or directory
+/home/sp24/femu/build-femu/meson-private/tmppi_zgm7o/testfile.c:2:12: fatal error: liburing.h: No such file or directory
     2 |   #include <liburing.h>
       |            ^~~~~~~~~~~~
 compilation terminated.
@@ -1693,7 +1718,7 @@ Package 'libnfs', required by 'virtual:world', not found
 -----------
 Run-time dependency libnfs found: NO (tried pkgconfig)
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpaz5k74fr
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp24vgm8em
 Code:
  
   #include <stddef.h>
@@ -1705,32 +1730,32 @@ Code:
   #endif
   int main(void) { getxattr(NULL, NULL, NULL, 0); setxattr(NULL, NULL, NULL, 0, 0); return 0; }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpaz5k74fr/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpaz5k74fr/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp24vgm8em/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp24vgm8em/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp4l25fasj
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpzfwywky9
 Code:
  int main(void) { return 0; }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp4l25fasj/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp4l25fasj/output.exe -D_FILE_OFFSET_BITS=64 -O0 -framework Cocoa` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpzfwywky9/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpzfwywky9/output.exe -D_FILE_OFFSET_BITS=64 -O0 -framework Cocoa` -> 1
 stderr:
 cc: error: unrecognized command-line option '-framework'
 -----------
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpru_uy6p4
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpqtpvxoq0
 Code:
  int main(void) { return 0; }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpru_uy6p4/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpru_uy6p4/output.exe -D_FILE_OFFSET_BITS=64 -O0 -framework CoreVideo` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpqtpvxoq0/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpqtpvxoq0/output.exe -D_FILE_OFFSET_BITS=64 -O0 -framework CoreVideo` -> 1
 stderr:
 cc: error: unrecognized command-line option '-framework'
 -----------
 Run-time dependency appleframeworks found: NO (tried framework)
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmph1tc8tq1
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpgdwyqdra
 Code:
  int main(void) { return 0; }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmph1tc8tq1/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmph1tc8tq1/output.exe -D_FILE_OFFSET_BITS=64 -O0 -framework vmnet` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpgdwyqdra/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpgdwyqdra/output.exe -D_FILE_OFFSET_BITS=64 -O0 -framework vmnet` -> 1
 stderr:
 cc: error: unrecognized command-line option '-framework'
 -----------
@@ -1748,7 +1773,7 @@ Package 'libseccomp', required by 'virtual:world', not found
 -----------
 Run-time dependency libseccomp found: NO (tried pkgconfig)
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpe12_tznv
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpnupz3pw9
 Code:
  
         #ifdef __has_include
@@ -1759,9 +1784,9 @@ Code:
          #include <cap-ng.h>
         #endif
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpe12_tznv/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpnupz3pw9/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 1
 stderr:
-/home/sp24/femu/build-femu/meson-private/tmpe12_tznv/testfile.c:4:12: error: #error "Header 'cap-ng.h' could not be found"
+/home/sp24/femu/build-femu/meson-private/tmpnupz3pw9/testfile.c:4:12: error: #error "Header 'cap-ng.h' could not be found"
     4 |           #error "Header 'cap-ng.h' could not be found"
       |            ^~~~~
 -----------
@@ -1807,7 +1832,7 @@ stdout:
 -----------
 Run-time dependency slirp found: YES 4.7.0
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpl7cdotgw
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp3i78v8is
 Code:
  
         #ifdef __has_include
@@ -1818,9 +1843,9 @@ Code:
          #include <libvdeplug.h>
         #endif
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpl7cdotgw/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp3i78v8is/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 1
 stderr:
-/home/sp24/femu/build-femu/meson-private/tmpl7cdotgw/testfile.c:4:12: error: #error "Header 'libvdeplug.h' could not be found"
+/home/sp24/femu/build-femu/meson-private/tmp3i78v8is/testfile.c:4:12: error: #error "Header 'libvdeplug.h' could not be found"
     4 |           #error "Header 'libvdeplug.h' could not be found"
       |            ^~~~~
 -----------
@@ -1910,12 +1935,12 @@ Package 'spice-server', required by 'virtual:world', not found
 -----------
 Run-time dependency spice-server found: NO (tried pkgconfig)
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpzkoxtyox
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp7_wwbh5g
 Code:
  int main(void) { return 0; }
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpzkoxtyox/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpzkoxtyox/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -lrt -Wl,--end-group -Wl,--allow-shlib-undefined` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp7_wwbh5g/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp7_wwbh5g/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -lrt -Wl,--end-group -Wl,--allow-shlib-undefined` -> 0
 Library rt found: YES
 Pkg-config binary for 1 is cached.
 Determining dependency 'libiscsi' with pkg-config executable '/usr/bin/pkg-config'
@@ -2002,12 +2027,12 @@ Package 'libudev', required by 'virtual:world', not found
 -----------
 Run-time dependency libudev found: NO (tried pkgconfig)
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp352x87qp
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp63kfjjet
 Code:
  int main(void) { return 0; }
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp352x87qp/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp352x87qp/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -lmpathpersist -Wl,--end-group -Wl,--allow-shlib-undefined` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp63kfjjet/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp63kfjjet/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -lmpathpersist -Wl,--end-group -Wl,--allow-shlib-undefined` -> 1
 stderr:
 /usr/bin/ld: cannot find -lmpathpersist: No such file or directory
 collect2: error: ld returned 1 exit status
@@ -2042,7 +2067,7 @@ stdout:
 -----------
 Run-time dependency ncursesw found: YES 6.4.20240113
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpfvt3l_4h
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmppgxixxcl
 Code:
  
     #if defined(__APPLE__) || defined(__OpenBSD__)
@@ -2061,9 +2086,9 @@ Code:
       return 0;
     }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpfvt3l_4h/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpfvt3l_4h/output.exe -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -DNCURSES_WIDECHAR=1 -Wl,--start-group /usr/lib/x86_64-linux-gnu/libncursesw.so /usr/lib/x86_64-linux-gnu/libtinfo.so -Wl,--end-group` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmppgxixxcl/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmppgxixxcl/output.exe -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -DNCURSES_WIDECHAR=1 -Wl,--start-group /usr/lib/x86_64-linux-gnu/libncursesw.so /usr/lib/x86_64-linux-gnu/libtinfo.so -Wl,--end-group` -> 0
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp9e7fowz8
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpwd4whilb
 Code:
  
         #include <iconv.h>
@@ -2072,13 +2097,13 @@ Code:
           return conv != (iconv_t) -1;
         }
 -----------
-Command line: `cc -m64 -mcx16 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include /home/sp24/femu/build-femu/meson-private/tmp9e7fowz8/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp9e7fowz8/output.exe -pthread -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -Wl,--start-group -liconv /usr/lib/x86_64-linux-gnu/libglib-2.0.so /usr/lib/x86_64-linux-gnu/libgmodule-2.0.so -Wl,--end-group` -> 1
+Command line: `cc -m64 -mcx16 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include /home/sp24/femu/build-femu/meson-private/tmpwd4whilb/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpwd4whilb/output.exe -pthread -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -Wl,--start-group -liconv /usr/lib/x86_64-linux-gnu/libglib-2.0.so /usr/lib/x86_64-linux-gnu/libgmodule-2.0.so -Wl,--end-group` -> 1
 stderr:
 /usr/bin/ld: cannot find -liconv: No such file or directory
 collect2: error: ld returned 1 exit status
 -----------
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpbk6z2sks
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp963cl060
 Code:
  
         #include <iconv.h>
@@ -2087,9 +2112,9 @@ Code:
           return conv != (iconv_t) -1;
         }
 -----------
-Command line: `cc -m64 -mcx16 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include /home/sp24/femu/build-femu/meson-private/tmpbk6z2sks/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpbk6z2sks/output.exe -pthread -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -Wl,--start-group /usr/lib/x86_64-linux-gnu/libglib-2.0.so /usr/lib/x86_64-linux-gnu/libgmodule-2.0.so -Wl,--end-group` -> 0
+Command line: `cc -m64 -mcx16 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include /home/sp24/femu/build-femu/meson-private/tmp963cl060/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp963cl060/output.exe -pthread -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -Wl,--start-group /usr/lib/x86_64-linux-gnu/libglib-2.0.so /usr/lib/x86_64-linux-gnu/libgmodule-2.0.so -Wl,--end-group` -> 0
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpl7dexm_s
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpunc3vnfg
 Code:
  
         #ifdef __has_include
@@ -2100,9 +2125,9 @@ Code:
          #include <brlapi.h>
         #endif
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpl7dexm_s/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpunc3vnfg/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 1
 stderr:
-/home/sp24/femu/build-femu/meson-private/tmpl7dexm_s/testfile.c:4:12: error: #error "Header 'brlapi.h' could not be found"
+/home/sp24/femu/build-femu/meson-private/tmpunc3vnfg/testfile.c:4:12: error: #error "Header 'brlapi.h' could not be found"
     4 |           #error "Header 'brlapi.h' could not be found"
       |            ^~~~~
 -----------
@@ -2137,9 +2162,9 @@ Calling CMake (['/usr/bin/cmake']) in /home/sp24/femu/build-femu/meson-private/_
   - "-DCMAKE_TOOLCHAIN_FILE=/home/sp24/femu/build-femu/meson-private/__CMake_compiler_info__/CMakeMesonTempToolchainFile.cmake"
   - "."
 CMake trace warning: add_executable() non imported executables are not supported
-CMake TRACE: /home/sp24/femu/build-femu/meson-private/__CMake_compiler_info__/CMakeFiles/CMakeScratch/TryCompile-LiA3ny/CMakeLists.txt:21 add_executable(['cmTC_8b87a'])
-CMake trace warning: target_link_options() TARGET cmTC_8b87a not found
-CMake TRACE: /home/sp24/femu/build-femu/meson-private/__CMake_compiler_info__/CMakeFiles/CMakeScratch/TryCompile-LiA3ny/CMakeLists.txt:27 target_link_libraries(['cmTC_8b87a', ''])
+CMake TRACE: /home/sp24/femu/build-femu/meson-private/__CMake_compiler_info__/CMakeFiles/CMakeScratch/TryCompile-7G6lBB/CMakeLists.txt:21 add_executable(['cmTC_dc96a'])
+CMake trace warning: target_link_options() TARGET cmTC_dc96a not found
+CMake TRACE: /home/sp24/femu/build-femu/meson-private/__CMake_compiler_info__/CMakeFiles/CMakeScratch/TryCompile-7G6lBB/CMakeLists.txt:27 target_link_libraries(['cmTC_dc96a', ''])
 Try CMake generator: auto
 Calling CMake (['/usr/bin/cmake']) in /home/sp24/femu/build-femu/meson-private/cmake_SDL2 with:
   - "--trace-expand"
@@ -2155,19 +2180,19 @@ Calling CMake (['/usr/bin/cmake']) in /home/sp24/femu/build-femu/meson-private/c
 Preliminary CMake check failed. Aborting.
 Run-time dependency sdl2 found: NO (tried pkgconfig, config-tool and cmake)
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp16cdhciv
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmphhg40yl3
 Code:
  int main(void) { return 0; }
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp16cdhciv/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp16cdhciv/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -lrados -Wl,--end-group -Wl,--allow-shlib-undefined` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmphhg40yl3/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmphhg40yl3/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -lrados -Wl,--end-group -Wl,--allow-shlib-undefined` -> 1
 stderr:
 /usr/bin/ld: cannot find -lrados: No such file or directory
 collect2: error: ld returned 1 exit status
 -----------
 Library rados found: NO
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpjzyi8awj
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpedfp0iwy
 Code:
  
         #ifdef __has_include
@@ -2178,9 +2203,9 @@ Code:
          #include <rbd/librbd.h>
         #endif
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpjzyi8awj/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpedfp0iwy/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 1
 stderr:
-/home/sp24/femu/build-femu/meson-private/tmpjzyi8awj/testfile.c:4:12: error: #error "Header 'rbd/librbd.h' could not be found"
+/home/sp24/femu/build-femu/meson-private/tmpedfp0iwy/testfile.c:4:12: error: #error "Header 'rbd/librbd.h' could not be found"
     4 |           #error "Header 'rbd/librbd.h' could not be found"
       |            ^~~~~
 -----------
@@ -2198,7 +2223,7 @@ Package 'glusterfs-api', required by 'virtual:world', not found
 -----------
 Run-time dependency glusterfs-api found: NO (tried pkgconfig)
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpyvu2u9dh
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpgyjky9_6
 Code:
  
     #include <string.h>
@@ -2213,7 +2238,7 @@ Code:
     }
   
 -----------
-Command line: `cc -m64 -mcx16 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include /home/sp24/femu/build-femu/meson-private/tmpyvu2u9dh/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpyvu2u9dh/output.exe -pthread -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -Wl,--start-group /usr/lib/x86_64-linux-gnu/libglib-2.0.so /usr/lib/x86_64-linux-gnu/libgmodule-2.0.so -Wl,--end-group` -> 0
+Command line: `cc -m64 -mcx16 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include /home/sp24/femu/build-femu/meson-private/tmpgyjky9_6/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpgyjky9_6/output.exe -pthread -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -Wl,--start-group /usr/lib/x86_64-linux-gnu/libglib-2.0.so /usr/lib/x86_64-linux-gnu/libgmodule-2.0.so -Wl,--end-group` -> 0
 Pkg-config binary for 1 is cached.
 Determining dependency 'libssh' with pkg-config executable '/usr/bin/pkg-config'
 env[PKG_CONFIG_PATH]: 
@@ -2227,7 +2252,7 @@ Package 'libssh', required by 'virtual:world', not found
 -----------
 Run-time dependency libssh found: NO (tried pkgconfig)
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp2nhdpc1f
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp7srt16og
 Code:
  
         #ifdef __has_include
@@ -2238,15 +2263,15 @@ Code:
          #include <bzlib.h>
         #endif
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp2nhdpc1f/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp7srt16og/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 1
 stderr:
-/home/sp24/femu/build-femu/meson-private/tmp2nhdpc1f/testfile.c:4:12: error: #error "Header 'bzlib.h' could not be found"
+/home/sp24/femu/build-femu/meson-private/tmp7srt16og/testfile.c:4:12: error: #error "Header 'bzlib.h' could not be found"
     4 |           #error "Header 'bzlib.h' could not be found"
       |            ^~~~~
 -----------
 Has header "bzlib.h" : NO 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpnh0si50_
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpdyc0phjj
 Code:
  
         #ifdef __has_include
@@ -2257,15 +2282,15 @@ Code:
          #include <lzfse.h>
         #endif
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpnh0si50_/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpdyc0phjj/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 1
 stderr:
-/home/sp24/femu/build-femu/meson-private/tmpnh0si50_/testfile.c:4:12: error: #error "Header 'lzfse.h' could not be found"
+/home/sp24/femu/build-femu/meson-private/tmpdyc0phjj/testfile.c:4:12: error: #error "Header 'lzfse.h' could not be found"
     4 |           #error "Header 'lzfse.h' could not be found"
       |            ^~~~~
 -----------
 Has header "lzfse.h" : NO 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpwp2a3yej
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpjf8sh5oi
 Code:
  
         #ifdef __has_include
@@ -2276,7 +2301,7 @@ Code:
          #include <sys/soundcard.h>
         #endif
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpwp2a3yej/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpjf8sh5oi/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 0
 Has header "sys/soundcard.h" : YES 
 Pkg-config binary for 1 is cached.
 Determining dependency 'epoxy' with pkg-config executable '/usr/bin/pkg-config'
@@ -2291,7 +2316,7 @@ Package 'epoxy', required by 'virtual:world', not found
 -----------
 Run-time dependency epoxy found: NO (tried pkgconfig)
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpjcg_lmv_
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp2zriepvb
 Code:
  
         #ifdef __has_include
@@ -2302,9 +2327,9 @@ Code:
          #include <epoxy/egl.h>
         #endif
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpjcg_lmv_/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp2zriepvb/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 1
 stderr:
-/home/sp24/femu/build-femu/meson-private/tmpjcg_lmv_/testfile.c:4:12: error: #error "Header 'epoxy/egl.h' could not be found"
+/home/sp24/femu/build-femu/meson-private/tmp2zriepvb/testfile.c:4:12: error: #error "Header 'epoxy/egl.h' could not be found"
     4 |           #error "Header 'epoxy/egl.h' could not be found"
       |            ^~~~~
 -----------
@@ -2402,7 +2427,7 @@ Package 'libjpeg', required by 'virtual:world', not found
 -----------
 Run-time dependency libjpeg found: NO (tried pkgconfig)
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp50by17n7
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmprxryp35z
 Code:
  
         #ifdef __has_include
@@ -2413,15 +2438,15 @@ Code:
          #include <sasl/sasl.h>
         #endif
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp50by17n7/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmprxryp35z/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 1
 stderr:
-/home/sp24/femu/build-femu/meson-private/tmp50by17n7/testfile.c:4:12: error: #error "Header 'sasl/sasl.h' could not be found"
+/home/sp24/femu/build-femu/meson-private/tmprxryp35z/testfile.c:4:12: error: #error "Header 'sasl/sasl.h' could not be found"
     4 |           #error "Header 'sasl/sasl.h' could not be found"
       |            ^~~~~
 -----------
 Has header "sasl/sasl.h" : NO 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpi4rg9u8a
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpnysax6td
 Code:
  
         #ifdef __has_include
@@ -2432,15 +2457,15 @@ Code:
          #include <security/pam_appl.h>
         #endif
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpi4rg9u8a/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpnysax6td/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 1
 stderr:
-/home/sp24/femu/build-femu/meson-private/tmpi4rg9u8a/testfile.c:4:12: error: #error "Header 'security/pam_appl.h' could not be found"
+/home/sp24/femu/build-femu/meson-private/tmpnysax6td/testfile.c:4:12: error: #error "Header 'security/pam_appl.h' could not be found"
     4 |           #error "Header 'security/pam_appl.h' could not be found"
       |            ^~~~~
 -----------
 Has header "security/pam_appl.h" : NO 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpevhvemt_
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpyinb9oo_
 Code:
  
         #ifdef __has_include
@@ -2451,15 +2476,15 @@ Code:
          #include <snappy-c.h>
         #endif
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpevhvemt_/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpyinb9oo_/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 1
 stderr:
-/home/sp24/femu/build-femu/meson-private/tmpevhvemt_/testfile.c:4:12: error: #error "Header 'snappy-c.h' could not be found"
+/home/sp24/femu/build-femu/meson-private/tmpyinb9oo_/testfile.c:4:12: error: #error "Header 'snappy-c.h' could not be found"
     4 |           #error "Header 'snappy-c.h' could not be found"
       |            ^~~~~
 -----------
 Has header "snappy-c.h" : NO 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpl5aas0yq
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpk7h23rza
 Code:
  
         #ifdef __has_include
@@ -2470,15 +2495,15 @@ Code:
          #include <lzo/lzo1x.h>
         #endif
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpl5aas0yq/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpk7h23rza/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 1
 stderr:
-/home/sp24/femu/build-femu/meson-private/tmpl5aas0yq/testfile.c:4:12: error: #error "Header 'lzo/lzo1x.h' could not be found"
+/home/sp24/femu/build-femu/meson-private/tmpk7h23rza/testfile.c:4:12: error: #error "Header 'lzo/lzo1x.h' could not be found"
     4 |           #error "Header 'lzo/lzo1x.h' could not be found"
       |            ^~~~~
 -----------
 Has header "lzo/lzo1x.h" : NO 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpflw4p6aq
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmps_qh75jt
 Code:
  
         #ifdef __has_include
@@ -2489,39 +2514,39 @@ Code:
          #include <numa.h>
         #endif
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpflw4p6aq/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmps_qh75jt/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 0
 Has header "numa.h" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp772o9j9t
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp08l1ua33
 Code:
  int main(void) { return 0; }
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp772o9j9t/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp772o9j9t/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -lnuma -Wl,--end-group -Wl,--allow-shlib-undefined` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp08l1ua33/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp08l1ua33/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -lnuma -Wl,--end-group -Wl,--allow-shlib-undefined` -> 0
 Library numa found: YES
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpjz1yhwep
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpz8md9uty
 Code:
  
    #include <numa.h>
    int main(void) { return numa_available(); }
    
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpjz1yhwep/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpjz1yhwep/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -Wl,--start-group -lnuma -Wl,--end-group` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpz8md9uty/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpz8md9uty/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -Wl,--start-group -lnuma -Wl,--end-group` -> 0
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpomtnk4hm
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp3r9lheky
 Code:
  int main(void) { return 0; }
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpomtnk4hm/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpomtnk4hm/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -libumad -Wl,--end-group -Wl,--allow-shlib-undefined` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp3r9lheky/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp3r9lheky/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -libumad -Wl,--end-group -Wl,--allow-shlib-undefined` -> 1
 stderr:
 /usr/bin/ld: cannot find -libumad: No such file or directory
 collect2: error: ld returned 1 exit status
 -----------
 Library ibumad found: NO
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp28lq3b7f
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpubed7u_f
 Code:
  
         #ifdef __has_include
@@ -2532,20 +2557,20 @@ Code:
          #include <rdma/rdma_cma.h>
         #endif
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp28lq3b7f/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpubed7u_f/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 1
 stderr:
-/home/sp24/femu/build-femu/meson-private/tmp28lq3b7f/testfile.c:4:12: error: #error "Header 'rdma/rdma_cma.h' could not be found"
+/home/sp24/femu/build-femu/meson-private/tmpubed7u_f/testfile.c:4:12: error: #error "Header 'rdma/rdma_cma.h' could not be found"
     4 |           #error "Header 'rdma/rdma_cma.h' could not be found"
       |            ^~~~~
 -----------
 Has header "rdma/rdma_cma.h" : NO 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpbku11sz6
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp3b9mgpbo
 Code:
  int main(void) { return 0; }
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpbku11sz6/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpbku11sz6/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -libverbs -Wl,--end-group -Wl,--allow-shlib-undefined` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp3b9mgpbo/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp3b9mgpbo/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -libverbs -Wl,--end-group -Wl,--allow-shlib-undefined` -> 1
 stderr:
 /usr/bin/ld: cannot find -libverbs: No such file or directory
 collect2: error: ld returned 1 exit status
@@ -2648,7 +2673,7 @@ Package 'libkeyutils', required by 'virtual:world', not found
 -----------
 Run-time dependency libkeyutils found: NO (tried pkgconfig)
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp4_fmv4rb
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp9lshw521
 Code:
  
         #define gettid meson_disable_define_of_gettid
@@ -2669,7 +2694,7 @@ Code:
           return gettid ();
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp4_fmv4rb/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp4_fmv4rb/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp9lshw521/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp9lshw521/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Checking for function "gettid" : YES 
 Pkg-config binary for 1 is cached.
 Determining dependency 'libselinux' with pkg-config executable '/usr/bin/pkg-config'
@@ -2697,7 +2722,7 @@ stdout:
 -----------
 Run-time dependency libselinux found: YES 3.5
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpnsbvdv8d
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpqj9g64j7
 Code:
  #include <malloc.h>
 #include <limits.h>
@@ -2712,10 +2737,10 @@ int main(void) {
             return (int) b;
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpnsbvdv8d/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpnsbvdv8d/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpqj9g64j7/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpqj9g64j7/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Checking for function "malloc_trim" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpmxdkzhj6
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp0svuh0d1
 Code:
  
   #ifndef _GNU_SOURCE
@@ -2731,10 +2756,10 @@ Code:
             return 0;
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpmxdkzhj6/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpmxdkzhj6/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp0svuh0d1/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp0svuh0d1/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Header "sys/stat.h" has symbol "STATX_BASIC_STATS" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpipqyust7
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp6jucokol
 Code:
  
   #ifndef _GNU_SOURCE
@@ -2750,7 +2775,7 @@ Code:
             return 0;
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpipqyust7/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpipqyust7/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp6jucokol/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp6jucokol/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Header "sys/stat.h" has symbol "STATX_MNT_ID" : YES 
 Pkg-config binary for 1 is cached.
 Determining dependency 'fuse3' with pkg-config executable '/usr/bin/pkg-config'
@@ -2801,7 +2826,7 @@ Package 'libdw', required by 'virtual:world', not found
 -----------
 Run-time dependency libdw found: NO (tried pkgconfig)
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpqce_1ad2
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp7qmgvyjd
 Code:
  
         #define numa_has_preferred_many meson_disable_define_of_numa_has_preferred_many
@@ -2822,10 +2847,10 @@ Code:
           return numa_has_preferred_many ();
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpqce_1ad2/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpqce_1ad2/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -Wl,--start-group -lnuma -Wl,--end-group` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp7qmgvyjd/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp7qmgvyjd/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -Wl,--start-group -lnuma -Wl,--end-group` -> 0
 Checking for function "numa_has_preferred_many" with dependency -lnuma: YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpucz1zlbw
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp3q95u686
 Code:
  
         #ifdef __has_include
@@ -2836,10 +2861,10 @@ Code:
          #include <sys/epoll.h>
         #endif
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpucz1zlbw/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp3q95u686/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 0
 Has header "sys/epoll.h" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpajrwnf5r
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpma_ghmwn
 Code:
  
         #ifdef __has_include
@@ -2850,10 +2875,10 @@ Code:
          #include <linux/magic.h>
         #endif
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpajrwnf5r/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpma_ghmwn/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 0
 Has header "linux/magic.h" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmps_8sz58h
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpxyr6x110
 Code:
  
         #ifdef __has_include
@@ -2864,15 +2889,15 @@ Code:
          #include <valgrind/valgrind.h>
         #endif
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmps_8sz58h/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpxyr6x110/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 1
 stderr:
-/home/sp24/femu/build-femu/meson-private/tmps_8sz58h/testfile.c:4:12: error: #error "Header 'valgrind/valgrind.h' could not be found"
+/home/sp24/femu/build-femu/meson-private/tmpxyr6x110/testfile.c:4:12: error: #error "Header 'valgrind/valgrind.h' could not be found"
     4 |           #error "Header 'valgrind/valgrind.h' could not be found"
       |            ^~~~~
 -----------
 Has header "valgrind/valgrind.h" : NO 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpri957ncc
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp5txro4r6
 Code:
  
         #ifdef __has_include
@@ -2883,10 +2908,10 @@ Code:
          #include <linux/btrfs.h>
         #endif
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpri957ncc/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp5txro4r6/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 0
 Has header "linux/btrfs.h" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpfhulk_c2
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpw6c8rn46
 Code:
  
         #ifdef __has_include
@@ -2897,15 +2922,15 @@ Code:
          #include <libdrm/drm.h>
         #endif
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpfhulk_c2/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpw6c8rn46/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 1
 stderr:
-/home/sp24/femu/build-femu/meson-private/tmpfhulk_c2/testfile.c:4:12: error: #error "Header 'libdrm/drm.h' could not be found"
+/home/sp24/femu/build-femu/meson-private/tmpw6c8rn46/testfile.c:4:12: error: #error "Header 'libdrm/drm.h' could not be found"
     4 |           #error "Header 'libdrm/drm.h' could not be found"
       |            ^~~~~
 -----------
 Has header "libdrm/drm.h" : NO 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpay8wijh6
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp7047r1n5
 Code:
  
         #ifdef __has_include
@@ -2916,10 +2941,10 @@ Code:
          #include <pty.h>
         #endif
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpay8wijh6/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp7047r1n5/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 0
 Has header "pty.h" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp0yzxyduf
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpn4nn10w7
 Code:
  
         #ifdef __has_include
@@ -2930,15 +2955,15 @@ Code:
          #include <sys/disk.h>
         #endif
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp0yzxyduf/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpn4nn10w7/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 1
 stderr:
-/home/sp24/femu/build-femu/meson-private/tmp0yzxyduf/testfile.c:4:12: error: #error "Header 'sys/disk.h' could not be found"
+/home/sp24/femu/build-femu/meson-private/tmpn4nn10w7/testfile.c:4:12: error: #error "Header 'sys/disk.h' could not be found"
     4 |           #error "Header 'sys/disk.h' could not be found"
       |            ^~~~~
 -----------
 Has header "sys/disk.h" : NO 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpzjsacb25
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmplw0r7_fm
 Code:
  
         #ifdef __has_include
@@ -2949,15 +2974,15 @@ Code:
          #include <sys/ioccom.h>
         #endif
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpzjsacb25/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmplw0r7_fm/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 1
 stderr:
-/home/sp24/femu/build-femu/meson-private/tmpzjsacb25/testfile.c:4:12: error: #error "Header 'sys/ioccom.h' could not be found"
+/home/sp24/femu/build-femu/meson-private/tmplw0r7_fm/testfile.c:4:12: error: #error "Header 'sys/ioccom.h' could not be found"
     4 |           #error "Header 'sys/ioccom.h' could not be found"
       |            ^~~~~
 -----------
 Has header "sys/ioccom.h" : NO 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp021dofkr
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpr0igdqgr
 Code:
  
         #ifdef __has_include
@@ -2968,15 +2993,15 @@ Code:
          #include <sys/kcov.h>
         #endif
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp021dofkr/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpr0igdqgr/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 1
 stderr:
-/home/sp24/femu/build-femu/meson-private/tmp021dofkr/testfile.c:4:12: error: #error "Header 'sys/kcov.h' could not be found"
+/home/sp24/femu/build-femu/meson-private/tmpr0igdqgr/testfile.c:4:12: error: #error "Header 'sys/kcov.h' could not be found"
     4 |           #error "Header 'sys/kcov.h' could not be found"
       |            ^~~~~
 -----------
 Has header "sys/kcov.h" : NO 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp9hsq3mul
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpkvcb20rp
 Code:
  
         #define close_range meson_disable_define_of_close_range
@@ -2997,10 +3022,10 @@ Code:
           return close_range ();
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp9hsq3mul/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp9hsq3mul/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpkvcb20rp/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpkvcb20rp/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Checking for function "close_range" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmptfj_d_os
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpuiy4a7bt
 Code:
  
         #define accept4 meson_disable_define_of_accept4
@@ -3021,10 +3046,10 @@ Code:
           return accept4 ();
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmptfj_d_os/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmptfj_d_os/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpuiy4a7bt/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpuiy4a7bt/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Checking for function "accept4" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpchhfto75
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp34ffdv9_
 Code:
  
         #define clock_adjtime meson_disable_define_of_clock_adjtime
@@ -3045,10 +3070,10 @@ Code:
           return clock_adjtime ();
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpchhfto75/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpchhfto75/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp34ffdv9_/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp34ffdv9_/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Checking for function "clock_adjtime" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpulm2xpty
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpgxpnvp71
 Code:
  
         #define dup3 meson_disable_define_of_dup3
@@ -3069,10 +3094,10 @@ Code:
           return dup3 ();
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpulm2xpty/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpulm2xpty/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpgxpnvp71/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpgxpnvp71/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Checking for function "dup3" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpugzkvkvu
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp6gb_lrhe
 Code:
  
         #define fallocate meson_disable_define_of_fallocate
@@ -3093,10 +3118,10 @@ Code:
           return fallocate ();
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpugzkvkvu/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpugzkvkvu/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp6gb_lrhe/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp6gb_lrhe/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Checking for function "fallocate" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp15ga9uld
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpd87w1mlw
 Code:
  
         #define posix_fallocate meson_disable_define_of_posix_fallocate
@@ -3117,10 +3142,10 @@ Code:
           return posix_fallocate ();
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp15ga9uld/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp15ga9uld/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpd87w1mlw/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpd87w1mlw/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Checking for function "posix_fallocate" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpsox17oq7
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpsr_1kf_7
 Code:
  
         #define getcpu meson_disable_define_of_getcpu
@@ -3145,10 +3170,10 @@ Code:
           return getcpu ();
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpsox17oq7/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpsox17oq7/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpsr_1kf_7/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpsr_1kf_7/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Checking for function "getcpu" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpd5an16eq
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpqetta8zj
 Code:
  #include <sched.h>
 #include <limits.h>
@@ -3163,17 +3188,17 @@ int main(void) {
             return (int) b;
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpd5an16eq/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpd5an16eq/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpqetta8zj/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpqetta8zj/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 1
 stderr:
-/home/sp24/femu/build-femu/meson-private/tmpd5an16eq/testfile.c: In function 'main':
-/home/sp24/femu/build-femu/meson-private/tmpd5an16eq/testfile.c:9:32: error: 'sched_getcpu' undeclared (first use in this function); did you mean 'sched_getparam'?
+/home/sp24/femu/build-femu/meson-private/tmpqetta8zj/testfile.c: In function 'main':
+/home/sp24/femu/build-femu/meson-private/tmpqetta8zj/testfile.c:9:32: error: 'sched_getcpu' undeclared (first use in this function); did you mean 'sched_getparam'?
     9 |             void *a = (void*) &sched_getcpu;
       |                                ^~~~~~~~~~~~
       |                                sched_getparam
-/home/sp24/femu/build-femu/meson-private/tmpd5an16eq/testfile.c:9:32: note: each undeclared identifier is reported only once for each function it appears in
+/home/sp24/femu/build-femu/meson-private/tmpqetta8zj/testfile.c:9:32: note: each undeclared identifier is reported only once for each function it appears in
 -----------
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpuip00lro
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpxlsg4e30
 Code:
  #include <sched.h>
         int main(void) {
@@ -3199,19 +3224,19 @@ Code:
         return 0;
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpuip00lro/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpuip00lro/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpxlsg4e30/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpxlsg4e30/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 1
 stderr:
-/home/sp24/femu/build-femu/meson-private/tmpuip00lro/testfile.c: In function 'main':
-/home/sp24/femu/build-femu/meson-private/tmpuip00lro/testfile.c:12:14: error: #error "No definition for __builtin_sched_getcpu found in the prefix"
+/home/sp24/femu/build-femu/meson-private/tmpxlsg4e30/testfile.c: In function 'main':
+/home/sp24/femu/build-femu/meson-private/tmpxlsg4e30/testfile.c:12:14: error: #error "No definition for __builtin_sched_getcpu found in the prefix"
    12 |             #error "No definition for __builtin_sched_getcpu found in the prefix"
       |              ^~~~~
-/home/sp24/femu/build-femu/meson-private/tmpuip00lro/testfile.c:17:18: error: #error "__builtin_sched_getcpu not found"
+/home/sp24/femu/build-femu/meson-private/tmpxlsg4e30/testfile.c:17:18: error: #error "__builtin_sched_getcpu not found"
    17 |                 #error "__builtin_sched_getcpu not found"
       |                  ^~~~~
 -----------
 Checking for function "sched_getcpu" : NO 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmph3rkoxa6
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpmd6wt_c4
 Code:
  #include <stdlib.h>
 #include <limits.h>
@@ -3226,10 +3251,10 @@ int main(void) {
             return (int) b;
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmph3rkoxa6/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmph3rkoxa6/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpmd6wt_c4/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpmd6wt_c4/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Checking for function "posix_memalign" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpw1mu5qk6
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp2yv3ibb5
 Code:
  
         #define _aligned_malloc meson_disable_define_of__aligned_malloc
@@ -3250,14 +3275,14 @@ Code:
           return _aligned_malloc ();
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpw1mu5qk6/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpw1mu5qk6/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp2yv3ibb5/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp2yv3ibb5/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 1
 stderr:
-/usr/bin/ld: /tmp/ccw5xjGS.o: in function `main':
+/usr/bin/ld: /tmp/ccLkQEvX.o: in function `main':
 testfile.c:(.text+0x9): undefined reference to `_aligned_malloc'
 collect2: error: ld returned 1 exit status
 -----------
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpw4faunn7
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp2jziqcuo
 Code:
  
         int main(void) {
@@ -3283,16 +3308,16 @@ Code:
         return 0;
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpw4faunn7/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpw4faunn7/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp2jziqcuo/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp2jziqcuo/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 1
 stderr:
-/home/sp24/femu/build-femu/meson-private/tmpw4faunn7/testfile.c: In function 'main':
-/home/sp24/femu/build-femu/meson-private/tmpw4faunn7/testfile.c:17:18: error: #error "__builtin__aligned_malloc not found"
+/home/sp24/femu/build-femu/meson-private/tmp2jziqcuo/testfile.c: In function 'main':
+/home/sp24/femu/build-femu/meson-private/tmp2jziqcuo/testfile.c:17:18: error: #error "__builtin__aligned_malloc not found"
    17 |                 #error "__builtin__aligned_malloc not found"
       |                  ^~~~~
 -----------
 Checking for function "_aligned_malloc" : NO 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpzfk8gwpr
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpsw170rtc
 Code:
  
         #define valloc meson_disable_define_of_valloc
@@ -3313,10 +3338,10 @@ Code:
           return valloc ();
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpzfk8gwpr/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpzfk8gwpr/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpsw170rtc/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpsw170rtc/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Checking for function "valloc" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpoxfaunea
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp3ozmcwrc
 Code:
  
         #define memalign meson_disable_define_of_memalign
@@ -3337,10 +3362,10 @@ Code:
           return memalign ();
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpoxfaunea/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpoxfaunea/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp3ozmcwrc/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp3ozmcwrc/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Checking for function "memalign" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp0nn5p_k2
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp699t896h
 Code:
  
         #define ppoll meson_disable_define_of_ppoll
@@ -3361,10 +3386,10 @@ Code:
           return ppoll ();
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp0nn5p_k2/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp0nn5p_k2/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp699t896h/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp699t896h/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Checking for function "ppoll" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpj2tdvilr
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpxd2g816h
 Code:
  #include <sys/uio.h>
 #include <limits.h>
@@ -3379,10 +3404,10 @@ int main(void) {
             return (int) b;
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpj2tdvilr/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpj2tdvilr/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpxd2g816h/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpxd2g816h/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Checking for function "preadv" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpt1zweolr
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp5lmi4_9g
 Code:
  
         #define pthread_fchdir_np meson_disable_define_of_pthread_fchdir_np
@@ -3403,14 +3428,14 @@ Code:
           return pthread_fchdir_np ();
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpt1zweolr/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpt1zweolr/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp5lmi4_9g/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp5lmi4_9g/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 1
 stderr:
-/usr/bin/ld: /tmp/ccKYOfw0.o: in function `main':
+/usr/bin/ld: /tmp/ccnQLi3U.o: in function `main':
 testfile.c:(.text+0x9): undefined reference to `pthread_fchdir_np'
 collect2: error: ld returned 1 exit status
 -----------
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpwh72dqs6
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmph_7z6oqa
 Code:
  
         int main(void) {
@@ -3436,16 +3461,16 @@ Code:
         return 0;
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpwh72dqs6/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpwh72dqs6/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmph_7z6oqa/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmph_7z6oqa/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 1
 stderr:
-/home/sp24/femu/build-femu/meson-private/tmpwh72dqs6/testfile.c: In function 'main':
-/home/sp24/femu/build-femu/meson-private/tmpwh72dqs6/testfile.c:17:18: error: #error "__builtin_pthread_fchdir_np not found"
+/home/sp24/femu/build-femu/meson-private/tmph_7z6oqa/testfile.c: In function 'main':
+/home/sp24/femu/build-femu/meson-private/tmph_7z6oqa/testfile.c:17:18: error: #error "__builtin_pthread_fchdir_np not found"
    17 |                 #error "__builtin_pthread_fchdir_np not found"
       |                  ^~~~~
 -----------
 Checking for function "pthread_fchdir_np" : NO 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpq_fuk9gz
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpksflczhz
 Code:
  
         #define sendfile meson_disable_define_of_sendfile
@@ -3466,10 +3491,10 @@ Code:
           return sendfile ();
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpq_fuk9gz/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpq_fuk9gz/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpksflczhz/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpksflczhz/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Checking for function "sendfile" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpyiqoxo7m
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpss4w6yeq
 Code:
  
         #define setns meson_disable_define_of_setns
@@ -3490,10 +3515,10 @@ Code:
           return setns ();
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpyiqoxo7m/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpyiqoxo7m/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpss4w6yeq/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpss4w6yeq/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Checking for function "setns" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp32o1fgni
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpgchczo0n
 Code:
  
         #define unshare meson_disable_define_of_unshare
@@ -3514,10 +3539,10 @@ Code:
           return unshare ();
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp32o1fgni/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp32o1fgni/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpgchczo0n/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpgchczo0n/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Checking for function "unshare" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpvgv3pic1
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpow3jealg
 Code:
  
         #define syncfs meson_disable_define_of_syncfs
@@ -3538,10 +3563,10 @@ Code:
           return syncfs ();
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpvgv3pic1/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpvgv3pic1/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpow3jealg/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpow3jealg/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Checking for function "syncfs" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpfm2qui2q
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp2hlm3ftp
 Code:
  
         #define sync_file_range meson_disable_define_of_sync_file_range
@@ -3562,10 +3587,10 @@ Code:
           return sync_file_range ();
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpfm2qui2q/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpfm2qui2q/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp2hlm3ftp/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp2hlm3ftp/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Checking for function "sync_file_range" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp9xq1ltxb
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp71u_26pe
 Code:
  
         #define timerfd_create meson_disable_define_of_timerfd_create
@@ -3586,10 +3611,10 @@ Code:
           return timerfd_create ();
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp9xq1ltxb/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp9xq1ltxb/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp71u_26pe/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp71u_26pe/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Checking for function "timerfd_create" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp5gliilrq
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpc3b2xpam
 Code:
  
         #define copy_file_range meson_disable_define_of_copy_file_range
@@ -3610,10 +3635,10 @@ Code:
           return copy_file_range ();
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp5gliilrq/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp5gliilrq/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpc3b2xpam/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpc3b2xpam/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Checking for function "copy_file_range" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp61n7mjgl
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp88tlfu9b
 Code:
  
         #define getifaddrs meson_disable_define_of_getifaddrs
@@ -3634,10 +3659,10 @@ Code:
           return getifaddrs ();
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp61n7mjgl/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp61n7mjgl/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp88tlfu9b/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp88tlfu9b/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Checking for function "getifaddrs" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp3ohh7dyl
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpnj5kvdnx
 Code:
  
         #define openpty meson_disable_define_of_openpty
@@ -3658,10 +3683,10 @@ Code:
           return openpty ();
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp3ohh7dyl/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp3ohh7dyl/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -Wl,--start-group -lutil -Wl,--end-group` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpnj5kvdnx/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpnj5kvdnx/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -Wl,--start-group -lutil -Wl,--end-group` -> 0
 Checking for function "openpty" with dependency -lutil: YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpy2m5k94a
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpw9mrvzs4
 Code:
  
         #define strchrnul meson_disable_define_of_strchrnul
@@ -3682,10 +3707,10 @@ Code:
           return strchrnul ();
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpy2m5k94a/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpy2m5k94a/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpw9mrvzs4/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpw9mrvzs4/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Checking for function "strchrnul" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpadv4lvj6
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpz6iy893j
 Code:
  #include <stdlib.h>
 #include <limits.h>
@@ -3700,10 +3725,10 @@ int main(void) {
             return (int) b;
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpadv4lvj6/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpadv4lvj6/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpz6iy893j/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpz6iy893j/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Checking for function "system" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpxpxv_axs
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp3soluud4
 Code:
  
         #include <sys/inotify.h>
@@ -3715,10 +3740,10 @@ Code:
             return 0;
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpxpxv_axs/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpxpxv_axs/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp3soluud4/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp3soluud4/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Header "sys/inotify.h" has symbol "inotify_init" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpi99k659f
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp9am8o52c
 Code:
  
         #include <sys/inotify.h>
@@ -3730,10 +3755,10 @@ Code:
             return 0;
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpi99k659f/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpi99k659f/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp9am8o52c/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp9am8o52c/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Header "sys/inotify.h" has symbol "inotify_init1" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp1m2x_cgf
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp1l0ylrda
 Code:
  
         #include <linux/blkzoned.h>
@@ -3745,10 +3770,10 @@ Code:
             return 0;
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp1m2x_cgf/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp1m2x_cgf/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp1l0ylrda/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp1l0ylrda/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Header "linux/blkzoned.h" has symbol "BLKOPENZONE" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp37b6mhq9
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp5354gtgk
 Code:
  
         #include <sys/epoll.h>
@@ -3760,10 +3785,10 @@ Code:
             return 0;
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp37b6mhq9/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp37b6mhq9/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp5354gtgk/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp5354gtgk/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Header "sys/epoll.h" has symbol "epoll_create1" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp1spj6qgy
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpyzdw98bx
 Code:
  
         #include <linux/falloc.h>
@@ -3775,10 +3800,10 @@ Code:
             return 0;
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp1spj6qgy/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp1spj6qgy/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpyzdw98bx/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpyzdw98bx/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Header "linux/falloc.h" has symbol "FALLOC_FL_PUNCH_HOLE" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp0fhjgqa0
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpmw2ghhpr
 Code:
  
         #include <linux/falloc.h>
@@ -3790,10 +3815,10 @@ Code:
             return 0;
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp0fhjgqa0/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp0fhjgqa0/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpmw2ghhpr/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpmw2ghhpr/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Header "linux/falloc.h" has symbol "FALLOC_FL_KEEP_SIZE" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmprvv12s4o
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpueq2mldt
 Code:
  
         #include <linux/falloc.h>
@@ -3805,10 +3830,10 @@ Code:
             return 0;
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmprvv12s4o/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmprvv12s4o/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpueq2mldt/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpueq2mldt/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Header "linux/falloc.h" has symbol "FALLOC_FL_ZERO_RANGE" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp3higch6h
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpev_gignc
 Code:
  
         #ifdef __has_include
@@ -3819,10 +3844,10 @@ Code:
          #include <linux/fiemap.h>
         #endif
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp3higch6h/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpev_gignc/testfile.c -E -P -D_FILE_OFFSET_BITS=64 -P -O0 -std=gnu11` -> 0
 Has header "linux/fiemap.h" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmppssxapeq
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpkxaq_6fb
 Code:
  
         #include <linux/fs.h>
@@ -3834,10 +3859,10 @@ Code:
             return 0;
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmppssxapeq/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmppssxapeq/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpkxaq_6fb/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpkxaq_6fb/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Header "linux/fs.h" has symbol "FS_IOC_FIEMAP" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp1excfref
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpciqd_r55
 Code:
  
         #define getrandom meson_disable_define_of_getrandom
@@ -3858,10 +3883,10 @@ Code:
           return getrandom ();
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp1excfref/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp1excfref/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpciqd_r55/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpciqd_r55/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Checking for function "getrandom" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmph27vkbov
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpqa6szqcc
 Code:
  
         #include <sys/random.h>
@@ -3873,10 +3898,10 @@ Code:
             return 0;
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmph27vkbov/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmph27vkbov/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpqa6szqcc/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpqa6szqcc/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Header "sys/random.h" has symbol "GRND_NONBLOCK" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp57ds_hed
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmphjjm407p
 Code:
  
         #include <sys/prctl.h>
@@ -3888,10 +3913,10 @@ Code:
             return 0;
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp57ds_hed/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp57ds_hed/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmphjjm407p/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmphjjm407p/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Header "sys/prctl.h" has symbol "PR_SET_TIMERSLACK" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp1l_2mpw5
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp0bdo6rck
 Code:
  
         #include <linux/rtnetlink.h>
@@ -3903,10 +3928,10 @@ Code:
             return 0;
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp1l_2mpw5/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp1l_2mpw5/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp0bdo6rck/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp0bdo6rck/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Header "linux/rtnetlink.h" has symbol "IFLA_PROTO_DOWN" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp2qjxj0p1
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpeh1pgqmi
 Code:
  
         #include <sys/sysmacros.h>
@@ -3918,10 +3943,10 @@ Code:
             return 0;
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp2qjxj0p1/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp2qjxj0p1/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpeh1pgqmi/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpeh1pgqmi/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Header "sys/sysmacros.h" has symbol "makedev" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpe76on13j
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpnfk4nnnt
 Code:
  
         #include <getopt.h>
@@ -3933,17 +3958,17 @@ Code:
             return 0;
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpe76on13j/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpe76on13j/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpnfk4nnnt/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpnfk4nnnt/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 1
 stderr:
-/home/sp24/femu/build-femu/meson-private/tmpe76on13j/testfile.c: In function 'main':
-/home/sp24/femu/build-femu/meson-private/tmpe76on13j/testfile.c:6:17: error: 'optreset' undeclared (first use in this function)
+/home/sp24/femu/build-femu/meson-private/tmpnfk4nnnt/testfile.c: In function 'main':
+/home/sp24/femu/build-femu/meson-private/tmpnfk4nnnt/testfile.c:6:17: error: 'optreset' undeclared (first use in this function)
     6 |                 optreset;
       |                 ^~~~~~~~
-/home/sp24/femu/build-femu/meson-private/tmpe76on13j/testfile.c:6:17: note: each undeclared identifier is reported only once for each function it appears in
+/home/sp24/femu/build-femu/meson-private/tmpnfk4nnnt/testfile.c:6:17: note: each undeclared identifier is reported only once for each function it appears in
 -----------
 Header "getopt.h" has symbol "optreset" : NO 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp_qp5kcjo
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp1b8u8pzt
 Code:
  
         #include <netinet/in.h>
@@ -3955,10 +3980,10 @@ Code:
             return 0;
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp_qp5kcjo/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp_qp5kcjo/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp1b8u8pzt/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp1b8u8pzt/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Header "netinet/in.h" has symbol "IPPROTO_MPTCP" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpf470dfdv
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpdo7qy82h
 Code:
  #include <signal.h>
         void bar(void) {
@@ -3967,16 +3992,16 @@ Code:
 
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpf470dfdv/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpf470dfdv/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpdo7qy82h/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpdo7qy82h/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 1
 stderr:
-/home/sp24/femu/build-femu/meson-private/tmpf470dfdv/testfile.c: In function 'bar':
-/home/sp24/femu/build-femu/meson-private/tmpf470dfdv/testfile.c:4:16: error: 'struct sigevent' has no member named 'sigev_notify_thread_id'
+/home/sp24/femu/build-femu/meson-private/tmpdo7qy82h/testfile.c: In function 'bar':
+/home/sp24/femu/build-femu/meson-private/tmpdo7qy82h/testfile.c:4:16: error: 'struct sigevent' has no member named 'sigev_notify_thread_id'
     4 |             foo.sigev_notify_thread_id;
       |                ^
 -----------
 Checking whether type "struct sigevent" has member "sigev_notify_thread_id" : NO 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmputx5tfku
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp4d_j1y1u
 Code:
  #include <sys/stat.h>
         void bar(void) {
@@ -3985,10 +4010,10 @@ Code:
 
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmputx5tfku/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmputx5tfku/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp4d_j1y1u/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp4d_j1y1u/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Checking whether type "struct stat" has member "st_atim" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpbk0uocgi
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpwy303hvm
 Code:
  #include <linux/blkzoned.h>
         void bar(void) {
@@ -3997,38 +4022,38 @@ Code:
 
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpbk0uocgi/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpbk0uocgi/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpwy303hvm/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpwy303hvm/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Checking whether type "struct blk_zone" has member "capacity" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpys9hlycp
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpc_ucmfj_
 Code:
  #include <sys/uio.h>
         void bar(void) {
             sizeof(struct iovec);
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpys9hlycp/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpys9hlycp/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpc_ucmfj_/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpc_ucmfj_/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Checking for type "struct iovec" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpt5zapdyh
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpeeva79b1
 Code:
  #include <utmpx.h>
         void bar(void) {
             sizeof(struct utmpx);
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpt5zapdyh/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpt5zapdyh/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpeeva79b1/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpeeva79b1/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Checking for type "struct utmpx" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpjvibgqpg
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmptri4173z
 Code:
  
   #include <sys/eventfd.h>
   int main(void) { return eventfd(0, EFD_NONBLOCK | EFD_CLOEXEC); }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpjvibgqpg/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpjvibgqpg/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmptri4173z/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmptri4173z/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpx0tq1f6z
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpgt393dqr
 Code:
  
   #ifndef _GNU_SOURCE
@@ -4044,9 +4069,9 @@ Code:
   #endif
   }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpx0tq1f6z/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpx0tq1f6z/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpgt393dqr/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpgt393dqr/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpwhwolj9b
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp0brqv2tr
 Code:
  
   #ifndef _GNU_SOURCE
@@ -4058,9 +4083,9 @@ Code:
   #include <stddef.h>
   int main(void) { return madvise(NULL, 0, MADV_DONTNEED); }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpwhwolj9b/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpwhwolj9b/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp0brqv2tr/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp0brqv2tr/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp47fyl_fe
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpsc6frbdr
 Code:
  
   #ifndef _GNU_SOURCE
@@ -4073,18 +4098,18 @@ Code:
     extern int madvise(int);
     int main(void) { return madvise(0); }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp47fyl_fe/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp47fyl_fe/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpsc6frbdr/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpsc6frbdr/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 1
 stderr:
-/home/sp24/femu/build-femu/meson-private/tmp47fyl_fe/testfile.c:9:16: error: conflicting types for 'madvise'; have 'int(int)'
+/home/sp24/femu/build-femu/meson-private/tmpsc6frbdr/testfile.c:9:16: error: conflicting types for 'madvise'; have 'int(int)'
     9 |     extern int madvise(int);
       |                ^~~~~~~
-In file included from /home/sp24/femu/build-femu/meson-private/tmp47fyl_fe/testfile.c:7:
+In file included from /home/sp24/femu/build-femu/meson-private/tmpsc6frbdr/testfile.c:7:
 /usr/include/x86_64-linux-gnu/sys/mman.h:94:12: note: previous declaration of 'madvise' with type 'int(void *, size_t,  int)' {aka 'int(void *, long unsigned int,  int)'}
    94 | extern int madvise (void *__addr, size_t __len, int __advice) __THROW;
       |            ^~~~~~~
 -----------
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpoxyyiz1y
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmplp9512z4
 Code:
  
   #ifndef _GNU_SOURCE
@@ -4094,9 +4119,9 @@ Code:
   #include <sys/mman.h>
   int main(void) { return memfd_create("foo", MFD_ALLOW_SEALING); }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpoxyyiz1y/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpoxyyiz1y/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmplp9512z4/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmplp9512z4/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpy_i46_15
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpr8x3c919
 Code:
  
   #ifndef _GNU_SOURCE
@@ -4110,9 +4135,9 @@ Code:
   int main(void) { struct file_handle fh; return open_by_handle_at(0, &fh, 0); }
   #endif
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpy_i46_15/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpy_i46_15/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpr8x3c919/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpr8x3c919/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpyjsrhqpx
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpapwbjx44
 Code:
  
   #ifndef _GNU_SOURCE
@@ -4123,9 +4148,9 @@ Code:
   #include <stddef.h>
   int main(void) { return posix_madvise(NULL, 0, POSIX_MADV_DONTNEED); }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpyjsrhqpx/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpyjsrhqpx/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpapwbjx44/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpapwbjx44/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp79dx4kou
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpi_y4q9n_
 Code:
  
   #ifndef _GNU_SOURCE
@@ -4143,9 +4168,9 @@ Code:
     return 0;
   }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp79dx4kou/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp79dx4kou/output.exe -pthread -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpi_y4q9n_/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpi_y4q9n_/output.exe -pthread -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp68fbg88_
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpwjx24e9w
 Code:
  
   #ifndef _GNU_SOURCE
@@ -4162,19 +4187,19 @@ Code:
     return 0;
   }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp68fbg88_/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp68fbg88_/output.exe -pthread -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpwjx24e9w/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpwjx24e9w/output.exe -pthread -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 1
 stderr:
-/home/sp24/femu/build-femu/meson-private/tmp68fbg88_/testfile.c: In function 'f':
-/home/sp24/femu/build-femu/meson-private/tmp68fbg88_/testfile.c:8:48: warning: passing argument 1 of 'pthread_setname_np' makes integer from pointer without a cast [-Wint-conversion]
+/home/sp24/femu/build-femu/meson-private/tmpwjx24e9w/testfile.c: In function 'f':
+/home/sp24/femu/build-femu/meson-private/tmpwjx24e9w/testfile.c:8:48: warning: passing argument 1 of 'pthread_setname_np' makes integer from pointer without a cast [-Wint-conversion]
     8 |   static void *f(void *p) { pthread_setname_np("QEMU"); return NULL; }
       |                                                ^~~~~~
       |                                                |
       |                                                char *
-In file included from /home/sp24/femu/build-femu/meson-private/tmp68fbg88_/testfile.c:6:
+In file included from /home/sp24/femu/build-femu/meson-private/tmpwjx24e9w/testfile.c:6:
 /usr/include/pthread.h:463:42: note: expected 'pthread_t' {aka 'long unsigned int'} but argument is of type 'char *'
   463 | extern int pthread_setname_np (pthread_t __target_thread, const char *__name)
       |                                ~~~~~~~~~~^~~~~~~~~~~~~~~
-/home/sp24/femu/build-femu/meson-private/tmp68fbg88_/testfile.c:8:29: error: too few arguments to function 'pthread_setname_np'
+/home/sp24/femu/build-femu/meson-private/tmpwjx24e9w/testfile.c:8:29: error: too few arguments to function 'pthread_setname_np'
     8 |   static void *f(void *p) { pthread_setname_np("QEMU"); return NULL; }
       |                             ^~~~~~~~~~~~~~~~~~
 /usr/include/pthread.h:463:12: note: declared here
@@ -4182,7 +4207,7 @@ In file included from /home/sp24/femu/build-femu/meson-private/tmp68fbg88_/testf
       |            ^~~~~~~~~~~~~~~~~~
 -----------
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpq5vh371c
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp7bb9hzb_
 Code:
  
   #ifndef _GNU_SOURCE
@@ -4201,15 +4226,15 @@ Code:
     return 0;
   }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpq5vh371c/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpq5vh371c/output.exe -pthread -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp7bb9hzb_/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp7bb9hzb_/output.exe -pthread -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 1
 stderr:
-/home/sp24/femu/build-femu/meson-private/tmpq5vh371c/testfile.c:7:12: fatal error: pthread_np.h: No such file or directory
+/home/sp24/femu/build-femu/meson-private/tmp7bb9hzb_/testfile.c:7:12: fatal error: pthread_np.h: No such file or directory
     7 |   #include <pthread_np.h>
       |            ^~~~~~~~~~~~~~
 compilation terminated.
 -----------
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpj174o8o3
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpyqk36hpj
 Code:
  
   #ifndef _GNU_SOURCE
@@ -4227,19 +4252,19 @@ Code:
     return 0;
   }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpj174o8o3/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpj174o8o3/output.exe -pthread -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpyqk36hpj/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpyqk36hpj/output.exe -pthread -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 1
 stderr:
-/home/sp24/femu/build-femu/meson-private/tmpj174o8o3/testfile.c: In function 'main':
-/home/sp24/femu/build-femu/meson-private/tmpj174o8o3/testfile.c:12:5: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'pthread_condattr_init'
+/home/sp24/femu/build-femu/meson-private/tmpyqk36hpj/testfile.c: In function 'main':
+/home/sp24/femu/build-femu/meson-private/tmpyqk36hpj/testfile.c:12:5: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'pthread_condattr_init'
    12 |     pthread_condattr_init(&attr);
       |     ^~~~~~~~~~~~~~~~~~~~~
-/home/sp24/femu/build-femu/meson-private/tmpj174o8o3/testfile.c:12:28: error: 'attr' undeclared (first use in this function)
+/home/sp24/femu/build-femu/meson-private/tmpyqk36hpj/testfile.c:12:28: error: 'attr' undeclared (first use in this function)
    12 |     pthread_condattr_init(&attr);
       |                            ^~~~
-/home/sp24/femu/build-femu/meson-private/tmpj174o8o3/testfile.c:12:28: note: each undeclared identifier is reported only once for each function it appears in
+/home/sp24/femu/build-femu/meson-private/tmpyqk36hpj/testfile.c:12:28: note: each undeclared identifier is reported only once for each function it appears in
 -----------
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp6560i5k8
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp_iydflv_
 Code:
  
   #ifndef _GNU_SOURCE
@@ -4263,9 +4288,9 @@ Code:
     return 0;
   }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp6560i5k8/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp6560i5k8/output.exe -pthread -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp_iydflv_/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp_iydflv_/output.exe -pthread -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpfioyquol
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmph_g7e1o0
 Code:
  
   #ifndef _GNU_SOURCE
@@ -4276,19 +4301,19 @@ Code:
   #include <stddef.h>
   int main(void) { return signalfd(-1, NULL, SFD_CLOEXEC); }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpfioyquol/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpfioyquol/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmph_g7e1o0/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmph_g7e1o0/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 stderr:
-/home/sp24/femu/build-femu/meson-private/tmpfioyquol/testfile.c: In function 'main':
-/home/sp24/femu/build-femu/meson-private/tmpfioyquol/testfile.c:8:27: warning: argument 2 null where non-null expected [-Wnonnull]
+/home/sp24/femu/build-femu/meson-private/tmph_g7e1o0/testfile.c: In function 'main':
+/home/sp24/femu/build-femu/meson-private/tmph_g7e1o0/testfile.c:8:27: warning: argument 2 null where non-null expected [-Wnonnull]
     8 |   int main(void) { return signalfd(-1, NULL, SFD_CLOEXEC); }
       |                           ^~~~~~~~
-In file included from /home/sp24/femu/build-femu/meson-private/tmpfioyquol/testfile.c:6:
+In file included from /home/sp24/femu/build-femu/meson-private/tmph_g7e1o0/testfile.c:6:
 /usr/include/x86_64-linux-gnu/sys/signalfd.h:57:12: note: in a call to function 'signalfd' declared 'nonnull'
    57 | extern int signalfd (int __fd, const sigset_t *__mask, int __flags)
       |            ^~~~~~~~
 -----------
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpx1ha4ytk
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpehsgjtrl
 Code:
  
   #ifndef _GNU_SOURCE
@@ -4307,9 +4332,9 @@ Code:
     return 0;
   }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpx1ha4ytk/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpx1ha4ytk/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpehsgjtrl/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpehsgjtrl/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmptc99lejb
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpxemcm33v
 Code:
  
   #ifndef _GNU_SOURCE
@@ -4321,9 +4346,9 @@ Code:
     return mlockall(MCL_FUTURE);
   }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmptc99lejb/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmptc99lejb/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpxemcm33v/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpxemcm33v/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpskgqpj4q
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpmsks2l1s
 Code:
  
   #ifndef _GNU_SOURCE
@@ -4336,10 +4361,10 @@ Code:
             sizeof(struct mmsghdr);
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpskgqpj4q/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpskgqpj4q/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpmsks2l1s/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpmsks2l1s/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Checking for type "struct mmsghdr" : YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpwj_r32j_
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpaqlqgs31
 Code:
  
     #include <inttypes.h>
@@ -4351,15 +4376,15 @@ Code:
     #endif
     int main(void) { return 0; }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpwj_r32j_/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpwj_r32j_/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpaqlqgs31/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpaqlqgs31/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 1
 stderr:
-/home/sp24/femu/build-femu/meson-private/tmpwj_r32j_/testfile.c:4:14: fatal error: net/netmap.h: No such file or directory
+/home/sp24/femu/build-femu/meson-private/tmpaqlqgs31/testfile.c:4:14: fatal error: net/netmap.h: No such file or directory
     4 |     #include <net/netmap.h>
       |              ^~~~~~~~~~~~~~
 compilation terminated.
 -----------
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp2rgy5kf8
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpmkwfs41e
 Code:
  
   #include <linux/fs.h>
@@ -4368,9 +4393,9 @@ Code:
     return 0;
   }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp2rgy5kf8/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp2rgy5kf8/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpmkwfs41e/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpmkwfs41e/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpkdlcz5yl
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpw3eveh93
 Code:
  
     #include <stdint.h>
@@ -4379,9 +4404,9 @@ Code:
         return printf("%zu", SIZE_MAX);
     }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpkdlcz5yl/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpkdlcz5yl/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -Werror` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpw3eveh93/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpw3eveh93/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -Werror` -> 0
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpz1kdvuzy
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpm8gzgv1m
 Code:
  
   #include <stdint.h>
@@ -4396,18 +4421,18 @@ Code:
     return 0;
   }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpz1kdvuzy/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpz1kdvuzy/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpm8gzgv1m/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpm8gzgv1m/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpn0j2o079
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpinm7erqi
 Code:
  
   __int128_t a;
   __uint128_t b;
   int main(void) { b = a; }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpn0j2o079/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpn0j2o079/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpinm7erqi/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpinm7erqi/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpgkuxdsu4
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpe9owvivd
 Code:
  
   __int128_t a;
@@ -4419,9 +4444,9 @@ Code:
     return 0;
   }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpgkuxdsu4/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpgkuxdsu4/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpe9owvivd/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpe9owvivd/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpxqr8cp2j
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpqsy3mvum
 Code:
  
     int main(int ac, char **av) {
@@ -4432,16 +4457,16 @@ Code:
       return 0;
     }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpxqr8cp2j/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpxqr8cp2j/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpqsy3mvum/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpqsy3mvum/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 1
 stderr:
-/usr/bin/ld: /tmp/ccEaLh0j.o: in function `main':
+/usr/bin/ld: /tmp/ccPHK8sc.o: in function `main':
 testfile.c:(.text+0x44): undefined reference to `__atomic_load_16'
 /usr/bin/ld: testfile.c:(.text+0x84): undefined reference to `__atomic_store_16'
 /usr/bin/ld: testfile.c:(.text+0xba): undefined reference to `__atomic_compare_exchange_16'
 collect2: error: ld returned 1 exit status
 -----------
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmptd_y59y7
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmprq22j5r8
 Code:
  __attribute__((optimize("O1")))
     int main(int ac, char **av) {
@@ -4452,16 +4477,16 @@ Code:
       return 0;
     }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmptd_y59y7/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmptd_y59y7/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmprq22j5r8/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmprq22j5r8/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 1
 stderr:
-/usr/bin/ld: /tmp/ccMOkuTt.o: in function `main':
+/usr/bin/ld: /tmp/ccxPHu0H.o: in function `main':
 testfile.c:(.text+0x16): undefined reference to `__atomic_load_16'
 /usr/bin/ld: testfile.c:(.text+0x34): undefined reference to `__atomic_store_16'
 /usr/bin/ld: testfile.c:(.text+0x5b): undefined reference to `__atomic_compare_exchange_16'
 collect2: error: ld returned 1 exit status
 -----------
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpb6bd680y
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpreavf63a
 Code:
  
         int main(void)
@@ -4472,9 +4497,9 @@ Code:
         }
       
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpb6bd680y/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpb6bd680y/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpreavf63a/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpreavf63a/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpq21odh8g
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmprwd7h91l
 Code:
  
   #ifndef _GNU_SOURCE
@@ -4486,9 +4511,9 @@ Code:
     return getauxval(AT_HWCAP) == 0;
   }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpq21odh8g/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpq21odh8g/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmprwd7h91l/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmprwd7h91l/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpriash730
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpv5r_3r2w
 Code:
  
     #include <errno.h>
@@ -4500,9 +4525,9 @@ Code:
         return syscall(__NR_keyctl, KEYCTL_READ, 0, NULL, NULL, 0);
     }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpriash730/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpriash730/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpv5r_3r2w/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpv5r_3r2w/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpsmzzf71e
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpca7tn9s_
 Code:
  
   #include <cpuid.h>
@@ -4521,9 +4546,9 @@ Code:
     return 0;
   }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpsmzzf71e/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpsmzzf71e/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpca7tn9s_/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpca7tn9s_/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmprs0voome
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpgg0fqtra
 Code:
  
     #include <cpuid.h>
@@ -4535,9 +4560,9 @@ Code:
     int main(int argc, char *argv[]) { return bar(argv[argc - 1]); }
   
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmprs0voome/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmprs0voome/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpgg0fqtra/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpgg0fqtra/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpqjyu81xn
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpbpfl8ulr
 Code:
  
     #include <cpuid.h>
@@ -4549,9 +4574,9 @@ Code:
     int main(int argc, char *argv[]) { return bar(argv[argc - 1]); }
   
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpqjyu81xn/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpqjyu81xn/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpbpfl8ulr/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpbpfl8ulr/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpjm3du3lv
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpyy8bljhr
 Code:
  
     #include <cpuid.h>
@@ -4564,9 +4589,9 @@ Code:
     int main(int argc, char *argv[]) { return bar(argv[0]); }
   
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpjm3du3lv/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpjm3du3lv/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpyy8bljhr/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpyy8bljhr/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmplviahh53
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmp7pll4tol
 Code:
  
     #include <arm_neon.h>
@@ -4576,15 +4601,15 @@ Code:
     void foo(uint8x16_t *p) { *p = vaesmcq_u8(*p); }
   
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmplviahh53/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmplviahh53/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp7pll4tol/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp7pll4tol/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 1
 stderr:
-/home/sp24/femu/build-femu/meson-private/tmplviahh53/testfile.c:2:14: fatal error: arm_neon.h: No such file or directory
+/home/sp24/femu/build-femu/meson-private/tmp7pll4tol/testfile.c:2:14: fatal error: arm_neon.h: No such file or directory
     2 |     #include <arm_neon.h>
       |              ^~~~~~~~~~~~
 compilation terminated.
 -----------
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpuubr12es
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpjkk5cfh0
 Code:
  
   #ifndef _GNU_SOURCE
@@ -4601,9 +4626,9 @@ Code:
       return 0;
     }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpuubr12es/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpuubr12es/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpjkk5cfh0/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpjkk5cfh0/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpiajor1ph
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpiiqj8wxr
 Code:
  
   #ifndef _GNU_SOURCE
@@ -4621,9 +4646,9 @@ Code:
     }
   
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpiajor1ph/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpiajor1ph/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpiiqj8wxr/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpiiqj8wxr/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpfpyuefd1
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpw40pik0t
 Code:
  #include <sys/socket.h>
         #include <linux/vm_sockets.h>
@@ -4635,7 +4660,7 @@ Code:
             return 0;
         }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpfpyuefd1/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpfpyuefd1/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpw40pik0t/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpw40pik0t/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11` -> 0
 Header "linux/vm_sockets.h" has symbol "AF_VSOCK" : YES 
 Program scripts/minikconf.py found: YES (/home/sp24/femu/build-femu/pyvenv/bin/python3 /home/sp24/femu/scripts/minikconf.py)
 Configuring x86_64-softmmu-config-target.h using configuration
@@ -4894,22 +4919,22 @@ Reading depfile: /home/sp24/femu/build-femu/meson-private/x86_64-softmmu-config-
 Configuring x86_64-softmmu-config-devices.h using configuration
 Program scripts/make-config-poison.sh found: YES (/home/sp24/femu/scripts/make-config-poison.sh)
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpglvtu7xk
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpe8z_8a_6
 Code:
  int main(void) { return 0; }
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpglvtu7xk/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpglvtu7xk/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -lfdt -Wl,--end-group -Wl,--allow-shlib-undefined` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpe8z_8a_6/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpe8z_8a_6/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -lfdt -Wl,--end-group -Wl,--allow-shlib-undefined` -> 0
 Library fdt found: YES
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmphgq06_a2
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpnmcoscll
 Code:
  
        #include <libfdt.h>
        #include <libfdt_env.h>
        int main(void) { fdt_find_max_phandle(NULL, NULL); return 0; }
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmphgq06_a2/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmphgq06_a2/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -Wl,--start-group -lfdt -Wl,--end-group` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpnmcoscll/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpnmcoscll/output.exe -D_FILE_OFFSET_BITS=64 -O0 -std=gnu11 -Wl,--start-group -lfdt -Wl,--end-group` -> 0
 
 Executing subproject libvhost-user 
 
@@ -4920,31 +4945,31 @@ C linker for the host machine: cc -m64 -mcx16 ld.bfd 2.42
 C compiler for the build machine: cc -m64 -mcx16 (gcc 13.2.0 "cc (Ubuntu 13.2.0-23ubuntu4) 13.2.0")
 C linker for the build machine: cc -m64 -mcx16 ld.bfd 2.42
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp9tqcpzla
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmptco89dtw
 Code:
  extern int i;
 int i;
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp9tqcpzla/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp9tqcpzla/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wsign-compare` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmptco89dtw/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmptco89dtw/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wsign-compare` -> 0
 Compiler for C supports arguments -Wsign-compare: YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpukefxc_x
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpk3q3l5d4
 Code:
  extern int i;
 int i;
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpukefxc_x/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpukefxc_x/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wdeclaration-after-statement` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpk3q3l5d4/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpk3q3l5d4/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wdeclaration-after-statement` -> 0
 Compiler for C supports arguments -Wdeclaration-after-statement: YES 
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpktxc14zd
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpp9ze0ooe
 Code:
  extern int i;
 int i;
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpktxc14zd/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpktxc14zd/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wstrict-aliasing` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpp9ze0ooe/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpp9ze0ooe/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wstrict-aliasing` -> 0
 Compiler for C supports arguments -Wstrict-aliasing: YES 
 Dependency threads found: YES unknown (cached)
 Dependency glib-2.0 found: YES 2.80.0 (overridden)
@@ -4961,7 +4986,7 @@ C linker for the host machine: cc -m64 -mcx16 ld.bfd 2.42
 C compiler for the build machine: cc -m64 -mcx16 (gcc 13.2.0 "cc (Ubuntu 13.2.0-23ubuntu4) 13.2.0")
 C linker for the build machine: cc -m64 -mcx16 ld.bfd 2.42
 Using cached compile:
-Cached command line:  cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp9tqcpzla/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp9tqcpzla/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wsign-compare 
+Cached command line:  cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmptco89dtw/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmptco89dtw/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wsign-compare 
 
 Code:
  extern int i;
@@ -4973,7 +4998,7 @@ Cached compiler stderr:
  
 Compiler for C supports arguments -Wsign-compare: YES (cached)
 Using cached compile:
-Cached command line:  cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpukefxc_x/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpukefxc_x/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wdeclaration-after-statement 
+Cached command line:  cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpk3q3l5d4/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpk3q3l5d4/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wdeclaration-after-statement 
 
 Code:
  extern int i;
@@ -4985,7 +5010,7 @@ Cached compiler stderr:
  
 Compiler for C supports arguments -Wdeclaration-after-statement: YES (cached)
 Using cached compile:
-Cached command line:  cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpktxc14zd/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpktxc14zd/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wstrict-aliasing 
+Cached command line:  cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpp9ze0ooe/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpp9ze0ooe/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wstrict-aliasing 
 
 Code:
  extern int i;
@@ -8061,13 +8086,13 @@ C compiler for the build machine: cc -m64 -mcx16 (gcc 13.2.0 "cc (Ubuntu 13.2.0-
 C linker for the build machine: cc -m64 -mcx16 ld.bfd 2.42
 Configuring platform.h using configuration
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpksjwiu_q
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpkx8g46_o
 Code:
  extern int i;
 int i;
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpksjwiu_q/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpksjwiu_q/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wignored-pragmas -Wno-ignored-pragmas` -> 1
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpkx8g46_o/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpkx8g46_o/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 -Wignored-pragmas -Wno-ignored-pragmas` -> 1
 stderr:
 cc: error: unrecognized command-line option '-Wignored-pragmas'; did you mean '-Wno-pragmas'?
 -----------
@@ -8298,12 +8323,12 @@ stdout:
 -lglib-2.0 -lm -pthread -lpcre2-8
 -----------
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmp0fwm2qfb
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpn0h9u9k7
 Code:
  int main(void) { return 0; }
 
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmp0fwm2qfb/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmp0fwm2qfb/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -lm -Wl,--end-group -Wl,--allow-shlib-undefined` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpn0h9u9k7/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpn0h9u9k7/output.exe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -lm -Wl,--end-group -Wl,--allow-shlib-undefined` -> 0
 Run-time dependency glib-2.0 found: YES 2.80.0
 Program initrd-stress.sh found: YES (/home/sp24/femu/tests/migration/initrd-stress.sh)
 Build targets in project: 562
@@ -8536,11 +8561,11 @@ qemu 9.0.1
 
 Found ninja-1.11.1 at /usr/bin/ninja
 Running compile:
-Working directory:  /home/sp24/femu/build-femu/meson-private/tmpr3of1fuy
+Working directory:  /home/sp24/femu/build-femu/meson-private/tmpmzxzqvh2
 Code:
  
 -----------
-Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpr3of1fuy/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpr3of1fuy/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs` -> 0
+Command line: `cc -m64 -mcx16 /home/sp24/femu/build-femu/meson-private/tmpmzxzqvh2/testfile.c -o /home/sp24/femu/build-femu/meson-private/tmpmzxzqvh2/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs` -> 0
 stdout:
 install: /usr/lib/gcc/x86_64-linux-gnu/13/
 programs: =/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/bin/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/bin/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/bin/
