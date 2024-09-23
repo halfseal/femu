@@ -56,40 +56,59 @@ uint64_t p2l_find(struct ssd *ssd, struct ppa *ppa) {
 static void *ftl_thread(void *arg);
 
 char *calc_nvme_sha256(NvmeRequest *req) {
-    unsigned char hash[EVP_MAX_MD_SIZE];
-    unsigned int hash_len;
-    EVP_MD_CTX *mdctx = NULL;
-    char *hash_str = malloc(SHA256_DIGEST_LENGTH * 2 + 1);
+    unsigned char hash[SHA256_DIGEST_LENGTH];
+    EVP_MD_CTX *mdctx;
+    const EVP_MD *md;
+    char *output;
 
-    if (!hash_str) goto cleanup;
-
+    // Create the context for the hash
     mdctx = EVP_MD_CTX_new();
-    if (mdctx == NULL) goto cleanup;
+    if (mdctx == NULL) {
+        return NULL;  // Handle allocation failure
+    }
 
-    if (EVP_DigestInit_ex(mdctx, EVP_sha256(), NULL) != 1) goto cleanup;
+    // Select the SHA-256 algorithm
+    md = EVP_sha256();
 
+    // Initialize the hash computation
+    if (EVP_DigestInit_ex(mdctx, md, NULL) != 1) {
+        EVP_MD_CTX_free(mdctx);
+        return NULL;  // Handle initialization failure
+    }
+
+    // Update the hash with data from the request's IOVs
     for (int i = 0; i < req->iov.niov; i++) {
-        void *data = req->iov.iov[i].iov_base;  // I/O 버퍼의 시작 주소
-        size_t len = req->iov.iov[i].iov_len;   // I/O 버퍼의 길이
-
-        if (EVP_DigestUpdate(mdctx, data, len) != 1) goto cleanup;
+        void *data = req->iov.iov[i].iov_base;
+        size_t len = req->iov.iov[i].iov_len;
+        if (EVP_DigestUpdate(mdctx, data, len) != 1) {
+            EVP_MD_CTX_free(mdctx);
+            return NULL;  // Handle update failure
+        }
     }
 
-    if (EVP_DigestFinal_ex(mdctx, hash, &hash_len) != 1) goto cleanup;
-
-    for (int i = 0; i < SHA256_DIGEST_LENGTH; i++) {
-        sprintf(&hash_str[i * 2], "%02x", hash[i]);
+    // Finalize the hash computation
+    if (EVP_DigestFinal_ex(mdctx, hash, NULL) != 1) {
+        EVP_MD_CTX_free(mdctx);
+        return NULL;  // Handle finalization failure
     }
-    hash_str[SHA256_DIGEST_LENGTH * 2] = '\0';
 
+    // Clean up the context
     EVP_MD_CTX_free(mdctx);
-    return hash_str;
 
-cleanup:
-    if (mdctx) EVP_MD_CTX_free(mdctx);
-    if (hash_str) free(hash_str);
-    return NULL;
-}
+    // Allocate memory for the hex string (each byte is 2 hex chars + null terminator)
+    output = malloc(SHA256_DIGEST_LENGTH * 2 + 1);
+    if (!output) {
+        return NULL;  // Handle allocation failure
+    }
+
+    // Convert the hash to a hexadecimal string
+    for (int i = 0; i < SHA256_DIGEST_LENGTH; i++) {
+        sprintf(output + (i * 2), "%02x", hash[i]);
+    }
+    output[SHA256_DIGEST_LENGTH * 2] = '\0';  // Null-terminate the string
+
+    return output;  // Return the hex string
+    }
 
 static inline bool should_gc(struct ssd *ssd) { return (ssd->lm.free_line_cnt <= ssd->sp.gc_thres_lines); }
 
