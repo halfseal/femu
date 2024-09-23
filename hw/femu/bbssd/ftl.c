@@ -1,5 +1,7 @@
 #include "ftl.h"
 
+#include <openssl/evp.h>
+#include <openssl/sha.h>
 
 // #define FEMU_DEBUG_FTL
 
@@ -56,59 +58,46 @@ uint64_t p2l_find(struct ssd *ssd, struct ppa *ppa) {
 static void *ftl_thread(void *arg);
 
 char *calc_nvme_sha256(NvmeRequest *req) {
-    unsigned char hash[SHA256_DIGEST_LENGTH];
-    EVP_MD_CTX *mdctx;
-    const EVP_MD *md;
-    char *output;
+    unsigned char hash[EVP_MAX_MD_SIZE];
+    unsigned int hash_len;
+    EVP_MD_CTX *mdctx = NULL;
+    char *hash_str = malloc(SHA256_DIGEST_LENGTH * 2 + 1);
+    bool has_something = false;
 
-    // Create the context for the hash
+    if (!hash_str) goto cleanup;
+
     mdctx = EVP_MD_CTX_new();
-    if (mdctx == NULL) {
-        return NULL;  // Handle allocation failure
+    if (mdctx == NULL) goto cleanup;
+
+    if (EVP_DigestInit_ex(mdctx, EVP_sha256(), NULL) != 1) goto cleanup;
+
+    for (int i = 0; i < req->qsg.nsg; i++) {
+        dma_addr_t addr = req->qsg.sg[i].base;
+        size_t len = req->qsg.sg[i].len;
+
+        if (addr == 0 || len == 0) continue;
+        has_something = true;
+
+        if (EVP_DigestUpdate(mdctx, (void *)addr, len) != 1) goto cleanup;
     }
 
-    // Select the SHA-256 algorithm
-    md = EVP_sha256();
+    if (!has_something) goto cleanup;
 
-    // Initialize the hash computation
-    if (EVP_DigestInit_ex(mdctx, md, NULL) != 1) {
-        EVP_MD_CTX_free(mdctx);
-        return NULL;  // Handle initialization failure
-    }
+    if (EVP_DigestFinal_ex(mdctx, hash, &hash_len) != 1) goto cleanup;
 
-    // Update the hash with data from the request's IOVs
-    for (int i = 0; i < req->iov.niov; i++) {
-        void *data = req->iov.iov[i].iov_base;
-        size_t len = req->iov.iov[i].iov_len;
-        if (EVP_DigestUpdate(mdctx, data, len) != 1) {
-            EVP_MD_CTX_free(mdctx);
-            return NULL;  // Handle update failure
-        }
-    }
-
-    // Finalize the hash computation
-    if (EVP_DigestFinal_ex(mdctx, hash, NULL) != 1) {
-        EVP_MD_CTX_free(mdctx);
-        return NULL;  // Handle finalization failure
-    }
-
-    // Clean up the context
-    EVP_MD_CTX_free(mdctx);
-
-    // Allocate memory for the hex string (each byte is 2 hex chars + null terminator)
-    output = malloc(SHA256_DIGEST_LENGTH * 2 + 1);
-    if (!output) {
-        return NULL;  // Handle allocation failure
-    }
-
-    // Convert the hash to a hexadecimal string
     for (int i = 0; i < SHA256_DIGEST_LENGTH; i++) {
-        sprintf(output + (i * 2), "%02x", hash[i]);
+        sprintf(&hash_str[i * 2], "%02x", hash[i]);
     }
-    output[SHA256_DIGEST_LENGTH * 2] = '\0';  // Null-terminate the string
+    hash_str[SHA256_DIGEST_LENGTH * 2] = '\0';
 
-    return output;  // Return the hex string
-    }
+    EVP_MD_CTX_free(mdctx);
+    return hash_str;
+
+cleanup:
+    if (mdctx) EVP_MD_CTX_free(mdctx);
+    if (hash_str) free(hash_str);
+    return NULL;
+}
 
 static inline bool should_gc(struct ssd *ssd) { return (ssd->lm.free_line_cnt <= ssd->sp.gc_thres_lines); }
 
@@ -855,7 +844,8 @@ static uint64_t ssd_write(struct ssd *ssd, NvmeRequest *req) {
         ftl_err("start_lpn=%" PRIu64 ",tt_pgs=%d\n", start_lpn, ssd->sp.tt_pgs);
     }
 
-    printf("%s\n", calc_nvme_sha256(req));
+    char *encoded_blk = calc_nvme_sha256(req);
+    if (encoded_blk) printf("%s\n", encoded_blk);
 
     while (should_gc_high(ssd)) {
         /* perform GC here until !should_gc(ssd) */

@@ -4,9 +4,6 @@
 #include "../nvme.h"
 #include "../../../uthash.h"
 
-#include <openssl/evp.h>
-#include <openssl/sha.h>
-
 
 #define INVALID_PPA     (~(0ULL))
 #define INVALID_LPN     (~(0ULL))
