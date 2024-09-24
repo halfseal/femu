@@ -258,6 +258,6 @@ uint64_t l2p_find(uint64_t lpn);
 void p2l_push(struct ssd *ssd, struct ppa *ppa, uint64_t lpn);
 uint64_t p2l_find(struct ssd *ssd, struct ppa *ppa);
 
-char *calc_nvme_sha256(NvmeRequest *req);
+char *calc_nvme_sha256(QEMUSGList *qsg);
 
 #endif

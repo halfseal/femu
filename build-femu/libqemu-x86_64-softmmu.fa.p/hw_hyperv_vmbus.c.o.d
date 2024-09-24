@@ -300,16 +300,8 @@ libqemu-x86_64-softmmu.fa.p/hw_hyperv_vmbus.c.o: ../hw/hyperv/vmbus.c \
  /home/sp24/femu/include/hw/hyperv/vmbus.h \
  /home/sp24/femu/include/sysemu/sysemu.h \
  /home/sp24/femu/include/qemu/uuid.h /home/sp24/femu/include/sysemu/dma.h \
- /home/sp24/femu/include/exec/memory.h \
- /home/sp24/femu/include/exec/cpu-common.h \
- /home/sp24/femu/include/tcg/debug-assert.h \
- /home/sp24/femu/include/exec/memop.h \
- /home/sp24/femu/include/exec/ramlist.h \
- /home/sp24/femu/include/qemu/range.h \
- /home/sp24/femu/include/exec/memory_ldst.h.inc \
- /home/sp24/femu/include/exec/memory_ldst_phys.h.inc \
- /home/sp24/femu/include/exec/memory_ldst_cached.h.inc \
- /home/sp24/femu/include/exec/address-spaces.h \
+ /home/sp24/femu/include/block/accounting.h \
+ /home/sp24/femu/include/qemu/timed-average.h qapi/qapi-types-common.h \
  /home/sp24/femu/include/block/block.h \
  /home/sp24/femu/include/block/block-global-state.h \
  /home/sp24/femu/include/block/block-common.h \
@@ -327,8 +319,16 @@ libqemu-x86_64-softmmu.fa.p/hw_hyperv_vmbus.c.o: ../hw/hyperv/vmbus.c \
  /home/sp24/femu/include/block/block-io.h \
  /home/sp24/femu/include/block/aio-wait.h \
  /home/sp24/femu/include/qemu/iov.h \
- /home/sp24/femu/include/block/accounting.h \
- /home/sp24/femu/include/qemu/timed-average.h qapi/qapi-types-common.h \
+ /home/sp24/femu/include/exec/address-spaces.h \
+ /home/sp24/femu/include/exec/memory.h \
+ /home/sp24/femu/include/exec/cpu-common.h \
+ /home/sp24/femu/include/tcg/debug-assert.h \
+ /home/sp24/femu/include/exec/memop.h \
+ /home/sp24/femu/include/exec/ramlist.h \
+ /home/sp24/femu/include/qemu/range.h \
+ /home/sp24/femu/include/exec/memory_ldst.h.inc \
+ /home/sp24/femu/include/exec/memory_ldst_phys.h.inc \
+ /home/sp24/femu/include/exec/memory_ldst_cached.h.inc \
  /home/sp24/femu/include/hw/hyperv/vmbus-proto.h \
  /home/sp24/femu/include/hw/hyperv/vmbus-bridge.h \
  /home/sp24/femu/include/hw/sysbus.h ../target/i386/cpu.h \

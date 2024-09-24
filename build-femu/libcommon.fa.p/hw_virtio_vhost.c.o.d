@@ -320,7 +320,8 @@ libcommon.fa.p/hw_virtio_vhost.c.o: ../hw/virtio/vhost.c \
  /home/sp24/femu/include/migration/blocker.h qapi/qapi-types-migration.h \
  /home/sp24/femu/include/migration/qemu-file-types.h \
  /home/sp24/femu/include/sysemu/dma.h \
- /home/sp24/femu/include/exec/address-spaces.h \
+ /home/sp24/femu/include/block/accounting.h \
+ /home/sp24/femu/include/qemu/timed-average.h qapi/qapi-types-common.h \
  /home/sp24/femu/include/block/block.h \
  /home/sp24/femu/include/block/block-global-state.h \
  /home/sp24/femu/include/block/block-common.h \
@@ -339,8 +340,7 @@ libcommon.fa.p/hw_virtio_vhost.c.o: ../hw/virtio/vhost.c \
  /home/sp24/femu/include/qemu/main-loop.h \
  /home/sp24/femu/include/sysemu/event-loop-base.h \
  /home/sp24/femu/include/qemu/iov.h \
- /home/sp24/femu/include/block/accounting.h \
- /home/sp24/femu/include/qemu/timed-average.h qapi/qapi-types-common.h \
- ../hw/virtio/trace.h trace/trace-hw_virtio.h \
- /home/sp24/femu/trace/control.h /home/sp24/femu/trace/event-internal.h \
+ /home/sp24/femu/include/exec/address-spaces.h ../hw/virtio/trace.h \
+ trace/trace-hw_virtio.h /home/sp24/femu/trace/control.h \
+ /home/sp24/femu/trace/event-internal.h \
  /home/sp24/femu/trace/control-internal.h

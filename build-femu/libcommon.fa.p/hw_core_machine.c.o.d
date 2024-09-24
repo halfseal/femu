@@ -329,9 +329,9 @@ libcommon.fa.p/hw_core_machine.c.o: ../hw/core/machine.c \
  /home/sp24/femu/include/standard-headers/linux/qemu_fw_cfg.h \
  /home/sp24/femu/include/standard-headers/linux/types.h \
  /home/sp24/femu/include/hw/sysbus.h /home/sp24/femu/include/sysemu/dma.h \
- /home/sp24/femu/include/exec/address-spaces.h \
  /home/sp24/femu/include/block/accounting.h \
  /home/sp24/femu/include/qemu/timed-average.h qapi/qapi-types-common.h \
+ /home/sp24/femu/include/exec/address-spaces.h \
  /home/sp24/femu/include/qapi/error.h qapi/qapi-types-error.h \
  qapi/qapi-visit-machine.h qapi/qapi-builtin-visit.h \
  /home/sp24/femu/include/qapi/visitor.h qapi/qapi-types-compat.h \

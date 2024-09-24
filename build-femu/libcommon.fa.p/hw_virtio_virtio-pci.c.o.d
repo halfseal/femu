@@ -337,9 +337,9 @@ libcommon.fa.p/hw_virtio_virtio-pci.c.o: ../hw/virtio/virtio-pci.c \
  /home/sp24/femu/include/migration/qemu-file-types.h \
  /home/sp24/femu/include/hw/pci/pci.h \
  /home/sp24/femu/include/sysemu/dma.h \
- /home/sp24/femu/include/exec/address-spaces.h \
  /home/sp24/femu/include/block/accounting.h \
  /home/sp24/femu/include/qemu/timed-average.h qapi/qapi-types-common.h \
+ /home/sp24/femu/include/exec/address-spaces.h \
  /home/sp24/femu/include/hw/isa/isa.h \
  /home/sp24/femu/include/exec/ioport.h \
  /home/sp24/femu/include/hw/pci/pci_ids.h \

@@ -326,6 +326,7 @@ libcommon.fa.p/hw_scsi_scsi-disk.c.o: ../hw/scsi/scsi-disk.c \
  /home/sp24/femu/include/qemu/timed-average.h qapi/qapi-types-common.h \
  /home/sp24/femu/include/sysemu/blockdev.h \
  /home/sp24/femu/include/sysemu/dma.h \
+ /home/sp24/femu/include/exec/address-spaces.h \
  /home/sp24/femu/include/exec/memory.h \
  /home/sp24/femu/include/exec/cpu-common.h \
  /home/sp24/femu/include/exec/vaddr.h \
@@ -340,7 +341,6 @@ libcommon.fa.p/hw_scsi_scsi-disk.c.o: ../hw/scsi/scsi-disk.c \
  /home/sp24/femu/include/exec/memory_ldst.h.inc \
  /home/sp24/femu/include/exec/memory_ldst_phys.h.inc \
  /home/sp24/femu/include/exec/memory_ldst_cached.h.inc \
- /home/sp24/femu/include/exec/address-spaces.h \
  /home/sp24/femu/include/sysemu/sysemu.h \
  /home/sp24/femu/include/qemu/uuid.h \
  /home/sp24/femu/include/qemu/cutils.h ../hw/scsi/trace.h \

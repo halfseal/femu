@@ -331,6 +331,7 @@ libcommon.fa.p/hw_scsi_scsi-bus.c.o: ../hw/scsi/scsi-bus.c \
  /home/sp24/femu/trace/control-internal.h \
  /home/sp24/femu/include/qemu/log-for-trace.h \
  /home/sp24/femu/include/sysemu/dma.h \
+ /home/sp24/femu/include/exec/address-spaces.h \
  /home/sp24/femu/include/exec/memory.h \
  /home/sp24/femu/include/exec/cpu-common.h \
  /home/sp24/femu/include/exec/vaddr.h \
@@ -345,5 +346,4 @@ libcommon.fa.p/hw_scsi_scsi-bus.c.o: ../hw/scsi/scsi-bus.c \
  /home/sp24/femu/include/exec/memory_ldst.h.inc \
  /home/sp24/femu/include/exec/memory_ldst_phys.h.inc \
  /home/sp24/femu/include/exec/memory_ldst_cached.h.inc \
- /home/sp24/femu/include/exec/address-spaces.h \
  /home/sp24/femu/include/qemu/cutils.h

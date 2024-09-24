@@ -264,39 +264,16 @@ libcommon.fa.p/hw_nvram_fw_cfg.c.o: ../hw/nvram/fw_cfg.c \
  /home/sp24/femu/include/qemu/queue.h \
  /home/sp24/femu/include/qemu/host-utils.h \
  /home/sp24/femu/include/qemu/uuid.h /home/sp24/femu/include/sysemu/dma.h \
- /home/sp24/femu/include/exec/memory.h \
- /home/sp24/femu/include/exec/cpu-common.h \
- /home/sp24/femu/include/exec/vaddr.h \
- /home/sp24/femu/include/exec/hwaddr.h \
- /home/sp24/femu/include/hw/core/cpu.h \
- /home/sp24/femu/include/hw/qdev-core.h \
- /home/sp24/femu/include/qemu/atomic.h \
- /home/sp24/femu/include/qemu/bitmap.h /home/sp24/femu/include/qemu/rcu.h \
+ /home/sp24/femu/include/block/accounting.h \
+ /home/sp24/femu/include/qemu/timed-average.h \
  /home/sp24/femu/include/qemu/thread.h \
  /home/sp24/femu/include/qemu/processor.h \
+ /home/sp24/femu/include/qemu/atomic.h \
  /home/sp24/femu/include/qemu/clang-tsa.h \
  /home/sp24/femu/include/qemu/thread-posix.h /usr/include/semaphore.h \
  /usr/include/x86_64-linux-gnu/bits/semaphore.h \
- /home/sp24/femu/include/qemu/qsp.h \
- /home/sp24/femu/include/qemu/sys_membarrier.h \
- /home/sp24/femu/include/qemu/coroutine-tls.h \
- /home/sp24/femu/include/qemu/rcu_queue.h \
- /home/sp24/femu/include/qom/object.h qapi/qapi-builtin-types.h \
- /home/sp24/femu/include/qapi/util.h \
- /home/sp24/femu/include/qemu/module.h \
- /home/sp24/femu/include/hw/hotplug.h \
- /home/sp24/femu/include/hw/resettable.h \
- /home/sp24/femu/include/disas/dis-asm.h \
- /home/sp24/femu/include/exec/memattrs.h \
- /home/sp24/femu/include/exec/tlb-common.h qapi/qapi-types-run-state.h \
- /home/sp24/femu/include/tcg/debug-assert.h \
- /home/sp24/femu/include/exec/memop.h \
- /home/sp24/femu/include/exec/ramlist.h \
- /home/sp24/femu/include/qemu/range.h \
- /home/sp24/femu/include/exec/memory_ldst.h.inc \
- /home/sp24/femu/include/exec/memory_ldst_phys.h.inc \
- /home/sp24/femu/include/exec/memory_ldst_cached.h.inc \
- /home/sp24/femu/include/exec/address-spaces.h \
+ /home/sp24/femu/include/qemu/qsp.h qapi/qapi-types-common.h \
+ qapi/qapi-builtin-types.h /home/sp24/femu/include/qapi/util.h \
  /home/sp24/femu/include/block/block.h \
  /home/sp24/femu/include/block/block-global-state.h \
  /home/sp24/femu/include/block/block-common.h \
@@ -311,6 +288,15 @@ libcommon.fa.p/hw_nvram_fw_cfg.c.o: ../hw/nvram/fw_cfg.c \
  /home/sp24/femu/include/block/aio.h \
  /home/sp24/femu/include/qemu/event_notifier.h \
  /home/sp24/femu/include/block/graph-lock.h \
+ /home/sp24/femu/include/hw/qdev-core.h \
+ /home/sp24/femu/include/qemu/bitmap.h /home/sp24/femu/include/qemu/rcu.h \
+ /home/sp24/femu/include/qemu/sys_membarrier.h \
+ /home/sp24/femu/include/qemu/coroutine-tls.h \
+ /home/sp24/femu/include/qemu/rcu_queue.h \
+ /home/sp24/femu/include/qom/object.h \
+ /home/sp24/femu/include/qemu/module.h \
+ /home/sp24/femu/include/hw/hotplug.h \
+ /home/sp24/femu/include/hw/resettable.h \
  /home/sp24/femu/include/qemu/ratelimit.h \
  /home/sp24/femu/include/qemu/transactions.h \
  /usr/include/glib-2.0/gmodule.h \
@@ -320,8 +306,22 @@ libcommon.fa.p/hw_nvram_fw_cfg.c.o: ../hw/nvram/fw_cfg.c \
  /home/sp24/femu/include/qemu/main-loop.h \
  /home/sp24/femu/include/sysemu/event-loop-base.h \
  /home/sp24/femu/include/qemu/iov.h \
- /home/sp24/femu/include/block/accounting.h \
- /home/sp24/femu/include/qemu/timed-average.h qapi/qapi-types-common.h \
+ /home/sp24/femu/include/exec/address-spaces.h \
+ /home/sp24/femu/include/exec/memory.h \
+ /home/sp24/femu/include/exec/cpu-common.h \
+ /home/sp24/femu/include/exec/vaddr.h \
+ /home/sp24/femu/include/exec/hwaddr.h \
+ /home/sp24/femu/include/hw/core/cpu.h \
+ /home/sp24/femu/include/disas/dis-asm.h \
+ /home/sp24/femu/include/exec/memattrs.h \
+ /home/sp24/femu/include/exec/tlb-common.h qapi/qapi-types-run-state.h \
+ /home/sp24/femu/include/tcg/debug-assert.h \
+ /home/sp24/femu/include/exec/memop.h \
+ /home/sp24/femu/include/exec/ramlist.h \
+ /home/sp24/femu/include/qemu/range.h \
+ /home/sp24/femu/include/exec/memory_ldst.h.inc \
+ /home/sp24/femu/include/exec/memory_ldst_phys.h.inc \
+ /home/sp24/femu/include/exec/memory_ldst_cached.h.inc \
  /home/sp24/femu/include/sysemu/reset.h qapi/qapi-events-run-state.h \
  qapi/qapi-types-run-state.h /home/sp24/femu/include/hw/boards.h \
  /home/sp24/femu/include/sysemu/hostmem.h \

@@ -311,7 +311,8 @@ libqemu-x86_64-softmmu.fa.p/hw_hyperv_syndbg.c.o: ../hw/hyperv/syndbg.c \
  /home/sp24/femu/include/exec/memory_ldst_phys.h.inc \
  /home/sp24/femu/include/exec/memory_ldst_cached.h.inc \
  /home/sp24/femu/include/sysemu/dma.h \
- /home/sp24/femu/include/exec/address-spaces.h \
+ /home/sp24/femu/include/block/accounting.h \
+ /home/sp24/femu/include/qemu/timed-average.h qapi/qapi-types-common.h \
  /home/sp24/femu/include/block/block.h \
  /home/sp24/femu/include/block/block-global-state.h \
  /home/sp24/femu/include/block/block-common.h \
@@ -329,10 +330,9 @@ libqemu-x86_64-softmmu.fa.p/hw_hyperv_syndbg.c.o: ../hw/hyperv/syndbg.c \
  /home/sp24/femu/include/block/block-io.h \
  /home/sp24/femu/include/block/aio-wait.h \
  /home/sp24/femu/include/qemu/iov.h \
- /home/sp24/femu/include/block/accounting.h \
- /home/sp24/femu/include/qemu/timed-average.h qapi/qapi-types-common.h \
- ../target/i386/cpu.h /home/sp24/femu/include/sysemu/tcg.h \
- ../target/i386/cpu-qom.h ../target/i386/kvm/hyperv-proto.h \
+ /home/sp24/femu/include/exec/address-spaces.h ../target/i386/cpu.h \
+ /home/sp24/femu/include/sysemu/tcg.h ../target/i386/cpu-qom.h \
+ ../target/i386/kvm/hyperv-proto.h \
  /home/sp24/femu/include/hw/hyperv/hyperv-proto.h \
  /home/sp24/femu/include/exec/cpu-defs.h ../target/i386/cpu-param.h \
  /home/sp24/femu/include/exec/target_long.h \

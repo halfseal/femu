@@ -57,45 +57,64 @@ uint64_t p2l_find(struct ssd *ssd, struct ppa *ppa) {
 
 static void *ftl_thread(void *arg);
 
-char *calc_nvme_sha256(NvmeRequest *req) {
-    unsigned char hash[EVP_MAX_MD_SIZE];
-    unsigned int hash_len;
-    EVP_MD_CTX *mdctx = NULL;
-    char *hash_str = malloc(SHA256_DIGEST_LENGTH * 2 + 1);
-    bool has_something = false;
+char *calc_nvme_sha256(QEMUSGList *qsg) {
+    printf("SHA-256 FTLV: ");
+    for (unsigned int i = 0; i < 32; i++) {
+        printf("%02x", qsg->sha256[i]);
+    }
+    printf("\n");
 
-    if (!hash_str) goto cleanup;
+    return NULL;
+    int sg_cur_index = 0;
+    dma_addr_t sg_cur_byte = 0;
+    dma_addr_t cur_addr, cur_len;
+    uint8_t *buffer = g_malloc0(4096);  // 데이터 버퍼 할당, 크기는 적절히 조정
 
-    mdctx = EVP_MD_CTX_new();
+    EVP_MD_CTX *mdctx = mdctx = EVP_MD_CTX_new();
+
     if (mdctx == NULL) goto cleanup;
 
     if (EVP_DigestInit_ex(mdctx, EVP_sha256(), NULL) != 1) goto cleanup;
 
-    for (int i = 0; i < req->qsg.nsg; i++) {
-        dma_addr_t addr = req->qsg.sg[i].base;
-        size_t len = req->qsg.sg[i].len;
+    while (sg_cur_index < qsg->nsg) {
+        cur_addr = qsg->sg[sg_cur_index].base + sg_cur_byte;
+        cur_len = qsg->sg[sg_cur_index].len - sg_cur_byte;
 
-        if (addr == 0 || len == 0) continue;
-        has_something = true;
+        if (dma_memory_rw(qsg->as, cur_addr, buffer, cur_len, DMA_DIRECTION_FROM_DEVICE, MEMTXATTRS_UNSPECIFIED)) {
+            femu_err("dma_memory_rw error\n");
+            goto cleanup;
+        }
 
-        if (EVP_DigestUpdate(mdctx, (void *)addr, len) != 1) goto cleanup;
+        if (EVP_DigestUpdate(mdctx, buffer, cur_len) != 1) goto cleanup;
+
+        sg_cur_byte += cur_len;
+        if (sg_cur_byte == qsg->sg[sg_cur_index].len) {
+            sg_cur_byte = 0;
+            ++sg_cur_index;
+        }
     }
 
-    if (!has_something) goto cleanup;
+    unsigned char hash[EVP_MAX_MD_SIZE];
+    unsigned int hash_len = 0;
 
     if (EVP_DigestFinal_ex(mdctx, hash, &hash_len) != 1) goto cleanup;
 
-    for (int i = 0; i < SHA256_DIGEST_LENGTH; i++) {
-        sprintf(&hash_str[i * 2], "%02x", hash[i]);
+    // 해시 값 출력
+    printf("SHA-256 Hash: ");
+    for (unsigned int i = 0; i < hash_len; i++) {
+        printf("%02x", hash[i]);
     }
-    hash_str[SHA256_DIGEST_LENGTH * 2] = '\0';
+    printf("\n");
 
+    // OpenSSL 컨텍스트 정리
+    g_free(buffer);  // 버퍼 해제
     EVP_MD_CTX_free(mdctx);
-    return hash_str;
+
+    return NULL;
 
 cleanup:
+    if (buffer) g_free(buffer);
     if (mdctx) EVP_MD_CTX_free(mdctx);
-    if (hash_str) free(hash_str);
     return NULL;
 }
 
@@ -792,6 +811,10 @@ static int do_gc(struct ssd *ssd, bool force) {
 }
 
 static uint64_t ssd_read(struct ssd *ssd, NvmeRequest *req) {
+    printf("MYPRINT| SR: req=%p\n", req);
+    printf("MYPRINT| SR: req->qsg:%p, req->qsg.nsgv:%d\n", (void *)&req->qsg, req->qsg.nsg);
+    qemu_sglist_destroy(&req->qsg);
+
     struct ssdparams *spp = &ssd->sp;
     uint64_t lba = req->slba;
     int nsecs = req->nlb;
@@ -827,6 +850,13 @@ static uint64_t ssd_read(struct ssd *ssd, NvmeRequest *req) {
 }
 
 static uint64_t ssd_write(struct ssd *ssd, NvmeRequest *req) {
+    // printf("MYPRINT| SW: req=%p\n", req);
+    // printf("MYPRINT| SW: req->qsg:%p, req->qsg.nsgv:%d\n", (void *)&req->qsg, req->qsg.nsg);
+    calc_nvme_sha256(&req->qsg);
+
+    // 이거 불리면 sha qsg 붕괴되면서 sha 접근불가.
+    qemu_sglist_destroy(&req->qsg);
+
     uint64_t lba = req->slba;
     struct ssdparams *spp = &ssd->sp;
     int len = req->nlb;
@@ -843,9 +873,6 @@ static uint64_t ssd_write(struct ssd *ssd, NvmeRequest *req) {
     if (end_lpn >= spp->tt_pgs) {
         ftl_err("start_lpn=%" PRIu64 ",tt_pgs=%d\n", start_lpn, ssd->sp.tt_pgs);
     }
-
-    char *encoded_blk = calc_nvme_sha256(req);
-    if (encoded_blk) printf("%s\n", encoded_blk);
 
     while (should_gc_high(ssd)) {
         /* perform GC here until !should_gc(ssd) */
@@ -911,6 +938,7 @@ static void *ftl_thread(void *arg) {
             if (!ssd->to_ftl[i] || !femu_ring_count(ssd->to_ftl[i])) continue;
 
             rc = femu_ring_dequeue(ssd->to_ftl[i], (void *)&req, 1);
+            // printf("MYPRINT| FTL: req=%p\n", req);
             if (rc != 1) {
                 printf("FEMU: FTL to_ftl dequeue failed\n");
             }

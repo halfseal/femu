@@ -281,23 +281,10 @@ libcommon.fa.p/hw_sd_sdhci.c.o: ../hw/sd/sdhci.c \
  /home/sp24/femu/include/hw/hotplug.h \
  /home/sp24/femu/include/hw/resettable.h \
  /home/sp24/femu/include/sysemu/dma.h \
- /home/sp24/femu/include/exec/memory.h \
- /home/sp24/femu/include/exec/cpu-common.h \
- /home/sp24/femu/include/exec/vaddr.h \
- /home/sp24/femu/include/exec/hwaddr.h \
- /home/sp24/femu/include/hw/core/cpu.h \
- /home/sp24/femu/include/disas/dis-asm.h \
- /home/sp24/femu/include/exec/memattrs.h \
- /home/sp24/femu/include/exec/tlb-common.h qapi/qapi-types-run-state.h \
- /home/sp24/femu/include/tcg/debug-assert.h \
- /home/sp24/femu/include/exec/memop.h \
- /home/sp24/femu/include/qemu/host-utils.h \
- /home/sp24/femu/include/exec/ramlist.h \
- /home/sp24/femu/include/qemu/range.h \
- /home/sp24/femu/include/exec/memory_ldst.h.inc \
- /home/sp24/femu/include/exec/memory_ldst_phys.h.inc \
- /home/sp24/femu/include/exec/memory_ldst_cached.h.inc \
- /home/sp24/femu/include/exec/address-spaces.h \
+ /home/sp24/femu/include/block/accounting.h \
+ /home/sp24/femu/include/qemu/timed-average.h \
+ /home/sp24/femu/include/qemu/timer.h \
+ /home/sp24/femu/include/qemu/host-utils.h qapi/qapi-types-common.h \
  /home/sp24/femu/include/block/block.h \
  /home/sp24/femu/include/block/block-global-state.h \
  /home/sp24/femu/include/block/block-common.h \
@@ -308,7 +295,6 @@ libcommon.fa.p/hw_sd_sdhci.c.o: ../hw/sd/sdhci.c \
  /home/sp24/femu/include/qemu/progress_meter.h \
  /home/sp24/femu/include/qemu/coroutine.h \
  /home/sp24/femu/include/qemu/coroutine-core.h \
- /home/sp24/femu/include/qemu/timer.h \
  /home/sp24/femu/include/qemu/lockable.h \
  /home/sp24/femu/include/block/aio.h \
  /home/sp24/femu/include/qemu/event_notifier.h \
@@ -322,8 +308,22 @@ libcommon.fa.p/hw_sd_sdhci.c.o: ../hw/sd/sdhci.c \
  /home/sp24/femu/include/qemu/main-loop.h \
  /home/sp24/femu/include/sysemu/event-loop-base.h \
  /home/sp24/femu/include/qemu/iov.h \
- /home/sp24/femu/include/block/accounting.h \
- /home/sp24/femu/include/qemu/timed-average.h qapi/qapi-types-common.h \
+ /home/sp24/femu/include/exec/address-spaces.h \
+ /home/sp24/femu/include/exec/memory.h \
+ /home/sp24/femu/include/exec/cpu-common.h \
+ /home/sp24/femu/include/exec/vaddr.h \
+ /home/sp24/femu/include/exec/hwaddr.h \
+ /home/sp24/femu/include/hw/core/cpu.h \
+ /home/sp24/femu/include/disas/dis-asm.h \
+ /home/sp24/femu/include/exec/memattrs.h \
+ /home/sp24/femu/include/exec/tlb-common.h qapi/qapi-types-run-state.h \
+ /home/sp24/femu/include/tcg/debug-assert.h \
+ /home/sp24/femu/include/exec/memop.h \
+ /home/sp24/femu/include/exec/ramlist.h \
+ /home/sp24/femu/include/qemu/range.h \
+ /home/sp24/femu/include/exec/memory_ldst.h.inc \
+ /home/sp24/femu/include/exec/memory_ldst_phys.h.inc \
+ /home/sp24/femu/include/exec/memory_ldst_cached.h.inc \
  /home/sp24/femu/include/hw/sd/sdhci.h \
  /home/sp24/femu/include/hw/pci/pci_device.h \
  /home/sp24/femu/include/hw/pci/pci.h \

@@ -337,9 +337,9 @@ libcommon.fa.p/hw_acpi_cpu_hotplug.c.o: ../hw/acpi/cpu_hotplug.c \
  /home/sp24/femu/include/hw/pci/pci_device.h \
  /home/sp24/femu/include/hw/pci/pci.h \
  /home/sp24/femu/include/sysemu/dma.h \
- /home/sp24/femu/include/exec/address-spaces.h \
  /home/sp24/femu/include/block/accounting.h \
  /home/sp24/femu/include/qemu/timed-average.h qapi/qapi-types-common.h \
+ /home/sp24/femu/include/exec/address-spaces.h \
  /home/sp24/femu/include/hw/pci/pci_ids.h \
  /home/sp24/femu/include/hw/pci/pci_regs.h \
  /home/sp24/femu/include/standard-headers/linux/pci_regs.h \

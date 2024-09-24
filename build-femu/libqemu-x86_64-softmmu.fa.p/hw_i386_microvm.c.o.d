@@ -344,9 +344,9 @@ libqemu-x86_64-softmmu.fa.p/hw_i386_microvm.c.o: ../hw/i386/microvm.c \
  /home/sp24/femu/include/hw/pci/pci_device.h \
  /home/sp24/femu/include/hw/pci/pci.h \
  /home/sp24/femu/include/sysemu/dma.h \
- /home/sp24/femu/include/exec/address-spaces.h \
  /home/sp24/femu/include/block/accounting.h \
  /home/sp24/femu/include/qemu/timed-average.h qapi/qapi-types-common.h \
+ /home/sp24/femu/include/exec/address-spaces.h \
  /home/sp24/femu/include/hw/pci/pci_ids.h \
  /home/sp24/femu/include/hw/pci/pci_regs.h \
  /home/sp24/femu/include/standard-headers/linux/pci_regs.h \

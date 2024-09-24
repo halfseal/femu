@@ -309,6 +309,7 @@ libcommon.fa.p/system_dma-helpers.c.o: ../system/dma-helpers.c \
  /home/sp24/femu/include/block/accounting.h \
  /home/sp24/femu/include/qemu/timed-average.h qapi/qapi-types-common.h \
  /home/sp24/femu/include/sysemu/dma.h \
+ /home/sp24/femu/include/exec/address-spaces.h \
  /home/sp24/femu/include/exec/memory.h \
  /home/sp24/femu/include/exec/cpu-common.h \
  /home/sp24/femu/include/exec/vaddr.h \
@@ -323,8 +324,7 @@ libcommon.fa.p/system_dma-helpers.c.o: ../system/dma-helpers.c \
  /home/sp24/femu/include/qemu/range.h \
  /home/sp24/femu/include/exec/memory_ldst.h.inc \
  /home/sp24/femu/include/exec/memory_ldst_phys.h.inc \
- /home/sp24/femu/include/exec/memory_ldst_cached.h.inc \
- /home/sp24/femu/include/exec/address-spaces.h trace/trace-root.h \
+ /home/sp24/femu/include/exec/memory_ldst_cached.h.inc trace/trace-root.h \
  /home/sp24/femu/trace/control.h /home/sp24/femu/trace/event-internal.h \
  /home/sp24/femu/trace/control-internal.h \
  /home/sp24/femu/include/qemu/log-for-trace.h \

@@ -359,9 +359,9 @@ libqemu-x86_64-softmmu.fa.p/system_physmem.c.o: ../system/physmem.c \
  /home/sp24/femu/include/qemu/memalign.h \
  /home/sp24/femu/include/exec/ioport.h \
  /home/sp24/femu/include/sysemu/dma.h \
- /home/sp24/femu/include/exec/address-spaces.h \
  /home/sp24/femu/include/block/accounting.h \
  /home/sp24/femu/include/qemu/timed-average.h \
+ /home/sp24/femu/include/exec/address-spaces.h \
  /home/sp24/femu/include/sysemu/hw_accel.h \
  /home/sp24/femu/include/sysemu/hvf.h \
  /home/sp24/femu/include/sysemu/whpx.h \

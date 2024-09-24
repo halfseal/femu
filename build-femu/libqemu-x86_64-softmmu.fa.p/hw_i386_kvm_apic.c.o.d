@@ -307,7 +307,8 @@ libqemu-x86_64-softmmu.fa.p/hw_i386_kvm_apic.c.o: ../hw/i386/kvm/apic.c \
  /home/sp24/femu/include/hw/pci/pci_device.h \
  /home/sp24/femu/include/hw/pci/pci.h \
  /home/sp24/femu/include/sysemu/dma.h \
- /home/sp24/femu/include/exec/address-spaces.h \
+ /home/sp24/femu/include/block/accounting.h \
+ /home/sp24/femu/include/qemu/timed-average.h \
  /home/sp24/femu/include/block/block.h \
  /home/sp24/femu/include/block/block-global-state.h \
  /home/sp24/femu/include/block/block-common.h \
@@ -331,8 +332,7 @@ libqemu-x86_64-softmmu.fa.p/hw_i386_kvm_apic.c.o: ../hw/i386/kvm/apic.c \
  /home/sp24/femu/include/qemu/main-loop.h \
  /home/sp24/femu/include/sysemu/event-loop-base.h \
  /home/sp24/femu/include/qemu/iov.h \
- /home/sp24/femu/include/block/accounting.h \
- /home/sp24/femu/include/qemu/timed-average.h \
+ /home/sp24/femu/include/exec/address-spaces.h \
  /home/sp24/femu/include/hw/isa/isa.h \
  /home/sp24/femu/include/exec/ioport.h \
  /home/sp24/femu/include/hw/pci/pci_ids.h \

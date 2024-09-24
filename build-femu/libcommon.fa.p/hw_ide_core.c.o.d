@@ -325,9 +325,9 @@ libcommon.fa.p/hw_ide_core.c.o: ../hw/ide/core.c \
  /home/sp24/femu/include/block/block-io.h \
  /home/sp24/femu/include/block/aio-wait.h \
  /home/sp24/femu/include/qemu/iov.h /home/sp24/femu/include/sysemu/dma.h \
- /home/sp24/femu/include/exec/address-spaces.h \
  /home/sp24/femu/include/block/accounting.h \
  /home/sp24/femu/include/qemu/timed-average.h qapi/qapi-types-common.h \
+ /home/sp24/femu/include/exec/address-spaces.h \
  /home/sp24/femu/include/hw/block/block.h \
  /home/sp24/femu/include/hw/qdev-properties-system.h \
  /home/sp24/femu/include/hw/qdev-properties.h \
