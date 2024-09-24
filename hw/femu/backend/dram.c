@@ -94,10 +94,17 @@ int backend_rw(SsdDramBackend *b, QEMUSGList *qsg, uint64_t *lbal, bool is_write
             return -1;
         }
 
+        memcpy(qsg->sha256, hash, hash_len);
+
         // 해시 값 출력
         printf("SHA-256 Hash: ");
         for (unsigned int i = 0; i < hash_len; i++) {
             printf("%02x", hash[i]);
+        }
+        printf("\n");
+        printf("SHA-256 Save: ");
+        for (unsigned int i = 0; i < hash_len; i++) {
+            printf("%02x", qsg->sha256[i]);
         }
         printf("\n");
 
@@ -105,7 +112,7 @@ int backend_rw(SsdDramBackend *b, QEMUSGList *qsg, uint64_t *lbal, bool is_write
         EVP_MD_CTX_free(mdctx);
     }
 
-    qemu_sglist_destroy(qsg);
+    // qemu_sglist_destroy(qsg);
 
     return 0;
 }
