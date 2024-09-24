@@ -270,7 +270,7 @@ uint16_t nvme_rw(FemuCtrl *n, NvmeNamespace *ns, NvmeCmd *cmd, NvmeRequest *req)
     req->status = NVME_SUCCESS;
     req->nlb = nlb;
 
-    ret = backend_rw(n->mbe, &req->qsg, &data_offset, req->is_write);
+    ret = backend_rw2(n->mbe, &req->qsg, &data_offset, req->is_write, req->nlb);
     // printf("MYPRINT| R2: PRP1=%lx, PRP2=%lx, qsg=%p, nsg=%d\n", prp1, prp2, (void *)&req->qsg, req->qsg.nsg);
     if (!ret) {
         return NVME_SUCCESS;

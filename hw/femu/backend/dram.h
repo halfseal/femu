@@ -3,16 +3,21 @@
 
 #include <stdint.h>
 
+#include "../nvme.h"
+
 /* DRAM backend SSD address space */
 typedef struct SsdDramBackend {
-    void    *logical_space;
+    void *logical_space;
     int64_t size; /* in bytes */
-    int     femu_mode;
+    int femu_mode;
 } SsdDramBackend;
 
 int init_dram_backend(SsdDramBackend **mbe, int64_t nbytes);
 void free_dram_backend(SsdDramBackend *);
 
+struct NvmeRequest;
+
 int backend_rw(SsdDramBackend *, QEMUSGList *, uint64_t *, bool);
+int backend_rw2(SsdDramBackend *, QEMUSGList *, uint64_t *, bool, uint16_t);
 
 #endif

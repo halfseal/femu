@@ -852,10 +852,13 @@ static uint64_t ssd_read(struct ssd *ssd, NvmeRequest *req) {
 static uint64_t ssd_write(struct ssd *ssd, NvmeRequest *req) {
     // printf("MYPRINT| SW: req=%p\n", req);
     // printf("MYPRINT| SW: req->qsg:%p, req->qsg.nsgv:%d\n", (void *)&req->qsg, req->qsg.nsg);
-    calc_nvme_sha256(&req->qsg);
+    // calc_nvme_sha256(&req->qsg);
 
-    // 이거 불리면 sha qsg 붕괴되면서 sha 접근불가.
-    qemu_sglist_destroy(&req->qsg);
+    // char sha256[32];
+    // memcpy(sha256, req->qsg.sha256, 32);
+
+    // // 이거 불리면 qsg free되면서 sha 접근불가.
+    // qemu_sglist_destroy(&req->qsg);
 
     uint64_t lba = req->slba;
     struct ssdparams *spp = &ssd->sp;
@@ -884,6 +887,7 @@ static uint64_t ssd_write(struct ssd *ssd, NvmeRequest *req) {
         printf("MYPRINT| Bytes written during GC: %" PRIu64 "\n", ssd->bytes_written_during_gc);
     }
 
+    printf("MYPRINT| SW: num of pages to write: %ld\n", (end_lpn - start_lpn + 1));
     for (lpn = start_lpn; lpn <= end_lpn; lpn++) {
         ppa = get_maptbl_ent(ssd, lpn);
         if (mapped_ppa(&ppa)) {
@@ -892,7 +896,6 @@ static uint64_t ssd_write(struct ssd *ssd, NvmeRequest *req) {
             set_rmap_ent(ssd, INVALID_LPN, &ppa);
         }
 
-        /* printf("MYPRINT| lpn: %ld\n", lpn); */
         /* new write */
         ppa = get_new_page(ssd);
         /* update maptbl */
