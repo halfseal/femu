@@ -57,67 +57,6 @@ uint64_t p2l_find(struct ssd *ssd, struct ppa *ppa) {
 
 static void *ftl_thread(void *arg);
 
-char *calc_nvme_sha256(QEMUSGList *qsg) {
-    printf("SHA-256 FTLV: ");
-    for (unsigned int i = 0; i < 32; i++) {
-        printf("%02x", qsg->sha256[i]);
-    }
-    printf("\n");
-
-    return NULL;
-    int sg_cur_index = 0;
-    dma_addr_t sg_cur_byte = 0;
-    dma_addr_t cur_addr, cur_len;
-    uint8_t *buffer = g_malloc0(4096);  // 데이터 버퍼 할당, 크기는 적절히 조정
-
-    EVP_MD_CTX *mdctx = mdctx = EVP_MD_CTX_new();
-
-    if (mdctx == NULL) goto cleanup;
-
-    if (EVP_DigestInit_ex(mdctx, EVP_sha256(), NULL) != 1) goto cleanup;
-
-    while (sg_cur_index < qsg->nsg) {
-        cur_addr = qsg->sg[sg_cur_index].base + sg_cur_byte;
-        cur_len = qsg->sg[sg_cur_index].len - sg_cur_byte;
-
-        if (dma_memory_rw(qsg->as, cur_addr, buffer, cur_len, DMA_DIRECTION_FROM_DEVICE, MEMTXATTRS_UNSPECIFIED)) {
-            femu_err("dma_memory_rw error\n");
-            goto cleanup;
-        }
-
-        if (EVP_DigestUpdate(mdctx, buffer, cur_len) != 1) goto cleanup;
-
-        sg_cur_byte += cur_len;
-        if (sg_cur_byte == qsg->sg[sg_cur_index].len) {
-            sg_cur_byte = 0;
-            ++sg_cur_index;
-        }
-    }
-
-    unsigned char hash[EVP_MAX_MD_SIZE];
-    unsigned int hash_len = 0;
-
-    if (EVP_DigestFinal_ex(mdctx, hash, &hash_len) != 1) goto cleanup;
-
-    // 해시 값 출력
-    printf("SHA-256 Hash: ");
-    for (unsigned int i = 0; i < hash_len; i++) {
-        printf("%02x", hash[i]);
-    }
-    printf("\n");
-
-    // OpenSSL 컨텍스트 정리
-    g_free(buffer);  // 버퍼 해제
-    EVP_MD_CTX_free(mdctx);
-
-    return NULL;
-
-cleanup:
-    if (buffer) g_free(buffer);
-    if (mdctx) EVP_MD_CTX_free(mdctx);
-    return NULL;
-}
-
 static inline bool should_gc(struct ssd *ssd) { return (ssd->lm.free_line_cnt <= ssd->sp.gc_thres_lines); }
 
 static inline bool should_gc_high(struct ssd *ssd) {
@@ -850,16 +789,6 @@ static uint64_t ssd_read(struct ssd *ssd, NvmeRequest *req) {
 }
 
 static uint64_t ssd_write(struct ssd *ssd, NvmeRequest *req) {
-    // printf("MYPRINT| SW: req=%p\n", req);
-    // printf("MYPRINT| SW: req->qsg:%p, req->qsg.nsgv:%d\n", (void *)&req->qsg, req->qsg.nsg);
-    // calc_nvme_sha256(&req->qsg);
-
-    // char sha256[32];
-    // memcpy(sha256, req->qsg.sha256, 32);
-
-    // // 이거 불리면 qsg free되면서 sha 접근불가.
-    // qemu_sglist_destroy(&req->qsg);
-
     uint64_t lba = req->slba;
     struct ssdparams *spp = &ssd->sp;
     int len = req->nlb;
@@ -887,7 +816,7 @@ static uint64_t ssd_write(struct ssd *ssd, NvmeRequest *req) {
         printf("MYPRINT| Bytes written during GC: %" PRIu64 "\n", ssd->bytes_written_during_gc);
     }
 
-    printf("MYPRINT| SW: num of pages to write: %ld\n", (end_lpn - start_lpn + 1));
+    // printf("MYPRINT| SW: num of pages to write: %ld\n", (end_lpn - start_lpn + 1));
     for (lpn = start_lpn; lpn <= end_lpn; lpn++) {
         ppa = get_maptbl_ent(ssd, lpn);
         if (mapped_ppa(&ppa)) {
@@ -895,6 +824,14 @@ static uint64_t ssd_write(struct ssd *ssd, NvmeRequest *req) {
             mark_page_invalid(ssd, &ppa);
             set_rmap_ent(ssd, INVALID_LPN, &ppa);
         }
+
+        // 해시 값 출력
+        // int idx = (int)(lpn - start_lpn);
+        // printf("MYPRINT| SW: LPN %ld - ", lpn);
+        // for (unsigned int i = 0; i < req->qsg.hash_len_array[idx]; i++) {
+        //     printf("%02x", req->qsg.hash_array[idx][i]);
+        // }
+        // printf("\n");
 
         /* new write */
         ppa = get_new_page(ssd);
@@ -916,6 +853,9 @@ static uint64_t ssd_write(struct ssd *ssd, NvmeRequest *req) {
         curlat = ssd_advance_status(ssd, &ppa, &swr);
         maxlat = (curlat > maxlat) ? curlat : maxlat;
     }
+
+    // 이거 불리면 qsg free되면서 sha 접근불가.
+    qemu_sglist_destroy(&req->qsg);
 
     return maxlat;
 }

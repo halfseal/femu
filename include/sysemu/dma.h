@@ -41,7 +41,10 @@ struct QEMUSGList {
     dma_addr_t size;
     DeviceState *dev;
     AddressSpace *as;
-    unsigned char sha256[32];  // SHA-256 해시값을 저장할 필드 추가
+    int num_pages;
+    int is_written;
+    unsigned char **hash_array;
+    unsigned int *hash_len_array;
 };
 
 static inline void dma_barrier(AddressSpace *as, DMADirection dir) {

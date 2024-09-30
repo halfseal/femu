@@ -81,11 +81,13 @@ int backend_rw2(SsdDramBackend *b, QEMUSGList *qsg, uint64_t *lbal, bool is_writ
     EVP_MD_CTX *mdctx = NULL;
 
     int num_pages = nlb / 8;
-    printf("MYPRINT| brw2: num_page=%d\n", num_pages);
+    qsg->num_pages = num_pages;
+    qsg->is_written = 987654321;
+    // printf("MYPRINT| brw2: num_page=%d\n", num_pages);
 
-    unsigned char **hash_array = (unsigned char **)malloc(num_pages * sizeof(unsigned char *));
-    unsigned int *hash_len_array = (unsigned int *)malloc(num_pages * sizeof(unsigned int));
-    for (int i = 0; i < num_pages; i++) hash_array[i] = (unsigned char *)malloc(EVP_MAX_MD_SIZE * sizeof(unsigned char));
+    qsg->hash_array = (unsigned char **)malloc(num_pages * sizeof(unsigned char *));
+    qsg->hash_len_array = (unsigned int *)malloc(num_pages * sizeof(unsigned int));
+    for (int i = 0; i < num_pages; i++) qsg->hash_array[i] = (unsigned char *)malloc(EVP_MAX_MD_SIZE * sizeof(unsigned char));
 
     const uint64_t page_size = 4096;
     uint64_t remaining_page_size = page_size;
@@ -110,6 +112,12 @@ int backend_rw2(SsdDramBackend *b, QEMUSGList *qsg, uint64_t *lbal, bool is_writ
             if (dma_memory_rw(qsg->as, cur_addr, mb + mb_oft, cur_len, dir, MEMTXATTRS_UNSPECIFIED)) {
                 femu_err("dma_memory_rw error\n");
             }
+
+            printf("MYPRINT| brw2: Original Data (length: %zu)\n", cur_len);
+            for (size_t i = 0; i < cur_len; i++) {
+                printf("%02x", ((unsigned char *)mb)[mb_oft + i]);  // hex format으로 출력
+            }
+            printf("\n");
 
             // 해시 업데이트
             if (EVP_DigestUpdate(mdctx, mb + mb_oft, cur_len) != 1) {
@@ -137,13 +145,13 @@ int backend_rw2(SsdDramBackend *b, QEMUSGList *qsg, uint64_t *lbal, bool is_writ
             // 한 페이지를 모두 읽은 경우
             if (remaining_page_size == 0) {
                 unsigned int hash_len = 0;
-                if (EVP_DigestFinal_ex(mdctx, hash_array[page_count], &hash_len) != 1) {
+                if (EVP_DigestFinal_ex(mdctx, qsg->hash_array[page_count], &hash_len) != 1) {
                     femu_err("EVP_DigestFinal_ex error\n");
                     EVP_MD_CTX_free(mdctx);
                     return -1;
                 }
 
-                hash_len_array[page_count] = hash_len;
+                qsg->hash_len_array[page_count] = hash_len;
                 page_count++;
 
                 remaining_page_size = page_size;  // 새 페이지 크기 초기화
@@ -159,9 +167,9 @@ int backend_rw2(SsdDramBackend *b, QEMUSGList *qsg, uint64_t *lbal, bool is_writ
         printf("MYPRINT| brw2: num_page=%d, page_count=%d\n", num_pages, page_count);
         // 해시 값 출력
         for (int i = 0; i < num_pages; i++) {
-            printf("MYPRINT| LPN %d - ", i);
-            for (unsigned int j = 0; j < hash_len_array[i]; j++) {
-                printf("%02x", hash_array[i][j]);
+            printf("MYPRINT| brw2: LPN %d - ", i);
+            for (unsigned int j = 0; j < qsg->hash_len_array[i]; j++) {
+                printf("%02x", qsg->hash_array[i][j]);
             }
             printf("\n");
         }
