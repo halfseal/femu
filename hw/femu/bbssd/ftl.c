@@ -1,7 +1,5 @@
 #include "ftl.h"
 
-#include <openssl/evp.h>
-#include <openssl/sha.h>
 
 // #define FEMU_DEBUG_FTL
 
@@ -9,6 +7,7 @@ static uint64_t ppa2pgidx(struct ssd *ssd, struct ppa *ppa);
 
 struct l2p_entry *l2p_table = NULL;
 struct p2l_entry *p2l_table = NULL;
+struct hash_lpn_entry *hash_lpn_table = NULL;
 
 void l2p_push(struct ssd *ssd, uint64_t lpn, struct ppa *ppa) {
     uint64_t ppn = ppa2pgidx(ssd, ppa);
@@ -52,6 +51,23 @@ uint64_t p2l_find(struct ssd *ssd, struct ppa *ppa) {
         return entry->ppn;  // PPN 반환
     } else {
         return -1;  // 엔트리 없음
+    }
+}
+
+void map_sha256_to_lpn(unsigned char *hash, uint64_t lpn) {
+    struct hash_lpn_entry *entry;
+    HASH_FIND(hh, hash_lpn_table, hash, EVP_MAX_MD_SIZE, entry);
+
+    if (entry == NULL) {
+        // 중복이 없으면 새로운 엔트리 추가
+        entry = (struct hash_lpn_entry *)malloc(sizeof(struct hash_lpn_entry));
+        memcpy(entry->hash, hash, EVP_MAX_MD_SIZE);  // 해시 값을 구조체에 복사
+        entry->lpn = lpn;
+        HASH_ADD(hh, hash_lpn_table, hash, EVP_MAX_MD_SIZE, entry);  // 해시 테이블에 추가
+        printf("New hash -> LPN mapping: LPN = %lu\n", lpn);
+    } else {
+        // 중복된 데이터 발견
+        printf("Duplicate data found for LPN = %lu (already mapped to LPN = %lu)\n", lpn, entry->lpn);
     }
 }
 
@@ -832,6 +848,7 @@ static uint64_t ssd_write(struct ssd *ssd, NvmeRequest *req) {
         //     printf("%02x", req->qsg.hash_array[idx][i]);
         // }
         // printf("\n");
+        map_sha256_to_lpn(req->qsg.hash_array[lpn - start_lpn], lpn);
 
         /* new write */
         ppa = get_new_page(ssd);

@@ -3,6 +3,7 @@
 
 #include "../nvme.h"
 #include "../../../uthash.h"
+#include <openssl/evp.h>
 
 
 #define INVALID_PPA     (~(0ULL))
@@ -258,6 +259,12 @@ uint64_t l2p_find(uint64_t lpn);
 void p2l_push(struct ssd *ssd, struct ppa *ppa, uint64_t lpn);
 uint64_t p2l_find(struct ssd *ssd, struct ppa *ppa);
 
-char *calc_nvme_sha256(QEMUSGList *qsg);
+struct hash_lpn_entry {
+    unsigned char hash[EVP_MAX_MD_SIZE];    // SHA-256 해시 값
+    uint64_t lpn;                           // 논리적 페이지 번호
+    UT_hash_handle hh;                      // 해시 테이블 핸들
+};
+
+void map_sha256_to_lpn(unsigned char *block_data, uint64_t lpn);
 
 #endif

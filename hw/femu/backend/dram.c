@@ -113,11 +113,11 @@ int backend_rw2(SsdDramBackend *b, QEMUSGList *qsg, uint64_t *lbal, bool is_writ
                 femu_err("dma_memory_rw error\n");
             }
 
-            printf("MYPRINT| brw2: Original Data (length: %zu)\n", cur_len);
-            for (size_t i = 0; i < cur_len; i++) {
-                printf("%02x", ((unsigned char *)mb)[mb_oft + i]);  // hex format으로 출력
-            }
-            printf("\n");
+            // printf("MYPRINT| brw2: Original Data (length: %zu)\n", cur_len);
+            // for (size_t i = 0; i < cur_len; i++) {
+            //     printf("%02x", ((unsigned char *)mb)[mb_oft + i]);  // hex format으로 출력
+            // }
+            // printf("\n");
 
             // 해시 업데이트
             if (EVP_DigestUpdate(mdctx, mb + mb_oft, cur_len) != 1) {
@@ -164,15 +164,15 @@ int backend_rw2(SsdDramBackend *b, QEMUSGList *qsg, uint64_t *lbal, bool is_writ
             }
         }
         EVP_MD_CTX_free(mdctx);
-        printf("MYPRINT| brw2: num_page=%d, page_count=%d\n", num_pages, page_count);
-        // 해시 값 출력
-        for (int i = 0; i < num_pages; i++) {
-            printf("MYPRINT| brw2: LPN %d - ", i);
-            for (unsigned int j = 0; j < qsg->hash_len_array[i]; j++) {
-                printf("%02x", qsg->hash_array[i][j]);
-            }
-            printf("\n");
-        }
+        // printf("MYPRINT| brw2: num_page=%d, page_count=%d\n", num_pages, page_count);
+        // // 해시 값 출력
+        // for (int i = 0; i < num_pages; i++) {
+        //     printf("MYPRINT| brw2: LPN %d - ", i);
+        //     for (unsigned int j = 0; j < qsg->hash_len_array[i]; j++) {
+        //         printf("%02x", qsg->hash_array[i][j]);
+        //     }
+        //     printf("\n");
+        // }
     } else {
         while (sg_cur_index < qsg->nsg) {
             cur_addr = qsg->sg[sg_cur_index].base + sg_cur_byte;
