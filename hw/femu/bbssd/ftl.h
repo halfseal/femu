@@ -1,17 +1,18 @@
 #ifndef __FEMU_FTL_H
 #define __FEMU_FTL_H
 
-#include "../nvme.h"
-#include "../../../uthash.h"
 #include <openssl/evp.h>
+
+#include "../../../uthash.h"
+#include "../nvme.h"
 #include "myqueue.h"
 
-#define INVALID_PPA     (~(0ULL))
-#define INVALID_LPN     (~(0ULL))
-#define UNMAPPED_PPA    (~(0ULL))
+#define INVALID_PPA (~(0ULL))
+#define INVALID_LPN (~(0ULL))
+#define UNMAPPED_PPA (~(0ULL))
 
 enum {
-    NAND_READ =  0,
+    NAND_READ = 0,
     NAND_WRITE = 1,
     NAND_ERASE = 2,
 
@@ -47,24 +48,23 @@ enum {
     FEMU_DISABLE_LOG = 7,
 };
 
-
-#define BLK_BITS    (16)
-#define PG_BITS     (16)
-#define SEC_BITS    (8)
-#define PL_BITS     (8)
-#define LUN_BITS    (8)
-#define CH_BITS     (7)
+#define BLK_BITS (16)
+#define PG_BITS (16)
+#define SEC_BITS (8)
+#define PL_BITS (8)
+#define LUN_BITS (8)
+#define CH_BITS (7)
 
 /* describe a physical page addr */
 struct ppa {
     union {
         struct {
             uint64_t blk : BLK_BITS;
-            uint64_t pg  : PG_BITS;
+            uint64_t pg : PG_BITS;
             uint64_t sec : SEC_BITS;
-            uint64_t pl  : PL_BITS;
+            uint64_t pl : PL_BITS;
             uint64_t lun : LUN_BITS;
-            uint64_t ch  : CH_BITS;
+            uint64_t ch : CH_BITS;
             uint64_t rsv : 1;
         } g;
 
@@ -111,20 +111,20 @@ struct ssd_channel {
 };
 
 struct ssdparams {
-    int secsz;        /* sector size in bytes */
-    int secs_per_pg;  /* # of sectors per page */
-    int pgs_per_blk;  /* # of NAND pages per block */
-    int blks_per_pl;  /* # of blocks per plane */
-    int pls_per_lun;  /* # of planes per LUN (Die) */
-    int luns_per_ch;  /* # of LUNs per channel */
-    int nchs;         /* # of channels in the SSD */
+    int secsz;       /* sector size in bytes */
+    int secs_per_pg; /* # of sectors per page */
+    int pgs_per_blk; /* # of NAND pages per block */
+    int blks_per_pl; /* # of blocks per plane */
+    int pls_per_lun; /* # of planes per LUN (Die) */
+    int luns_per_ch; /* # of LUNs per channel */
+    int nchs;        /* # of channels in the SSD */
 
-    int pg_rd_lat;    /* NAND page read latency in nanoseconds */
-    int pg_wr_lat;    /* NAND page program latency in nanoseconds */
-    int blk_er_lat;   /* NAND block erase latency in nanoseconds */
-    int ch_xfer_lat;  /* channel transfer latency for one page in nanoseconds
-                       * this defines the channel bandwith
-                       */
+    int pg_rd_lat;   /* NAND page read latency in nanoseconds */
+    int pg_wr_lat;   /* NAND page program latency in nanoseconds */
+    int blk_er_lat;  /* NAND block erase latency in nanoseconds */
+    int ch_xfer_lat; /* channel transfer latency for one page in nanoseconds
+                      * this defines the channel bandwith
+                      */
 
     double gc_thres_pcent;
     int gc_thres_lines;
@@ -139,10 +139,10 @@ struct ssdparams {
     int secs_per_ch;  /* # of sectors per channel */
     int tt_secs;      /* # of sectors in the SSD */
 
-    int pgs_per_pl;   /* # of pages per plane */
-    int pgs_per_lun;  /* # of pages per LUN (Die) */
-    int pgs_per_ch;   /* # of pages per channel */
-    int tt_pgs;       /* total # of pages in the SSD */
+    int pgs_per_pl;  /* # of pages per plane */
+    int pgs_per_lun; /* # of pages per LUN (Die) */
+    int pgs_per_ch;  /* # of pages per channel */
+    int tt_pgs;      /* total # of pages in the SSD */
 
     int blks_per_lun; /* # of blocks per LUN */
     int blks_per_ch;  /* # of blocks per channel */
@@ -153,19 +153,19 @@ struct ssdparams {
     int blks_per_line;
     int tt_lines;
 
-    int pls_per_ch;   /* # of planes per channel */
-    int tt_pls;       /* total # of planes in the SSD */
+    int pls_per_ch; /* # of planes per channel */
+    int tt_pls;     /* total # of planes in the SSD */
 
-    int tt_luns;      /* total # of LUNs in the SSD */
+    int tt_luns; /* total # of LUNs in the SSD */
 };
 
 typedef struct line {
-    int id;  /* line id, the same as corresponding block id */
-    int ipc; /* invalid page count in this line */
-    int vpc; /* valid page count in this line */
+    int id;                   /* line id, the same as corresponding block id */
+    int ipc;                  /* invalid page count in this line */
+    int vpc;                  /* valid page count in this line */
     QTAILQ_ENTRY(line) entry; /* in either {free,victim,full} list */
     /* position in the priority queue for victim lines */
-    size_t                  pos;
+    size_t pos;
 } line;
 
 /* wp: record next write addr */
@@ -183,7 +183,7 @@ struct line_mgmt {
     /* free line list, we only need to maintain a list of blk numbers */
     QTAILQ_HEAD(free_line_list, line) free_line_list;
     pqueue_t *victim_line_pq;
-    //QTAILQ_HEAD(victim_line_list, line) victim_line_list;
+    // QTAILQ_HEAD(victim_line_list, line) victim_line_list;
     QTAILQ_HEAD(full_line_list, line) full_line_list;
     int tt_lines;
     int free_line_cnt;
@@ -191,38 +191,37 @@ struct line_mgmt {
     int full_line_cnt;
 };
 
-enum superblock_status {
-    SUPERBLOCK_EMPTY,
-    SUPERBLOCK_ACTIVE,
-    SUPERBLOCK_FULL,
-    SUPERBLOCK_GC_CANDIDATE
+struct nand_cmd {
+    int type;
+    int cmd;
+    int64_t stime; /* Coperd: request arrival time */
 };
 
-struct superblock {
-    struct nand_block *blocks[8];    // 8개의 LUN에 걸친 블록들
-    int reference_count[8];          // 각 블록의 참조 횟수
-    int valid_page_count[8];         // 유효 페이지 수
-    int invalid_page_count[8];       // 무효 페이지 수
-    enum superblock_status status;   // 슈퍼블럭 상태 (예: 가득 참, 비어 있음, GC 후보 등)
+// LPN to PPN 매핑을 위한 구조체
+struct l2p_entry {
+    uint64_t lpn;       // 논리적 페이지 번호
+    struct ppa ppa;     // ppa
+    uint64_t timestamp;
+    UT_hash_handle hh;  // 해시 테이블 핸들
 };
 
-struct superblock_mgmt {
-    int superblock_row;               // 전체 슈퍼블럭 수: 지금은 256
-    int free_superblock_count;          // 사용되지 않은 슈퍼블럭 수
-    struct myqueue free_superblock_queue; // 빈 슈퍼블럭 큐
-    struct myqueue gc_candidate_queue;    // GC 후보 큐
-    struct myqueue full_superblock_queue; // 가득 찬 슈퍼블럭 큐
+// PPN to LPN 매핑을 위한 구조체
+struct p2l_entry {
+    uint64_t ppn;  // 물리적 페이지 번호
+    uint64_t lpn;  // 논리적 페이지 번호
+    uint64_t timestamp;
+    UT_hash_handle hh;  // 해시 테이블 핸들
 };
 
 struct ssd {
     char *ssdname;
     struct ssdparams sp;
     struct ssd_channel *ch;
-    struct ppa *maptbl; /* page level mapping table */
-    uint64_t *rmap;     /* reverse mapptbl, assume it's stored in OOB */
+    // struct ppa *maptbl; /* page level mapping table */
+    struct l2p_entry *l2p_table;
+    uint64_t *rmap; /* reverse mapptbl, assume it's stored in OOB */
     struct write_pointer wp;
     struct line_mgmt lm;
-    struct superblock_mgmt sbm;
 
     /* lockless ring for communication with NVMe IO thread */
     struct rte_ring **to_ftl;
@@ -237,19 +236,25 @@ struct ssd {
 void ssd_init(FemuCtrl *n);
 
 #ifdef FEMU_DEBUG_FTL
-#define ftl_debug(fmt, ...) \
-    do { printf("[FEMU] FTL-Dbg: " fmt, ## __VA_ARGS__); } while (0)
+#define ftl_debug(fmt, ...)                            \
+    do {                                               \
+        printf("[FEMU] FTL-Dbg: " fmt, ##__VA_ARGS__); \
+    } while (0)
 #else
 #define ftl_debug(fmt, ...) \
-    do { } while (0)
+    do {                    \
+    } while (0)
 #endif
 
-#define ftl_err(fmt, ...) \
-    do { fprintf(stderr, "[FEMU] FTL-Err: " fmt, ## __VA_ARGS__); } while (0)
+#define ftl_err(fmt, ...)                                       \
+    do {                                                        \
+        fprintf(stderr, "[FEMU] FTL-Err: " fmt, ##__VA_ARGS__); \
+    } while (0)
 
-#define ftl_log(fmt, ...) \
-    do { printf("[FEMU] FTL-Log: " fmt, ## __VA_ARGS__); } while (0)
-
+#define ftl_log(fmt, ...)                              \
+    do {                                               \
+        printf("[FEMU] FTL-Log: " fmt, ##__VA_ARGS__); \
+    } while (0)
 
 /* FEMU assert() */
 #ifdef FEMU_DEBUG_FTL
@@ -258,39 +263,18 @@ void ssd_init(FemuCtrl *n);
 #define ftl_assert(expression)
 #endif
 
-// LPN to PPN 매핑을 위한 구조체
-struct l2p_entry {
-    uint64_t lpn;       // 논리적 페이지 번호
-    uint64_t ppn;       // 물리적 페이지 번호
-    uint64_t timestamp; 
-    UT_hash_handle hh;  // 해시 테이블 핸들
-};
-
-// PPN to LPN 매핑을 위한 구조체
-struct p2l_entry {
-    uint64_t ppn;       // 물리적 페이지 번호
-    uint64_t lpn;       // 논리적 페이지 번호
-    uint64_t timestamp; 
-    UT_hash_handle hh;  // 해시 테이블 핸들
-};
-
 void l2p_push(struct ssd *ssd, uint64_t lpn, struct ppa *ppa);
-uint64_t l2p_find(uint64_t lpn);
+struct ppa l2p_find(struct ssd *ssd, uint64_t lpn);
 void p2l_push(struct ssd *ssd, struct ppa *ppa, uint64_t lpn);
 uint64_t p2l_find(struct ssd *ssd, struct ppa *ppa);
 
 struct hash_lpn_entry {
-    unsigned char hash[EVP_MAX_MD_SIZE];    // SHA-256 해시 값
-    uint64_t lpn;                           // 논리적 페이지 번호
-    UT_hash_handle hh;                      // 해시 테이블 핸들
+    unsigned char hash[EVP_MAX_MD_SIZE];  // SHA-256 해시 값
+    uint64_t lpn;                         // 논리적 페이지 번호
+    UT_hash_handle hh;                    // 해시 테이블 핸들
 };
 
 void map_sha256_to_lpn(unsigned char *block_data, uint64_t lpn);
-bool is_latest_data(uint64_t lpn, uint64_t ppn);
+bool is_latest_data(struct ssd *ssd, uint64_t lpn, uint64_t ppn);
 
-// void init_superblock(struct superblock *sb);
-// void init_superblock_mgmt(struct superblock_mgmt *sbm, int total_superblocks);
-// struct superblock* allocate_superblock(struct superblock_mgmt *sbm);
-// struct superblock* select_gc_candidate(struct superblock_mgmt *sbm);
-// void update_superblock_status(struct superblock_mgmt *sbm, struct superblock *sb);
 #endif

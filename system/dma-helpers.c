@@ -51,7 +51,9 @@ void qemu_sglist_add(QEMUSGList *qsg, dma_addr_t base, dma_addr_t len)
 }
 
 void qemu_sglist_destroy(QEMUSGList *qsg)
-{
+{   
+    if (qsg->sg == 0) return;
+    
     object_unref(OBJECT(qsg->dev));
     g_free(qsg->sg);
     if (qsg->is_written == 987654321) {

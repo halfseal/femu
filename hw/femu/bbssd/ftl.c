@@ -4,29 +4,29 @@
 
 static uint64_t ppa2pgidx(struct ssd *ssd, struct ppa *ppa);
 
-struct l2p_entry *l2p_table = NULL;
 struct p2l_entry *p2l_table = NULL;
 struct hash_lpn_entry *hash_lpn_table = NULL;
 
 void l2p_push(struct ssd *ssd, uint64_t lpn, struct ppa *ppa) {
-    uint64_t ppn = ppa2pgidx(ssd, ppa);
     struct l2p_entry *entry;
-    HASH_FIND(hh, l2p_table, &lpn, sizeof(uint64_t), entry);  // 기존 엔트리 존재 여부 확인
+    HASH_FIND(hh, ssd->l2p_table, &lpn, sizeof(uint64_t), entry);  // 기존 엔트리 존재 여부 확인
     if (entry == NULL) {
         entry = (struct l2p_entry *)malloc(sizeof(struct l2p_entry));  // 새 엔트리 생성
         entry->lpn = lpn;
-        HASH_ADD(hh, l2p_table, lpn, sizeof(uint64_t), entry);  // 테이블에 추가
+        HASH_ADD(hh, ssd->l2p_table, lpn, sizeof(uint64_t), entry);  // 테이블에 추가
     }
-    entry->ppn = ppn;  // PPN 설정
+    entry->ppa = *ppa;  // PPN 설정
 }
 
-uint64_t l2p_find(uint64_t lpn) {
+struct ppa l2p_find(struct ssd *ssd, uint64_t lpn) {
     struct l2p_entry *entry;
-    HASH_FIND(hh, l2p_table, &lpn, sizeof(uint64_t), entry);  // 엔트리 찾기
+    HASH_FIND(hh, ssd->l2p_table, &lpn, sizeof(uint64_t), entry);  // 엔트리 찾기
     if (entry) {
-        return entry->ppn;  // PPN 반환
+        return entry->ppa;  // PPN 반환
     } else {
-        return -1;  // 엔트리 없음
+        struct ppa empty_ppa;
+        empty_ppa.ppa = UNMAPPED_PPA;
+        return empty_ppa;  // 엔트리 없음
     }
 }
 
@@ -70,9 +70,9 @@ void map_sha256_to_lpn(unsigned char *hash, uint64_t lpn) {
     }
 }
 
-bool is_latest_data(uint64_t lpn, uint64_t ppn) {
+bool is_latest_data(struct ssd *ssd, uint64_t lpn, uint64_t ppn) {
     struct l2p_entry *l2p1;
-    HASH_FIND(hh, l2p_table, &lpn, sizeof(uint64_t), l2p1);
+    HASH_FIND(hh, ssd->l2p_table, &lpn, sizeof(uint64_t), l2p1);
     if (l2p1 == NULL) return false;
 
     struct p2l_entry *p2l;
@@ -81,99 +81,38 @@ bool is_latest_data(uint64_t lpn, uint64_t ppn) {
 
     uint64_t lpn2 = p2l->lpn;
     struct l2p_entry *l2p2;
-    HASH_FIND(hh, l2p_table, &lpn2, sizeof(uint64_t), l2p2);
+    HASH_FIND(hh, ssd->l2p_table, &lpn2, sizeof(uint64_t), l2p2);
     if (l2p2 == NULL) return false;
 
     return l2p1->timestamp == l2p2->timestamp;
 }
 
-// void init_superblock(struct superblock *sb) {
-//     for (int i = 0; i < 8; i++) {
-//         sb->blocks[i] = NULL;
-//         sb->reference_count[i] = 0;
-//         sb->valid_page_count[i] = 0;
-//         sb->invalid_page_count[i] = 0;
-//     }
-//     sb->status = SUPERBLOCK_EMPTY;
-// }
-
-// void init_superblock_mgmt(struct superblock_mgmt *sbm, int total_superblocks) {
-//     sbm->superblock_row = total_superblocks;
-//     sbm->free_superblock_count = 0;
-
-//     myqueue_init(&sbm->full_superblock_queue);
-//     myqueue_init(&sbm->free_superblock_queue);
-//     myqueue_init(&sbm->gc_candidate_queue);
-
-//     for (int i = 0; i < total_superblocks; i++) {
-//         struct superblock *sb = (struct superblock *)malloc(sizeof(struct superblock));
-//         init_superblock(sb);
-//         myqueue_add(&sbm->free_superblock_queue, sb);
-//         sbm->free_superblock_count++;
-//     }
-// }
-
-// struct superblock *allocate_superblock(struct superblock_mgmt *sbm) {
-//     if (myqueue_is_empty(&sbm->free_superblock_queue)) {
-//         return NULL;  // 사용할 수 있는 빈 슈퍼블럭이 없음
-//     }
-
-//     struct superblock *sb = (struct superblock *)myqueue_poll(&sbm->free_superblock_queue);
-//     sbm->free_superblock_count--;
-//     for (int i = 0; i < 8; i++) {
-//         sb->reference_count[i] = 0;
-//         sb->valid_page_count[i] = 0;
-//         sb->invalid_page_count[i] = 0;
-//     }
-//     sb->status = SUPERBLOCK_ACTIVE;
-//     return sb;
-// }
-
-// struct superblock *select_gc_candidate(struct superblock_mgmt *sbm) {
-//     if (myqueue_is_empty(&sbm->gc_candidate_queue)) {
-//         return NULL;  // GC 후보가 없음
-//     }
-
-//     return (struct superblock *)myqueue_poll(&sbm->gc_candidate_queue);
-// }
-
-// void update_superblock_status(struct superblock_mgmt *sbm, struct superblock *sb) {
-//     // int total_valid_pages = 0;
-//     // int total_invalid_pages = 0;
-//     // int total_referenced_blocks = 0;
-
-//     // for (int i = 0; i < 8; i++) {
-//     //     total_valid_pages += sb->valid_page_count[i];
-//     //     total_invalid_pages += sb->invalid_page_count[i];
-//     //     total_referenced_blocks += sb->reference_count[i];
-//     // }
-
-//     // if (total_referenced_blocks > 0 || total_valid_pages > 0) {
-//     //     sb->status = SUPERBLOCK_FULL;
-//     //     myqueue_add(&sbm->full_superblock_queue, sb);
-//     // } else if (total_valid_pages == 0 && total_invalid_pages > 0) {
-//     //     sb->status = SUPERBLOCK_GC_CANDIDATE;
-//     //     myqueue_add(&sbm->gc_candidate_queue, sb);
-//     // } else {
-//     //     sb->status = SUPERBLOCK_EMPTY;
-//     //     myqueue_add(&sbm->free_superblock_queue, sb);
-//     //     sbm->free_superblock_count++;
-//     // }
-// }
-
 static void *ftl_thread(void *arg);
 
-static inline bool should_gc(struct ssd *ssd) { return (ssd->lm.free_line_cnt <= ssd->sp.gc_thres_lines); }
+static inline bool should_gc(struct ssd *ssd) {
+    // 라인이 이 이하로 떨어지면 GC 실행 (75로 설정돼있음. run_blackbox 참고)
+    // 슈퍼블록으로 바꿀 경우 가용 슈퍼블록 수로 변경
+    return (ssd->lm.free_line_cnt <= ssd->sp.gc_thres_lines);
+}
 
-static inline bool should_gc_high(struct ssd *ssd) { return (ssd->lm.free_line_cnt <= ssd->sp.gc_thres_lines_high); }
+static inline bool should_gc_high(struct ssd *ssd) {
+    // 라인이 이 이하로 떨어지면 GC 실행. (95로 설정돼있음. run_blackbox 참고)
+    // 슈퍼블록으로 바꿀 경우 가용 슈퍼블록 수로 변경
+    return (ssd->lm.free_line_cnt <= ssd->sp.gc_thres_lines_high);
+}
 
-static inline struct ppa get_maptbl_ent(struct ssd *ssd, uint64_t lpn) { return ssd->maptbl[lpn]; }
+static inline struct ppa get_maptbl_ent(struct ssd *ssd, uint64_t lpn) {
+    // maptable. l2p가 사실상 이건듯.
+    // TODO: 이거랑 l2p랑 합치기
+    // return ssd->maptbl[lpn];
+    return l2p_find(ssd, lpn);
+}
 
 int l2psize = 0;
 int p2lsize = 0;
 static inline void set_maptbl_ent(struct ssd *ssd, uint64_t lpn, struct ppa *ppa) {
     ftl_assert(lpn < ssd->sp.tt_pgs);
-    ssd->maptbl[lpn] = *ppa;
+    // ssd->maptbl[lpn] = *ppa;
 
     l2p_push(ssd, lpn, ppa);
     // printf("Pushed L2P | LPN:%lu -> PPN:%lu. L2PSize:%d\n", lpn, l2p_find(lpn), ++l2psize);
@@ -462,12 +401,14 @@ static void ssd_init_ch(struct ssd_channel *ch, struct ssdparams *spp) {
 }
 
 static void ssd_init_maptbl(struct ssd *ssd) {
-    struct ssdparams *spp = &ssd->sp;
+    // struct ssdparams *spp = &ssd->sp;
 
-    ssd->maptbl = g_malloc0(sizeof(struct ppa) * spp->tt_pgs);
-    for (int i = 0; i < spp->tt_pgs; i++) {
-        ssd->maptbl[i].ppa = UNMAPPED_PPA;
-    }
+    ssd->l2p_table = NULL;
+
+    // ssd->maptbl = g_malloc0(sizeof(struct ppa) * spp->tt_pgs);
+    // for (int i = 0; i < spp->tt_pgs; i++) {
+    //     ssd->maptbl[i].ppa = UNMAPPED_PPA;
+    // }
 }
 
 static void ssd_init_rmap(struct ssd *ssd) {
@@ -853,8 +794,8 @@ static int do_gc(struct ssd *ssd, bool force) {
 }
 
 static uint64_t ssd_read(struct ssd *ssd, NvmeRequest *req) {
-    printf("MYPRINT| SR: req=%p\n", req);
-    printf("MYPRINT| SR: req->qsg:%p, req->qsg.nsgv:%d\n", (void *)&req->qsg, req->qsg.nsg);
+    // printf("MYPRINT| SR: req=%p\n", req);
+    // printf("MYPRINT| SR: req->qsg:%p, req->qsg.nsgv:%d\n", (void *)&req->qsg, req->qsg.nsg);
     qemu_sglist_destroy(&req->qsg);
 
     struct ssdparams *spp = &ssd->sp;
