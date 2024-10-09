@@ -4,7 +4,7 @@
 #include "../nvme.h"
 #include "../../../uthash.h"
 #include <openssl/evp.h>
-
+#include "myqueue.h"
 
 #define INVALID_PPA     (~(0ULL))
 #define INVALID_LPN     (~(0ULL))
@@ -191,10 +191,27 @@ struct line_mgmt {
     int full_line_cnt;
 };
 
-struct nand_cmd {
-    int type;
-    int cmd;
-    int64_t stime; /* Coperd: request arrival time */
+enum superblock_status {
+    SUPERBLOCK_EMPTY,
+    SUPERBLOCK_ACTIVE,
+    SUPERBLOCK_FULL,
+    SUPERBLOCK_GC_CANDIDATE
+};
+
+struct superblock {
+    struct nand_block *blocks[8];    // 8개의 LUN에 걸친 블록들
+    int reference_count[8];          // 각 블록의 참조 횟수
+    int valid_page_count[8];         // 유효 페이지 수
+    int invalid_page_count[8];       // 무효 페이지 수
+    enum superblock_status status;   // 슈퍼블럭 상태 (예: 가득 참, 비어 있음, GC 후보 등)
+};
+
+struct superblock_mgmt {
+    int superblock_row;               // 전체 슈퍼블럭 수: 지금은 256
+    int free_superblock_count;          // 사용되지 않은 슈퍼블럭 수
+    struct myqueue free_superblock_queue; // 빈 슈퍼블럭 큐
+    struct myqueue gc_candidate_queue;    // GC 후보 큐
+    struct myqueue full_superblock_queue; // 가득 찬 슈퍼블럭 큐
 };
 
 struct ssd {
@@ -205,6 +222,7 @@ struct ssd {
     uint64_t *rmap;     /* reverse mapptbl, assume it's stored in OOB */
     struct write_pointer wp;
     struct line_mgmt lm;
+    struct superblock_mgmt sbm;
 
     /* lockless ring for communication with NVMe IO thread */
     struct rte_ring **to_ftl;
@@ -244,6 +262,7 @@ void ssd_init(FemuCtrl *n);
 struct l2p_entry {
     uint64_t lpn;       // 논리적 페이지 번호
     uint64_t ppn;       // 물리적 페이지 번호
+    uint64_t timestamp; 
     UT_hash_handle hh;  // 해시 테이블 핸들
 };
 
@@ -251,6 +270,7 @@ struct l2p_entry {
 struct p2l_entry {
     uint64_t ppn;       // 물리적 페이지 번호
     uint64_t lpn;       // 논리적 페이지 번호
+    uint64_t timestamp; 
     UT_hash_handle hh;  // 해시 테이블 핸들
 };
 
@@ -266,5 +286,11 @@ struct hash_lpn_entry {
 };
 
 void map_sha256_to_lpn(unsigned char *block_data, uint64_t lpn);
+bool is_latest_data(uint64_t lpn, uint64_t ppn);
 
+// void init_superblock(struct superblock *sb);
+// void init_superblock_mgmt(struct superblock_mgmt *sbm, int total_superblocks);
+// struct superblock* allocate_superblock(struct superblock_mgmt *sbm);
+// struct superblock* select_gc_candidate(struct superblock_mgmt *sbm);
+// void update_superblock_status(struct superblock_mgmt *sbm, struct superblock *sb);
 #endif

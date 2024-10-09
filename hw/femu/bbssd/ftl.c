@@ -1,6 +1,5 @@
 #include "ftl.h"
 
-
 // #define FEMU_DEBUG_FTL
 
 static uint64_t ppa2pgidx(struct ssd *ssd, struct ppa *ppa);
@@ -45,7 +44,7 @@ void p2l_push(struct ssd *ssd, struct ppa *ppa, uint64_t lpn) {
 
 uint64_t p2l_find(struct ssd *ssd, struct ppa *ppa) {
     uint64_t ppn = ppa2pgidx(ssd, ppa);
-    struct l2p_entry *entry;
+    struct p2l_entry *entry;
     HASH_FIND(hh, p2l_table, &ppn, sizeof(uint64_t), entry);  // 엔트리 찾기
     if (entry) {
         return entry->ppn;  // PPN 반환
@@ -71,14 +70,102 @@ void map_sha256_to_lpn(unsigned char *hash, uint64_t lpn) {
     }
 }
 
+bool is_latest_data(uint64_t lpn, uint64_t ppn) {
+    struct l2p_entry *l2p1;
+    HASH_FIND(hh, l2p_table, &lpn, sizeof(uint64_t), l2p1);
+    if (l2p1 == NULL) return false;
+
+    struct p2l_entry *p2l;
+    HASH_FIND(hh, p2l_table, &ppn, sizeof(uint64_t), p2l);
+    if (p2l == NULL) return false;
+
+    uint64_t lpn2 = p2l->lpn;
+    struct l2p_entry *l2p2;
+    HASH_FIND(hh, l2p_table, &lpn2, sizeof(uint64_t), l2p2);
+    if (l2p2 == NULL) return false;
+
+    return l2p1->timestamp == l2p2->timestamp;
+}
+
+// void init_superblock(struct superblock *sb) {
+//     for (int i = 0; i < 8; i++) {
+//         sb->blocks[i] = NULL;
+//         sb->reference_count[i] = 0;
+//         sb->valid_page_count[i] = 0;
+//         sb->invalid_page_count[i] = 0;
+//     }
+//     sb->status = SUPERBLOCK_EMPTY;
+// }
+
+// void init_superblock_mgmt(struct superblock_mgmt *sbm, int total_superblocks) {
+//     sbm->superblock_row = total_superblocks;
+//     sbm->free_superblock_count = 0;
+
+//     myqueue_init(&sbm->full_superblock_queue);
+//     myqueue_init(&sbm->free_superblock_queue);
+//     myqueue_init(&sbm->gc_candidate_queue);
+
+//     for (int i = 0; i < total_superblocks; i++) {
+//         struct superblock *sb = (struct superblock *)malloc(sizeof(struct superblock));
+//         init_superblock(sb);
+//         myqueue_add(&sbm->free_superblock_queue, sb);
+//         sbm->free_superblock_count++;
+//     }
+// }
+
+// struct superblock *allocate_superblock(struct superblock_mgmt *sbm) {
+//     if (myqueue_is_empty(&sbm->free_superblock_queue)) {
+//         return NULL;  // 사용할 수 있는 빈 슈퍼블럭이 없음
+//     }
+
+//     struct superblock *sb = (struct superblock *)myqueue_poll(&sbm->free_superblock_queue);
+//     sbm->free_superblock_count--;
+//     for (int i = 0; i < 8; i++) {
+//         sb->reference_count[i] = 0;
+//         sb->valid_page_count[i] = 0;
+//         sb->invalid_page_count[i] = 0;
+//     }
+//     sb->status = SUPERBLOCK_ACTIVE;
+//     return sb;
+// }
+
+// struct superblock *select_gc_candidate(struct superblock_mgmt *sbm) {
+//     if (myqueue_is_empty(&sbm->gc_candidate_queue)) {
+//         return NULL;  // GC 후보가 없음
+//     }
+
+//     return (struct superblock *)myqueue_poll(&sbm->gc_candidate_queue);
+// }
+
+// void update_superblock_status(struct superblock_mgmt *sbm, struct superblock *sb) {
+//     // int total_valid_pages = 0;
+//     // int total_invalid_pages = 0;
+//     // int total_referenced_blocks = 0;
+
+//     // for (int i = 0; i < 8; i++) {
+//     //     total_valid_pages += sb->valid_page_count[i];
+//     //     total_invalid_pages += sb->invalid_page_count[i];
+//     //     total_referenced_blocks += sb->reference_count[i];
+//     // }
+
+//     // if (total_referenced_blocks > 0 || total_valid_pages > 0) {
+//     //     sb->status = SUPERBLOCK_FULL;
+//     //     myqueue_add(&sbm->full_superblock_queue, sb);
+//     // } else if (total_valid_pages == 0 && total_invalid_pages > 0) {
+//     //     sb->status = SUPERBLOCK_GC_CANDIDATE;
+//     //     myqueue_add(&sbm->gc_candidate_queue, sb);
+//     // } else {
+//     //     sb->status = SUPERBLOCK_EMPTY;
+//     //     myqueue_add(&sbm->free_superblock_queue, sb);
+//     //     sbm->free_superblock_count++;
+//     // }
+// }
+
 static void *ftl_thread(void *arg);
 
 static inline bool should_gc(struct ssd *ssd) { return (ssd->lm.free_line_cnt <= ssd->sp.gc_thres_lines); }
 
-static inline bool should_gc_high(struct ssd *ssd) {
-    /* printf("MYPRINT| free_line_cnt: %d|\tgc_thres_lines_high: %d\n", ssd->lm.free_line_cnt, ssd->sp.gc_thres_lines_high); */
-    return (ssd->lm.free_line_cnt <= ssd->sp.gc_thres_lines_high);
-}
+static inline bool should_gc_high(struct ssd *ssd) { return (ssd->lm.free_line_cnt <= ssd->sp.gc_thres_lines_high); }
 
 static inline struct ppa get_maptbl_ent(struct ssd *ssd, uint64_t lpn) { return ssd->maptbl[lpn]; }
 
