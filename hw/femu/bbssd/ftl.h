@@ -263,8 +263,6 @@ void ssd_init(FemuCtrl *n);
 #define ftl_assert(expression)
 #endif
 
-void l2p_push(struct ssd *ssd, uint64_t lpn, struct ppa *ppa);
-struct ppa l2p_find(struct ssd *ssd, uint64_t lpn);
 void p2l_push(struct ssd *ssd, struct ppa *ppa, uint64_t lpn);
 uint64_t p2l_find(struct ssd *ssd, struct ppa *ppa);
 

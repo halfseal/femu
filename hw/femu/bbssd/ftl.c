@@ -7,29 +7,6 @@ static uint64_t ppa2pgidx(struct ssd *ssd, struct ppa *ppa);
 struct p2l_entry *p2l_table = NULL;
 struct hash_lpn_entry *hash_lpn_table = NULL;
 
-void l2p_push(struct ssd *ssd, uint64_t lpn, struct ppa *ppa) {
-    struct l2p_entry *entry;
-    HASH_FIND(hh, ssd->l2p_table, &lpn, sizeof(uint64_t), entry);  // 기존 엔트리 존재 여부 확인
-    if (entry == NULL) {
-        entry = (struct l2p_entry *)malloc(sizeof(struct l2p_entry));  // 새 엔트리 생성
-        entry->lpn = lpn;
-        HASH_ADD(hh, ssd->l2p_table, lpn, sizeof(uint64_t), entry);  // 테이블에 추가
-    }
-    entry->ppa = *ppa;  // PPN 설정
-}
-
-struct ppa l2p_find(struct ssd *ssd, uint64_t lpn) {
-    struct l2p_entry *entry;
-    HASH_FIND(hh, ssd->l2p_table, &lpn, sizeof(uint64_t), entry);  // 엔트리 찾기
-    if (entry) {
-        return entry->ppa;  // PPN 반환
-    } else {
-        struct ppa empty_ppa;
-        empty_ppa.ppa = UNMAPPED_PPA;
-        return empty_ppa;  // 엔트리 없음
-    }
-}
-
 void p2l_push(struct ssd *ssd, struct ppa *ppa, uint64_t lpn) {
     uint64_t ppn = ppa2pgidx(ssd, ppa);
     struct p2l_entry *entry;
@@ -103,19 +80,31 @@ static inline bool should_gc_high(struct ssd *ssd) {
 
 static inline struct ppa get_maptbl_ent(struct ssd *ssd, uint64_t lpn) {
     // maptable. l2p가 사실상 이건듯.
-    // TODO: 이거랑 l2p랑 합치기
     // return ssd->maptbl[lpn];
-    return l2p_find(ssd, lpn);
+    // l2p로 바꿈
+    struct l2p_entry *entry;
+    HASH_FIND(hh, ssd->l2p_table, &lpn, sizeof(uint64_t), entry);  // 엔트리 찾기
+    if (entry) {
+        return entry->ppa;  // PPN 반환
+    } else {
+        struct ppa empty_ppa;
+        empty_ppa.ppa = UNMAPPED_PPA;
+        return empty_ppa;  // 엔트리 없음
+    }
 }
 
-int l2psize = 0;
-int p2lsize = 0;
 static inline void set_maptbl_ent(struct ssd *ssd, uint64_t lpn, struct ppa *ppa) {
     ftl_assert(lpn < ssd->sp.tt_pgs);
     // ssd->maptbl[lpn] = *ppa;
 
-    l2p_push(ssd, lpn, ppa);
-    // printf("Pushed L2P | LPN:%lu -> PPN:%lu. L2PSize:%d\n", lpn, l2p_find(lpn), ++l2psize);
+    struct l2p_entry *entry;
+    HASH_FIND(hh, ssd->l2p_table, &lpn, sizeof(uint64_t), entry);  // 기존 엔트리 존재 여부 확인
+    if (entry == NULL) {
+        entry = (struct l2p_entry *)malloc(sizeof(struct l2p_entry));  // 새 엔트리 생성
+        entry->lpn = lpn;
+        HASH_ADD(hh, ssd->l2p_table, lpn, sizeof(uint64_t), entry);  // 테이블에 추가
+    }
+    entry->ppa = *ppa;  // PPN 설정
 }
 
 // 이게 ppn인가봄. ppa to index이니깐...
@@ -123,16 +112,25 @@ static uint64_t ppa2pgidx(struct ssd *ssd, struct ppa *ppa) {
     struct ssdparams *spp = &ssd->sp;
     uint64_t pgidx;
 
-    pgidx = ppa->g.ch * spp->pgs_per_ch + ppa->g.lun * spp->pgs_per_lun + ppa->g.pl * spp->pgs_per_pl + ppa->g.blk * spp->pgs_per_blk + ppa->g.pg;
+    // | 4  | 4  | 4  | 4  | 4  | 4  | 4  | 4  | 4  | 4  | 4  | 4  | 4  | 4  | 4  | 4  |
+    // ||   ch   |   lun   |    pl   |   sec   |        pg         |        blk        | = ppa
+    // ↑rsv
+
+    pgidx = ppa->g.ch * spp->pgs_per_ch      // pgs_per_ch = 256 * 256 * 1 * 8
+            + ppa->g.lun * spp->pgs_per_lun  // pgs_per_lun= 256 * 256 * 1
+            + ppa->g.pl * spp->pgs_per_pl    // pgs_per_pl = 256 * 256
+            + ppa->g.blk * spp->pgs_per_blk  // pgs_per_blk= 256
+            + ppa->g.pg;
 
     ftl_assert(pgidx < spp->tt_pgs);
 
+    // TODO: 이걸 룬별로 나눠서 해야하는데. 채널은 어떻게 다루고있는지를 모르겠음
     return pgidx;
 }
 
 static inline uint64_t get_rmap_ent(struct ssd *ssd, struct ppa *ppa) {
     uint64_t pgidx = ppa2pgidx(ssd, ppa);
-
+    // TODO: superblock 별로 있는 페이지테이블로 reverse map 하게 바꾸기
     return ssd->rmap[pgidx];
 }
 
@@ -140,9 +138,9 @@ static inline uint64_t get_rmap_ent(struct ssd *ssd, struct ppa *ppa) {
 static inline void set_rmap_ent(struct ssd *ssd, uint64_t lpn, struct ppa *ppa) {
     uint64_t pgidx = ppa2pgidx(ssd, ppa);
 
-    p2l_push(ssd, ppa, lpn);
-    // printf("Pushed P2L | PPN:%lu -> LPN:%lu. P2LSize:%d\n", ppa2pgidx(ssd, ppa), p2l_find(ssd, ppa), ++p2lsize);
+    // p2l_push(ssd, ppa, lpn);
 
+    // TODO: superblock 별로 있는 페이지테이블에 reverse map 하게 바꾸기
     ssd->rmap[pgidx] = lpn;
 }
 
@@ -160,15 +158,20 @@ static void ssd_init_lines(struct ssd *ssd) {
     struct ssdparams *spp = &ssd->sp;
     struct line_mgmt *lm = &ssd->lm;
     struct line *line;
+    // TODO: 슈퍼블럭으로 바꿀건데 그럼 lun은 어떻게 할지 생각해야함
 
-    lm->tt_lines = spp->blks_per_pl;
+    lm->tt_lines = spp->blks_per_pl;  // 한 lun당 256 blk (1룬에 1plane 뿐이니)
     ftl_assert(lm->tt_lines == spp->tt_lines);
-    lm->lines = g_malloc0(sizeof(struct line) * lm->tt_lines);
+    lm->lines = g_malloc0(sizeof(struct line) * lm->tt_lines);  // line 수만큼 할당. 근데 이러면 채널은 어떡함??
 
+    // free line list : 일반 큐
     QTAILQ_INIT(&lm->free_line_list);
+    // victim line pq : 우선순위 큐
     lm->victim_line_pq = pqueue_init(spp->tt_lines, victim_line_cmp_pri, victim_line_get_pri, victim_line_set_pri, victim_line_get_pos, victim_line_set_pos);
+    // full line list : 일반 큐
     QTAILQ_INIT(&lm->full_line_list);
 
+    // 초기화하는중...
     lm->free_line_cnt = 0;
     for (int i = 0; i < lm->tt_lines; i++) {
         line = &lm->lines[i];
@@ -182,6 +185,7 @@ static void ssd_init_lines(struct ssd *ssd) {
     }
 
     ftl_assert(lm->free_line_cnt == lm->tt_lines);
+    // 만약 저거 두개 다르면 이 이하로는 실행 안되는듯. 걍 if로 하지 왜?
     lm->victim_line_cnt = 0;
     lm->full_line_cnt = 0;
 }
@@ -191,11 +195,13 @@ static void ssd_init_write_pointer(struct ssd *ssd) {
     struct line_mgmt *lm = &ssd->lm;
     struct line *curline = NULL;
 
+    // free line list에서 poll 해서 curline에 할당
     curline = QTAILQ_FIRST(&lm->free_line_list);
     QTAILQ_REMOVE(&lm->free_line_list, curline, entry);
     lm->free_line_cnt--;
 
     /* wpp->curline is always our next-to-write super-block */
+    // 첨에 ppa = 0인 상태로 시작
     wpp->curline = curline;
     wpp->ch = 0;
     wpp->lun = 0;
@@ -204,12 +210,17 @@ static void ssd_init_write_pointer(struct ssd *ssd) {
     wpp->pl = 0;
 }
 
-static inline void check_addr(int a, int max) { ftl_assert(a >= 0 && a < max); }
+static inline void check_addr(int a, int max) {
+    // 변수1이 0이상 변수2 미만인지 체크. 0 <= a < max
+    ftl_assert(0 <= a && a < max);
+}
 
 static struct line *get_next_free_line(struct ssd *ssd) {
     struct line_mgmt *lm = &ssd->lm;
     struct line *curline = NULL;
 
+    // 이것도 그냥 큐에서 뽑아오는거임
+    // TODO: 슈퍼블럭으로 바꿀건데 그럼 lun은 어떻게 할지 생각해야함
     curline = QTAILQ_FIRST(&lm->free_line_list);
     if (!curline) {
         ftl_err("No free lines left in [%s] !!!!\n", ssd->ssdname);
@@ -226,48 +237,47 @@ static void ssd_advance_write_pointer(struct ssd *ssd) {
     struct write_pointer *wpp = &ssd->wp;
     struct line_mgmt *lm = &ssd->lm;
 
-    check_addr(wpp->ch, spp->nchs);
-    wpp->ch++;
-    if (wpp->ch == spp->nchs) {
-        wpp->ch = 0;
-        check_addr(wpp->lun, spp->luns_per_ch);
-        wpp->lun++;
-        /* in this case, we should go to next lun */
-        if (wpp->lun == spp->luns_per_ch) {
-            wpp->lun = 0;
-            /* go to next page in the block */
-            check_addr(wpp->pg, spp->pgs_per_blk);
-            wpp->pg++;
-            if (wpp->pg == spp->pgs_per_blk) {
-                wpp->pg = 0;
-                /* move current line to {victim,full} line list */
-                if (wpp->curline->vpc == spp->pgs_per_line) {
-                    /* all pgs are still valid, move to full line list */
-                    ftl_assert(wpp->curline->ipc == 0);
-                    QTAILQ_INSERT_TAIL(&lm->full_line_list, wpp->curline, entry);
+    check_addr(wpp->ch, spp->nchs);  // 현재 채널이 nchs 이하인지 체크
+    wpp->ch++;                       // 다음 채널로 ㄱㄱ
+    if (wpp->ch == spp->nchs) {      // 만약 다음 채널이 없다면!! 이제 다음 룬으로 ㄱㄱ
+        wpp->ch = 0;                 // 0 -> 1 -> 0 -> 1 -> ... 그 전에 일단 채널은 0으로 초기화
+
+        check_addr(wpp->lun, spp->luns_per_ch);  // 현재 룬이 luns_per_ch 이하인지 체크
+        wpp->lun++;                              // 다음 룬으로 ㄱㄱ
+        if (wpp->lun == spp->luns_per_ch) {      // 만약 다음 룬이 없다면!! 이제 다음 페이지로 ㄱㄱ
+            wpp->lun = 0;                        // 0 -> ... -> 7 -> 0 -> ... -> 7 -> 0 -> ... 그 전에 일단 룬은 0으로 초기화
+
+            check_addr(wpp->pg, spp->pgs_per_blk);  // 현재 페이지가 pgs_per_blk 이하인지 체크
+            wpp->pg++;                              // 다음 페이지로 ㄱㄱ
+            if (wpp->pg == spp->pgs_per_blk) {      // 만약 다음 페이지가 없다면!! 이제 다음 블록으로 ㄱㄱ
+                wpp->pg = 0;                        // 0 -> ... -> 255 -> 0 -> ... -> 255 -> 0 -> ... 그 전에 일단 페이지는 0으로 초기화
+
+                // 이제 블럭ID 바꿀거니 쓰던 라인 상태 바꿔주자. victim / full
+                if (wpp->curline->vpc == spp->pgs_per_line) {                      // 만약 현재 라인이 모두 valid page라면
+                    ftl_assert(wpp->curline->ipc == 0);                            // 모순 발생! 모두 valid page인데 invalid page가 있다?
+                    QTAILQ_INSERT_TAIL(&lm->full_line_list, wpp->curline, entry);  // full line list에 넣어주자
                     lm->full_line_cnt++;
                 } else {
-                    ftl_assert(wpp->curline->vpc >= 0 && wpp->curline->vpc < spp->pgs_per_line);
-                    /* there must be some invalid pages in this line */
-                    ftl_assert(wpp->curline->ipc > 0);
-                    pqueue_insert(lm->victim_line_pq, wpp->curline);
+                    ftl_assert(0 <= wpp->curline->vpc && wpp->curline->vpc < spp->pgs_per_line);
+                    ftl_assert(0 < wpp->curline->ipc);
+                    pqueue_insert(lm->victim_line_pq, wpp->curline);  // victim line pq에 넣어주자
                     lm->victim_line_cnt++;
                 }
-                /* current line is used up, pick another empty line */
-                check_addr(wpp->blk, spp->blks_per_pl);
+
+                check_addr(wpp->blk, spp->blks_per_pl);  // 현재 블럭이 blks_per_pl 이하인지 체크... 근데 왜하는거지? 넘겠냐고
                 wpp->curline = NULL;
-                wpp->curline = get_next_free_line(ssd);
+                wpp->curline = get_next_free_line(ssd);  // 다음 라인을 가져오자
                 if (!wpp->curline) {
                     /* TODO */
                     abort();
                 }
-                wpp->blk = wpp->curline->id;
-                check_addr(wpp->blk, spp->blks_per_pl);
-                /* make sure we are starting from page 0 in the super block */
-                ftl_assert(wpp->pg == 0);
+
+                wpp->blk = wpp->curline->id;             // 블럭ID를 라인ID로 설정
+                check_addr(wpp->blk, spp->blks_per_pl);  // 넘겠냐고
+
+                ftl_assert(wpp->pg == 0);  // 아까 0으로 초기화 했던거 바뀌면 안됨
                 ftl_assert(wpp->lun == 0);
                 ftl_assert(wpp->ch == 0);
-                /* TODO: assume # of pl_per_lun is 1, fix later */
                 ftl_assert(wpp->pl == 0);
             }
         }
@@ -275,6 +285,7 @@ static void ssd_advance_write_pointer(struct ssd *ssd) {
 }
 
 static struct ppa get_new_page(struct ssd *ssd) {
+    // 현재 write pointer 위치에다가 쓸거니 그걸 ppa에 넣어서 반환
     struct write_pointer *wpp = &ssd->wp;
     struct ppa ppa;
     ppa.ppa = 0;
