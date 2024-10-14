@@ -3,3 +3,4 @@ GTAGS
 settings.json
 build-femu
 .cache
+**/__pycache__/

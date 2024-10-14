@@ -266,13 +266,21 @@ void ssd_init(FemuCtrl *n);
 void p2l_push(struct ssd *ssd, struct ppa *ppa, uint64_t lpn);
 uint64_t p2l_find(struct ssd *ssd, struct ppa *ppa);
 
-struct hash_lpn_entry {
+struct ppa_entry {
+    uint64_t uintppa;   // 물리 페이지 번호 (PPA)
+    uint32_t cnt;       // 참조 횟수
+    UT_hash_handle hh;  // uthash 핸들
+};
+struct hash_ppa_entry {
     unsigned char hash[EVP_MAX_MD_SIZE];  // SHA-256 해시 값
-    uint64_t lpn;                         // 논리적 페이지 번호
+    struct ppa_entry *ppa_table;          // PPA와 참조 카운트를 저장하는 해시 테이블 (내부 맵)
     UT_hash_handle hh;                    // 해시 테이블 핸들
 };
 
-uint64_t map_sha256_to_lpn(unsigned char *block_data, unsigned int len, uint64_t lpn);
+bool could_get_hash_support(unsigned char *hash, unsigned int len);
+void add_one_in_hash(unsigned char *hash, unsigned int len);
+void map_sha256_to_ppa(unsigned char *hash, unsigned int len, struct ppa *ppa);
+
 bool is_latest_data(struct ssd *ssd, uint64_t lpn, uint64_t ppn);
 
 #endif

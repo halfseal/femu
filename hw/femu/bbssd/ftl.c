@@ -5,7 +5,7 @@
 static uint64_t ppa2pgidx(struct ssd *ssd, struct ppa *ppa);
 
 struct p2l_entry *p2l_table = NULL;
-struct hash_lpn_entry *hash_lpn_table = NULL;
+struct hash_ppa_entry *hash_ppa_table = NULL;
 
 void p2l_push(struct ssd *ssd, struct ppa *ppa, uint64_t lpn) {
     uint64_t ppn = ppa2pgidx(ssd, ppa);
@@ -30,29 +30,64 @@ uint64_t p2l_find(struct ssd *ssd, struct ppa *ppa) {
     }
 }
 
-uint64_t map_sha256_to_lpn(unsigned char *hash, unsigned int len, uint64_t lpn) {
-    struct hash_lpn_entry *entry;
-    HASH_FIND(hh, hash_lpn_table, hash, len, entry);
+bool could_get_hash_support(unsigned char *hash, unsigned int len) {
+    struct hash_ppa_entry *entry;
+    HASH_FIND(hh, hash_ppa_table, hash, len, entry);
+    if (entry == NULL) return false;
 
-    // printf("MYPRINT| shamap: LPN %ld - ", lpn);
-    // for (unsigned int i = 0; i < len; i++) {
-    //     printf("%02x", hash[i]);
-    // }
-    // printf("\n");
+    bool there_is_space = false;
+    struct ppa_entry *ppa_item = NULL, *tmp = NULL;
+    HASH_ITER(hh, entry->ppa_table, ppa_item, tmp) {
+        if (ppa_item->cnt < 15) {
+            there_is_space = true;
+            break;
+        }
+    }
+
+    return there_is_space;
+}
+
+void add_one_in_hash(unsigned char *hash, unsigned int len) {
+    struct hash_ppa_entry *entry;
+    HASH_FIND(hh, hash_ppa_table, hash, len, entry);
+
+    struct ppa_entry *ppa_item = NULL, *tmp = NULL;
+    HASH_ITER(hh, entry->ppa_table, ppa_item, tmp) {
+        if (ppa_item->cnt < 15) {
+            ppa_item->cnt++;
+            printf("MYPRINT| HIT!: added one {%ld, %d}\n", ppa_item->uintppa, ppa_item->cnt);
+            return;
+        }
+    }
+}
+
+void map_sha256_to_ppa(unsigned char *hash, unsigned int len, struct ppa *ppa) {
+    struct hash_ppa_entry *entry;
+    HASH_FIND(hh, hash_ppa_table, hash, len, entry);
 
     if (entry == NULL) {
         // 중복이 없으면 새로운 엔트리 추가
-        entry = (struct hash_lpn_entry *)malloc(sizeof(struct hash_lpn_entry));
+        entry = (struct hash_ppa_entry *)malloc(sizeof(struct hash_ppa_entry));
         memcpy(entry->hash, hash, len);  // 해시 값을 구조체에 복사
-        entry->lpn = lpn;
-        HASH_ADD(hh, hash_lpn_table, hash, len, entry);  // 해시 테이블에 추가
-        // printf("New hash -> LPN mapping: LPN = %lu\n", lpn);
-        return lpn;
-    } else {
-        // 중복된 데이터 발견
-        // printf("Duplicate data found for LPN = %lu (already mapped to LPN = %lu)\n", lpn, entry->lpn);
-        return entry->lpn;
+
+        entry->ppa_table = NULL;                         // 내부 맵(ppa 테이블) 초기화
+        HASH_ADD(hh, hash_ppa_table, hash, len, entry);  // 해시 테이블에 추가
+
+        struct ppa_entry *ppa_item = (struct ppa_entry *)malloc(sizeof(struct ppa_entry));
+        uint64_t uintppa = ppa->ppa;
+        ppa_item->uintppa = uintppa;
+        ppa_item->cnt = 1;
+        HASH_ADD(hh, entry->ppa_table, uintppa, sizeof(uint64_t), ppa_item);  // 내부 맵에 추가
+        printf("MYPRINT| is new entry {%ld, %d} - %ld\n", uintppa, ppa_item->cnt, ppa->ppa);
+        return;
     }
+
+    struct ppa_entry *ppa_item = (struct ppa_entry *)malloc(sizeof(struct ppa_entry));
+    uint64_t uintppa = ppa->ppa;
+    ppa_item->uintppa = uintppa;
+    ppa_item->cnt = 1;
+    HASH_ADD(hh, entry->ppa_table, uintppa, sizeof(uint64_t), ppa_item);  // 내부 맵에 추가
+    printf("MYPRINT| MISS: reached limit(15), so made new entry and added one {%ld, %d} - %ld\n", uintppa, ppa_item->cnt, ppa->ppa);
 }
 
 bool is_latest_data(struct ssd *ssd, uint64_t lpn, uint64_t ppn) {
@@ -573,6 +608,7 @@ static uint64_t ssd_advance_status(struct ssd *ssd, struct ppa *ppa, struct nand
             break;
 
         case NAND_ERASE:
+            // TODO: ppa에서 lpn 정보 받아와서 lpn바꿔주고, sha256 map도 바꿔야됨
             /* erase: only need to advance NAND status */
             nand_stime = (lun->next_lun_avail_time < cmd_stime) ? cmd_stime : lun->next_lun_avail_time;
             lun->next_lun_avail_time = nand_stime + spp->blk_er_lat;
@@ -697,6 +733,23 @@ static uint64_t gc_write_page(struct ssd *ssd, struct ppa *old_ppa) {
     set_maptbl_ent(ssd, lpn, &new_ppa);  // l2p 업데이트
     set_rmap_ent(ssd, lpn, &new_ppa);    // p2l 업데이트
 
+    // old ppa 매핑 바꿈
+    bool done_flag = false;
+    struct hash_ppa_entry *entry, *tmp;
+    struct ppa_entry *ppa_item, *ppa_tmp;
+    HASH_ITER(hh, hash_ppa_table, entry, tmp) {               // 외부 해시 테이블을 순회
+        if (done_flag) break;                                 //
+        HASH_ITER(hh, entry->ppa_table, ppa_item, ppa_tmp) {  // 내부 맵을 순회하여 old_ppa와 동일한 항목을 찾음
+            if (ppa_item->uintppa == old_ppa->ppa) {          // old_ppa와 동일한 항목 찾기
+                // 해당 항목을 new_ppa로 업데이트
+                ppa_item->uintppa = new_ppa.ppa;
+                printf("Mapping updated: old PPA %ld -> new PPA %ld\n", old_ppa->ppa, new_ppa.ppa);
+                done_flag = true;
+                break;
+            }
+        }
+    }
+
     mark_page_valid(ssd, &new_ppa);  // 새로 할당한 페이지를 valid로 바꿔줌
     ssd_advance_write_pointer(ssd);  // get_new_page 이게 write pointer를 바꿔주지는 않아서 따로 바꿔줌
 
@@ -782,29 +835,6 @@ static int do_gc(struct ssd *ssd, bool force) {
     ppa.g.blk = victim_line->id;  // line 선택했으면 바꿔야할 블럭 번호 자명하니
     ftl_debug("GC-ing line:%d,ipc=%d,victim=%d,full=%d,free=%d\n", ppa.g.blk, victim_line->ipc, ssd->lm.victim_line_cnt, ssd->lm.full_line_cnt, ssd->lm.free_line_cnt);
 
-    /* copy back valid data */
-    for (ch = 0; ch < spp->nchs; ch++) {
-        for (lun = 0; lun < spp->luns_per_ch; lun++) {
-            // 채널, 룬 바꿔가며 라인에 있는 페이지들 다 처리해야함
-            ppa.g.ch = ch;
-            ppa.g.lun = lun;
-            ppa.g.pl = 0;  // 뭐지? 어차피 plane은 하나니깐 그냥 0 써버린건가?
-            lunp = get_lun(ssd, &ppa);
-            clean_one_block(ssd, &ppa);
-            mark_block_free(ssd, &ppa);
-
-            if (spp->enable_gc_delay) {
-                struct nand_cmd gce;
-                gce.type = GC_IO;
-                gce.cmd = NAND_ERASE;
-                gce.stime = 0;
-                ssd_advance_status(ssd, &ppa, &gce);
-            }
-
-            lunp->gc_endtime = lunp->next_lun_avail_time;
-        }
-    }
-
     mark_line_free(ssd, &ppa);  // line에 있는 블럭들 다 처리했으니 line도 free로 바꿔줌
 
     return 0;
@@ -855,7 +885,6 @@ static uint64_t ssd_write(struct ssd *ssd, NvmeRequest *req) {
     int r;
 
     ssd->bytes_written_from_host += len * spp->secsz;
-    /* printf("MYPRINT| Bytes written from host: %" PRIu64 "\n", ssd->bytes_written_from_host); */
 
     if (end_lpn >= spp->tt_pgs) ftl_err("start_lpn=%" PRIu64 ",tt_pgs=%d\n", start_lpn, ssd->sp.tt_pgs);
 
@@ -874,24 +903,23 @@ static uint64_t ssd_write(struct ssd *ssd, NvmeRequest *req) {
             set_rmap_ent(ssd, INVALID_LPN, &ppa);  // p2l에서 lpn을 invalid로 바꿔줌
         }
 
-        uint64_t hashed_lpn = map_sha256_to_lpn(req->qsg.hash_array[lpn - start_lpn], req->qsg.hash_len_array[lpn - start_lpn], lpn);  // 중복 탐색
-
-        if (hashed_lpn != lpn) {  // 이미 해당 lpn의 내용이 ppa에 있음
-            ppa = get_maptbl_ent(ssd, hashed_lpn);
+        if (could_get_hash_support(req->qsg.hash_array[lpn - start_lpn], req->qsg.hash_len_array[lpn - start_lpn])) {  // 이미 해당 글의 내용이 ppa 어딘가에 있음
             ftl_assert(!mapped_ppa(&ppa) || !valid_ppa(ssd, &ppa));
             set_maptbl_ent(ssd, lpn, &ppa);  // ppa에 중복 고려해서 lpn 넣어줌
+            add_one_in_hash(req->qsg.hash_array[lpn - start_lpn], req->qsg.hash_len_array[lpn - start_lpn]);
             // TODO: 슈퍼블럭 로그 추가
-            printf("MYPRINT| SSDWRITE - SHA HIT: lpn=%ld, hashed_lpn=%ld, ppa=%ld\n", lpn, hashed_lpn, ppa.ppa);
+            // printf("MYPRINT| SSDWRITE - SHA HIT: lpn=%ld\n", lpn);
         } else {  // 없음. 여긴 슈퍼블럭 부분만 건들면 됨
-
             ppa = get_new_page(ssd);
             set_maptbl_ent(ssd, lpn, &ppa);  // ppa에 중복 고려해서 lpn 넣어줌
             set_rmap_ent(ssd, lpn, &ppa);
 
             mark_page_valid(ssd, &ppa);
 
+            map_sha256_to_ppa(req->qsg.hash_array[lpn - start_lpn], req->qsg.hash_len_array[lpn - start_lpn], &ppa);
+
             ssd_advance_write_pointer(ssd);
-            printf("MYPRINT| SSDWRITE - SHA MISS: lpn=%ld, ppa=%ld\n", lpn, ppa.ppa);
+            // printf("MYPRINT| SSDWRITE - SHA MISS: lpn=%ld, ppa=%ld\n", lpn, ppa.ppa);
 
             // 이건 건드리지 말자
             struct nand_cmd swr;
@@ -908,7 +936,6 @@ static uint64_t ssd_write(struct ssd *ssd, NvmeRequest *req) {
 
     return maxlat;
 }
-
 
 // femu 시뮬레이션 계산하는 함수인 듯. 이건 건들기 ㄴㄴ
 static void *ftl_thread(void *arg) {
