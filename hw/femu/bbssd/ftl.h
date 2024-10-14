@@ -199,8 +199,8 @@ struct nand_cmd {
 
 // LPN to PPN 매핑을 위한 구조체
 struct l2p_entry {
-    uint64_t lpn;       // 논리적 페이지 번호
-    struct ppa ppa;     // ppa
+    uint64_t lpn;    // 논리적 페이지 번호
+    struct ppa ppa;  // ppa
     uint64_t timestamp;
     UT_hash_handle hh;  // 해시 테이블 핸들
 };
@@ -272,7 +272,7 @@ struct hash_lpn_entry {
     UT_hash_handle hh;                    // 해시 테이블 핸들
 };
 
-void map_sha256_to_lpn(unsigned char *block_data, uint64_t lpn);
+uint64_t map_sha256_to_lpn(unsigned char *block_data, unsigned int len, uint64_t lpn);
 bool is_latest_data(struct ssd *ssd, uint64_t lpn, uint64_t ppn);
 
 #endif

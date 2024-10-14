@@ -30,20 +30,28 @@ uint64_t p2l_find(struct ssd *ssd, struct ppa *ppa) {
     }
 }
 
-void map_sha256_to_lpn(unsigned char *hash, uint64_t lpn) {
+uint64_t map_sha256_to_lpn(unsigned char *hash, unsigned int len, uint64_t lpn) {
     struct hash_lpn_entry *entry;
-    HASH_FIND(hh, hash_lpn_table, hash, EVP_MAX_MD_SIZE, entry);
+    HASH_FIND(hh, hash_lpn_table, hash, len, entry);
+
+    // printf("MYPRINT| shamap: LPN %ld - ", lpn);
+    // for (unsigned int i = 0; i < len; i++) {
+    //     printf("%02x", hash[i]);
+    // }
+    // printf("\n");
 
     if (entry == NULL) {
         // 중복이 없으면 새로운 엔트리 추가
         entry = (struct hash_lpn_entry *)malloc(sizeof(struct hash_lpn_entry));
-        memcpy(entry->hash, hash, EVP_MAX_MD_SIZE);  // 해시 값을 구조체에 복사
+        memcpy(entry->hash, hash, len);  // 해시 값을 구조체에 복사
         entry->lpn = lpn;
-        HASH_ADD(hh, hash_lpn_table, hash, EVP_MAX_MD_SIZE, entry);  // 해시 테이블에 추가
-        printf("New hash -> LPN mapping: LPN = %lu\n", lpn);
+        HASH_ADD(hh, hash_lpn_table, hash, len, entry);  // 해시 테이블에 추가
+        // printf("New hash -> LPN mapping: LPN = %lu\n", lpn);
+        return lpn;
     } else {
         // 중복된 데이터 발견
-        printf("Duplicate data found for LPN = %lu (already mapped to LPN = %lu)\n", lpn, entry->lpn);
+        // printf("Duplicate data found for LPN = %lu (already mapped to LPN = %lu)\n", lpn, entry->lpn);
+        return entry->lpn;
     }
 }
 
@@ -257,7 +265,7 @@ static void ssd_advance_write_pointer(struct ssd *ssd) {
                     ftl_assert(wpp->curline->ipc == 0);                            // 모순 발생! 모두 valid page인데 invalid page가 있다?
                     QTAILQ_INSERT_TAIL(&lm->full_line_list, wpp->curline, entry);  // full line list에 넣어주자
                     lm->full_line_cnt++;
-                } else {
+                } else {  // invalid page가 있다면
                     ftl_assert(0 <= wpp->curline->vpc && wpp->curline->vpc < spp->pgs_per_line);
                     ftl_assert(0 < wpp->curline->ipc);
                     pqueue_insert(lm->victim_line_pq, wpp->curline);  // victim line pq에 넣어주자
@@ -324,31 +332,31 @@ static void ssd_init_params(struct ssdparams *spp, FemuCtrl *n) {
     spp->ch_xfer_lat = n->bb_params.ch_xfer_lat;
 
     /* calculated values */
-    spp->secs_per_blk = spp->secs_per_pg * spp->pgs_per_blk;
-    spp->secs_per_pl = spp->secs_per_blk * spp->blks_per_pl;
-    spp->secs_per_lun = spp->secs_per_pl * spp->pls_per_lun;
-    spp->secs_per_ch = spp->secs_per_lun * spp->luns_per_ch;
-    spp->tt_secs = spp->secs_per_ch * spp->nchs;
+    spp->secs_per_blk = spp->secs_per_pg * spp->pgs_per_blk;  // secs_per_blk : 블록당 섹터 수    = 8 * 256 = 2048
+    spp->secs_per_pl = spp->secs_per_blk * spp->blks_per_pl;  // secs_per_pl  : 플레인당 섹터 수  = 2048 * 256 = 524288
+    spp->secs_per_lun = spp->secs_per_pl * spp->pls_per_lun;  // secs_per_lun : 룬당 섹터 수     = 524288 * 1 = 524288
+    spp->secs_per_ch = spp->secs_per_lun * spp->luns_per_ch;  // secs_per_ch  : 채널당 섹터 수   = 524288 * 8 = 4194304
+    spp->tt_secs = spp->secs_per_ch * spp->nchs;              // tt_secs      : 전체 섹터 수     = 4194304 * 2 = 8388608
 
-    spp->pgs_per_pl = spp->pgs_per_blk * spp->blks_per_pl;
-    spp->pgs_per_lun = spp->pgs_per_pl * spp->pls_per_lun;
-    spp->pgs_per_ch = spp->pgs_per_lun * spp->luns_per_ch;
-    spp->tt_pgs = spp->pgs_per_ch * spp->nchs;
+    spp->pgs_per_pl = spp->pgs_per_blk * spp->blks_per_pl;  // pgs_per_pl  : 플레인당 페이지 수 = 256 * 256 = 65536
+    spp->pgs_per_lun = spp->pgs_per_pl * spp->pls_per_lun;  // pgs_per_lun : 룬당 페이지 수     = 65536 * 1 = 65536
+    spp->pgs_per_ch = spp->pgs_per_lun * spp->luns_per_ch;  // pgs_per_ch  : 채널당 페이지 수   = 65536 * 8 = 524288
+    spp->tt_pgs = spp->pgs_per_ch * spp->nchs;              // tt_pgs      : 전체 페이지 수      = 524288 * 2 = 1048576
 
-    spp->blks_per_lun = spp->blks_per_pl * spp->pls_per_lun;
-    spp->blks_per_ch = spp->blks_per_lun * spp->luns_per_ch;
-    spp->tt_blks = spp->blks_per_ch * spp->nchs;
+    spp->blks_per_lun = spp->blks_per_pl * spp->pls_per_lun;  // blks_per_lun : 룬당 블록 수     = 256 * 1 = 256
+    spp->blks_per_ch = spp->blks_per_lun * spp->luns_per_ch;  // blks_per_ch  : 채널당 블록 수   = 256 * 8 = 2048
+    spp->tt_blks = spp->blks_per_ch * spp->nchs;              // tt_blks      : 전체 블록 수     = 2048 * 2 = 4096
 
-    spp->pls_per_ch = spp->pls_per_lun * spp->luns_per_ch;
-    spp->tt_pls = spp->pls_per_ch * spp->nchs;
+    spp->pls_per_ch = spp->pls_per_lun * spp->luns_per_ch;  // pls_per_ch : 채널당 플레인 수 = 1 * 8 = 8
+    spp->tt_pls = spp->pls_per_ch * spp->nchs;              // tt_pls     : 전체 플레인 수   = 8 * 2 = 16
 
-    spp->tt_luns = spp->luns_per_ch * spp->nchs;
+    spp->tt_luns = spp->luns_per_ch * spp->nchs;  // tt_luns : 전체 룬 수 = 8 * 2 = 16
 
     /* line is special, put it at the end */
-    spp->blks_per_line = spp->tt_luns; /* TODO: to fix under multiplanes */
+    spp->blks_per_line = spp->tt_luns;
     spp->pgs_per_line = spp->blks_per_line * spp->pgs_per_blk;
     spp->secs_per_line = spp->pgs_per_line * spp->secs_per_pg;
-    spp->tt_lines = spp->blks_per_lun; /* TODO: to fix under multiplanes */
+    spp->tt_lines = spp->blks_per_lun;
 
     spp->gc_thres_pcent = n->bb_params.gc_thres_pcent / 100.0;
     spp->gc_thres_lines = (int)((1 - spp->gc_thres_pcent) * spp->tt_lines);
@@ -356,26 +364,25 @@ static void ssd_init_params(struct ssdparams *spp, FemuCtrl *n) {
 
     printf("MYPRINT|gc_thres_pcent: %f|\tgc_thres_pcent_high: %f|\ttt_lines: %d\n", spp->gc_thres_pcent, spp->gc_thres_pcent_high, spp->tt_lines);
     spp->gc_thres_lines_high = (int)((1 - spp->gc_thres_pcent_high) * spp->tt_lines);
-    // spp->gc_thres_lines_high = 240;
     spp->enable_gc_delay = true;
 
     check_params(spp);
 }
 
 static void ssd_init_nand_page(struct nand_page *pg, struct ssdparams *spp) {
-    pg->nsecs = spp->secs_per_pg;
-    pg->sec = g_malloc0(sizeof(nand_sec_status_t) * pg->nsecs);
+    pg->nsecs = spp->secs_per_pg;                                // 한 페이지에는 8개의 섹터가 있음
+    pg->sec = g_malloc0(sizeof(nand_sec_status_t) * pg->nsecs);  // 8개의 섹터를 가진 페이지
     for (int i = 0; i < pg->nsecs; i++) {
-        pg->sec[i] = SEC_FREE;
+        pg->sec[i] = SEC_FREE;  // 페이지에 있는 섹터들을 모두 FREE로 초기화
     }
     pg->status = PG_FREE;
 }
 
 static void ssd_init_nand_blk(struct nand_block *blk, struct ssdparams *spp) {
-    blk->npgs = spp->pgs_per_blk;
-    blk->pg = g_malloc0(sizeof(struct nand_page) * blk->npgs);
+    blk->npgs = spp->pgs_per_blk;                               // 한 블록에는 256개의 페이지가 있음
+    blk->pg = g_malloc0(sizeof(struct nand_page) * blk->npgs);  // 블록에 256개의 페이지를 할당
     for (int i = 0; i < blk->npgs; i++) {
-        ssd_init_nand_page(&blk->pg[i], spp);
+        ssd_init_nand_page(&blk->pg[i], spp);  // 블록에 있는 256개의 페이지를 초기화
     }
     blk->ipc = 0;
     blk->vpc = 0;
@@ -384,47 +391,49 @@ static void ssd_init_nand_blk(struct nand_block *blk, struct ssdparams *spp) {
 }
 
 static void ssd_init_nand_plane(struct nand_plane *pl, struct ssdparams *spp) {
-    pl->nblks = spp->blks_per_pl;
-    pl->blk = g_malloc0(sizeof(struct nand_block) * pl->nblks);
+    pl->nblks = spp->blks_per_pl;                                // 한 플레인에는 256개의 블록이 있음
+    pl->blk = g_malloc0(sizeof(struct nand_block) * pl->nblks);  // 플레인에 256개의 블록을 할당
     for (int i = 0; i < pl->nblks; i++) {
-        ssd_init_nand_blk(&pl->blk[i], spp);
+        ssd_init_nand_blk(&pl->blk[i], spp);  // 플레인에 있는 256개의 블록을 초기화
     }
 }
 
 static void ssd_init_nand_lun(struct nand_lun *lun, struct ssdparams *spp) {
-    lun->npls = spp->pls_per_lun;
-    lun->pl = g_malloc0(sizeof(struct nand_plane) * lun->npls);
+    lun->npls = spp->pls_per_lun;                                // 한 룬에는 1개의 플레인이 있음
+    lun->pl = g_malloc0(sizeof(struct nand_plane) * lun->npls);  // 룬에 1개의 플레인을 할당
     for (int i = 0; i < lun->npls; i++) {
-        ssd_init_nand_plane(&lun->pl[i], spp);
+        ssd_init_nand_plane(&lun->pl[i], spp);  // 룬에 있는 1개의 플레인을 초기화
     }
     lun->next_lun_avail_time = 0;
-    lun->busy = false;
+    lun->busy = false;  // <- 이 busy는 뭘까?
 }
 
 static void ssd_init_ch(struct ssd_channel *ch, struct ssdparams *spp) {
-    ch->nluns = spp->luns_per_ch;
-    ch->lun = g_malloc0(sizeof(struct nand_lun) * ch->nluns);
+    ch->nluns = spp->luns_per_ch;                              // 한 채널에는 8개의 룬이 있음
+    ch->lun = g_malloc0(sizeof(struct nand_lun) * ch->nluns);  // 채널에 8개의 룬을 할당
     for (int i = 0; i < ch->nluns; i++) {
-        ssd_init_nand_lun(&ch->lun[i], spp);
+        ssd_init_nand_lun(&ch->lun[i], spp);  // 채널에 있는 8개의 룬을 초기화
     }
     ch->next_ch_avail_time = 0;
-    ch->busy = 0;
+    ch->busy = 0;  // <- 이 busy는 뭘까?
 }
 
 static void ssd_init_maptbl(struct ssd *ssd) {
     // struct ssdparams *spp = &ssd->sp;
 
-    ssd->l2p_table = NULL;
-
     // ssd->maptbl = g_malloc0(sizeof(struct ppa) * spp->tt_pgs);
     // for (int i = 0; i < spp->tt_pgs; i++) {
     //     ssd->maptbl[i].ppa = UNMAPPED_PPA;
     // }
+
+    ssd->l2p_table = NULL;
 }
 
 static void ssd_init_rmap(struct ssd *ssd) {
     struct ssdparams *spp = &ssd->sp;
 
+    // ppn -> lpn
+    // TODO: superblock 별로 있는 페이지테이블로 reverse map 하게 바꾸기
     ssd->rmap = g_malloc0(sizeof(uint64_t) * spp->tt_pgs);
     for (int i = 0; i < spp->tt_pgs; i++) {
         ssd->rmap[i] = INVALID_LPN;
@@ -439,25 +448,18 @@ void ssd_init(FemuCtrl *n) {
 
     ssd_init_params(spp, n);
 
-    /* initialize ssd internal layout architecture */
-    ssd->ch = g_malloc0(sizeof(struct ssd_channel) * spp->nchs);
+    ssd->ch = g_malloc0(sizeof(struct ssd_channel) * spp->nchs);  // 2개의 채널을 할당
     for (int i = 0; i < spp->nchs; i++) {
-        ssd_init_ch(&ssd->ch[i], spp);
+        ssd_init_ch(&ssd->ch[i], spp);  // 채널 초기화
     }
 
-    /* initialize maptbl */
     ssd_init_maptbl(ssd);
-
-    /* initialize rmap */
     ssd_init_rmap(ssd);
 
     ssd->bytes_written_from_host = 0;
     ssd->bytes_written_during_gc = 0;
 
-    /* initialize all the lines */
     ssd_init_lines(ssd);
-
-    /* initialize write pointer, this is how we allocate new pages for writes */
     ssd_init_write_pointer(ssd);
 
     qemu_thread_create(&ssd->ftl_thread, "FEMU-FTL-Thread", ftl_thread, n, QEMU_THREAD_JOINABLE);
@@ -483,30 +485,43 @@ static inline bool valid_lpn(struct ssd *ssd, uint64_t lpn) { return (lpn < ssd-
 
 static inline bool mapped_ppa(struct ppa *ppa) { return !(ppa->ppa == UNMAPPED_PPA); }
 
-static inline struct ssd_channel *get_ch(struct ssd *ssd, struct ppa *ppa) { return &(ssd->ch[ppa->g.ch]); }
+static inline struct ssd_channel *get_ch(struct ssd *ssd, struct ppa *ppa) {
+    // 채널에서 ppa에 해당하는 채널을 반환
+    return &(ssd->ch[ppa->g.ch]);
+}
 
 static inline struct nand_lun *get_lun(struct ssd *ssd, struct ppa *ppa) {
+    // 채널->룬에서 ppa에 해당하는 룬을 반환
     struct ssd_channel *ch = get_ch(ssd, ppa);
     return &(ch->lun[ppa->g.lun]);
 }
 
 static inline struct nand_plane *get_pl(struct ssd *ssd, struct ppa *ppa) {
+    // 채널->룬->플레인에서 ppa에 해당하는 플레인을 반환
     struct nand_lun *lun = get_lun(ssd, ppa);
     return &(lun->pl[ppa->g.pl]);
 }
 
 static inline struct nand_block *get_blk(struct ssd *ssd, struct ppa *ppa) {
+    // 채널->룬->플레인->블록에서 ppa에 해당하는 블록을 반환
     struct nand_plane *pl = get_pl(ssd, ppa);
     return &(pl->blk[ppa->g.blk]);
 }
 
-static inline struct line *get_line(struct ssd *ssd, struct ppa *ppa) { return &(ssd->lm.lines[ppa->g.blk]); }
+static inline struct line *get_line(struct ssd *ssd, struct ppa *ppa) {
+    // 현재 블록ID에 해당하는 라인을 반환
+    // TODO: 슈퍼블록으로 바꿀거니 인풋에 룬도 주면 될 듯
+    // lines[ppa->g.blk][get_lun()] 이런식?
+    return &(ssd->lm.lines[ppa->g.blk]);
+}
 
 static inline struct nand_page *get_pg(struct ssd *ssd, struct ppa *ppa) {
+    // 채널->룬->플레인->블록->페이지에서 ppa에 해당하는 페이지를 반환
     struct nand_block *blk = get_blk(ssd, ppa);
     return &(blk->pg[ppa->g.pg]);
 }
 
+// lun 단위로 시간 계산하는 함수. 건들지 말자
 static uint64_t ssd_advance_status(struct ssd *ssd, struct ppa *ppa, struct nand_cmd *ncmd) {
     int c = ncmd->cmd;
     uint64_t cmd_stime = (ncmd->stime == 0) ? qemu_clock_get_ns(QEMU_CLOCK_REALTIME) : ncmd->stime;
@@ -574,6 +589,7 @@ static uint64_t ssd_advance_status(struct ssd *ssd, struct ppa *ppa, struct nand
 
 /* update SSD status about one page from PG_VALID -> PG_VALID */
 static void mark_page_invalid(struct ssd *ssd, struct ppa *ppa) {
+    // 페이지를 수정할 때 그거 invalid로 바꾸고 새로 페이지 넣어야 하니깐 invalid로 바꿔주는 함수
     struct line_mgmt *lm = &ssd->lm;
     struct ssdparams *spp = &ssd->sp;
     struct nand_block *blk = NULL;
@@ -581,71 +597,71 @@ static void mark_page_invalid(struct ssd *ssd, struct ppa *ppa) {
     bool was_full_line = false;
     struct line *line;
 
-    /* update corresponding page status */
-    pg = get_pg(ssd, ppa);
-    ftl_assert(pg->status == PG_VALID);
-    pg->status = PG_INVALID;
+    pg = get_pg(ssd, ppa);               // ppa에 해당하는 페이지를 가져옴
+    ftl_assert(pg->status == PG_VALID);  // valid가 아니면 에러
+    pg->status = PG_INVALID;             // 페이지 상태를 INVALID로 변경
 
-    /* update corresponding block status */
-    blk = get_blk(ssd, ppa);
-    ftl_assert(blk->ipc >= 0 && blk->ipc < spp->pgs_per_blk);
-    blk->ipc++;
-    ftl_assert(blk->vpc > 0 && blk->vpc <= spp->pgs_per_blk);
-    blk->vpc--;
+    blk = get_blk(ssd, ppa);                                   // ppa에 해당하는 블록을 가져옴
+    ftl_assert(0 <= blk->ipc && blk->ipc < spp->pgs_per_blk);  // invalid page count를 1 증가시킬 수 없으면 에러
+    blk->ipc++;                                                // 블록의 invalid page count를 증가
+    ftl_assert(0 < blk->vpc && blk->vpc <= spp->pgs_per_blk);  // valid page count를 1 감소시킬 수 없으면 에러
+    blk->vpc--;                                                // 블록의 valid page count를 감소
 
-    /* update corresponding line status */
-    line = get_line(ssd, ppa);
-    ftl_assert(line->ipc >= 0 && line->ipc < spp->pgs_per_line);
-    if (line->vpc == spp->pgs_per_line) {
-        ftl_assert(line->ipc == 0);
-        was_full_line = true;
+    line = get_line(ssd, ppa);                                    // ppa에 해당하는 라인을 가져옴
+    ftl_assert(0 <= line->ipc && line->ipc < spp->pgs_per_line);  // invalid page count를 1 증가시킬 수 없으면 에러
+    if (line->vpc == spp->pgs_per_line) {                         // 모든 페이지가 valid page라면
+        ftl_assert(line->ipc == 0);                               // 모든 페이지가 valid면 invalid page count는 무조건 0. 아니면 에러
+        was_full_line = true;                                     // was full line을 true로 설정
     }
-    line->ipc++;
-    ftl_assert(line->vpc > 0 && line->vpc <= spp->pgs_per_line);
-    /* Adjust the position of the victime line in the pq under over-writes */
-    if (line->pos) {
+
+    line->ipc++;  // 라인의 invalid page count를 증가
+    // invalid page count 증가했으니 valid page count는 감소
+    ftl_assert(0 < line->vpc && line->vpc <= spp->pgs_per_line);  // valid page count를 1 감소시킬 수 없으면 에러
+
+    if (line->pos) {  // line이 priority queue에 있으면 (원래 victim line이었으면)
         /* Note that line->vpc will be updated by this call */
-        pqueue_change_priority(lm->victim_line_pq, line->vpc - 1, line);
+        pqueue_change_priority(lm->victim_line_pq, line->vpc - 1, line);  // 이렇게 해주면 안에서 알아서 valid page count를 1 줄여줌
     } else {
-        line->vpc--;
+        line->vpc--;  // line이 priority queue에 없으면 그냥 valid page count만 줄여줌
     }
 
-    if (was_full_line) {
+    if (was_full_line) {  // 모든 페이지가 valid page였으면
         /* move line: "full" -> "victim" */
-        QTAILQ_REMOVE(&lm->full_line_list, line, entry);
-        lm->full_line_cnt--;
-        pqueue_insert(lm->victim_line_pq, line);
-        lm->victim_line_cnt++;
+        QTAILQ_REMOVE(&lm->full_line_list, line, entry);  // full line list에서 빼고
+        lm->full_line_cnt--;                              // full line count를 감소
+        pqueue_insert(lm->victim_line_pq, line);          // victim line pq에 넣음
+        lm->victim_line_cnt++;                            // victim line count를 증가
     }
 }
 
 static void mark_page_valid(struct ssd *ssd, struct ppa *ppa) {
+    // 새로 페이지를 valid하게 넣어주는 함수
     struct nand_block *blk = NULL;
     struct nand_page *pg = NULL;
     struct line *line;
 
     /* update page status */
-    pg = get_pg(ssd, ppa);
-    ftl_assert(pg->status == PG_FREE);
-    pg->status = PG_VALID;
+    pg = get_pg(ssd, ppa);              // ppa에 해당하는 페이지를 가져옴
+    ftl_assert(pg->status == PG_FREE);  // free page가 아니면 에러
+    pg->status = PG_VALID;              // 페이지 상태를 VALID로 변경
 
     /* update corresponding block status */
-    blk = get_blk(ssd, ppa);
-    ftl_assert(blk->vpc >= 0 && blk->vpc < ssd->sp.pgs_per_blk);
-    blk->vpc++;
+    blk = get_blk(ssd, ppa);                                      // ppa에 해당하는 블록을 가져옴
+    ftl_assert(0 <= blk->vpc && blk->vpc < ssd->sp.pgs_per_blk);  // valid page count를 1 증가시킬 수 없으면 에러
+    blk->vpc++;                                                   // 블록의 valid page count를 증가
 
     /* update corresponding line status */
-    line = get_line(ssd, ppa);
-    ftl_assert(line->vpc >= 0 && line->vpc < ssd->sp.pgs_per_line);
-    line->vpc++;
+    line = get_line(ssd, ppa);                                       // ppa에 해당하는 라인을 가져옴
+    ftl_assert(0 <= line->vpc && line->vpc < ssd->sp.pgs_per_line);  // valid page count를 1 증가시킬 수 없으면 에러
+    line->vpc++;                                                     // 라인의 valid page count를 증가
 }
 
 static void mark_block_free(struct ssd *ssd, struct ppa *ppa) {
     struct ssdparams *spp = &ssd->sp;
-    struct nand_block *blk = get_blk(ssd, ppa);
+    struct nand_block *blk = get_blk(ssd, ppa);  // ppa에 해당하는 블록을 가져옴
     struct nand_page *pg = NULL;
 
-    for (int i = 0; i < spp->pgs_per_blk; i++) {
+    for (int i = 0; i < spp->pgs_per_blk; i++) {  // 블럭에 있는 모든 페이지에 대해서
         /* reset page status */
         pg = &blk->pg[i];
         ftl_assert(pg->nsecs == spp->secs_per_pg);
@@ -665,7 +681,7 @@ static void gc_read_page(struct ssd *ssd, struct ppa *ppa) {
         struct nand_cmd gcr;
         gcr.type = GC_IO;
         gcr.cmd = NAND_READ;
-        gcr.stime = 0;
+        gcr.stime = 0;  // stime이 0이면 ssd_advance_status에서 현재 시간을 가져와서 사용
         ssd_advance_status(ssd, ppa, &gcr);
     }
 }
@@ -674,25 +690,21 @@ static void gc_read_page(struct ssd *ssd, struct ppa *ppa) {
 static uint64_t gc_write_page(struct ssd *ssd, struct ppa *old_ppa) {
     struct ppa new_ppa;
     struct nand_lun *new_lun;
-    uint64_t lpn = get_rmap_ent(ssd, old_ppa);
+    uint64_t lpn = get_rmap_ent(ssd, old_ppa);  // old_ppa에 해당하는 lpn을 가져옴
 
     ftl_assert(valid_lpn(ssd, lpn));
-    new_ppa = get_new_page(ssd);
-    /* update maptbl */
-    set_maptbl_ent(ssd, lpn, &new_ppa);
-    /* update rmap */
-    set_rmap_ent(ssd, lpn, &new_ppa);
+    new_ppa = get_new_page(ssd);         // 새로 쓰기 위해 페이지 하나 할당 (실제로 메모리에다가 쓰는건 아님. nvme-io가 아님)
+    set_maptbl_ent(ssd, lpn, &new_ppa);  // l2p 업데이트
+    set_rmap_ent(ssd, lpn, &new_ppa);    // p2l 업데이트
 
-    mark_page_valid(ssd, &new_ppa);
-
-    /* need to advance the write pointer here */
-    ssd_advance_write_pointer(ssd);
+    mark_page_valid(ssd, &new_ppa);  // 새로 할당한 페이지를 valid로 바꿔줌
+    ssd_advance_write_pointer(ssd);  // get_new_page 이게 write pointer를 바꿔주지는 않아서 따로 바꿔줌
 
     if (ssd->sp.enable_gc_delay) {
         struct nand_cmd gcw;
         gcw.type = GC_IO;
         gcw.cmd = NAND_WRITE;
-        gcw.stime = 0;
+        gcw.stime = 0;  // stime이 0이면 ssd_advance_status에서 현재 시간을 가져와서 사용
         ssd_advance_status(ssd, &new_ppa, &gcw);
     }
 
@@ -702,8 +714,8 @@ static uint64_t gc_write_page(struct ssd *ssd, struct ppa *old_ppa) {
     new_ch->gc_endtime = new_ch->next_ch_avail_time;
 #endif
 
-    new_lun = get_lun(ssd, &new_ppa);
-    new_lun->gc_endtime = new_lun->next_lun_avail_time;
+    new_lun = get_lun(ssd, &new_ppa);                    // 새로 쓴 페이지에 해당하는 룬을 가져옴
+    new_lun->gc_endtime = new_lun->next_lun_avail_time;  // 이거 바꾸면 뭐 어케 바뀌는지 모름
 
     return 0;
 }
@@ -712,18 +724,14 @@ static struct line *select_victim_line(struct ssd *ssd, bool force) {
     struct line_mgmt *lm = &ssd->lm;
     struct line *victim_line = NULL;
 
-    victim_line = pqueue_peek(lm->victim_line_pq);
-    if (!victim_line) {
-        return NULL;
-    }
+    victim_line = pqueue_peek(lm->victim_line_pq);                           // pq에서 victim line을 가져옴
+    if (!victim_line) return NULL;                                           // pq가 비어있으면 아무것도 안하고 NULL 반환
+    if (!force && victim_line->ipc < ssd->sp.pgs_per_line / 8) return NULL;  // force가 아니고 ipc가 32보다 작으면 NULL 반환
+    // force가 아니면 invalid가 겨우 32개 이하면 gc 안하려는 듯
 
-    if (!force && victim_line->ipc < ssd->sp.pgs_per_line / 8) {
-        return NULL;
-    }
-
-    pqueue_pop(lm->victim_line_pq);
-    victim_line->pos = 0;
-    lm->victim_line_cnt--;
+    pqueue_pop(lm->victim_line_pq);  // 이제 진짜 처리 ㄱㄱ pop ㄱㄱ
+    victim_line->pos = 0;            // 왜지? 다시 넣을것도 아닌데 굳이 pos를 0으로 바꾸는 이유가 뭘까? 진짜로 모르겠음
+    lm->victim_line_cnt--;           // victim line count를 감소
 
     /* victim_line is a danggling node now */
     return victim_line;
@@ -735,14 +743,14 @@ static void clean_one_block(struct ssd *ssd, struct ppa *ppa) {
     struct nand_page *pg_iter = NULL;
     int cnt = 0;
 
-    for (int pg = 0; pg < spp->pgs_per_blk; pg++) {
-        ppa->g.pg = pg;
-        pg_iter = get_pg(ssd, ppa);
+    for (int pg = 0; pg < spp->pgs_per_blk; pg++) {  // 블록에 있는 모든 페이지에 대해서
+        ppa->g.pg = pg;                              // ppa에서 지금 바꾸는건 페이지뿐이니깐 페이지만 계속 바꿔가면서 넣는듯
+        pg_iter = get_pg(ssd, ppa);                  // 페이지 숫자 바꾸고 그 숫자에 해당하는 실제 페이지 가지고오기
         /* there shouldn't be any free page in victim blocks */
-        ftl_assert(pg_iter->status != PG_FREE);
-        if (pg_iter->status == PG_VALID) {
+        ftl_assert(pg_iter->status != PG_FREE);  // free page가 하나라도 있으면 그건 쓸 수 없는 블록이라는 뜻이니깐 에러?
+                                                 // 이해는 잘 안간다
+        if (pg_iter->status == PG_VALID) {       // valid page면 읽고 쓰면서 수정하는 과정 계산
             gc_read_page(ssd, ppa);
-            /* delay the maptbl update until "write" happens */
             gc_write_page(ssd, ppa);
             cnt++;
         }
@@ -768,20 +776,19 @@ static int do_gc(struct ssd *ssd, bool force) {
     struct ppa ppa;
     int ch, lun;
 
-    victim_line = select_victim_line(ssd, force);
-    if (!victim_line) {
-        return -1;
-    }
+    victim_line = select_victim_line(ssd, force);  // victim line을 선택
+    if (!victim_line) return -1;
 
-    ppa.g.blk = victim_line->id;
+    ppa.g.blk = victim_line->id;  // line 선택했으면 바꿔야할 블럭 번호 자명하니
     ftl_debug("GC-ing line:%d,ipc=%d,victim=%d,full=%d,free=%d\n", ppa.g.blk, victim_line->ipc, ssd->lm.victim_line_cnt, ssd->lm.full_line_cnt, ssd->lm.free_line_cnt);
 
     /* copy back valid data */
     for (ch = 0; ch < spp->nchs; ch++) {
         for (lun = 0; lun < spp->luns_per_ch; lun++) {
+            // 채널, 룬 바꿔가며 라인에 있는 페이지들 다 처리해야함
             ppa.g.ch = ch;
             ppa.g.lun = lun;
-            ppa.g.pl = 0;
+            ppa.g.pl = 0;  // 뭐지? 어차피 plane은 하나니깐 그냥 0 써버린건가?
             lunp = get_lun(ssd, &ppa);
             clean_one_block(ssd, &ppa);
             mark_block_free(ssd, &ppa);
@@ -798,8 +805,7 @@ static int do_gc(struct ssd *ssd, bool force) {
         }
     }
 
-    /* update line status */
-    mark_line_free(ssd, &ppa);
+    mark_line_free(ssd, &ppa);  // line에 있는 블럭들 다 처리했으니 line도 free로 바꿔줌
 
     return 0;
 }
@@ -807,31 +813,25 @@ static int do_gc(struct ssd *ssd, bool force) {
 static uint64_t ssd_read(struct ssd *ssd, NvmeRequest *req) {
     // printf("MYPRINT| SR: req=%p\n", req);
     // printf("MYPRINT| SR: req->qsg:%p, req->qsg.nsgv:%d\n", (void *)&req->qsg, req->qsg.nsg);
-    qemu_sglist_destroy(&req->qsg);
+    qemu_sglist_destroy(&req->qsg);  // 원래 dram.c의 코드인데 sha추가하면서 일로 옮김
 
     struct ssdparams *spp = &ssd->sp;
     uint64_t lba = req->slba;
     int nsecs = req->nlb;
     struct ppa ppa;
-    uint64_t start_lpn = lba / spp->secs_per_pg;
-    uint64_t end_lpn = (lba + nsecs - 1) / spp->secs_per_pg;
+    // req에서는 sector단위로 0부터 최대 sector 개수까지 숫자로 표현해서 어디에 쓸지 보내주나봄
+    uint64_t start_lpn = lba / spp->secs_per_pg;              // lba 번호로 역산해서 lpn 번호로 바꿔줌
+    uint64_t end_lpn = (lba + nsecs - 1) / spp->secs_per_pg;  // nsces / 8 만큼의 페이지를 쓸 것
     uint64_t lpn;
     uint64_t sublat, maxlat = 0;
 
-    if (end_lpn >= spp->tt_pgs) {
-        ftl_err("start_lpn=%" PRIu64 ",tt_pgs=%d\n", start_lpn, ssd->sp.tt_pgs);
-    }
+    if (end_lpn >= spp->tt_pgs) ftl_err("start_lpn=%" PRIu64 ",tt_pgs=%d\n", start_lpn, ssd->sp.tt_pgs);
 
-    /* normal IO read path */
     for (lpn = start_lpn; lpn <= end_lpn; lpn++) {
-        ppa = get_maptbl_ent(ssd, lpn);
-        if (!mapped_ppa(&ppa) || !valid_ppa(ssd, &ppa)) {
-            // printf("%s,lpn(%" PRId64 ") not mapped to valid ppa\n", ssd->ssdname, lpn);
-            // printf("Invalid ppa,ch:%d,lun:%d,blk:%d,pl:%d,pg:%d,sec:%d\n",
-            // ppa.g.ch, ppa.g.lun, ppa.g.blk, ppa.g.pl, ppa.g.pg, ppa.g.sec);
-            continue;
-        }
+        ppa = get_maptbl_ent(ssd, lpn);                            // lpn에 해당하는 ppa를 가져옴
+        if (!mapped_ppa(&ppa) || !valid_ppa(ssd, &ppa)) continue;  // ppa가 unmapped거나 valid한 ppa가 아니면 패스
 
+        // 이건 건드리지 말자
         struct nand_cmd srd;
         srd.type = USER_IO;
         srd.cmd = NAND_READ;
@@ -847,8 +847,8 @@ static uint64_t ssd_write(struct ssd *ssd, NvmeRequest *req) {
     uint64_t lba = req->slba;
     struct ssdparams *spp = &ssd->sp;
     int len = req->nlb;
-    uint64_t start_lpn = lba / spp->secs_per_pg;
-    uint64_t end_lpn = (lba + len - 1) / spp->secs_per_pg;
+    uint64_t start_lpn = lba / spp->secs_per_pg;            // 마찬가지로 lba 번호로 역산해서 lpn 번호로 바꿔줌
+    uint64_t end_lpn = (lba + len - 1) / spp->secs_per_pg;  // nsces / 8 만큼의 페이지를 쓸 것
     struct ppa ppa;
     uint64_t lpn;
     uint64_t curlat = 0, maxlat = 0;
@@ -857,65 +857,60 @@ static uint64_t ssd_write(struct ssd *ssd, NvmeRequest *req) {
     ssd->bytes_written_from_host += len * spp->secsz;
     /* printf("MYPRINT| Bytes written from host: %" PRIu64 "\n", ssd->bytes_written_from_host); */
 
-    if (end_lpn >= spp->tt_pgs) {
-        ftl_err("start_lpn=%" PRIu64 ",tt_pgs=%d\n", start_lpn, ssd->sp.tt_pgs);
-    }
+    if (end_lpn >= spp->tt_pgs) ftl_err("start_lpn=%" PRIu64 ",tt_pgs=%d\n", start_lpn, ssd->sp.tt_pgs);
 
-    while (should_gc_high(ssd)) {
-        /* perform GC here until !should_gc(ssd) */
+    while (should_gc_high(ssd)) {  // 95% 이상 쓰여있으면 gc
         r = do_gc(ssd, true);
-        printf("MYPRINT| Should GC - r:%d\n", r);
-        if (r == -1) break;
+        if (r == -1) break;  // victim line이 더이상 없으면 break
 
-        ssd->bytes_written_during_gc += spp->secs_per_pg * spp->secsz;
-        printf("MYPRINT| Bytes written during GC: %" PRIu64 "\n", ssd->bytes_written_during_gc);
+        ssd->bytes_written_during_gc += spp->secs_per_pg * spp->secsz;  // 운영중에 gc한 총 바이트 수 업데이트
+        // printf("MYPRINT| Bytes written during GC: %" PRIu64 "\n", ssd->bytes_written_during_gc);
     }
 
-    // printf("MYPRINT| SW: num of pages to write: %ld\n", (end_lpn - start_lpn + 1));
     for (lpn = start_lpn; lpn <= end_lpn; lpn++) {
-        ppa = get_maptbl_ent(ssd, lpn);
-        if (mapped_ppa(&ppa)) {
-            /* update old page information first */
-            mark_page_invalid(ssd, &ppa);
-            set_rmap_ent(ssd, INVALID_LPN, &ppa);
+        ppa = get_maptbl_ent(ssd, lpn);            // lpn에 해당하는 ppa를 가져옴
+        if (mapped_ppa(&ppa)) {                    // 이미 매핑된 ppa가 있으면
+            mark_page_invalid(ssd, &ppa);          // 기존 페이지를 invalid로 바꿔줌
+            set_rmap_ent(ssd, INVALID_LPN, &ppa);  // p2l에서 lpn을 invalid로 바꿔줌
         }
 
-        // 해시 값 출력
-        // int idx = (int)(lpn - start_lpn);
-        // printf("MYPRINT| SW: LPN %ld - ", lpn);
-        // for (unsigned int i = 0; i < req->qsg.hash_len_array[idx]; i++) {
-        //     printf("%02x", req->qsg.hash_array[idx][i]);
-        // }
-        // printf("\n");
-        map_sha256_to_lpn(req->qsg.hash_array[lpn - start_lpn], lpn);
+        uint64_t hashed_lpn = map_sha256_to_lpn(req->qsg.hash_array[lpn - start_lpn], req->qsg.hash_len_array[lpn - start_lpn], lpn);  // 중복 탐색
 
-        /* new write */
-        ppa = get_new_page(ssd);
-        /* update maptbl */
-        set_maptbl_ent(ssd, lpn, &ppa);
-        /* update rmap */
-        set_rmap_ent(ssd, lpn, &ppa);
+        if (hashed_lpn != lpn) {  // 이미 해당 lpn의 내용이 ppa에 있음
+            ppa = get_maptbl_ent(ssd, hashed_lpn);
+            ftl_assert(!mapped_ppa(&ppa) || !valid_ppa(ssd, &ppa));
+            set_maptbl_ent(ssd, lpn, &ppa);  // ppa에 중복 고려해서 lpn 넣어줌
+            // TODO: 슈퍼블럭 로그 추가
+            printf("MYPRINT| SSDWRITE - SHA HIT: lpn=%ld, hashed_lpn=%ld, ppa=%ld\n", lpn, hashed_lpn, ppa.ppa);
+        } else {  // 없음. 여긴 슈퍼블럭 부분만 건들면 됨
 
-        mark_page_valid(ssd, &ppa);
+            ppa = get_new_page(ssd);
+            set_maptbl_ent(ssd, lpn, &ppa);  // ppa에 중복 고려해서 lpn 넣어줌
+            set_rmap_ent(ssd, lpn, &ppa);
 
-        /* need to advance the write pointer here */
-        ssd_advance_write_pointer(ssd);
+            mark_page_valid(ssd, &ppa);
 
-        struct nand_cmd swr;
-        swr.type = USER_IO;
-        swr.cmd = NAND_WRITE;
-        swr.stime = req->stime;
-        /* get latency statistics */
-        curlat = ssd_advance_status(ssd, &ppa, &swr);
-        maxlat = (curlat > maxlat) ? curlat : maxlat;
+            ssd_advance_write_pointer(ssd);
+            printf("MYPRINT| SSDWRITE - SHA MISS: lpn=%ld, ppa=%ld\n", lpn, ppa.ppa);
+
+            // 이건 건드리지 말자
+            struct nand_cmd swr;
+            swr.type = USER_IO;
+            swr.cmd = NAND_WRITE;
+            swr.stime = req->stime;
+            /* get latency statistics */
+            curlat = ssd_advance_status(ssd, &ppa, &swr);
+            maxlat = (curlat > maxlat) ? curlat : maxlat;
+        }
     }
 
-    // 이거 불리면 qsg free되면서 sha 접근불가.
-    qemu_sglist_destroy(&req->qsg);
+    qemu_sglist_destroy(&req->qsg);  // 이거 불리면 qsg free되면서 sha 접근불가.
 
     return maxlat;
 }
 
+
+// femu 시뮬레이션 계산하는 함수인 듯. 이건 건들기 ㄴㄴ
 static void *ftl_thread(void *arg) {
     FemuCtrl *n = (FemuCtrl *)arg;
     struct ssd *ssd = n->ssd;
