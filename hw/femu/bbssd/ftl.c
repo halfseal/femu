@@ -30,7 +30,7 @@ uint64_t p2l_find(struct ssd *ssd, struct ppa *ppa) {
     }
 }
 
-bool could_get_hash_support(unsigned char *hash, unsigned int len) {
+static bool could_get_hash_support(unsigned char *hash, unsigned int len) {
     struct hash_ppa_entry *entry;
     HASH_FIND(hh, hash_ppa_table, hash, len, entry);
     if (entry == NULL) return false;
@@ -47,7 +47,7 @@ bool could_get_hash_support(unsigned char *hash, unsigned int len) {
     return there_is_space;
 }
 
-void add_one_in_hash(unsigned char *hash, unsigned int len) {
+static void add_one_in_hash(unsigned char *hash, unsigned int len) {
     struct hash_ppa_entry *entry;
     HASH_FIND(hh, hash_ppa_table, hash, len, entry);
 
@@ -55,13 +55,13 @@ void add_one_in_hash(unsigned char *hash, unsigned int len) {
     HASH_ITER(hh, entry->ppa_table, ppa_item, tmp) {
         if (ppa_item->cnt < 15) {
             ppa_item->cnt++;
-            // printf("MYPRINT| HIT!: added one {%ld, %d}\n", ppa_item->uintppa, ppa_item->cnt);
+            printf("MYPRINT| HIT!: added one {%ld, %d}\n", ppa_item->uintppa, ppa_item->cnt);
             return;
         }
     }
 }
 
-void map_sha256_to_ppa(unsigned char *hash, unsigned int len, struct ppa *ppa) {
+static void map_sha256_to_ppa(unsigned char *hash, unsigned int len, struct ppa *ppa) {
     struct hash_ppa_entry *entry;
     HASH_FIND(hh, hash_ppa_table, hash, len, entry);
 
@@ -87,38 +87,28 @@ void map_sha256_to_ppa(unsigned char *hash, unsigned int len, struct ppa *ppa) {
     ppa_item->uintppa = uintppa;
     ppa_item->cnt = 1;
     HASH_ADD(hh, entry->ppa_table, uintppa, sizeof(uint64_t), ppa_item);  // 내부 맵에 추가
-    // femu_log("MYPRINT| MISS: reached limit(15), so made new entry and added one\n");
-    femu_log("MYPRINT\n");
-
     // printf("MYPRINT| MISS: reached limit(15), so made new entry and added one {%ld, %d} - %ld\n", uintppa, ppa_item->cnt, ppa->ppa);
-}
-
-bool is_latest_data(struct ssd *ssd, uint64_t lpn, uint64_t ppn) {
-    struct l2p_entry *l2p1;
-    HASH_FIND(hh, ssd->l2p_table, &lpn, sizeof(uint64_t), l2p1);
-    if (l2p1 == NULL) return false;
-
-    struct p2l_entry *p2l;
-    HASH_FIND(hh, p2l_table, &ppn, sizeof(uint64_t), p2l);
-    if (p2l == NULL) return false;
-
-    uint64_t lpn2 = p2l->lpn;
-    struct l2p_entry *l2p2;
-    HASH_FIND(hh, ssd->l2p_table, &lpn2, sizeof(uint64_t), l2p2);
-    if (l2p2 == NULL) return false;
-
-    return l2p1->timestamp == l2p2->timestamp;
 }
 
 static void *ftl_thread(void *arg);
 
 static inline bool should_gc(struct ssd *ssd) {
+    static int last_free_line_cnt = 0;
+    if (last_free_line_cnt != ssd->lm.free_line_cnt) {
+        last_free_line_cnt = ssd->lm.free_line_cnt;
+        printf("MYPRINT| free_line_cnt: %d.(gc when its lower than %d)\n", ssd->lm.free_line_cnt, ssd->sp.gc_thres_lines);
+    }
     // 라인이 이 이하로 떨어지면 GC 실행 (75로 설정돼있음. run_blackbox 참고)
     // 슈퍼블록으로 바꿀 경우 가용 슈퍼블록 수로 변경
     return (ssd->lm.free_line_cnt <= ssd->sp.gc_thres_lines);
 }
 
 static inline bool should_gc_high(struct ssd *ssd) {
+    static int last_free_line_cnt = 0;
+    if (last_free_line_cnt != ssd->lm.free_line_cnt) {
+        last_free_line_cnt = ssd->lm.free_line_cnt;
+        printf("MYPRINT| free_line_cnt: %d.(super gc when its lower than %d)\n", ssd->lm.free_line_cnt, ssd->sp.gc_thres_lines_high);
+    }
     // 라인이 이 이하로 떨어지면 GC 실행. (95로 설정돼있음. run_blackbox 참고)
     // 슈퍼블록으로 바꿀 경우 가용 슈퍼블록 수로 변경
     return (ssd->lm.free_line_cnt <= ssd->sp.gc_thres_lines_high);
@@ -190,16 +180,6 @@ static inline void set_rmap_ent(struct ssd *ssd, uint64_t lpn, struct ppa *ppa) 
     ssd->rmap[pgidx] = lpn;
 }
 
-static inline int victim_line_cmp_pri(pqueue_pri_t next, pqueue_pri_t curr) { return (next > curr); }
-
-static inline pqueue_pri_t victim_line_get_pri(void *a) { return ((struct line *)a)->vpc; }
-
-static inline void victim_line_set_pri(void *a, pqueue_pri_t pri) { ((struct line *)a)->vpc = pri; }
-
-static inline size_t victim_line_get_pos(void *a) { return ((struct line *)a)->pos; }
-
-static inline void victim_line_set_pos(void *a, size_t pos) { ((struct line *)a)->pos = pos; }
-
 static void ssd_init_lines(struct ssd *ssd) {
     struct ssdparams *spp = &ssd->sp;
     struct line_mgmt *lm = &ssd->lm;
@@ -212,8 +192,8 @@ static void ssd_init_lines(struct ssd *ssd) {
 
     // free line list : 일반 큐
     QTAILQ_INIT(&lm->free_line_list);
-    // victim line pq : 우선순위 큐
-    lm->victim_line_pq = pqueue_init(spp->tt_lines, victim_line_cmp_pri, victim_line_get_pri, victim_line_set_pri, victim_line_get_pos, victim_line_set_pos);
+    // victim line list : 우선순위 큐
+    QTAILQ_INIT(&lm->victim_line_list);
     // full line list : 일반 큐
     QTAILQ_INIT(&lm->full_line_list);
 
@@ -224,7 +204,7 @@ static void ssd_init_lines(struct ssd *ssd) {
         line->id = i;
         line->ipc = 0;
         line->vpc = 0;
-        line->pos = 0;
+        line->is_victim = false;
         /* initialize all the lines as free lines */
         QTAILQ_INSERT_TAIL(&lm->free_line_list, line, entry);
         lm->free_line_cnt++;
@@ -306,7 +286,8 @@ static void ssd_advance_write_pointer(struct ssd *ssd) {
                 } else {  // invalid page가 있다면
                     ftl_assert(0 <= wpp->curline->vpc && wpp->curline->vpc < spp->pgs_per_line);
                     ftl_assert(0 < wpp->curline->ipc);
-                    pqueue_insert(lm->victim_line_pq, wpp->curline);  // victim line pq에 넣어주자
+                    QTAILQ_INSERT_TAIL(&lm->victim_line_list, wpp->curline, entry);
+                    wpp->curline->is_victim = true;
                     lm->victim_line_cnt++;
                 }
 
@@ -657,19 +638,14 @@ static void mark_page_invalid(struct ssd *ssd, struct ppa *ppa) {
     // invalid page count 증가했으니 valid page count는 감소
     ftl_assert(0 < line->vpc && line->vpc <= spp->pgs_per_line);  // valid page count를 1 감소시킬 수 없으면 에러
 
-    if (line->pos) {  // line이 priority queue에 있으면 (원래 victim line이었으면)
-        /* Note that line->vpc will be updated by this call */
-        pqueue_change_priority(lm->victim_line_pq, line->vpc - 1, line);  // 이렇게 해주면 안에서 알아서 valid page count를 1 줄여줌
-    } else {
-        line->vpc--;  // line이 priority queue에 없으면 그냥 valid page count만 줄여줌
-    }
+    line->vpc--;  // line이 victim list에 있으면 그냥 valid page count만 줄여줌
 
-    if (was_full_line) {  // 모든 페이지가 valid page였으면
+    if (was_full_line) {  // line이 victim list에 없으면
         /* move line: "full" -> "victim" */
-        QTAILQ_REMOVE(&lm->full_line_list, line, entry);  // full line list에서 빼고
-        lm->full_line_cnt--;                              // full line count를 감소
-        pqueue_insert(lm->victim_line_pq, line);          // victim line pq에 넣음
-        lm->victim_line_cnt++;                            // victim line count를 증가
+        QTAILQ_REMOVE(&lm->full_line_list, line, entry);         // full line list에서 빼고
+        lm->full_line_cnt--;                                     // full line count를 감소
+        QTAILQ_INSERT_TAIL(&lm->victim_line_list, line, entry);  // victim line pq에 넣음
+        lm->victim_line_cnt++;                                   // victim line count를 증가
     }
 }
 
@@ -759,18 +735,34 @@ static uint64_t gc_write_page(struct ssd *ssd, struct ppa *old_ppa) {
     return 0;
 }
 
+static struct line *find_victim_line(struct ssd *ssd) {
+    struct line_mgmt *lm = &ssd->lm;
+    struct line *line;
+    struct line *victim_line = NULL;  // vpc가 가장 낮은 line을 저장할 변수
+
+    QTAILQ_FOREACH(line, &lm->victim_line_list, entry) {  // 순회하면서 가장 vpc가 낮은 line을 찾음
+        if (victim_line == NULL || line->vpc < victim_line->vpc) {
+            victim_line = line;  // 더 낮은 vpc를 가진 line을 업데이트
+        }
+    }
+
+    return victim_line;  // vpc가 가장 낮은 line을 반환
+}
+
 static struct line *select_victim_line(struct ssd *ssd, bool force) {
     struct line_mgmt *lm = &ssd->lm;
     struct line *victim_line = NULL;
 
-    victim_line = pqueue_peek(lm->victim_line_pq);                           // pq에서 victim line을 가져옴
+    // victim_line = pqueue_peek(lm->victim_line_pq);                           // pq에서 victim line을 가져옴
+    victim_line = find_victim_line(ssd);                                     // vpc가 가장 낮은 line을 찾음
     if (!victim_line) return NULL;                                           // pq가 비어있으면 아무것도 안하고 NULL 반환
     if (!force && victim_line->ipc < ssd->sp.pgs_per_line / 8) return NULL;  // force가 아니고 ipc가 32보다 작으면 NULL 반환
     // force가 아니면 invalid가 겨우 32개 이하면 gc 안하려는 듯
 
-    pqueue_pop(lm->victim_line_pq);  // 이제 진짜 처리 ㄱㄱ pop ㄱㄱ
-    victim_line->pos = 0;            // 왜지? 다시 넣을것도 아닌데 굳이 pos를 0으로 바꾸는 이유가 뭘까? 진짜로 모르겠음
-    lm->victim_line_cnt--;           // victim line count를 감소
+    // pqueue_pop(lm->victim_line_pq);  // 이제 진짜 처리 ㄱㄱ pop ㄱㄱ
+    QTAILQ_REMOVE(&lm->victim_line_list, victim_line, entry);  // victim line list에서 빼줌
+    victim_line->is_victim = false;                            // 왜지? 다시 넣을것도 아닌데 굳이 pos를 0으로 바꾸는 이유가 뭘까? 진짜로 모르겠음
+    lm->victim_line_cnt--;                                     // victim line count를 감소
 
     /* victim_line is a danggling node now */
     return victim_line;
@@ -817,6 +809,8 @@ static int do_gc(struct ssd *ssd, bool force) {
 
     victim_line = select_victim_line(ssd, force);  // victim line을 선택
     if (!victim_line) return -1;
+
+    printf("MYPRINT|GC: victim_line=%d\n", victim_line->id);
 
     ppa.g.blk = victim_line->id;  // line 선택했으면 바꿔야할 블럭 번호 자명하니
     ftl_debug("GC-ing line:%d,ipc=%d,victim=%d,full=%d,free=%d\n", ppa.g.blk, victim_line->ipc, ssd->lm.victim_line_cnt, ssd->lm.full_line_cnt, ssd->lm.free_line_cnt);
@@ -917,7 +911,6 @@ static uint64_t ssd_write(struct ssd *ssd, NvmeRequest *req) {
             set_maptbl_ent(ssd, lpn, &ppa);  // ppa에 중복 고려해서 lpn 넣어줌
             add_one_in_hash(req->qsg.hash_array[lpn - start_lpn], req->qsg.hash_len_array[lpn - start_lpn]);
             // TODO: 슈퍼블럭 로그 추가
-            // printf("MYPRINT| SSDWRITE - SHA HIT: lpn=%ld\n", lpn);
         } else {  // 없음. 여긴 슈퍼블럭 부분만 건들면 됨
             ppa = get_new_page(ssd);
             set_maptbl_ent(ssd, lpn, &ppa);  // ppa에 중복 고려해서 lpn 넣어줌
@@ -928,7 +921,6 @@ static uint64_t ssd_write(struct ssd *ssd, NvmeRequest *req) {
             map_sha256_to_ppa(req->qsg.hash_array[lpn - start_lpn], req->qsg.hash_len_array[lpn - start_lpn], &ppa);
 
             ssd_advance_write_pointer(ssd);
-            // printf("MYPRINT| SSDWRITE - SHA MISS: lpn=%ld, ppa=%ld\n", lpn, ppa.ppa);
 
             // 이건 건드리지 말자
             struct nand_cmd swr;

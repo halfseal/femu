@@ -165,7 +165,7 @@ typedef struct line {
     int vpc;                  /* valid page count in this line */
     QTAILQ_ENTRY(line) entry; /* in either {free,victim,full} list */
     /* position in the priority queue for victim lines */
-    size_t pos;
+    bool is_victim;
 } line;
 
 /* wp: record next write addr */
@@ -182,8 +182,8 @@ struct line_mgmt {
     struct line *lines;
     /* free line list, we only need to maintain a list of blk numbers */
     QTAILQ_HEAD(free_line_list, line) free_line_list;
-    pqueue_t *victim_line_pq;
-    // QTAILQ_HEAD(victim_line_list, line) victim_line_list;
+    // pqueue_t *victim_line_pq;
+    QTAILQ_HEAD(victim_line_list, line) victim_line_list;
     QTAILQ_HEAD(full_line_list, line) full_line_list;
     int tt_lines;
     int free_line_cnt;
@@ -277,10 +277,10 @@ struct hash_ppa_entry {
     UT_hash_handle hh;                    // 해시 테이블 핸들
 };
 
-bool could_get_hash_support(unsigned char *hash, unsigned int len);
-void add_one_in_hash(unsigned char *hash, unsigned int len);
-void map_sha256_to_ppa(unsigned char *hash, unsigned int len, struct ppa *ppa);
+// bool could_get_hash_support(unsigned char *hash, unsigned int len);
+// void add_one_in_hash(unsigned char *hash, unsigned int len);
+// void map_sha256_to_ppa(unsigned char *hash, unsigned int len, struct ppa *ppa);
 
-bool is_latest_data(struct ssd *ssd, uint64_t lpn, uint64_t ppn);
+// bool is_latest_data(struct ssd *ssd, uint64_t lpn, uint64_t ppn);
 
 #endif
