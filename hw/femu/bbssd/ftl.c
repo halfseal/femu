@@ -55,7 +55,7 @@ void add_one_in_hash(unsigned char *hash, unsigned int len) {
     HASH_ITER(hh, entry->ppa_table, ppa_item, tmp) {
         if (ppa_item->cnt < 15) {
             ppa_item->cnt++;
-            printf("MYPRINT| HIT!: added one {%ld, %d}\n", ppa_item->uintppa, ppa_item->cnt);
+            // printf("MYPRINT| HIT!: added one {%ld, %d}\n", ppa_item->uintppa, ppa_item->cnt);
             return;
         }
     }
@@ -78,7 +78,7 @@ void map_sha256_to_ppa(unsigned char *hash, unsigned int len, struct ppa *ppa) {
         ppa_item->uintppa = uintppa;
         ppa_item->cnt = 1;
         HASH_ADD(hh, entry->ppa_table, uintppa, sizeof(uint64_t), ppa_item);  // 내부 맵에 추가
-        printf("MYPRINT| is new entry {%ld, %d} - %ld\n", uintppa, ppa_item->cnt, ppa->ppa);
+        // printf("MYPRINT| is new entry {%ld, %d} - %ld\n", uintppa, ppa_item->cnt, ppa->ppa);
         return;
     }
 
@@ -87,7 +87,10 @@ void map_sha256_to_ppa(unsigned char *hash, unsigned int len, struct ppa *ppa) {
     ppa_item->uintppa = uintppa;
     ppa_item->cnt = 1;
     HASH_ADD(hh, entry->ppa_table, uintppa, sizeof(uint64_t), ppa_item);  // 내부 맵에 추가
-    printf("MYPRINT| MISS: reached limit(15), so made new entry and added one {%ld, %d} - %ld\n", uintppa, ppa_item->cnt, ppa->ppa);
+    // femu_log("MYPRINT| MISS: reached limit(15), so made new entry and added one\n");
+    femu_log("MYPRINT\n");
+
+    // printf("MYPRINT| MISS: reached limit(15), so made new entry and added one {%ld, %d} - %ld\n", uintppa, ppa_item->cnt, ppa->ppa);
 }
 
 bool is_latest_data(struct ssd *ssd, uint64_t lpn, uint64_t ppn) {
@@ -733,23 +736,6 @@ static uint64_t gc_write_page(struct ssd *ssd, struct ppa *old_ppa) {
     set_maptbl_ent(ssd, lpn, &new_ppa);  // l2p 업데이트
     set_rmap_ent(ssd, lpn, &new_ppa);    // p2l 업데이트
 
-    // old ppa 매핑 바꿈
-    bool done_flag = false;
-    struct hash_ppa_entry *entry, *tmp;
-    struct ppa_entry *ppa_item, *ppa_tmp;
-    HASH_ITER(hh, hash_ppa_table, entry, tmp) {               // 외부 해시 테이블을 순회
-        if (done_flag) break;                                 //
-        HASH_ITER(hh, entry->ppa_table, ppa_item, ppa_tmp) {  // 내부 맵을 순회하여 old_ppa와 동일한 항목을 찾음
-            if (ppa_item->uintppa == old_ppa->ppa) {          // old_ppa와 동일한 항목 찾기
-                // 해당 항목을 new_ppa로 업데이트
-                ppa_item->uintppa = new_ppa.ppa;
-                printf("Mapping updated: old PPA %ld -> new PPA %ld\n", old_ppa->ppa, new_ppa.ppa);
-                done_flag = true;
-                break;
-            }
-        }
-    }
-
     mark_page_valid(ssd, &new_ppa);  // 새로 할당한 페이지를 valid로 바꿔줌
     ssd_advance_write_pointer(ssd);  // get_new_page 이게 write pointer를 바꿔주지는 않아서 따로 바꿔줌
 
@@ -834,6 +820,29 @@ static int do_gc(struct ssd *ssd, bool force) {
 
     ppa.g.blk = victim_line->id;  // line 선택했으면 바꿔야할 블럭 번호 자명하니
     ftl_debug("GC-ing line:%d,ipc=%d,victim=%d,full=%d,free=%d\n", ppa.g.blk, victim_line->ipc, ssd->lm.victim_line_cnt, ssd->lm.full_line_cnt, ssd->lm.free_line_cnt);
+
+    /* copy back valid data */
+    for (ch = 0; ch < spp->nchs; ch++) {
+        for (lun = 0; lun < spp->luns_per_ch; lun++) {
+            // 채널, 룬 바꿔가며 라인에 있는 페이지들 다 처리해야함
+            ppa.g.ch = ch;
+            ppa.g.lun = lun;
+            ppa.g.pl = 0;  // 뭐지? 어차피 plane은 하나니깐 그냥 0 써버린건가?
+            lunp = get_lun(ssd, &ppa);
+            clean_one_block(ssd, &ppa);
+            mark_block_free(ssd, &ppa);
+
+            if (spp->enable_gc_delay) {
+                struct nand_cmd gce;
+                gce.type = GC_IO;
+                gce.cmd = NAND_ERASE;
+                gce.stime = 0;
+                ssd_advance_status(ssd, &ppa, &gce);
+            }
+
+            lunp->gc_endtime = lunp->next_lun_avail_time;
+        }
+    }
 
     mark_line_free(ssd, &ppa);  // line에 있는 블럭들 다 처리했으니 line도 free로 바꿔줌
 
