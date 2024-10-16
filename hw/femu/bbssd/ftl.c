@@ -2,33 +2,9 @@
 
 // #define FEMU_DEBUG_FTL
 
-static uint64_t ppa2pgidx(struct ssd *ssd, struct ppa *ppa);
+// static uint64_t ppa2pgidx(struct ssd *ssd, struct ppa *ppa);
 
-struct p2l_entry *p2l_table = NULL;
 struct hash_ppa_entry *hash_ppa_table = NULL;
-
-void p2l_push(struct ssd *ssd, struct ppa *ppa, uint64_t lpn) {
-    uint64_t ppn = ppa2pgidx(ssd, ppa);
-    struct p2l_entry *entry;
-    HASH_FIND(hh, p2l_table, &ppn, sizeof(uint64_t), entry);  // 기존 엔트리 존재 여부 확인
-    if (entry == NULL) {
-        entry = (struct p2l_entry *)malloc(sizeof(struct p2l_entry));  // 새 엔트리 생성
-        entry->ppn = ppn;
-        HASH_ADD(hh, p2l_table, ppn, sizeof(uint64_t), entry);  // 테이블에 추가
-    }
-    entry->lpn = lpn;  // LPN 설정
-}
-
-uint64_t p2l_find(struct ssd *ssd, struct ppa *ppa) {
-    uint64_t ppn = ppa2pgidx(ssd, ppa);
-    struct p2l_entry *entry;
-    HASH_FIND(hh, p2l_table, &ppn, sizeof(uint64_t), entry);  // 엔트리 찾기
-    if (entry) {
-        return entry->ppn;  // PPN 반환
-    } else {
-        return -1;  // 엔트리 없음
-    }
-}
 
 static inline struct ssd_channel *get_ch(struct ssd *ssd, struct ppa *ppa) {
     // 채널에서 ppa에 해당하는 채널을 반환
@@ -55,8 +31,6 @@ static inline struct nand_block *get_blk(struct ssd *ssd, struct ppa *ppa) {
 
 static inline struct line *get_line(struct ssd *ssd, struct ppa *ppa) {
     // 현재 블록ID에 해당하는 라인을 반환
-    // TODO: 슈퍼블록으로 바꿀거니 인풋에 룬도 주면 될 듯
-    // lines[ppa->g.blk][get_lun()] 이런식?
     return &(ssd->lm.lines[ppa->g.blk]);
 }
 
@@ -185,7 +159,7 @@ static inline struct ppa get_maptbl_ent(struct ssd *ssd, uint64_t lpn) {
     struct l2p_entry *entry;
     HASH_FIND(hh, ssd->l2p_table, &lpn, sizeof(uint64_t), entry);  // 엔트리 찾기
     if (entry) {
-        return entry->ppa;  // PPN 반환
+        return entry->ppa;  // PPa 반환
     } else {
         struct ppa empty_ppa;
         empty_ppa.ppa = UNMAPPED_PPA;
@@ -193,7 +167,7 @@ static inline struct ppa get_maptbl_ent(struct ssd *ssd, uint64_t lpn) {
     }
 }
 
-static inline void set_maptbl_ent(struct ssd *ssd, uint64_t lpn, struct ppa *ppa) {
+static inline void set_maptbl_ent(struct ssd *ssd, uint64_t lpn, struct ppa *ppa, uint64_t timestamp) {
     ftl_assert(lpn < ssd->sp.tt_pgs);
     // ssd->maptbl[lpn] = *ppa;
 
@@ -202,53 +176,89 @@ static inline void set_maptbl_ent(struct ssd *ssd, uint64_t lpn, struct ppa *ppa
     if (entry == NULL) {
         entry = (struct l2p_entry *)malloc(sizeof(struct l2p_entry));  // 새 엔트리 생성
         entry->lpn = lpn;
+        entry->timestamp = timestamp;
         HASH_ADD(hh, ssd->l2p_table, lpn, sizeof(uint64_t), entry);  // 테이블에 추가
     }
-    entry->ppa = *ppa;  // PPN 설정
+    entry->ppa = *ppa;  // PPa 설정
 }
 
-// 이게 ppn인가봄. ppa to index이니깐...
-static uint64_t ppa2pgidx(struct ssd *ssd, struct ppa *ppa) {
-    struct ssdparams *spp = &ssd->sp;
-    uint64_t pgidx;
+// // ppa to index이니깐...
+// static uint64_t ppa2pgidx(struct ssd *ssd, struct ppa *ppa) {
+//     struct ssdparams *spp = &ssd->sp;
+//     uint64_t pgidx;
 
-    // | 4  | 4  | 4  | 4  | 4  | 4  | 4  | 4  | 4  | 4  | 4  | 4  | 4  | 4  | 4  | 4  |
-    // ||   ch   |   lun   |    pl   |   sec   |        pg         |        blk        | = ppa
-    // ↑rsv
+//     // | 4  | 4  | 4  | 4  | 4  | 4  | 4  | 4  | 4  | 4  | 4  | 4  | 4  | 4  | 4  | 4  |
+//     // ||   ch   |   lun   |    pl   |   sec   |        pg         |        blk        | = ppa
+//     // ↑rsv
 
-    pgidx = ppa->g.ch * spp->pgs_per_ch      // pgs_per_ch = 256 * 256 * 1 * 8
-            + ppa->g.lun * spp->pgs_per_lun  // pgs_per_lun= 256 * 256 * 1
-            + ppa->g.pl * spp->pgs_per_pl    // pgs_per_pl = 256 * 256
-            + ppa->g.blk * spp->pgs_per_blk  // pgs_per_blk= 256
-            + ppa->g.pg;
+//     pgidx = ppa->g.ch * spp->pgs_per_ch      // pgs_per_ch = 256 * 256 * 1 * 8
+//             + ppa->g.lun * spp->pgs_per_lun  // pgs_per_lun= 256 * 256 * 1
+//             + ppa->g.pl * spp->pgs_per_pl    // pgs_per_pl = 256 * 256
+//             + ppa->g.blk * spp->pgs_per_blk  // pgs_per_blk= 256
+//             + ppa->g.pg;
 
-    ftl_assert(pgidx < spp->tt_pgs);
+//     ftl_assert(pgidx < spp->tt_pgs);
 
-    // TODO: 이걸 룬별로 나눠서 해야하는데. 채널은 어떻게 다루고있는지를 모르겠음
-    return pgidx;
+//     return pgidx;
+// }
+
+static void add_rmm_entry(struct ssd *ssd, struct ppa *ppa, uint64_t lpn, uint64_t timestamp, bool is_remap) {
+    printf("1");
+    struct line *line = get_line(ssd, ppa);
+    printf("2");
+
+    struct rmm_entry *new_entry = (struct rmm_entry *)malloc(sizeof(struct rmm_entry));
+    printf("3");
+
+    new_entry->uintppa = ppa->ppa;
+    printf("4");
+
+    new_entry->lpn = lpn;
+    new_entry->timestamp = timestamp;
+    new_entry->is_remap = is_remap;
+    printf("5");
+
+    QTAILQ_INSERT_HEAD(&line->rmm_list, new_entry, entry);
+    printf("6");
+    
+}
+
+static void remove_all_rmm_entry(struct line *line) {
+    struct rmm_entry *rmm, *tmp;
+
+    QTAILQ_FOREACH_SAFE(rmm, &line->rmm_list, entry, tmp) {
+        QTAILQ_REMOVE(&line->rmm_list, rmm, entry);
+        free(rmm);
+    }
 }
 
 static inline uint64_t get_rmap_ent(struct ssd *ssd, struct ppa *ppa) {
-    uint64_t pgidx = ppa2pgidx(ssd, ppa);
-    // TODO: superblock 별로 있는 페이지테이블로 reverse map 하게 바꾸기
-    return ssd->rmap[pgidx];
+    struct line *line = get_line(ssd, ppa);
+
+    // 라인 내의 RMM 로그 순회하며 PPA와 매칭되는 리맵이 아닌 엔트리 검색
+    struct rmm_entry *rmm;
+    QTAILQ_FOREACH(rmm, &line->rmm_list, entry) {
+        if (rmm->uintppa == ppa->ppa && !rmm->is_remap) {
+            struct l2p_entry *l2p_entry;
+            HASH_FIND(hh, ssd->l2p_table, &rmm->lpn, sizeof(uint64_t), l2p_entry);  // 엔트리 찾기
+            if (l2p_entry->timestamp <= rmm->timestamp)
+                return rmm->lpn;  // LPN을 반환
+            else
+                return INVALID_LPN;
+        }
+    }
+
+    // 해당하는 매핑을 찾지 못하면 INVALID_LPN 반환
+    return INVALID_LPN;
 }
 
 /* set rmap[page_no(ppa)] -> lpn */
-static inline void set_rmap_ent(struct ssd *ssd, uint64_t lpn, struct ppa *ppa) {
-    uint64_t pgidx = ppa2pgidx(ssd, ppa);
-
-    // p2l_push(ssd, ppa, lpn);
-
-    // TODO: superblock 별로 있는 페이지테이블에 reverse map 하게 바꾸기
-    ssd->rmap[pgidx] = lpn;
-}
+static inline void set_rmap_ent(struct ssd *ssd, uint64_t lpn, struct ppa *ppa, uint64_t timestamp, bool is_remap) { add_rmm_entry(ssd, ppa, lpn, timestamp, is_remap); }
 
 static void ssd_init_lines(struct ssd *ssd) {
     struct ssdparams *spp = &ssd->sp;
     struct line_mgmt *lm = &ssd->lm;
     struct line *line;
-    // TODO: 슈퍼블럭으로 바꿀건데 그럼 lun은 어떻게 할지 생각해야함
 
     lm->tt_lines = spp->blks_per_pl;  // 한 lun당 256 blk (1룬에 1plane 뿐이니)
     ftl_assert(lm->tt_lines == spp->tt_lines);
@@ -270,6 +280,7 @@ static void ssd_init_lines(struct ssd *ssd) {
         line->vpc = 0;
         line->rpc = 0;
         line->is_victim = false;
+        QTAILQ_INIT(&line->rmm_list);
         /* initialize all the lines as free lines */
         QTAILQ_INSERT_TAIL(&lm->free_line_list, line, entry);
         lm->free_line_cnt++;
@@ -311,7 +322,6 @@ static struct line *get_next_free_line(struct ssd *ssd) {
     struct line *curline = NULL;
 
     // 이것도 그냥 큐에서 뽑아오는거임
-    // TODO: 슈퍼블럭으로 바꿀건데 그럼 lun은 어떻게 할지 생각해야함
     curline = QTAILQ_FIRST(&lm->free_line_list);
     if (!curline) {
         ftl_err("No free lines left in [%s] !!!!\n", ssd->ssdname);
@@ -510,7 +520,6 @@ static void ssd_init_maptbl(struct ssd *ssd) { ssd->l2p_table = NULL; }
 static void ssd_init_rmap(struct ssd *ssd) {
     struct ssdparams *spp = &ssd->sp;
 
-    // ppn -> lpn
     // TODO: superblock 별로 있는 페이지테이블로 reverse map 하게 바꾸기
     ssd->rmap = g_malloc0(sizeof(uint64_t) * spp->tt_pgs);
     for (int i = 0; i < spp->tt_pgs; i++) {
@@ -731,9 +740,11 @@ static uint64_t gc_write_page(struct ssd *ssd, struct ppa *old_ppa) {
     uint64_t lpn = get_rmap_ent(ssd, old_ppa);  // old_ppa에 해당하는 lpn을 가져옴
 
     ftl_assert(valid_lpn(ssd, lpn));
-    new_ppa = get_new_page(ssd);         // 새로 쓰기 위해 페이지 하나 할당 (실제로 메모리에다가 쓰는건 아님. nvme-io가 아님)
-    set_maptbl_ent(ssd, lpn, &new_ppa);  // l2p 업데이트
-    set_rmap_ent(ssd, lpn, &new_ppa);    // p2l 업데이트
+    new_ppa = get_new_page(ssd);  // 새로 쓰기 위해 페이지 하나 할당 (실제로 메모리에다가 쓰는건 아님. nvme-io가 아님)
+
+    uint64_t timestamp = qemu_clock_get_ns(QEMU_CLOCK_REALTIME);
+    set_maptbl_ent(ssd, lpn, &new_ppa, timestamp);  // l2p 업데이트
+    set_rmap_ent(ssd, lpn, &new_ppa, timestamp, false);
 
     mark_page_valid(ssd, &new_ppa);  // 새로 할당한 페이지를 valid로 바꿔줌
     ssd_advance_write_pointer(ssd);  // get_new_page 이게 write pointer를 바꿔주지는 않아서 따로 바꿔줌
@@ -776,13 +787,11 @@ static struct line *select_victim_line(struct ssd *ssd, bool force) {
     struct line_mgmt *lm = &ssd->lm;
     struct line *victim_line = NULL;
 
-    // victim_line = pqueue_peek(lm->victim_line_pq);                           // pq에서 victim line을 가져옴
     victim_line = find_victim_line(ssd);                                     // vpc가 가장 낮은 line을 찾음
     if (!victim_line) return NULL;                                           // pq가 비어있으면 아무것도 안하고 NULL 반환
     if (!force && victim_line->ipc < ssd->sp.pgs_per_line / 8) return NULL;  // force가 아니고 ipc가 32보다 작으면 NULL 반환
     // force가 아니면 invalid가 겨우 32개 이하면 gc 안하려는 듯
 
-    // pqueue_pop(lm->victim_line_pq);  // 이제 진짜 처리 ㄱㄱ pop ㄱㄱ
     QTAILQ_REMOVE(&lm->victim_line_list, victim_line, entry);  // victim line list에서 빼줌
     victim_line->is_victim = false;                            // 왜지? 다시 넣을것도 아닌데 굳이 pos를 0으로 바꾸는 이유가 뭘까? 진짜로 모르겠음
     lm->victim_line_cnt--;                                     // victim line count를 감소
@@ -854,10 +863,7 @@ static int do_gc(struct ssd *ssd, bool force) {
                 printf("MYPRINT| DO_GC: Skipping blk %d, ch %d, lun %d, ref %d\n", ppa.g.blk, ch, lun, get_blk(ssd, &ppa)->rpc);
                 is_freed = false;
                 continue;
-            } 
-            // else {
-            //     printf("MYPRINT| DO_GC: Processing blk %d, ch %d, lun %d, ref %d\n", ppa.g.blk, ch, lun, get_blk(ssd, &ppa)->rpc);
-            // }
+            }
 
             clean_one_block(ssd, &ppa);
             mark_block_free(ssd, &ppa);
@@ -874,7 +880,10 @@ static int do_gc(struct ssd *ssd, bool force) {
         }
     }
 
-    if (is_freed) mark_line_free(ssd, &ppa);  // line에 있는 블럭들 다 처리했으니 line도 free로 바꿔줌
+    if (is_freed) {
+        remove_all_rmm_entry(get_line(ssd, &ppa));
+        mark_line_free(ssd, &ppa);  // line에 있는 블럭들 다 처리했으니 line도 free로 바꿔줌
+    }
 
     return 0;
 }
@@ -932,28 +941,46 @@ static uint64_t ssd_write(struct ssd *ssd, NvmeRequest *req) {
         if (r == -1) break;  // victim line이 더이상 없으면 break
 
         ssd->bytes_written_during_gc += spp->secs_per_pg * spp->secsz;  // 운영중에 gc한 총 바이트 수 업데이트
-        // printf("MYPRINT| Bytes written during GC: %" PRIu64 "\n", ssd->bytes_written_during_gc);
     }
 
     for (lpn = start_lpn; lpn <= end_lpn; lpn++) {
-        ppa = get_maptbl_ent(ssd, lpn);                // lpn에 해당하는 ppa를 가져옴
-        if (mapped_ppa(&ppa)) {                        // 이미 매핑된 ppa가 있으면
-            if (get_block_ref_cnt(ssd, &ppa) == 0) {   // 그 ppa 소속 블럭에 참조가 블럭이 없어야 invalid 가능
-                mark_page_invalid(ssd, &ppa);          // 기존 페이지를 invalid로 바꿔줌
-                set_rmap_ent(ssd, INVALID_LPN, &ppa);  // p2l에서 lpn을 invalid로 바꿔줌
+        ppa = get_maptbl_ent(ssd, lpn);               // lpn에 해당하는 ppa를 가져옴
+        if (mapped_ppa(&ppa)) {                       // 이미 그 lpn은 이전에 들어온 lpn이었던거임!!!
+            if (get_block_ref_cnt(ssd, &ppa) == 0) {  // 그 ppa 소속 블럭에 참조가 블럭이 없어야 invalid 가능
+                mark_page_invalid(ssd, &ppa);         // 기존 페이지를 invalid로 바꿔줌
+            } else {
+                // rpc 싹다 감소
+                struct nand_page *pg = get_pg(ssd, &ppa);
+                if (pg->rpc > 0) pg->rpc -= 1;
+                struct nand_block *blk = get_blk(ssd, &ppa);
+                if (blk->rpc > 0) blk->rpc -= 1;
+                struct line *line = get_line(ssd, &ppa);
+                if (line->rpc > 0) line->rpc -= 1;
+
+                if (get_block_ref_cnt(ssd, &ppa) == 0) mark_page_invalid(ssd, &ppa);
             }
         }
 
         if (could_get_hash_support(req->qsg.hash_array[lpn - start_lpn], req->qsg.hash_len_array[lpn - start_lpn])) {  // 이미 해당 글의 내용이 ppa 어딘가에 있음
+            printf("1\n");
             ftl_assert(!mapped_ppa(&ppa) || !valid_ppa(ssd, &ppa));
-            set_maptbl_ent(ssd, lpn, &ppa);  // ppa에 중복 고려해서 lpn 넣어줌
+            printf("2\n");
+
+            uint64_t timestamp = qemu_clock_get_ns(QEMU_CLOCK_REALTIME);
+            printf("3\n");
+
+            set_maptbl_ent(ssd, lpn, &ppa, timestamp);  // ppa에 중복 고려해서 lpn 넣어줌
+            printf("4\n");
+
+            set_rmap_ent(ssd, lpn, &ppa, timestamp, true);
             add_one_in_hash(ssd, req->qsg.hash_array[lpn - start_lpn], req->qsg.hash_len_array[lpn - start_lpn]);
             // TODO: 슈퍼블럭 로그 추가
         } else {  // 없음. 여긴 슈퍼블럭 부분만 건들면 됨
             ppa = get_new_page(ssd);
 
-            set_maptbl_ent(ssd, lpn, &ppa);  // ppa에 중복 고려해서 lpn 넣어줌
-            set_rmap_ent(ssd, lpn, &ppa);
+            uint64_t timestamp = qemu_clock_get_ns(QEMU_CLOCK_REALTIME);
+            set_maptbl_ent(ssd, lpn, &ppa, timestamp);  // ppa에 중복 고려해서 lpn 넣어줌
+            set_rmap_ent(ssd, lpn, &ppa, timestamp, false);
 
             mark_page_valid(ssd, &ppa);
 

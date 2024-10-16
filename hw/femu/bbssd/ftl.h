@@ -161,12 +161,21 @@ struct ssdparams {
     int tt_luns; /* total # of LUNs in the SSD */
 };
 
+struct rmm_entry {
+    uint64_t uintppa;               // 물리 페이지 번호 (uint64 ppa)
+    uint64_t lpn;                   // 논리 페이지 번호 (LPN)
+    uint64_t timestamp;             // 타임스탬프
+    bool is_remap;                  // 리맵 여부
+    QTAILQ_ENTRY(rmm_entry) entry;  // QTAILQ 엔트리 연결
+};
+
 typedef struct line {
-    int id;                   /* line id, the same as corresponding block id */
-    int ipc;                  /* invalid page count in this line */
-    int rpc;                  /* reference page count in this line */
-    int vpc;                  /* valid page count in this line */
-    QTAILQ_ENTRY(line) entry; /* in either {free,victim,full} list */
+    int id;                                     /* line id, the same as corresponding block id */
+    int ipc;                                    /* invalid page count in this line */
+    int rpc;                                    /* reference page count in this line */
+    int vpc;                                    /* valid page count in this line */
+    QTAILQ_HEAD(rmm_list, rmm_entry) rmm_list;  // rmm 엔트리 리스트
+    QTAILQ_ENTRY(line) entry;                   /* in either {free,victim,full} list */
     /* position in the priority queue for victim lines */
     bool is_victim;
 } line;
@@ -204,14 +213,6 @@ struct nand_cmd {
 struct l2p_entry {
     uint64_t lpn;    // 논리적 페이지 번호
     struct ppa ppa;  // ppa
-    uint64_t timestamp;
-    UT_hash_handle hh;  // 해시 테이블 핸들
-};
-
-// PPN to LPN 매핑을 위한 구조체
-struct p2l_entry {
-    uint64_t ppn;  // 물리적 페이지 번호
-    uint64_t lpn;  // 논리적 페이지 번호
     uint64_t timestamp;
     UT_hash_handle hh;  // 해시 테이블 핸들
 };
@@ -266,9 +267,6 @@ void ssd_init(FemuCtrl *n);
 #define ftl_assert(expression)
 #endif
 
-void p2l_push(struct ssd *ssd, struct ppa *ppa, uint64_t lpn);
-uint64_t p2l_find(struct ssd *ssd, struct ppa *ppa);
-
 struct ppa_entry {
     uint64_t uintppa;   // 물리 페이지 번호 (PPA)
     uint32_t cnt;       // 참조 횟수
@@ -279,11 +277,5 @@ struct hash_ppa_entry {
     struct ppa_entry *ppa_table;          // PPA와 참조 카운트를 저장하는 해시 테이블 (내부 맵)
     UT_hash_handle hh;                    // 해시 테이블 핸들
 };
-
-// bool could_get_hash_support(unsigned char *hash, unsigned int len);
-// void add_one_in_hash(unsigned char *hash, unsigned int len);
-// void map_sha256_to_ppa(unsigned char *hash, unsigned int len, struct ppa *ppa);
-
-// bool is_latest_data(struct ssd *ssd, uint64_t lpn, uint64_t ppn);
 
 #endif
