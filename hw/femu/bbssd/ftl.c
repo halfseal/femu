@@ -45,23 +45,6 @@ static int get_block_ref_cnt(struct ssd *ssd, struct ppa *ppa) {
     return blk->rpc;
 }
 
-static bool could_get_hash_support(unsigned char *hash, unsigned int len) {
-    struct hash_ppa_entry *entry;
-    HASH_FIND(hh, hash_ppa_table, hash, len, entry);
-    if (entry == NULL) return false;
-
-    bool there_is_space = false;
-    struct ppa_entry *ppa_item = NULL, *tmp = NULL;
-    HASH_ITER(hh, entry->ppa_table, ppa_item, tmp) {
-        if (ppa_item->cnt < 15) {
-            there_is_space = true;
-            break;
-        }
-    }
-
-    return there_is_space;
-}
-
 static void print_blk(struct ssd *ssd) {
     static int cnt = 0;
     cnt++;
@@ -71,61 +54,6 @@ static void print_blk(struct ssd *ssd) {
         printf("(%d,%d) ", i, blk->rpc);
     }
     printf("\n");
-}
-
-static void add_one_in_hash(struct ssd *ssd, unsigned char *hash, unsigned int len) {
-    struct hash_ppa_entry *entry;
-    HASH_FIND(hh, hash_ppa_table, hash, len, entry);
-
-    struct ppa_entry *ppa_item = NULL, *tmp = NULL;
-    HASH_ITER(hh, entry->ppa_table, ppa_item, tmp) {
-        if (ppa_item->cnt < 15) {
-            struct ppa ppa;
-            ppa.ppa = ppa_item->uintppa;
-
-            struct nand_page *pg = get_pg(ssd, &ppa);
-            struct nand_block *blk = get_blk(ssd, &ppa);
-            struct line *line = get_line(ssd, &ppa);
-
-            pg->rpc++;
-            blk->rpc++;
-            line->rpc++;
-
-            ppa_item->cnt++;
-
-            // printf("MYPRINT| HIT!: added one {%ld, %d}\n", ppa_item->uintppa, ppa_item->cnt);
-            return;
-        }
-    }
-}
-
-static void map_sha256_to_ppa(unsigned char *hash, unsigned int len, struct ppa *ppa) {
-    struct hash_ppa_entry *entry;
-    HASH_FIND(hh, hash_ppa_table, hash, len, entry);
-
-    if (entry == NULL) {
-        // 중복이 없으면 새로운 엔트리 추가
-        entry = (struct hash_ppa_entry *)malloc(sizeof(struct hash_ppa_entry));
-        memcpy(entry->hash, hash, len);  // 해시 값을 구조체에 복사
-
-        entry->ppa_table = NULL;                         // 내부 맵(ppa 테이블) 초기화
-        HASH_ADD(hh, hash_ppa_table, hash, len, entry);  // 해시 테이블에 추가
-
-        struct ppa_entry *ppa_item = (struct ppa_entry *)malloc(sizeof(struct ppa_entry));
-        uint64_t uintppa = ppa->ppa;
-        ppa_item->uintppa = uintppa;
-        ppa_item->cnt = 0;
-        HASH_ADD(hh, entry->ppa_table, uintppa, sizeof(uint64_t), ppa_item);  // 내부 맵에 추가
-        // printf("MYPRINT| is new entry {%ld, %d} - %ld\n", uintppa, ppa_item->cnt, ppa->ppa);
-        return;
-    }
-
-    struct ppa_entry *ppa_item = (struct ppa_entry *)malloc(sizeof(struct ppa_entry));
-    uint64_t uintppa = ppa->ppa;
-    ppa_item->uintppa = uintppa;
-    ppa_item->cnt = 0;
-    HASH_ADD(hh, entry->ppa_table, uintppa, sizeof(uint64_t), ppa_item);  // 내부 맵에 추가
-    // printf("MYPRINT| MISS: reached limit(15), so made new entry and added one {%ld, %d} - %ld\n", uintppa, ppa_item->cnt, ppa->ppa);
 }
 
 static void *ftl_thread(void *arg);
@@ -203,24 +131,15 @@ static inline void set_maptbl_ent(struct ssd *ssd, uint64_t lpn, struct ppa *ppa
 // }
 
 static void add_rmm_entry(struct ssd *ssd, struct ppa *ppa, uint64_t lpn, uint64_t timestamp, bool is_remap) {
-    printf("1");
     struct line *line = get_line(ssd, ppa);
-    printf("2");
-
     struct rmm_entry *new_entry = (struct rmm_entry *)malloc(sizeof(struct rmm_entry));
-    printf("3");
 
     new_entry->uintppa = ppa->ppa;
-    printf("4");
-
     new_entry->lpn = lpn;
     new_entry->timestamp = timestamp;
     new_entry->is_remap = is_remap;
-    printf("5");
 
     QTAILQ_INSERT_HEAD(&line->rmm_list, new_entry, entry);
-    printf("6");
-    
 }
 
 static void remove_all_rmm_entry(struct line *line) {
@@ -254,6 +173,80 @@ static inline uint64_t get_rmap_ent(struct ssd *ssd, struct ppa *ppa) {
 
 /* set rmap[page_no(ppa)] -> lpn */
 static inline void set_rmap_ent(struct ssd *ssd, uint64_t lpn, struct ppa *ppa, uint64_t timestamp, bool is_remap) { add_rmm_entry(ssd, ppa, lpn, timestamp, is_remap); }
+
+static bool could_get_hash_support(unsigned char *hash, unsigned int len) {
+    struct hash_ppa_entry *entry;
+    HASH_FIND(hh, hash_ppa_table, hash, len, entry);
+    if (entry == NULL) return false;
+
+    bool there_is_space = false;
+    struct ppa_entry *ppa_item = NULL, *tmp = NULL;
+    HASH_ITER(hh, entry->ppa_table, ppa_item, tmp) {
+        if (ppa_item->cnt < 15) {
+            there_is_space = true;
+            break;
+        }
+    }
+
+    return there_is_space;
+}
+
+static void add_one_in_hash_and_set_rmap_ent(struct ssd *ssd, unsigned char *hash, unsigned int len, uint64_t lpn, uint64_t timestamp) {
+    struct hash_ppa_entry *entry;
+    HASH_FIND(hh, hash_ppa_table, hash, len, entry);
+
+    struct ppa_entry *ppa_item = NULL, *tmp = NULL;
+    HASH_ITER(hh, entry->ppa_table, ppa_item, tmp) {
+        if (ppa_item->cnt < 15) {
+            struct ppa ppa;
+            ppa.ppa = ppa_item->uintppa;
+
+            struct nand_page *pg = get_pg(ssd, &ppa);
+            struct nand_block *blk = get_blk(ssd, &ppa);
+            struct line *line = get_line(ssd, &ppa);
+
+            pg->rpc++;
+            blk->rpc++;
+            line->rpc++;
+
+            set_rmap_ent(ssd, lpn, &ppa, timestamp, true);
+
+            ppa_item->cnt++;
+
+            // printf("MYPRINT| HIT!: added one {%ld, %d}\n", ppa_item->uintppa, ppa_item->cnt);
+            return;
+        }
+    }
+}
+
+static void map_sha256_to_ppa(unsigned char *hash, unsigned int len, struct ppa *ppa) {
+    struct hash_ppa_entry *entry;
+    HASH_FIND(hh, hash_ppa_table, hash, len, entry);
+
+    if (entry == NULL) {
+        // 중복이 없으면 새로운 엔트리 추가
+        entry = (struct hash_ppa_entry *)malloc(sizeof(struct hash_ppa_entry));
+        memcpy(entry->hash, hash, len);  // 해시 값을 구조체에 복사
+
+        entry->ppa_table = NULL;                         // 내부 맵(ppa 테이블) 초기화
+        HASH_ADD(hh, hash_ppa_table, hash, len, entry);  // 해시 테이블에 추가
+
+        struct ppa_entry *ppa_item = (struct ppa_entry *)malloc(sizeof(struct ppa_entry));
+        uint64_t uintppa = ppa->ppa;
+        ppa_item->uintppa = uintppa;
+        ppa_item->cnt = 0;
+        HASH_ADD(hh, entry->ppa_table, uintppa, sizeof(uint64_t), ppa_item);  // 내부 맵에 추가
+        // printf("MYPRINT| is new entry {%ld, %d} - %ld\n", uintppa, ppa_item->cnt, ppa->ppa);
+        return;
+    }
+
+    struct ppa_entry *ppa_item = (struct ppa_entry *)malloc(sizeof(struct ppa_entry));
+    uint64_t uintppa = ppa->ppa;
+    ppa_item->uintppa = uintppa;
+    ppa_item->cnt = 0;
+    HASH_ADD(hh, entry->ppa_table, uintppa, sizeof(uint64_t), ppa_item);  // 내부 맵에 추가
+    // printf("MYPRINT| MISS: reached limit(15), so made new entry and added one {%ld, %d} - %ld\n", uintppa, ppa_item->cnt, ppa->ppa);
+}
 
 static void ssd_init_lines(struct ssd *ssd) {
     struct ssdparams *spp = &ssd->sp;
@@ -946,7 +939,7 @@ static uint64_t ssd_write(struct ssd *ssd, NvmeRequest *req) {
     for (lpn = start_lpn; lpn <= end_lpn; lpn++) {
         ppa = get_maptbl_ent(ssd, lpn);               // lpn에 해당하는 ppa를 가져옴
         if (mapped_ppa(&ppa)) {                       // 이미 그 lpn은 이전에 들어온 lpn이었던거임!!!
-            if (get_block_ref_cnt(ssd, &ppa) == 0) {  // 그 ppa 소속 블럭에 참조가 블럭이 없어야 invalid 가능
+            if (get_block_ref_cnt(ssd, &ppa) == 0) {  // 그 ppa 소속 블럭에 참조된 블럭이 없어야 invalid 가능
                 mark_page_invalid(ssd, &ppa);         // 기존 페이지를 invalid로 바꿔줌
             } else {
                 // rpc 싹다 감소
@@ -962,19 +955,11 @@ static uint64_t ssd_write(struct ssd *ssd, NvmeRequest *req) {
         }
 
         if (could_get_hash_support(req->qsg.hash_array[lpn - start_lpn], req->qsg.hash_len_array[lpn - start_lpn])) {  // 이미 해당 글의 내용이 ppa 어딘가에 있음
-            printf("1\n");
             ftl_assert(!mapped_ppa(&ppa) || !valid_ppa(ssd, &ppa));
-            printf("2\n");
 
             uint64_t timestamp = qemu_clock_get_ns(QEMU_CLOCK_REALTIME);
-            printf("3\n");
-
             set_maptbl_ent(ssd, lpn, &ppa, timestamp);  // ppa에 중복 고려해서 lpn 넣어줌
-            printf("4\n");
-
-            set_rmap_ent(ssd, lpn, &ppa, timestamp, true);
-            add_one_in_hash(ssd, req->qsg.hash_array[lpn - start_lpn], req->qsg.hash_len_array[lpn - start_lpn]);
-            // TODO: 슈퍼블럭 로그 추가
+            add_one_in_hash_and_set_rmap_ent(ssd, req->qsg.hash_array[lpn - start_lpn], req->qsg.hash_len_array[lpn - start_lpn], lpn, timestamp);
         } else {  // 없음. 여긴 슈퍼블럭 부분만 건들면 됨
             ppa = get_new_page(ssd);
 
