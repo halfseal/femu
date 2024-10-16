@@ -66,6 +66,11 @@ static inline struct nand_page *get_pg(struct ssd *ssd, struct ppa *ppa) {
     return &(blk->pg[ppa->g.pg]);
 }
 
+static int get_block_ref_cnt(struct ssd *ssd, struct ppa *ppa) {
+    struct nand_block *blk = get_blk(ssd, ppa);
+    return blk->rpc;
+}
+
 static bool could_get_hash_support(unsigned char *hash, unsigned int len) {
     struct hash_ppa_entry *entry;
     HASH_FIND(hh, hash_ppa_table, hash, len, entry);
@@ -83,6 +88,17 @@ static bool could_get_hash_support(unsigned char *hash, unsigned int len) {
     return there_is_space;
 }
 
+static void print_blk(struct ssd *ssd) {
+    static int cnt = 0;
+    cnt++;
+    if (cnt % 100000 != 0) return;
+    for (int i = 0; i < ssd->sp.tt_blks; i++) {
+        struct nand_block *blk = get_blk(ssd, &((struct ppa){.ppa = i}));
+        printf("(%d,%d) ", i, blk->rpc);
+    }
+    printf("\n");
+}
+
 static void add_one_in_hash(struct ssd *ssd, unsigned char *hash, unsigned int len) {
     struct hash_ppa_entry *entry;
     HASH_FIND(hh, hash_ppa_table, hash, len, entry);
@@ -95,7 +111,7 @@ static void add_one_in_hash(struct ssd *ssd, unsigned char *hash, unsigned int l
 
             struct nand_page *pg = get_pg(ssd, &ppa);
             struct nand_block *blk = get_blk(ssd, &ppa);
-            struct line *line = get_line(ssd, & ppa);
+            struct line *line = get_line(ssd, &ppa);
 
             pg->rpc++;
             blk->rpc++;
@@ -107,11 +123,6 @@ static void add_one_in_hash(struct ssd *ssd, unsigned char *hash, unsigned int l
             return;
         }
     }
-}
-
-static int get_block_ref_cnt(struct ssd *ssd, struct ppa *ppa) {
-    struct nand_block *blk = get_blk(ssd, ppa);
-    return blk->rpc;
 }
 
 static void map_sha256_to_ppa(unsigned char *hash, unsigned int len, struct ppa *ppa) {
@@ -828,6 +839,7 @@ static int do_gc(struct ssd *ssd, bool force) {
     ppa.g.blk = victim_line->id;  // line 선택했으면 바꿔야할 블럭 번호 자명하니
     ftl_debug("GC-ing line:%d,ipc=%d,victim=%d,full=%d,free=%d\n", ppa.g.blk, victim_line->ipc, ssd->lm.victim_line_cnt, ssd->lm.full_line_cnt, ssd->lm.free_line_cnt);
 
+    bool is_freed = true;
     /* copy back valid data */
     for (ch = 0; ch < spp->nchs; ch++) {
         for (lun = 0; lun < spp->luns_per_ch; lun++) {
@@ -838,9 +850,14 @@ static int do_gc(struct ssd *ssd, bool force) {
             lunp = get_lun(ssd, &ppa);
 
             if (get_block_ref_cnt(ssd, &ppa) > 0) {
-                printf("MYPRINT| DO_GC: Skipping blk %d, ch %d, lun %d due to references (rpc:%d)\n", ppa.g.blk, ch, lun, get_blk(ssd, &ppa)->rpc);
+                // 사실 ref가 0인애들은 victim line에 들어가지도 않아 여기로 분기되지도 않아서 상관 없음
+                printf("MYPRINT| DO_GC: Skipping blk %d, ch %d, lun %d, ref %d\n", ppa.g.blk, ch, lun, get_blk(ssd, &ppa)->rpc);
+                is_freed = false;
                 continue;
-            }
+            } 
+            // else {
+            //     printf("MYPRINT| DO_GC: Processing blk %d, ch %d, lun %d, ref %d\n", ppa.g.blk, ch, lun, get_blk(ssd, &ppa)->rpc);
+            // }
 
             clean_one_block(ssd, &ppa);
             mark_block_free(ssd, &ppa);
@@ -857,7 +874,7 @@ static int do_gc(struct ssd *ssd, bool force) {
         }
     }
 
-    mark_line_free(ssd, &ppa);  // line에 있는 블럭들 다 처리했으니 line도 free로 바꿔줌
+    if (is_freed) mark_line_free(ssd, &ppa);  // line에 있는 블럭들 다 처리했으니 line도 free로 바꿔줌
 
     return 0;
 }
@@ -956,6 +973,8 @@ static uint64_t ssd_write(struct ssd *ssd, NvmeRequest *req) {
     }
 
     qemu_sglist_destroy(&req->qsg);  // 이거 불리면 qsg free되면서 sha 접근불가.
+
+    print_blk(ssd);
 
     return maxlat;
 }
