@@ -78,6 +78,7 @@ struct nand_page {
     nand_sec_status_t *sec;
     int nsecs;
     int status;
+    int rpc; // reference page count
 };
 
 struct nand_block {

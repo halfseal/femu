@@ -54,7 +54,13 @@ static void add_one_in_hash(unsigned char *hash, unsigned int len) {
     struct ppa_entry *ppa_item = NULL, *tmp = NULL;
     HASH_ITER(hh, entry->ppa_table, ppa_item, tmp) {
         if (ppa_item->cnt < 15) {
+            struct ppa ppa;
+            ppa.ppa = ppa_item->uintppa;
+            struct nand_page *pg = get_pg(ssd, ppa);
+            pg->rpc++;
+
             ppa_item->cnt++;
+
             printf("MYPRINT| HIT!: added one {%ld, %d}\n", ppa_item->uintppa, ppa_item->cnt);
             return;
         }
@@ -76,7 +82,7 @@ static void map_sha256_to_ppa(unsigned char *hash, unsigned int len, struct ppa 
         struct ppa_entry *ppa_item = (struct ppa_entry *)malloc(sizeof(struct ppa_entry));
         uint64_t uintppa = ppa->ppa;
         ppa_item->uintppa = uintppa;
-        ppa_item->cnt = 1;
+        ppa_item->cnt = 0;
         HASH_ADD(hh, entry->ppa_table, uintppa, sizeof(uint64_t), ppa_item);  // 내부 맵에 추가
         // printf("MYPRINT| is new entry {%ld, %d} - %ld\n", uintppa, ppa_item->cnt, ppa->ppa);
         return;
@@ -85,7 +91,7 @@ static void map_sha256_to_ppa(unsigned char *hash, unsigned int len, struct ppa 
     struct ppa_entry *ppa_item = (struct ppa_entry *)malloc(sizeof(struct ppa_entry));
     uint64_t uintppa = ppa->ppa;
     ppa_item->uintppa = uintppa;
-    ppa_item->cnt = 1;
+    ppa_item->cnt = 0;
     HASH_ADD(hh, entry->ppa_table, uintppa, sizeof(uint64_t), ppa_item);  // 내부 맵에 추가
     // printf("MYPRINT| MISS: reached limit(15), so made new entry and added one {%ld, %d} - %ld\n", uintppa, ppa_item->cnt, ppa->ppa);
 }
@@ -163,6 +169,8 @@ static uint64_t ppa2pgidx(struct ssd *ssd, struct ppa *ppa) {
     // TODO: 이걸 룬별로 나눠서 해야하는데. 채널은 어떻게 다루고있는지를 모르겠음
     return pgidx;
 }
+
+static void print_ppa(struct ppa *ppa) { printf("MYPRINT| ch: %d, lun: %d, pl: %d, blk: %d, pg: %d\n", ppa->g.ch, ppa->g.lun, ppa->g.pl, ppa->g.blk, ppa->g.pg); }
 
 static inline uint64_t get_rmap_ent(struct ssd *ssd, struct ppa *ppa) {
     uint64_t pgidx = ppa2pgidx(ssd, ppa);
@@ -395,6 +403,7 @@ static void ssd_init_nand_page(struct nand_page *pg, struct ssdparams *spp) {
         pg->sec[i] = SEC_FREE;  // 페이지에 있는 섹터들을 모두 FREE로 초기화
     }
     pg->status = PG_FREE;
+    pg->rpc = 0;
 }
 
 static void ssd_init_nand_blk(struct nand_block *blk, struct ssdparams *spp) {
@@ -913,6 +922,7 @@ static uint64_t ssd_write(struct ssd *ssd, NvmeRequest *req) {
             // TODO: 슈퍼블럭 로그 추가
         } else {  // 없음. 여긴 슈퍼블럭 부분만 건들면 됨
             ppa = get_new_page(ssd);
+
             set_maptbl_ent(ssd, lpn, &ppa);  // ppa에 중복 고려해서 lpn 넣어줌
             set_rmap_ent(ssd, lpn, &ppa);
 
