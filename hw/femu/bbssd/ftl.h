@@ -78,7 +78,7 @@ struct nand_page {
     nand_sec_status_t *sec;
     int nsecs;
     int status;
-    int rpc; // reference page count
+    int rpc;  // reference count
 };
 
 struct nand_block {
@@ -86,6 +86,7 @@ struct nand_block {
     int npgs;
     int ipc; /* invalid page count */
     int vpc; /* valid page count */
+    int rpc; /* reference page count */
     int erase_cnt;
     int wp; /* current write pointer */
 };
@@ -163,6 +164,7 @@ struct ssdparams {
 typedef struct line {
     int id;                   /* line id, the same as corresponding block id */
     int ipc;                  /* invalid page count in this line */
+    int rpc;                  /* reference page count in this line */
     int vpc;                  /* valid page count in this line */
     QTAILQ_ENTRY(line) entry; /* in either {free,victim,full} list */
     /* position in the priority queue for victim lines */
